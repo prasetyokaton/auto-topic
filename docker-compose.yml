@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  streamlit-app:
+    build: .
+    ports:
+      - "8566:8501"
+    volumes:
+      - .:/app
+      - ./secretcontainer:/app/secretcontainer
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always

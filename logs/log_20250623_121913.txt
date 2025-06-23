@@ -1,0 +1,210 @@
+2025-06-23 12:19:30,065 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:30,074 - Row 0 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Menteri PU, Kementerian PU
+Title: nan
+Content: Mulai tanggal 18 Juni 2025 pukul 00.00 WIB, akan diberlakukan penyesuaian Tarif Ruas Jalan Tol Pandaan-Malang, berdasarkan Keputusan Menteri Pekerjaan Umum Nomor 602/KPTS/M/2025. https://t.co/iWS2uw8JNQ
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Penyesuaian Tarif Tol  
+Sub Issue: Ruas Jalan Tol Pandaan-Malang
+2025-06-23 12:19:31,098 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:31,099 - Row 1 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Menteri PU, Kementerian PU
+Title: nan
+Content: Mulai tanggal 18 Juni 2025 pukul 00.00 WIB, akan diberlakukan penyesuaian Tarif Ruas Jalan Tol Pandaan-Malang, berdasarkan Keputusan Menteri Pekerjaan Umum Nomor 602/KPTS/M/2025. https://t.co/0XgRNiqnfO
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Penyesuaian Tarif Tol  
+Sub Issue: Ruas Jalan Pandaan-Malang 2025
+2025-06-23 12:19:32,116 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:32,119 - Row 2 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Menteri PU, Kementerian PU
+Title: nan
+Content: Mulai tanggal 18 Juni 2025 pukul 00.00 WIB, akan diberlakukan penyesuaian Tarif Ruas Jalan Tol Pandaan-Malang, berdasarkan Keputusan Menteri Pekerjaan Umum Nomor 602/KPTS/M/2025. https://t.co/9kJWBNfezZ
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Penyesuaian Tarif Tol  
+Sub Issue: Ruas Jalan Tol Pandaan-Malang
+2025-06-23 12:19:33,200 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:33,203 - Row 3 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Kementerian PU
+Title: nan
+Content: @Kemdikdasmen @KemenPU @KemenkeuRI #DISKON LISTRIK BATAL ?
+HARGA #GAS NAIK ?
+BANYAK RAKYAT KEHILANGAN #PEKERJAAN ?
+RAKYAT SEMAKIN MISKIN KARENA #KEBIJAKAN PEMERINTAH YANG MENGABAIKAN PENTINGNYA SYSTEM #EKONOMİ KERAKYATAN YANG #BERPOROS KEPADA KEADILAN &amp; KESEJAHTERAAN #RAKYAT
+💥💥💥💥🇮🇩🇮🇩🇮🇩
+https://t.co/nKexam2PiS
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Kebijakan Ekonomi Pemerintah  
+Sub Issue: Dampak terhadap Rakyat dan Kesejahteraan
+2025-06-23 12:19:34,368 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:34,370 - Row 4 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Menteri PU, Kementerian PU
+Title: nan
+Content: @KemenPU @bps_statistics #DISKON LISTRIK BATAL ?
+HARGA #GAS NAIK ?
+BANYAK RAKYAT KEHILANGAN #PEKERJAAN ?
+RAKYAT SEMAKIN MISKIN KARENA #KEBIJAKAN PEMERINTAH YANG MENGABAIKAN PENTINGNYA SYSTEM #EKONOMİ KERAKYATAN YANG #BERPOROS KEPADA KEADILAN &amp; KESEJAHTERAAN #RAKYAT
+💥💥💥💥🇮🇩🇮🇩🇮🇩
+https://t.co/nKexam2PiS
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Kebijakan Ekonomi Pemerintah  
+Sub Issue: Dampak terhadap Rakyat dan Pekerjaan
+2025-06-23 12:19:35,217 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:35,221 - Row 5 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Kementerian PU
+Title: nan
+Content: @KemenPU #DISKON LISTRIK BATAL ?
+HARGA #GAS NAIK ?
+BANYAK RAKYAT KEHILANGAN #PEKERJAAN ?
+RAKYAT SEMAKIN MISKIN KARENA #KEBIJAKAN PEMERINTAH YANG MENGABAIKAN PENTINGNYA SYSTEM #EKONOMİ KERAKYATAN YANG #BERPOROS KEPADA KEADILAN &amp; KESEJAHTERAAN #RAKYAT
+💥💥💥💥🇮🇩🇮🇩🇮🇩
+https://t.co/nKexam2PiS
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Kebijakan Ekonomi Pemerintah  
+Sub Issue: Dampak terhadap Rakyat Miskin
+2025-06-23 12:19:35,824 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:35,827 - Row 6 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Special Issue Kementerian PU, Kementerian PU
+Title: nan
+Content: @KemenPU #DISKON LISTRIK BATAL ?
+HARGA #GAS NAIK ?
+BANYAK RAKYAT KEHILANGAN #PEKERJAAN ?
+RAKYAT SEMAKIN MISKIN KARENA #KEBIJAKAN PEMERINTAH YANG MENGABAIKAN PENTINGNYA SYSTEM #EKONOMİ KERAKYATAN YANG #BERPOROS KEPADA KEADILAN &amp; KESEJAHTERAAN #RAKYAT
+💥💥💥💥🇮🇩🇮🇩🇮🇩
+https://t.co/nKexam2PiS
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Kebijakan Ekonomi Pemerintah  
+Sub Issue: Dampak terhadap Rakyat dan Pekerjaan
+2025-06-23 12:19:36,856 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:36,859 - Row 7 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Kementerian PU
+Title: nan
+Content: @KemenPU #DISKON LISTRIK BATAL ?
+HARGA #GAS NAIK ?
+BANYAK RAKYAT KEHILANGAN #PEKERJAAN ?
+RAKYAT SEMAKIN MISKIN KARENA #KEBIJAKAN PEMERINTAH YANG MENGABAIKAN PENTINGNYA SYSTEM #EKONOMİ KERAKYATAN YANG #BERPOROS KEPADA KEADILAN &amp; KESEJAHTERAAN #RAKYAT
+💥💥💥💥🇮🇩🇮🇩🇮🇩
+https://t.co/nKexam2PiS
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Kebijakan Ekonomi Pemerintah  
+Sub Issue: Dampak pada Rakyat dan Pekerjaan
+2025-06-23 12:19:37,910 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:37,912 - Row 8 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Kementerian PU
+Title: nan
+Content: @KemenPU #DISKON LISTRIK BATAL ?
+HARGA #GAS NAIK ?
+BANYAK RAKYAT KEHILANGAN #PEKERJAAN ?
+RAKYAT SEMAKIN MISKIN KARENA #KEBIJAKAN PEMERINTAH YANG MENGABAIKAN PENTINGNYA SYSTEM #EKONOMİ KERAKYATAN YANG #BERPOROS KEPADA KEADILAN &amp; KESEJAHTERAAN #RAKYAT
+💥💥💥💥🇮🇩🇮🇩🇮🇩
+https://t.co/nKexam2PiS
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Kebijakan Ekonomi Pemerintah  
+Sub Issue: Dampak pada Rakyat dan Pekerjaan
+2025-06-23 12:19:39,780 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:39,784 - Row 9 - SUCCESS
+Prompt: Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Issue adalah topik umum dan ringkas (maksimal 4 kata)
+- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)
+- Keduanya wajib diisi
+
+Campaigns: Kementerian PU
+Title: nan
+Content: @KemenPU #DISKON LISTRIK BATAL ?
+HARGA #GAS NAIK ?
+BANYAK RAKYAT KEHILANGAN #PEKERJAAN ?
+RAKYAT SEMAKIN MISKIN KARENA #KEBIJAKAN PEMERINTAH YANG MENGABAIKAN PENTINGNYA SYSTEM #EKONOMİ KERAKYATAN YANG #BERPOROS KEPADA KEADILAN &amp; KESEJAHTERAAN #RAKYAT
+💥💥💥💥🇮🇩🇮🇩🇮🇩
+https://t.co/nKexam2PiS
+
+Jawab dalam format:
+Issue: <isi issue>
+Sub Issue: <isi sub issue>
+Response: Issue: Kebijakan Ekonomi Pemerintah  
+Sub Issue: Dampak Terhadap Rakyat Miskin
+2025-06-23 12:19:41,402 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:43,524 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-23 12:19:44,414 - [DEBUG] Keyword: infrastruktur indonesia, pembangunan indonesia, Total Entries: 100
+2025-06-23 12:19:44,415 - [DEBUG] → Diambil 20 berita untuk 'infrastruktur indonesia, pembangunan indonesia'
+
