@@ -1,3 +1,6 @@
+# Gunakan image Python ringan
+#FROM python:3.10-slim
+
 # Gunakan image hasil build base (yang sudah punya Streamlit & lainnya)
 FROM streamlit-base:latest
 
@@ -13,7 +16,6 @@ WORKDIR /app
 
 # Copy seluruh isi project ke container
 COPY . .
-COPY secretcontainer/ secretcontainer/
 
 # Expose port Streamlit
 EXPOSE 8501

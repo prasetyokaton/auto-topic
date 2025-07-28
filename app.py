@@ -34,6 +34,52 @@ allowed_sources = [
     "tirto", "voi"
 ]
 
+#HAPUS
+#path_ref_file = "Masterlist Media Tier.xlsx"
+#st.write("Coba cek file referensi:", os.path.exists(path_ref_file))
+#st.write("CWD:", os.getcwd())
+
+
+def enrich_with_media_tier(df: pd.DataFrame) -> pd.DataFrame:
+    path_ref_file = "Masterlist Media Tier.xlsx"
+    #st.write("Cek keberadaan file referensi:", os.path.exists(path_ref_file))
+    #st.write("Working directory:", os.getcwd())
+
+    media_col = "Media" if "Media" in df.columns else "Media Name" if "Media Name" in df.columns else None
+
+    if not media_col:
+        df["Media Tier"] = 3
+        return df
+
+    try:
+        ref_df = pd.read_excel(path_ref_file, sheet_name="Full Media")
+        #st.write("Preview referensi Media Tier:", ref_df.head())
+        #st.write("Kolom di sheet referensi:", ref_df.columns.tolist())
+
+        mapping = {
+            str(row['Media Name']).lower().strip(): row['Media Tier']
+            for _, row in ref_df.iterrows()
+            if pd.notna(row['Media Name']) and pd.notna(row['Media Tier'])
+        }
+
+        df["__media_lookup__"] = df[media_col].fillna("").apply(lambda x: x.lower().strip())
+        df["Media Tier"] = df["__media_lookup__"].map(mapping).fillna(3).astype(int)
+        df.drop(columns="__media_lookup__", inplace=True)
+
+        col_idx = df.columns.get_loc(media_col)
+        cols = df.columns.tolist()
+        cols.insert(col_idx + 1, cols.pop(cols.index("Media Tier")))
+        df = df[cols]
+
+    except Exception as e:
+        st.error(f"[ERROR] Media Tier Mapping Gagal: {str(e)}")
+        logging.error(f"[Media Tier Mapping ERROR - file local] {str(e)}")
+        df["Media Tier"] = 3
+
+    return df
+
+
+
 def normalize_media(text):
     text = text.lower()
     text = re.sub(r'[\s\.\-]', '', text)
@@ -129,10 +175,10 @@ def extract_topic_from_file(file_path: str, keyword_config, selected_project: st
         if col not in df.columns:
             df[col] = ""
 
-    issues, sub_issues = [], []
+    topics, sub_topics = [], []
     new_sentiments = []
     confidence_levels = []
-
+    summaries = []
 
     total = len(df)
 
@@ -140,17 +186,17 @@ def extract_topic_from_file(file_path: str, keyword_config, selected_project: st
 
     for i, row in df.iterrows():
         prompt = (
-            "Tentukan topik utama (Issue) dan sub-topik (Sub Issue) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.\n\n"
-            "- Issue adalah topik umum dan ringkas (maksimal 4 kata)\n"
-            "- Sub Issue adalah penjabaran lebih spesifik dari Issue (maksimal 6 kata)\n"
-            "- Keduanya wajib diisi\n\n"
+            "Tentukan topik utama (Topic), sub-topik (Sub Topic), dan rangkuman singkat (Summary) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.\n\n"
+            "- Topic adalah topik umum dan ringkas (maksimal 5 kata)\n"
+            "- Sub Topic adalah penjabaran lebih spesifik dari Topic (maksimal 10 kata)\n"
+            "- Summary adalah rangkuman isi konten dalam 4–20 kata yang menjelaskan isi konten, maksud, atau tujuannya secara jelas\n"
+            "- Semua jawaban wajib diisi\n\n"
             f"Campaigns: {row['Campaigns']}\n"
             f"Title: {row['Title']}\n"
             f"Content: {row['Content']}\n\n"
-            "Jawab dalam format:\nIssue: <isi issue>\nSub Issue: <isi sub issue>\nNew Sentiment: <positive/negative/neutral>\nConfidence: <0-100>"
-
-
+            "Jawab dalam format:\nTopic: <isi Topic>\nSub Topic: <isi Sub Topic>\nSummary: <isi Summary>\nNew Sentiment: <positive/negative/neutral>\nConfidence: <0-100>"
         )
+
         try:
             response = client.chat.completions.create(
                 model=openai_model,
@@ -162,18 +208,20 @@ def extract_topic_from_file(file_path: str, keyword_config, selected_project: st
         except Exception as e:
             st.error(f"[Row {i}] GPT ERROR: {str(e)}")
             logging.error(f"Row {i} - ERROR: {str(e)}")
-            result = "Issue: error\nSub Issue: error"
+            result = "Topic: error\nSub Topic: error"
 
-        issue_text, sub_issue_text, new_sentiment = "ambiguous", "ambiguous", "neutral"
+        topic_text, sub_topic_text, summary_text, new_sentiment = "ambiguous", "ambiguous", "", "neutral"
         confidence = 0
 
         for line in result.splitlines():
-            if line.lower().startswith("issue:"):
-                issue_text = line.split(":", 1)[1].strip()
-            elif line.lower().startswith("sub issue:"):
-                sub_issue_text = line.split(":", 1)[1].strip()
+            if line.lower().startswith("topic:"):
+                topic_text = line.split(":", 1)[1].strip()
+            elif line.lower().startswith("sub topic:"):
+                sub_topic_text = line.split(":", 1)[1].strip()
             elif line.lower().startswith("new sentiment:"):
                 new_sentiment = line.split(":", 1)[1].strip()
+            elif line.lower().startswith("summary:"):
+                summary_text = line.split(":", 1)[1].strip()
             elif line.lower().startswith("confidence:"):
                 try:
                     confidence = int(line.split(":", 1)[1].strip())
@@ -183,8 +231,9 @@ def extract_topic_from_file(file_path: str, keyword_config, selected_project: st
         if confidence < 85:
             new_sentiment = "neutral"
 
-        issues.append(issue_text)
-        sub_issues.append(sub_issue_text)
+        topics.append(topic_text)
+        sub_topics.append(sub_topic_text)
+        summaries.append(summary_text)
         new_sentiments.append(new_sentiment)
 
         progress_percent = int((i + 1) / total * 100)
@@ -192,22 +241,49 @@ def extract_topic_from_file(file_path: str, keyword_config, selected_project: st
 
     progress_bar.progress(100, text="Menyiapkan data akhir...")
 
-    df['Issue'] = issues
-    df['Sub Issue'] = sub_issues
+    df['Topic'] = topics
+    df['Sub Topic'] = sub_topics
+    df['Summary'] = summaries
     df["New Sentiment"] = new_sentiments
     df["New Sentiment"] = df["New Sentiment"].str.lower()
+    
+    # Urutkan kolom agar Topic, Sub Topic, New Sentiment, Summary berada setelah Content
+    cols = df.columns.tolist()
+    insert_after = "Content"
+
+    new_cols = ["Topic", "Sub Topic", "New Sentiment", "Summary"]
+    existing_new_cols = [col for col in new_cols if col in cols]
+
+    if insert_after in cols:
+        idx = cols.index(insert_after)
+        # Hapus kolom baru dulu
+        for col in existing_new_cols:
+            cols.remove(col)
+        # Sisipkan kolom baru setelah Content
+        for i, col in enumerate(existing_new_cols):
+            cols.insert(idx + 1 + i, col)
+
+        df = df[cols]
 
 
 
-    st.info("Menormalisasi Issue dan Sub Issue dengan GPT...")
-    df['Issue'] = gpt_normalize_labels(df['Issue'], "Issue")
-    df['Sub Issue'] = gpt_normalize_labels(df['Sub Issue'], "Sub Issue")
+    st.info("Menormalisasi Topic dan Sub Topic dengan GPT...")
+    df['Topic'] = gpt_normalize_labels(df['Topic'], "Topic")
+    df['Sub Topic'] = gpt_normalize_labels(df['Sub Topic'], "Sub Topic")
+
+    # Tambahkan Media Tier ke file utama jika kolom media tersedia
+    if "Media" in df.columns or "Media Name" in df.columns:
+        df = enrich_with_media_tier(df)
 
     keyword_list = keyword_config['Keyword'].dropna().tolist()
     df_news = pd.DataFrame()  # default empty
 
     if include_news:
         df_news = search_news_from_google(keyword_list, selected_project)
+
+    if not df_news.empty:
+        df_news = enrich_with_media_tier(df_news)
+
 
     now = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_path = file_path.replace(".xlsx", f"_processed_{now}.xlsx")
@@ -231,7 +307,7 @@ def load_keyword_config():
     return pd.DataFrame(data)
 
 # ======= Streamlit UI =======
-st.title("Topic Extraction Automation (Mainstream Media)")
+st.title("Insights Topics Automation")
 
 # Load keyword config dan pilih project
 keyword_df = load_keyword_config()
@@ -251,7 +327,16 @@ if uploaded_file is not None:
         tmp.write(uploaded_file.getvalue())
         tmp_path = tmp.name
 
-    include_news = st.checkbox("Sertakan pencarian Berita External")
+    #include_news = st.checkbox("Sertakan pencarian Berita External")
+    col1, col2 = st.columns([3, 1])
+    with col1:
+        include_news = st.checkbox("Sertakan pencarian Berita External")
+    with col2:
+        st.markdown(
+            '<a href="https://docs.google.com/spreadsheets/d/18_cjWzEUochd14i1t_eU2GvVVSZqB6y0paLyiHdCTyM/edit#gid=0" target="_blank">📝 Edit Keyword External News</a>',
+            unsafe_allow_html=True
+        )
+
 
     if st.button("Proses"):
         with st.spinner("Memproses file..."):

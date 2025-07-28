@@ -1,13 +1,16 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  streamlit-app:
-    build: .
+  mainstream_v1:
+    container_name: mainstream_v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mainstream_v1:latest
     ports:
       - "8566:8501"
     volumes:
       - .:/app
-      - ./secretcontainer:/app/secretcontainer
-    environment:
-      - PYTHONUNBUFFERED=1
-    restart: always
+      - ./.secretcontainer:/app/.secretcontainer
+    restart: unless-stopped
+    pull_policy: never   

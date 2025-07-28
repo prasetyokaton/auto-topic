@@ -1,0 +1,128 @@
+2025-07-28 11:26:08,074 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-28 11:26:08,092 - Row 0 - SUCCESS
+Prompt: Tentukan topik utama (Topic), sub-topik (Sub Topic), dan rangkuman singkat (Summary) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Topic adalah topik umum dan ringkas (maksimal 5 kata)
+- Sub Topic adalah penjabaran lebih spesifik dari Topic (maksimal 10 kata)
+- Summary adalah rangkuman isi konten dalam 4–20 kata yang menjelaskan isi konten, maksud, atau tujuannya secara jelas
+- Semua jawaban wajib diisi
+
+Campaigns: Kementerian PU, Menteri PU
+Title: Baznas & Muhammadiyah Perkuat Kolaborasi Majukan Pendidikan Indonesia
+Content: Jakarta, CNN Indonesia Badan Amil Zakat Nasional (Baznas) melanjutkan upaya peningkatan kualitas pendidikan dan kesejahteraan umat dengan penguatan
+sinergi bersama Pimpinan Pusat (PP) Muhammadiyah yang diadakan di Kantor PP Muhammadiyah, Jakarta, Sabtu (26/7). Kolaborasi strategis ditandai dengan penandatanganan kerja sama yang dilakukan oleh Ketua Baznas KH. Noor Achmad dengan Ketua Umum PP Muhammadiyah Haedar Nashir, dihadiri pula oleh Wakil Ketua Baznas H Mo Mahdum, Pimpinan Baznas Bidang Pengumpulan H. Rizaludin Kurniawan beserta jajaran PP Muhammadiyah. Ketua Baznas KH. Noor Achmad menilai, kolaborasi dengan Muhammadiyah memiliki peran besar dalam penguatan dakwah dan pendidikan Islam di Indonesia, hingga menjangkau wilayah 3T. ADVERTISEMENT SCROLL TO CONTINUE WITH CONTENT "Muhammadiyah merupakan mitra strategis yang memiliki jaringan pendidikan dan sosial yang kuat hingga ke pelosok negeri. Kolaborasi ini adalah bentuk konkrit bagaimana zakat dikelola secara profesional dan tepat sasaran untuk mendukung dakwah dan pemberdayaan umat," kata Kiai Noor. (Foto: arsip Baznas) Selama ini, kolaborasi Baznas dan Muhammadiyah telah menghasilkan berbagai program, seperti beasiswa pendidikan, pembangunan sarana belajar, penguatan SDM, serta revitalisasi lembaga pendidikan dan sosial berbasis umat. "Apa yang kita lakukan ini untuk dakwah. Apalagi seperti Muhammadiyah yang dakwahnya sampai ke Papua, itu luar biasa. Yang saya tahu, Muhammadiyah ini kekuatan yang luar biasa," lanjut Kiai Noor. ADVERTISEMENT Baznas berharap, sinergi ini ke depannya dapat diperluas ke sektor-sektor strategis lainnya. "Dengan bersinergi, kita bisa menjangkau lebih banyak umat dan menebar manfaat zakat secara merata dan berkelanjutan," kata Kiai Noor. (Foto: arsip Baznas) Ketua Umum PP Muhammadiyah, Haedar Nashir menyampaikan bahwa tidak hanya Baznas, Muhammadiyah juga hadir menjadi solusi keumatan. Karena cakupan medan garap yang luas, Muhammadiyah dan Baznas perlu bekerja sama untuk memaksimalkan peran. "Maka dari itu diperlukan kolaborasi, sinergi untuk pentasyarufan zakat dari Baznas dengan berbagi," katanya. Haedar mengamati, ketimpangan di Indonesia ini tidak hanya terjadi antara Jawa dengan luar Jawa. Menurutnya, di Jawa sendiri masih banyak daerah yang membutuhkan sentuhan untuk maju bersama-sama. "Jadi kalau kita bisa memobilisasi kolaborasi bersama kita itu akan ada perubahan yang bagus dalam kehidupan umat Islam kita," pungkasnya. (rea/rir) Saksikan Video di Bawah Ini: VIDEO: Menteri PU Tinjau Sekolah Rakyat Bekasi
+
+Jawab dalam format:
+Topic: <isi Topic>
+Sub Topic: <isi Sub Topic>
+Summary: <isi Summary>
+New Sentiment: <positive/negative/neutral>
+Confidence: <0-100>
+Response: Topic: Kolaborasi Pendidikan Islam  
+Sub Topic: Sinergi Baznas dan Muhammadiyah  
+Summary: Baznas dan Muhammadiyah memperkuat pendidikan melalui kolaborasi untuk kesejahteraan umat.  
+New Sentiment: positive  
+Confidence: 90  
+2025-07-28 11:26:09,661 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-28 11:26:09,665 - Row 1 - SUCCESS
+Prompt: Tentukan topik utama (Topic), sub-topik (Sub Topic), dan rangkuman singkat (Summary) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Topic adalah topik umum dan ringkas (maksimal 5 kata)
+- Sub Topic adalah penjabaran lebih spesifik dari Topic (maksimal 10 kata)
+- Summary adalah rangkuman isi konten dalam 4–20 kata yang menjelaskan isi konten, maksud, atau tujuannya secara jelas
+- Semua jawaban wajib diisi
+
+Campaigns: Ditjen Bina Marga, Kementerian PU
+Title: DPRD Jatim Tuntut Solusi Mendesak Usai Kecelakaan di Jalur Alternatif Dampak Penutupan Gumitir
+Content: Wakil Ketua DPRD Jayim, Deni Wicaksono, angkat bicara terkait dua kecelakaan di jalur alternatif imbas penutupan total jalur Gumitir
+ TRIBUNJATIM.COM, SURABAYA – Wakil Ketua DPRD Jawa Timur, Deni Wicaksono , angkat bicara terkait dua kecelakaan terjadi di jalur alternatif dampak penutupan total jalur Gumitir yang menghubungkan Jember dan Banyuwangi sejak 24 Juli 2025. Deni mengatakan kecelakaan di jalur alternatif tersebut mencerminkan lemahnya koordinasi sebelum penutupan jalan utama. Dia menyebut bahwa jalur alternatif seperti kawasan Erek‑erek dan Kawah Ijen bukanlah rute yang aman untuk lalu lintas berat. “Jalur alternatif yang curam dan minim rambu kini dipenuhi kendaraan berat. Dua kecelakaan yang terjadi menunjukkan bahwa tekanan lalu lintas bukan hanya soal volume, tapi juga soal keselamatan,” ujar Deni saat dihubungi, Minggu (27/7/2025). Menurut Deni, penutupan Gumitir seharusnya diiringi strategi yang lebih komprehensif, termasuk pemeriksaan kesiapan jalur alternatif. Dia menyebut pentingnya rambu pengaman, penerangan jalan, dan batas kecepatan yang jelas di rute alternatif. “Pemerintah daerah dan BBPJN harus memastikan kesiapan jalur pengalihan sebelum memberlakukan penutupan jalur utama. Rambu dan penerangan jalan bukan aksesoris, tapi keharusan,” tegasnya. Dia juga mengkritik kurangnya penyaringan jenis kendaraan dalam rute alternatif. Saat penutupan berlangsung, truk-truk berat tampak memaksakan lewat jalur darurat tersebut, meningkatkan risiko kecelakaan di tanjakan dan tikungan berbahaya. “Kendaraan berat harus dialihkan ke rute aman seperti via Probolinggo–Situbondo. Bukan lewat jalan alternatif yang hanya layak untuk mobil ringan,” tutur politisi muda PDI Perjuangan ini. Deni menyampaikan solusi konkret berupa rekayasa lalu lintas yang berbasis zonasi dan kapasitas rute. Oleh karena itu, dia mendesak Dishub Provinsi dan BBPJN Jawa Timur-Bali menerapkan sistem buka tutup terbatas di Gumitir agar tidak sepenuhnya ditutup, serta meningkatkan armada alternatif jika diperlukan. “Rekayasa arus yang fleksibel, buka tutup bergilir hanya untuk kendaraan ringan, dan menyediakan armada alternatif seperti kapal tambahan di Ketapang bisa mengurangi beban jalur alternatif,” sarannya. Deni menegaskan bahwa keselamatan publik adalah prioritas utama. Oleh karena itu, dia meminta koordinasi lintas kabupaten/kota, kepolisian, hingga otoritas pelabuhan untuk menyusun rencana kontigensi yang matang agar warga tidak menjadi korban penutupan jalan. “Ini soal nyawa. Jika kita tidak siapkan mitigasi, maka alih-alih melancarkan lalu lintas, kita justru menghadirkan zona maut di rute alternatif seperti Ijen,” pungkasnya. Seperti diketahui, dalam dua hari terakhir terjadi dua kecelakaan. Salah satunya mobil boks bermuatan roti yang terguling di tengah jalan Ijen, Jumat (25/7/2025). Sehari sebelum kejadian tersebut, sebuah pikap Mitsubishi L300 bernopol P-8XX3-VI juga mengalami kecelakaan di lokasi yang tidak jauh dari lokasi, tepatnya di jalur Sengkan Slamet, Desa Tamansari, Kecamatan Licin, Kamis (24/7/2025) sore sekitar pukul 15.45 WIB.
+
+Jawab dalam format:
+Topic: <isi Topic>
+Sub Topic: <isi Sub Topic>
+Summary: <isi Summary>
+New Sentiment: <positive/negative/neutral>
+Confidence: <0-100>
+Response: Topic: Keselamatan Lalu Lintas Jalan  
+Sub Topic: Tuntutan DPRD Jatim atas Kecelakaan  
+Summary: DPRD Jatim mendesak solusi keselamatan setelah kecelakaan di jalur alternatif akibat penutupan Gumitir.  
+New Sentiment: negative  
+Confidence: 90
+2025-07-28 11:26:11,145 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-28 11:26:11,148 - Row 2 - SUCCESS
+Prompt: Tentukan topik utama (Topic), sub-topik (Sub Topic), dan rangkuman singkat (Summary) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Topic adalah topik umum dan ringkas (maksimal 5 kata)
+- Sub Topic adalah penjabaran lebih spesifik dari Topic (maksimal 10 kata)
+- Summary adalah rangkuman isi konten dalam 4–20 kata yang menjelaskan isi konten, maksud, atau tujuannya secara jelas
+- Semua jawaban wajib diisi
+
+Campaigns: Ditjen Bina Marga, Kementerian PU
+Title: Jalan Alternatif Menjadi Jalur Maut, DPRD Jatim Tuntut Solusi Akibat Penutupan Jalur Gumitir
+Content: Ia menyebut bahwa jalur alternatif seperti kawasan Erek‑erek dan Kawah Ijen bukanlah rute yang aman untuk lalu lintasan kendaraan berat.
+ “Jalur alternatif yang curam dan minim rambu kini dipenuhi kendaraan berat. Dua kecelakaan yang terjadi menunjukkan bahwa tekanan lalu lintas bukan hanya soal volume, tetapi juga soal keselamatan,” ujar Deni saat dihubungi, Minggu (27/7/2025). Menurut Deni, penutupan Gumitir seharusnya diiringi strategi yang lebih komprehensif, termasuk pemeriksaan kesiapan jalur alternatif. Ia menyebut pentingnya rambu pengaman, penerangan jalan, dan batas kecepatan yang jelas di rute alternatif. “Pemerintah daerah dan BBPJN harus memastikan kesiapan jalur pengalihan sebelum memberlakukan penutupan jalur utama. Rambu dan penerangan jalan bukan aksesoris, tapi keharusan,” tegasnya. Deni juga mengkritik kurangnya penyaringan jenis kendaraan dalam rute alternatif. Saat penutupan berlangsung, truk-truk berat tampak memaksakan lewat jalur darurat tersebut, meningkatkan resiko kecelakaan di tanjakan dan tikungan berbahaya. “Kendaraan berat harus dialihkan ke rute aman seperti via Probolinggo–Situbondo. Bukan lewat jalan alternatif yang hanya layak untuk mobil ringan,” tutur politisi muda PDI Perjuangan ini. Deni menyampaikan solusi konkret berupa rekayasa lalu lintas yang berbasis zonasi dan kapasitas rute. Karena itu, ia mendesak Dishub Jatim dan BBPJN Jawa Timur-Bali menerapkan sistem buka tutup terbatas di Gumitir agar tidak sepenuhnya ditutup, serta meningkatkan armada alternatif jika diperlukan. “Rekayasa arus yang fleksibel, buka tutup bergilir hanya untuk kendaraan ringan, dan menyediakan armada alternatif seperti kapal tambahan di Ketapang bisa mengurangi beban jalur alternatif,” sarannya. Deni menegaskan bahwa keselamatan publik adalah prioritas utama. Karena itu, ia meminta koordinasi lintas kabupaten/kota, kepolisian, hingga otoritas pelabuhan untuk menyusun rencana kontigensi yang matang agar warga tidak menjadi korban penutupan jalan. “Ini soal nyawa. Jika kita tidak siapkan mitigasi, maka alih-alih melancarkan lalu lintas, kita justru menghadirkan zona maut di rute alternatif seperti Ijen,” pungkasnya. Seperti diketahui, dalam dua hari terakhir terjadi dua kecelakaan. Salah satunya mobil boks bermuatan roti yang terguling di tengah jalan Ijen, Jumat (25/7/2025). Sehari sebelum kejadian tersebut, sebuah pikap Mitsubishi L300 bernopol P 8XX3 VI juga mengalami kecelakaan di jalur Sengkan Slamet, Desa Tamansari, Kecamatan Licin, Kamis (24/7/2025) sekitar pukul 15.45 WIB.
+
+Jawab dalam format:
+Topic: <isi Topic>
+Sub Topic: <isi Sub Topic>
+Summary: <isi Summary>
+New Sentiment: <positive/negative/neutral>
+Confidence: <0-100>
+Response: Topic: Keselamatan Lalu Lintas Jalan  
+Sub Topic: Penutupan Jalur Gumitir dan Dampaknya  
+Summary: Penutupan Jalur Gumitir meningkatkan risiko kecelakaan di jalur alternatif yang tidak aman.  
+New Sentiment: Negative  
+Confidence: 90
+2025-07-28 11:26:12,687 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-28 11:26:12,690 - Row 3 - SUCCESS
+Prompt: Tentukan topik utama (Topic), sub-topik (Sub Topic), dan rangkuman singkat (Summary) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Topic adalah topik umum dan ringkas (maksimal 5 kata)
+- Sub Topic adalah penjabaran lebih spesifik dari Topic (maksimal 10 kata)
+- Summary adalah rangkuman isi konten dalam 4–20 kata yang menjelaskan isi konten, maksud, atau tujuannya secara jelas
+- Semua jawaban wajib diisi
+
+Campaigns: Kementerian PU
+Title: Komisi XIII DPR Puji IKN: Kemajuannya Luar Biasa, Siap Beroperasi
+Content: NUSANTARA, KOMPAS.com - Progres pembangunan Ibu Kota Nusantara IKN ) semakin menunjukkan hasil nyata, dan kali ini mendapatkan lampu hijau serta pujian dari pihak legislatif.
+ Dalam sebuah kunjungan reses penting, Komisi XIII DPR RI menyatakan optimismenya bahwa berbagai fasilitas di IKN sudah siap untuk dioperasikan. Bahkan, mereka secara tegas mendesak percepatan mobilisasi kementerian/lembaga untuk segera mulai berkantor di ibu kota baru ini. Kunjungan yang dipimpin oleh anggota Komisi XIII DPR RI, Franky Sibarani, ini melibatkan peninjauan Barang Milik Negara (BMN) di Kawasan IKN, didampingi langsung oleh Kepala Otorita IKN Basuki Hadimuljono. Agenda strategis ini tak hanya fokus pada infrastruktur fisik, melainkan juga transformasi tata kelola aset negara yang berkelanjutan. Progres Luar Biasa dan Siap Operasi Franky Sibarani, yang bertindak sebagai mitra kerja Kementerian Sekretariat Negara (Kemensetneg), menyampaikan apresiasinya yang tinggi atas kemajuan pembangunan infrastruktur di IKN. "Tujuan kami melihat sejauh mana progresnya dan menurut saya kemajuannya sangat luar biasa," ujarnya pada Sabtu (26/7/2025). Lebih lanjut, ia menekankan bahwa berbagai fasilitas yang telah dibangun di IKN sudah memenuhi syarat untuk mulai dioperasikan. Ini menjadi sinyal positif yang sangat dinantikan banyak pihak, mengindikasikan bahwa IKN bukan lagi sekadar wacana, melainkan sebuah proyek dengan kesiapan operasional yang semakin dekat. Percepatan Mobilisasi Kementerian Melihat kesiapan yang telah dicapai, Komisi XIII DPR RI tidak tinggal diam. Franky Sibarani secara eksplisit menyampaikan dukungan dan dorongan agar Kemensetneg segera melakukan mobilisasi kementerian/lembaga. Menurutnya, beberapa fasilitas yang ada ini sudah bisa dioperasionalkan. Sebagai bagian dari Komisi XIII DPR, ia memberikan dukungan penuh kepada Kemensetneg agar sedapat mungkin ada kementerian yang dioperasikan lebih dulu. "Misalnya Kementerian Lingkungan Hidup, Kementerian Pekerjaan Umum, Kementerian Kehutanan, atau Kementerian ATR/BPN (Agraria dan Tata Ruang/Badan Pertanahan Nasional), itu bisa disisir dulu," ungkap Franky. Desakan ini menekankan pentingnya kick-off operasional pemerintahan di IKN agar investasi besar yang telah digelontorkan tidak sia-sia, dan proyek IKN dapat segera menunjukkan fungsi utamanya sebagai pusat pemerintahan yang baru. Kunjungan ini juga menjadi bagian penting dari penguatan tata kelola pemerintahan serta tindak lanjut rencana strategis serah terima aset negara Kemensetneg. Otorita IKN bersama DPR RI berkomitmen menjadikan IKN sebagai model tata kelola aset publik yang transparan dan berkelanjutan. Selain itu, IKN diharapkan mendorong transformasi kelembagaan pemerintahan menuju standar baru yang lebih adaptif dan terintegrasi. Hal ini sejalan dengan visi IKN sebagai kota masa depan yang tidak hanya canggih secara infrastruktur, tetapi juga efisien dan akuntabel dalam birokrasinya. Dengan dukungan nyata dari DPR RI dan progres pembangunan yang signifikan, harapan akan IKN yang segera berfungsi penuh semakin menguat. Bola kini ada di tangan pemerintah untuk segera menindaklanjuti rekomendasi dan desakan dari parlemen demi mewujudkan cita-cita Ibu Kota Negara yang baru.
+
+Jawab dalam format:
+Topic: <isi Topic>
+Sub Topic: <isi Sub Topic>
+Summary: <isi Summary>
+New Sentiment: <positive/negative/neutral>
+Confidence: <0-100>
+Response: Topic: Pembangunan Ibu Kota Nusantara  
+Sub Topic: Dukungan DPR untuk IKN Beroperasi  
+Summary: Komisi XIII DPR RI memuji kemajuan IKN dan mendesak percepatan operasional kementerian.  
+New Sentiment: positive  
+Confidence: 90  
+2025-07-28 11:26:14,522 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-28 11:26:14,525 - Row 4 - SUCCESS
+Prompt: Tentukan topik utama (Topic), sub-topik (Sub Topic), dan rangkuman singkat (Summary) dari konten berikut berdasarkan campaign, judul, dan isi kontennya.
+
+- Topic adalah topik umum dan ringkas (maksimal 5 kata)
+- Sub Topic adalah penjabaran lebih spesifik dari Topic (maksimal 10 kata)
+- Summary adalah rangkuman isi konten dalam 4–20 kata yang menjelaskan isi konten, maksud, atau tujuannya secara jelas
+- Semua jawaban wajib diisi
+
+Campaigns: WAG Alert
+Title: KPK Dalami Terkait Dugaan Ada Pihak yang Memerintah Topan Ginting Terima Suap
+Content: Diketahui Topan adalah Kepala Dinas Pekerjaan Umum dan Penataan Ruang (PUPR) Provinsi Sumatera Utara nonaktif yang terjaring OTT KPK.
+ lihat foto Tribunnews.com/Ilham Rian Pratama PENDALAMAN KPK - Juru bicara KPK Budi Prasetyo saat menyampaikan pengembangan kasus dugaan korupsi investasi fiktif PT Taspen (Persero) di Gedung KPK, Jakarta, Jumat (20/6/2025). Juru bicara KPK Budi Prasetyo memastikan jika penyidik masih mendalami terkait dugaan adanya perintah kepada Topan Obaja Putra Ginting (TOP) untuk menerima suap. TRIBUNLAMPUNG.CO.ID, Jakarta - Juru bicara KPK Budi Prasetyo memastikan jika penyidik masih mendalami terkait dugaan adanya perintah kepada Topan Obaja Putra Ginting (TOP) untuk menerima suap. Diketahui Topan adalah Kepala Dinas Pekerjaan Umum dan Penataan Ruang (PUPR) Provinsi Sumatera Utara nonaktif yang ikut terjaring OTT KPK beberapa waktu lalu. Bahkan Topan juga ditetapkan tersangka korupsi bersama empat orang lainnya setelah OTT KPK di Sumatera Utara (Sumut). Diduga Topan tidak bertindak sendiri dalam kasus dugaan suap terkait proyek pembangunan jalan. KPK menduga Topan menerima suap atas perintah pihak lain dalam lingkup proyek tersebut. Juru bicara KPK Budi Prasetyo menyebut, hingga kini penyidik masih melakukan pendalaman untuk menelusuri siapa pihak yang diduga memberikan perintah. “Terkait hal tersebut masih didalami penyidik,” kata Budi kepada Kompas.com , Minggu (27/7/2025). Budi mengatakan, proses penyidikan perkara terkait kasus ini masih terus berjalan. Pemeriksaan terhadap para saksi juga masih dilakukan untuk menguatkan petunjuk dan keterangan yang dibutuhkan. “Penyidikan perkara masih berjalan, pemeriksaan para saksi masih terus berlangsung, dengan pendalaman-pendalaman keterangan yang dibutuhkan penyidik untuk mengungkap dan membuat terang perkara ini,” ujar Budi. Meski demikian, Budi tak merinci berapa lama proses pendalaman ini akan berlangsung. Ia hanya menegaskan bahwa KPK terus bekerja berdasarkan petunjuk-petunjuk yang ditemukan di lapangan. Diketahui, KPK telah melakukan operasi tangkap tangan (OTT) pada 26 Juni 2025 terkait kasus dugaan korupsi pada proyek pembangunan jalan di Dinas Pekerjaan Umum dan Penataan Ruang Provinsi Sumut, dan Satuan Kerja Pelaksanaan Jalan Nasional Wilayah I Sumut. Selanjutnya, pada 28 Juni 2025, KPK menetapkan lima orang sebagai tersangka dalam kasus yang terbagi menjadi dua klaster tersebut, yakni Kepala Dinas PUPR Sumut Topan Obaja Putra Ginting (TOP), Kepala Unit Pelaksana Teknis Daerah Gunung Tua Dinas PUPR Sumut merangkap pejabat pembuat komitmen Rasuli Efendi Siregar (RES). Kemudian, PPK di Satker PJN Wilayah I Sumut Heliyanto (HEL), Dirut PT Dalihan Natolu Group M. Akhirun Efendi (KIR), dan Direktur PT Rona Na Mora M. Rayhan Dulasmi Piliang (RAY). Klaster pertama berkaitan dengan empat proyek pembangunan jalan di lingkungan Dinas PUPR Sumut, sedangkan klaster kedua terkait dua proyek di Satker PJN Wilayah I Sumut. Halaman selanjutnya Halaman Sumber: Kompas.com Tags Sumatera Utara KPK korupsi Kunjungi Kami Tips Home Care Cara Mengatasi Kerak Nasi di Panci Rice Cooker, Tidak Membuat Permukaan Mengelupas Tips Handphone 5 Tips Menghemat Memori Internal HP Tanpa Hapus Foto dan Video, Mudah Dilakukan Produk Handphone Review itel VistaTab 30 Pro, Tablet Rp 2 Jutaan dengan Layar dan Baterai Gede, Sat-set untuk Bekerja Produk Kecantikan Mau Belanja Produk LT PRO? Ini 20 Daftar Lengkap dan Harga Terbarunya Produk Makeup 5 Rekomendasi Concealer Full Coverage untuk Makeup Flawless Warna Cerah Merata Berita Terkait: #Berita Terkini Nasional Asyik Mancing, Warga Kaget Lihat Tong Mengambang, Ternyata Isinya Jasad Wanita Rumahnya Tersisa Tembok, Tumpal Berencana Laporkan Penyewa ke Polisi Alasan Sebenarnya Rozi Nekat Rudapaksa dan Bunuh Bocah SD, Kecanduan Film Bejat Toyota Calya Tertabrak Kereta Api hingga Terseret 50 Meter, Ibu dan Balitanya Tewas Video Motif Tukang CCTV Habisi Nyawa Amimah, Ditolak Pinjam Uang Rp 3 Juta Video Pilihan Perang Thailand vs Kamboja: Dendam Ribuan Tahun soal Candi Kerajaan Memanas saat Prancis Menjajah Ikuti kami di
+
+Jawab dalam format:
+Topic: <isi Topic>
+Sub Topic: <isi Sub Topic>
+Summary: <isi Summary>
+New Sentiment: <positive/negative/neutral>
+Confidence: <0-100>
+Response: Topic: Dugaan Korupsi KPK  
+Sub Topic: Penyelidikan Suap oleh Topan Ginting  
+Summary: KPK mendalami dugaan perintah suap kepada Topan Ginting terkait proyek pembangunan jalan.  
+New Sentiment: negative  
+Confidence: 85
+2025-07-28 11:26:17,186 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-28 11:26:20,419 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-28 11:26:20,428 - [Media Tier Mapping ERROR - file local] [Errno 2] No such file or directory: 'mainstream_v1/Masterlist Media Tier.xlsx'
