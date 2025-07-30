@@ -48,7 +48,7 @@ def enrich_with_media_tier(df: pd.DataFrame) -> pd.DataFrame:
     media_col = "Media" if "Media" in df.columns else "Media Name" if "Media Name" in df.columns else None
 
     if not media_col:
-        df["Media Tier"] = 3
+        df["Media Tier"] = 0
         return df
 
     try:
@@ -63,7 +63,7 @@ def enrich_with_media_tier(df: pd.DataFrame) -> pd.DataFrame:
         }
 
         df["__media_lookup__"] = df[media_col].fillna("").apply(lambda x: x.lower().strip())
-        df["Media Tier"] = df["__media_lookup__"].map(mapping).fillna(3).astype(int)
+        df["Media Tier"] = df["__media_lookup__"].map(mapping).fillna(0).astype(int)
         df.drop(columns="__media_lookup__", inplace=True)
 
         col_idx = df.columns.get_loc(media_col)
@@ -74,7 +74,7 @@ def enrich_with_media_tier(df: pd.DataFrame) -> pd.DataFrame:
     except Exception as e:
         st.error(f"[ERROR] Media Tier Mapping Gagal: {str(e)}")
         logging.error(f"[Media Tier Mapping ERROR - file local] {str(e)}")
-        df["Media Tier"] = 3
+        df["Media Tier"] = 0
 
     return df
 
