@@ -650,7 +650,7 @@ def extract_topic_from_file(file_path: str, keyword_config, selected_project: st
             df[col] = ""
     
     total_rows = len(df)
-    batch_size = 10
+    batch_size = 20  # Increased from 10 to 20 for faster processing
     total_batches = math.ceil(total_rows / batch_size)
     
     progress_bar = st.progress(0, text="Memulai proses batch...")
@@ -712,7 +712,7 @@ def extract_topic_from_file(file_path: str, keyword_config, selected_project: st
         retry_indices = df_processed[empty_spokesperson_mask].index.tolist()
         retry_df = df_processed.loc[retry_indices].copy()
         
-        # Process retry in batches of 10
+        # Process retry in batches of 20
         retry_batches = []
         for i in range(0, len(retry_df), batch_size):
             retry_batch = retry_df.iloc[i:i+batch_size]
@@ -980,7 +980,3 @@ if uploaded_file is not None:
                 logging.error(f"[MAIN ERROR] {str(e)}")
     
     st.markdown(f"**Nama file:** `{uploaded_file.name}`")
-
-# Footer
-st.markdown("---")
-st.markdown("Powered by GPT-4o-mini • Batch Processing")
