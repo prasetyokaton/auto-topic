@@ -1,0 +1,67 @@
+2025-10-14 08:04:44,200 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:44,206 - Row 0 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:44,530 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:44,534 - Row 1 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:45,035 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:45,039 - Row 2 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:45,325 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:45,327 - Row 3 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:46,222 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:46,225 - Row 4 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:46,507 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:46,510 - Row 5 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:47,213 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:47,217 - Row 6 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:47,582 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:47,586 - Row 7 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:47,894 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:47,898 - Row 8 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:48,244 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:48,249 - Row 9 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:48,548 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:48,552 - Row 10 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:48,954 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:48,958 - Row 11 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:49,275 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:49,279 - Row 12 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:49,667 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:49,671 - Row 13 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:49,979 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:49,983 - Row 14 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:50,337 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:50,339 - Row 15 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:50,661 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:50,663 - Row 16 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:50,933 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:50,935 - Row 17 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:51,273 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:51,278 - Row 18 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:51,620 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:51,623 - Row 19 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:52,063 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:52,067 - Row 20 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:52,360 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:52,364 - Row 21 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:52,687 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:52,688 - Row 22 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:53,016 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:53,018 - Row 23 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:53,319 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:53,322 - Row 24 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:53,613 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:53,618 - Row 25 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:53,926 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:53,929 - Row 26 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:54,223 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:54,228 - Row 27 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:54,543 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:54,549 - Row 28 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:54,897 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:54,901 - Row 29 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:55,212 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:55,216 - Row 30 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:55,548 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:55,550 - Row 31 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:56,027 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-14 08:04:56,030 - Row 32 - ERROR: Error code: 404 - {'error': {'message': 'The model `gpt-40-mini` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-10-14 08:04:56,356 - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
