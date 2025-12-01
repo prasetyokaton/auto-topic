@@ -1581,17 +1581,6 @@ def create_gradio_interface():
     with gr.Blocks(title="Insights Generator v10.4", theme=gr.themes.Soft()) as app:
         gr.Markdown("# 📊 Insights Generator v10.4 - Smart Processing")
         gr.Markdown("""
-        #**✨ New in v10.4:**
-        #- 🎯 **Smart Skip**: Preserves existing Topic + Sub Topic (won't overwrite!)
-        #- 🔇 **Noise Filter**: Automatically skips rows with Noise Tag = 2
-        #- 🎪 **Per-Campaign Normalization**: More accurate topic grouping per campaign
-        
-        #**Previous features:**
-        #- ✅ Index mismatch bug fix (v10.3)
-        #- 🎯 Two-step normalization (30+ sub topics → 10-15 topics)
-        #- 🌍 Language-aware fallback
-        #- 🚀 Combined processing (50% faster)
-        
         **Mainstream:** tv, radio, newspaper, online, printmedia, site  
         **Social:** tiktok, instagram, youtube, facebook, twitter, x, blog            
         """)
