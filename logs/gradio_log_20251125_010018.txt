@@ -1,0 +1,262 @@
+2025-11-25 01:00:18,944 - [INFO] - [API TEST] Testing OpenAI connection...
+2025-11-25 01:00:18,984 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-11-25 01:00:20,346 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:00:20,374 - [INFO] - [API TEST] ✅ SUCCESS - Model: gpt-4o-mini
+2025-11-25 01:00:20,666 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-11-25 01:00:20,695 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-11-25 01:00:20,716 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-11-25 01:00:21,421 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-11-25 01:00:24,918 - [INFO] - generated new fontManager
+2025-11-25 01:00:27,387 - [INFO] - [START] Processing 102 rows
+2025-11-25 01:00:27,388 - [INFO] - [LANGUAGE] Indonesia (Bahasa Indonesia)
+2025-11-25 01:00:27,388 - [INFO] - [FLOW] 1.SubTopic(all) → 2.Sentiment(all) → 3.Spokesperson(mainstream) → 4.Retry(clean+400words) → 5.Normalize
+2025-11-25 01:00:27,392 - [INFO] - [SPLIT] Mainstream: 19, Social: 83
+2025-11-25 01:00:27,392 - [INFO] - 
+============================================================
+2025-11-25 01:00:27,392 - [INFO] - STEP 1: GENERATING SUB TOPIC (ALL CHANNELS) - TOON FORMAT
+2025-11-25 01:00:27,392 - [INFO] - ============================================================
+2025-11-25 01:00:27,393 - [INFO] - 
+============================================================
+2025-11-25 01:00:27,393 - [INFO] - [SUB TOPIC BATCH 1/3] Starting - 50 rows
+2025-11-25 01:00:27,393 - [INFO] - [LANGUAGE] Indonesia (Bahasa Indonesia)
+2025-11-25 01:00:27,393 - [INFO] - ============================================================
+2025-11-25 01:00:27,396 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:00:37,267 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:00:37,284 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 5059 in, 513 out
+2025-11-25 01:00:37,285 - [INFO] - ✅ TOON parse SUCCESS - 50 rows
+2025-11-25 01:00:37,285 - [INFO] - [SUB TOPIC BATCH 1] Parsed 50 items (toon)
+2025-11-25 01:00:37,289 - [INFO] - [SUB TOPIC] Row 0: 'Cowok dan ekspektasi cewek'
+2025-11-25 01:00:37,289 - [INFO] - [SUB TOPIC] Row 1: 'Pertemuan lucu dengan Rhoma Irama'
+2025-11-25 01:00:37,289 - [INFO] - [SUB TOPIC] Row 2: 'Petugas wifi dan humor komedi'
+2025-11-25 01:00:37,289 - [INFO] - [SUB TOPIC] Row 3: 'Mleset kata di APOSE'
+2025-11-25 01:00:37,290 - [INFO] - [SUB TOPIC] Row 4: 'Potong Bebek Angsa yang lucu'
+2025-11-25 01:00:37,291 - [INFO] - [SUB TOPIC] Row 5: 'Tayangan seru di IndiHome TV'
+2025-11-25 01:00:37,291 - [INFO] - [SUB TOPIC] Row 6: 'Outfit Tora Sudiro di roasting'
+2025-11-25 01:00:37,292 - [INFO] - [SUB TOPIC] Row 7: 'Culture shock dan humor'
+2025-11-25 01:00:37,292 - [WARNING] - [SUB TOPIC] Row 8: REJECTED invalid 'Serial terbaru di WeTV Original'
+2025-11-25 01:00:37,293 - [INFO] - [SUB TOPIC] Row 9: 'Cerita pertemuan Bopak dan Aziz'
+2025-11-25 01:00:37,293 - [INFO] - [SUB TOPIC] Row 10: 'Keunggulan internet IndiHome'
+2025-11-25 01:00:37,294 - [INFO] - [SUB TOPIC] Row 11: 'Solusi jaringan di toko'
+2025-11-25 01:00:37,294 - [WARNING] - [SUB TOPIC] Row 12: REJECTED invalid 'Cinta sejati Zaenab dan Doel'
+2025-11-25 01:00:37,294 - [INFO] - [SUB TOPIC] Row 13: 'Cooking & Cooqueen tayang di AllPlay'
+2025-11-25 01:00:37,295 - [WARNING] - [SUB TOPIC] Row 14: REJECTED invalid 'Langganan IndiHome di MyTelkomsel'
+2025-11-25 01:00:37,295 - [WARNING] - [SUB TOPIC] Row 15: REJECTED invalid 'Cinta sejati Zaenab dan Doel'
+2025-11-25 01:00:37,296 - [INFO] - [SUB TOPIC] Row 16: 'Informasi IndiHome TV Apps'
+2025-11-25 01:00:37,296 - [INFO] - [SUB TOPIC] Row 17: 'Kebahagiaan keluarga dengan IndiHome'
+2025-11-25 01:00:37,296 - [INFO] - [SUB TOPIC] Row 18: 'Wisata di Medan dan IndiHome'
+2025-11-25 01:00:37,297 - [INFO] - [SUB TOPIC] Row 19: 'Lucu tentang curhat nyai'
+2025-11-25 01:00:37,297 - [INFO] - [SUB TOPIC] Row 20: 'Shooting dengan Komeng'
+2025-11-25 01:00:37,297 - [INFO] - [SUB TOPIC] Row 21: 'Cara ngatain yang berbeda'
+2025-11-25 01:00:37,298 - [INFO] - [SUB TOPIC] Row 22: 'Rigen kaget diajak shooting'
+2025-11-25 01:00:37,298 - [INFO] - [SUB TOPIC] Row 23: 'Kepala bolos ketahuan'
+2025-11-25 01:00:37,299 - [INFO] - [SUB TOPIC] Row 24: 'Promo IndiHome baru di kotamu'
+2025-11-25 01:00:37,299 - [INFO] - [SUB TOPIC] Row 25: 'Tayangan seru di IndiHome TV'
+2025-11-25 01:00:37,299 - [INFO] - [SUB TOPIC] Row 26: 'Promo internet untuk skripsi'
+2025-11-25 01:00:37,300 - [INFO] - [SUB TOPIC] Row 27: 'Upgrade koneksi internet'
+2025-11-25 01:00:37,300 - [INFO] - [SUB TOPIC] Row 28: 'Iseng Komeng ke Kimau'
+2025-11-25 01:00:37,300 - [INFO] - [SUB TOPIC] Row 29: 'Giveaway IndiHome Jawa Barat'
+2025-11-25 01:00:37,300 - [INFO] - [SUB TOPIC] Row 30: 'Lucu Mas dari IndiHome'
+2025-11-25 01:00:37,301 - [INFO] - [SUB TOPIC] Row 31: 'Soft spoken yang menggemaskan'
+2025-11-25 01:00:37,301 - [INFO] - [SUB TOPIC] Row 32: 'Ngakak melihat Komeng dan Kimau'
+2025-11-25 01:00:37,302 - [INFO] - [SUB TOPIC] Row 33: 'Emosi dalam setiap episode'
+2025-11-25 01:00:37,302 - [WARNING] - [SUB TOPIC] Row 34: REJECTED invalid 'Ayu Ting-ting dan Boiyen'
+2025-11-25 01:00:37,302 - [INFO] - [SUB TOPIC] Row 35: 'Promo paket internet di Jambi'
+2025-11-25 01:00:37,302 - [INFO] - [SUB TOPIC] Row 36: 'Nonton film sambil rebahan'
+2025-11-25 01:00:37,303 - [INFO] - [SUB TOPIC] Row 37: 'Keluarga terkoneksi dengan IndiHome'
+2025-11-25 01:00:37,303 - [WARNING] - [SUB TOPIC] Row 38: REJECTED invalid 'Wifi untuk anak Gen Z'
+2025-11-25 01:00:37,303 - [WARNING] - [SUB TOPIC] Row 39: REJECTED invalid 'Promo IndiHome yang menarik'
+2025-11-25 01:00:37,303 - [INFO] - [SUB TOPIC] Row 40: 'Giveaway IndiHome Jawa Barat'
+2025-11-25 01:00:37,303 - [INFO] - [SUB TOPIC] Row 41: 'Promo Wifi IndiHome tanpa batas'
+2025-11-25 01:00:37,304 - [INFO] - [SUB TOPIC] Row 42: 'Giveaway IndiHome Jawa Barat'
+2025-11-25 01:00:37,304 - [INFO] - [SUB TOPIC] Row 43: 'Kebaikan AA Rafi'
+2025-11-25 01:00:37,304 - [WARNING] - [SUB TOPIC] Row 44: REJECTED invalid 'Doa untuk anak-anak'
+2025-11-25 01:00:37,305 - [INFO] - [SUB TOPIC] Row 45: 'Giveaway IndiHome Jawa Barat'
+2025-11-25 01:00:37,305 - [INFO] - [SUB TOPIC] Row 46: 'Kode untuk menghindari kemarahan'
+2025-11-25 01:00:37,305 - [INFO] - [SUB TOPIC] Row 47: 'Perubahan ketakutan seiring usia'
+2025-11-25 01:00:37,305 - [WARNING] - [SUB TOPIC] Row 48: REJECTED invalid 'Segera langganan IndiHome'
+2025-11-25 01:00:37,306 - [INFO] - [SUB TOPIC] Row 49: 'Tayangan Cooking & Cooqueen'
+2025-11-25 01:00:37,306 - [INFO] - [SUB TOPIC BATCH 1] ✅ Success: 41/50 | ⚠️ Warnings: 9
+2025-11-25 01:00:37,316 - [INFO] - 
+============================================================
+2025-11-25 01:00:37,316 - [INFO] - [SUB TOPIC BATCH 2/3] Starting - 50 rows
+2025-11-25 01:00:37,316 - [INFO] - [LANGUAGE] Indonesia (Bahasa Indonesia)
+2025-11-25 01:00:37,316 - [INFO] - ============================================================
+2025-11-25 01:00:37,323 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:00:48,088 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:00:48,092 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 9236 in, 517 out
+2025-11-25 01:00:48,092 - [INFO] - ✅ TOON parse SUCCESS - 50 rows
+2025-11-25 01:00:48,093 - [INFO] - [SUB TOPIC BATCH 2] Parsed 50 items (toon)
+2025-11-25 01:00:48,093 - [INFO] - [SUB TOPIC] Row 50: 'Pesan positif untuk orang lain'
+2025-11-25 01:00:48,094 - [INFO] - [SUB TOPIC] Row 51: 'Giveaway saldo LinkAja'
+2025-11-25 01:00:48,094 - [INFO] - [SUB TOPIC] Row 52: 'Emosi pasangan dan IndiHome'
+2025-11-25 01:00:48,095 - [INFO] - [SUB TOPIC] Row 53: 'Reaksi berbeda dari penjual'
+2025-11-25 01:00:48,096 - [INFO] - [SUB TOPIC] Row 54: 'Promo pasang wifi IndiHome'
+2025-11-25 01:00:48,096 - [INFO] - [SUB TOPIC] Row 55: 'Kekhawatiran saat di jalan'
+2025-11-25 01:00:48,097 - [INFO] - [SUB TOPIC] Row 56: 'Kursi pijat di rumah'
+2025-11-25 01:00:48,097 - [WARNING] - [SUB TOPIC] Row 57: REJECTED invalid 'Senangnya menemukan kursi pijat'
+2025-11-25 01:00:48,098 - [INFO] - [SUB TOPIC] Row 58: 'Giveaway dengan syarat tertentu'
+2025-11-25 01:00:48,099 - [WARNING] - [SUB TOPIC] Row 59: REJECTED invalid 'Langganan internet dari rumah'
+2025-11-25 01:00:48,099 - [INFO] - [SUB TOPIC] Row 60: 'Keceriaan keluarga di TV'
+2025-11-25 01:00:48,100 - [WARNING] - [SUB TOPIC] Row 61: REJECTED invalid 'Perjalanan yang menantang'
+2025-11-25 01:00:48,101 - [INFO] - [SUB TOPIC] Row 62: 'Overthinking seputar sinyal internet'
+2025-11-25 01:00:48,101 - [INFO] - [SUB TOPIC] Row 63: 'Belajar edit video dengan YouTube'
+2025-11-25 01:00:48,101 - [WARNING] - [SUB TOPIC] Row 64: REJECTED invalid 'Kisah cinta Zaenab dan Doel'
+2025-11-25 01:00:48,103 - [INFO] - [SUB TOPIC] Row 65: 'Kecepatan internet sesuai kebutuhan'
+2025-11-25 01:00:48,103 - [INFO] - [SUB TOPIC] Row 66: 'Pantau pasangan dengan IndiHome'
+2025-11-25 01:00:48,104 - [INFO] - [SUB TOPIC] Row 67: 'Salam dari minggu baru'
+2025-11-25 01:00:48,105 - [INFO] - [SUB TOPIC] Row 68: 'Trauma karakter Praz'
+2025-11-25 01:00:48,105 - [INFO] - [SUB TOPIC] Row 69: 'Giveaway saldo LinkAja kedua'
+2025-11-25 01:00:48,106 - [INFO] - [SUB TOPIC] Row 70: 'Curhatan tentang kepo pasangan'
+2025-11-25 01:00:48,106 - [INFO] - [SUB TOPIC] Row 71: 'Langit Musik di IndiHome'
+2025-11-25 01:00:48,107 - [INFO] - [SUB TOPIC] Row 72: 'Cek paket IndiHome mudah'
+2025-11-25 01:00:48,107 - [INFO] - [SUB TOPIC] Row 73: 'Tips untuk mengawasi pasangan'
+2025-11-25 01:00:48,108 - [INFO] - [SUB TOPIC] Row 74: 'Syarat dan ketentuan giveaway'
+2025-11-25 01:00:48,109 - [INFO] - [SUB TOPIC] Row 75: 'Kepo terhadap notifikasi pasangan'
+2025-11-25 01:00:48,109 - [WARNING] - [SUB TOPIC] Row 76: REJECTED invalid 'Inisiatif anak magang IndiHome'
+2025-11-25 01:00:48,110 - [INFO] - [SUB TOPIC] Row 77: 'Kekhawatiran saat video call'
+2025-11-25 01:00:48,110 - [INFO] - [SUB TOPIC] Row 78: 'Humor situasi dibonceng'
+2025-11-25 01:00:48,111 - [INFO] - [SUB TOPIC] Row 79: 'Keceriaan dari video lucu'
+2025-11-25 01:00:48,111 - [WARNING] - [SUB TOPIC] Row 80: REJECTED invalid 'Interaksi anak dengan Andre Taulany'
+2025-11-25 01:00:48,112 - [INFO] - [SUB TOPIC] Row 81: 'IndiHome membuka cabang baru'
+2025-11-25 01:00:48,113 - [WARNING] - [SUB TOPIC] Row 82: REJECTED invalid 'Saran untuk keamanan teknisi'
+2025-11-25 01:00:48,113 - [INFO] - [SUB TOPIC] Row 83: 'Keluhan proses pencabutan IndiHome'
+2025-11-25 01:00:48,113 - [WARNING] - [SUB TOPIC] Row 84: REJECTED invalid 'Kesulitan berhenti langganan IndiHome'
+2025-11-25 01:00:48,114 - [INFO] - [SUB TOPIC] Row 85: 'Peluncuran IndiHome FTTR baru'
+2025-11-25 01:00:48,115 - [INFO] - [SUB TOPIC] Row 86: 'Solusi IndiHome FTTR untuk rumah'
+2025-11-25 01:00:48,115 - [INFO] - [SUB TOPIC] Row 87: 'IndiHome FTTR untuk koneksi stabil'
+2025-11-25 01:00:48,115 - [INFO] - [SUB TOPIC] Row 88: 'Koneksi internet FTTR di rumah'
+2025-11-25 01:00:48,116 - [INFO] - [SUB TOPIC] Row 89: 'FTTR untuk memenuhi kebutuhan internet'
+2025-11-25 01:00:48,116 - [INFO] - [SUB TOPIC] Row 90: 'IndiHome FTTR untuk setiap sudut'
+2025-11-25 01:00:48,117 - [INFO] - [SUB TOPIC] Row 91: 'FTTR untuk rumah modern'
+2025-11-25 01:00:48,117 - [INFO] - [SUB TOPIC] Row 92: 'Peluncuran FTTR untuk pelanggan'
+2025-11-25 01:00:48,118 - [WARNING] - [SUB TOPIC] Row 93: REJECTED invalid 'Pemesanan FTTR melalui aplikasi'
+2025-11-25 01:00:48,118 - [INFO] - [SUB TOPIC] Row 94: 'Keluhan migrasi paket IndiHome'
+2025-11-25 01:00:48,118 - [INFO] - [SUB TOPIC] Row 95: 'Rilis IndiHome FTTR untuk sinyal luas'
+2025-11-25 01:00:48,119 - [INFO] - [SUB TOPIC] Row 96: 'IndiHome FTTR untuk jangkauan luas'
+2025-11-25 01:00:48,119 - [WARNING] - [SUB TOPIC] Row 97: REJECTED invalid 'FTTR sebagai solusi Wi-Fi canggih'
+2025-11-25 01:00:48,119 - [WARNING] - [SUB TOPIC] Row 98: REJECTED invalid 'Syarat putus langganan IndiHome'
+2025-11-25 01:00:48,120 - [INFO] - [SUB TOPIC] Row 99: 'Tanggapan atas keluhan migrasi paket'
+2025-11-25 01:00:48,120 - [INFO] - [SUB TOPIC BATCH 2] ✅ Success: 39/50 | ⚠️ Warnings: 11
+2025-11-25 01:00:48,122 - [INFO] - 
+============================================================
+2025-11-25 01:00:48,122 - [INFO] - [SUB TOPIC BATCH 3/3] Starting - 2 rows
+2025-11-25 01:00:48,122 - [INFO] - [LANGUAGE] Indonesia (Bahasa Indonesia)
+2025-11-25 01:00:48,122 - [INFO] - ============================================================
+2025-11-25 01:00:48,124 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:00:50,000 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:00:50,003 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 994 in, 33 out
+2025-11-25 01:00:50,003 - [INFO] - ✅ TOON parse SUCCESS - 2 rows
+2025-11-25 01:00:50,003 - [INFO] - [SUB TOPIC BATCH 3] Parsed 2 items (toon)
+2025-11-25 01:00:50,004 - [INFO] - [SUB TOPIC] Row 100: 'Tanggapan terhadap keluhan IndiHome'
+2025-11-25 01:00:50,005 - [INFO] - [SUB TOPIC] Row 101: 'Tanggapan terhadap keluhan WiFi IndiHome'
+2025-11-25 01:00:50,005 - [INFO] - [SUB TOPIC BATCH 3] ✅ Success: 2/2 | ⚠️ Warnings: 0
+2025-11-25 01:00:50,016 - [INFO] - 
+============================================================
+2025-11-25 01:00:50,017 - [INFO] - STEP 2: GENERATING SENTIMENT (ALL CHANNELS) - TOON FORMAT
+2025-11-25 01:00:50,017 - [INFO] - ============================================================
+2025-11-25 01:00:50,018 - [INFO] - 
+============================================================
+2025-11-25 01:00:50,018 - [INFO] - [SENTIMENT BATCH 1/3] Starting - 50 rows
+2025-11-25 01:00:50,018 - [INFO] - ============================================================
+2025-11-25 01:00:50,023 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:00:55,736 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:00:55,746 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 5008 in, 311 out
+2025-11-25 01:00:55,746 - [INFO] - ✅ TOON parse SUCCESS - 50 rows
+2025-11-25 01:00:55,747 - [INFO] - [SENTIMENT BATCH 1] Parsed 50 items (toon)
+2025-11-25 01:00:55,752 - [INFO] - [SENTIMENT BATCH 1] ✅ Success: 50/50
+2025-11-25 01:00:55,763 - [INFO] - 
+============================================================
+2025-11-25 01:00:55,763 - [INFO] - [SENTIMENT BATCH 2/3] Starting - 50 rows
+2025-11-25 01:00:55,763 - [INFO] - ============================================================
+2025-11-25 01:00:55,772 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:01:03,250 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:01:03,254 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 9185 in, 311 out
+2025-11-25 01:01:03,255 - [INFO] - ✅ TOON parse SUCCESS - 50 rows
+2025-11-25 01:01:03,255 - [INFO] - [SENTIMENT BATCH 2] Parsed 50 items (toon)
+2025-11-25 01:01:03,259 - [INFO] - [SENTIMENT BATCH 2] ✅ Success: 50/50
+2025-11-25 01:01:03,260 - [INFO] - 
+============================================================
+2025-11-25 01:01:03,261 - [INFO] - [SENTIMENT BATCH 3/3] Starting - 2 rows
+2025-11-25 01:01:03,261 - [INFO] - ============================================================
+2025-11-25 01:01:03,265 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:01:04,274 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:01:04,277 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 943 in, 23 out
+2025-11-25 01:01:04,278 - [INFO] - ✅ TOON parse SUCCESS - 2 rows
+2025-11-25 01:01:04,278 - [INFO] - [SENTIMENT BATCH 3] Parsed 2 items (toon)
+2025-11-25 01:01:04,279 - [INFO] - [SENTIMENT BATCH 3] ✅ Success: 2/2
+2025-11-25 01:01:04,292 - [INFO] - 
+============================================================
+2025-11-25 01:01:04,292 - [INFO] - STEP 3: GENERATING SPOKESPERSON (MAINSTREAM ONLY) - TOON FORMAT
+2025-11-25 01:01:04,293 - [INFO] - ============================================================
+2025-11-25 01:01:04,293 - [INFO] - 
+============================================================
+2025-11-25 01:01:04,294 - [INFO] - [SPOKESPERSON BATCH 1/1] Starting - 19 rows
+2025-11-25 01:01:04,294 - [INFO] - ============================================================
+2025-11-25 01:01:04,298 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:01:40,230 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:01:40,251 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 6885 in, 243 out
+2025-11-25 01:01:40,252 - [INFO] - ✅ TOON parse SUCCESS - 19 rows
+2025-11-25 01:01:40,252 - [INFO] - [SPOKESPERSON BATCH 1] Parsed 19 items (toon)
+2025-11-25 01:01:40,261 - [INFO] - [SPOKESPERSON BATCH 1] ✅ Success: 3/19
+2025-11-25 01:01:40,286 - [INFO] - [FINAL CHECK] ✅ Forced social: Spokesperson = empty
+2025-11-25 01:01:40,286 - [INFO] - 
+============================================================
+2025-11-25 01:01:40,286 - [INFO] - STEP 4: RETRY UNKNOWN SUB TOPICS (CLEAN + 400 WORDS + AGGRESSIVE)
+2025-11-25 01:01:40,288 - [INFO] - ============================================================
+2025-11-25 01:01:40,290 - [INFO] - [RETRY] Found 20 unknown sub topics
+2025-11-25 01:01:40,291 - [INFO] - 
+============================================================
+2025-11-25 01:01:40,291 - [INFO] - [RETRY SUB TOPIC] Starting - 20 rows
+2025-11-25 01:01:40,292 - [INFO] - [STRATEGY] 1.Clean emoji/hashtag → 2.Increase to 400 words → 3.Aggressive prompt
+2025-11-25 01:01:40,293 - [INFO] - [LANGUAGE] Indonesia (Bahasa Indonesia)
+2025-11-25 01:01:40,294 - [INFO] - ============================================================
+2025-11-25 01:01:40,305 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:01:45,499 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:01:45,520 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 2858 in, 273 out
+2025-11-25 01:01:45,521 - [INFO] - ✅ TOON parse SUCCESS - 20 rows
+2025-11-25 01:01:45,522 - [INFO] - [RETRY Sub Topic] Parsed 20 items (toon)
+2025-11-25 01:01:45,525 - [WARNING] - [RETRY] Row 8: Still invalid 'Promosi serial terbaru di WeTV Original Main Hati'
+2025-11-25 01:01:45,525 - [WARNING] - [RETRY] Row 12: Still invalid 'Cinta sejati dalam cerita Zaenab dan Doel'
+2025-11-25 01:01:45,525 - [WARNING] - [RETRY] Row 14: Still invalid 'Informasi langganan IndiHome'
+2025-11-25 01:01:45,526 - [WARNING] - [RETRY] Row 15: Still invalid 'Cinta sejati dalam cerita Zaenab dan Doel'
+2025-11-25 01:01:45,526 - [WARNING] - [RETRY] Row 34: Still invalid 'Reaksi Ayu Ting-ting terhadap Boiyen'
+2025-11-25 01:01:45,530 - [INFO] - [RETRY] Row 38: ✅ RECOVERED 'Promosi IndiHome dengan kecepatan tinggi'
+2025-11-25 01:01:45,531 - [INFO] - [RETRY] Row 39: ✅ RECOVERED 'Promosi IndiHome dengan harga dan keuntungan'
+2025-11-25 01:01:45,531 - [WARNING] - [RETRY] Row 44: Still invalid 'Harapan untuk anak-anak dalam kasih sayang'
+2025-11-25 01:01:45,531 - [INFO] - [RETRY] Row 48: ✅ RECOVERED 'Promosi IndiHome dengan kecepatan dan harga tertentu'
+2025-11-25 01:01:45,531 - [INFO] - [RETRY] Row 57: ✅ RECOVERED 'Kebahagiaan menemukan kursi pijat'
+2025-11-25 01:01:45,532 - [WARNING] - [RETRY] Row 59: Still invalid 'Kemudahan berlangganan IndiHome'
+2025-11-25 01:01:45,532 - [INFO] - [RETRY] Row 61: ✅ RECOVERED 'Petualangan menjelajahi pulau'
+2025-11-25 01:01:45,532 - [WARNING] - [RETRY] Row 64: Still invalid 'Cinta sejati dalam cerita Zaenab dan Doel'
+2025-11-25 01:01:45,533 - [INFO] - [RETRY] Row 76: ✅ RECOVERED 'Promosi IndiHome dengan harga dan kecepatan'
+2025-11-25 01:01:45,533 - [WARNING] - [RETRY] Row 80: Still invalid 'Kisah anak magang dan pengalaman kerja'
+2025-11-25 01:01:45,533 - [INFO] - [RETRY] Row 82: ✅ RECOVERED 'Pentingnya verifikasi teknisi IndiHome'
+2025-11-25 01:01:45,533 - [WARNING] - [RETRY] Row 84: Still invalid 'Keluhan pelanggan tentang kesulitan berhenti berlangganan IndiHome'
+2025-11-25 01:01:45,534 - [WARNING] - [RETRY] Row 93: Still invalid 'Inovasi layanan IndiHome FTTR'
+2025-11-25 01:01:45,534 - [WARNING] - [RETRY] Row 97: Still invalid 'Solusi Wi-Fi canggih IndiHome FTTR'
+2025-11-25 01:01:45,534 - [WARNING] - [RETRY] Row 98: Still invalid 'Syarat dan denda putus langganan IndiHome'
+2025-11-25 01:01:45,534 - [INFO] - [RETRY Sub Topic] ✅ Recovered: 7/20 | ❌ Still failed: 13
+2025-11-25 01:01:45,539 - [INFO] - 
+============================================================
+2025-11-25 01:01:45,540 - [INFO] - STEP 5: NORMALIZING SUB TOPIC → TOPIC (2-5 words)
+2025-11-25 01:01:45,540 - [INFO] - ============================================================
+2025-11-25 01:01:45,548 - [INFO] - [NORMALIZE] Found 85 unique sub topics
+2025-11-25 01:01:45,548 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:02:09,686 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:02:09,702 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 895 in, 1304 out
+2025-11-25 01:02:09,712 - [INFO] - 
+============================================================
+2025-11-25 01:02:09,713 - [INFO] - STEP 6: NORMALIZING SPOKESPERSON
+2025-11-25 01:02:09,713 - [INFO] - ============================================================
+2025-11-25 01:02:09,723 - [INFO] - [NORMALIZE] Found 2 unique spokespersons
+2025-11-25 01:02:09,723 - [INFO] - [API CALL] Attempt 1/2 - Model: gpt-4o-mini
+2025-11-25 01:02:10,836 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 01:02:10,846 - [INFO] - [API CALL] ✅ SUCCESS - Tokens: 84 in, 31 out
+2025-11-25 01:02:10,993 - [INFO] - 
+============================================================
+2025-11-25 01:02:10,993 - [INFO] - ✅ PROCESSING COMPLETE
+2025-11-25 01:02:10,993 - [INFO] - ============================================================
+2025-11-25 01:02:10,993 - [INFO] - Total: 102 rows | Duration: 103.57s | Cost: $0.008307
+2025-11-25 01:02:10,993 - [INFO] - Language: Indonesia (Bahasa Indonesia)
+2025-11-25 01:02:10,994 - [INFO] - TOON Success: 8/10 (80.0%)
+2025-11-25 01:02:10,994 - [INFO] - Verification: Unknown=0, Empty=13

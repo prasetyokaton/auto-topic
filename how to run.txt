@@ -1,0 +1,2 @@
+chmod +x start_docker.sh test_docker.sh
+./start_docker.sh

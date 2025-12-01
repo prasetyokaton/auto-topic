@@ -1,0 +1,104 @@
+2025-11-25 09:44:41,611 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-11-25 09:44:42,730 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:44:42,920 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-11-25 09:44:42,922 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-11-25 09:44:42,938 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-11-25 09:44:43,612 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-11-25 09:46:04,061 - [INFO] - generated new fontManager
+2025-11-25 09:46:05,878 - [INFO] - 📊 Original rows: 50
+2025-11-25 09:46:05,881 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Title': 'Title', 'Content': 'Content', 'Channel': 'Channel'}
+2025-11-25 09:46:05,887 - [INFO] - ✅ Removed 3 duplicate rows
+2025-11-25 09:46:05,891 - [INFO] - ✅ Removed 4 rows with empty/short content (< 30 chars or < 5 words)
+2025-11-25 09:46:05,892 - [INFO] - 📊 Final rows: 43 (removed 7 rows)
+2025-11-25 09:46:05,892 - [INFO] - 📝 Output language: English (English)
+2025-11-25 09:46:05,894 - [INFO] - 📊 Channel split: Mainstream=43, Social=0
+2025-11-25 09:46:05,894 - [INFO] - 
+================================================================================
+2025-11-25 09:46:05,895 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT (ALL CHANNELS)
+2025-11-25 09:46:05,895 - [INFO] - ================================================================================
+2025-11-25 09:46:19,256 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:46:21,814 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:46:21,827 - [INFO] - [STEP 1/4] ✅ Sub Topic (initial): 29/43 (67.4%)
+2025-11-25 09:46:21,828 - [INFO] - [STEP 1/4] ✅ Sentiment: 43/43 (100.0%)
+2025-11-25 09:46:21,829 - [INFO] - 
+================================================================================
+2025-11-25 09:46:21,829 - [INFO] - [STEP 2/4] SPOKESPERSON (MAINSTREAM ONLY)
+2025-11-25 09:46:21,830 - [INFO] - ================================================================================
+2025-11-25 09:46:41,488 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:46:45,352 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:46:45,379 - [INFO] - [STEP 2/4] ✅ Spokesperson: 21/43 (48.8%)
+2025-11-25 09:46:45,382 - [INFO] - 
+================================================================================
+2025-11-25 09:46:45,383 - [INFO] - [STEP 3/4] RETRY UNKNOWN SUB TOPICS
+2025-11-25 09:46:45,383 - [INFO] - ================================================================================
+2025-11-25 09:46:45,387 - [INFO] - [STEP 3/4] Found 14 unknown sub topics
+2025-11-25 09:46:49,355 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:46:49,367 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 09:46:49,368 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 09:46:49,371 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 09:46:49,372 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 09:46:49,373 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 09:46:49,374 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 09:46:49,375 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 09:46:49,375 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 09:46:49,378 - [INFO] - [STEP 3/4] ✅ Sub Topic (after retry): 43/43 (100.0%)
+2025-11-25 09:46:49,378 - [INFO] - 
+================================================================================
+2025-11-25 09:46:49,379 - [INFO] - [STEP 4/4] TWO-STEP NORMALIZATION
+2025-11-25 09:46:49,379 - [INFO] - ================================================================================
+2025-11-25 09:46:49,382 - [INFO] - [STEP 4/4] Found 31 unique sub topics
+2025-11-25 09:46:51,694 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:46:51,701 - [INFO] - ✅ Identified 15 main themes: ['Community Development', 'Credit Products', 'Banking Services', 'Economic Initiatives', 'Social Empowerment', 'Cultural Engagement', 'Government Collaboration', 'Health and Wellness', 'Consumer Education', 'Security and Safety', 'Digital Innovation', 'Debt Management', 'Sustainability Efforts', 'Financial Literacy', 'Investigation and Oversight']
+2025-11-25 09:46:59,336 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:46:59,357 - [INFO] - ✅ Normalization result: 31 sub topics → 13 topics (58.1% reduction)
+2025-11-25 09:46:59,372 - [INFO] - [STEP 4/4] ✅ Topic: 43/43 (100.0%)
+2025-11-25 09:46:59,372 - [INFO] - [STEP 4/4] 📊 Grouping: 31 sub topics → 13 topics (58.1% reduction)
+2025-11-25 09:47:14,963 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:47:15,075 - [INFO] - 
+================================================================================
+2025-11-25 09:47:15,075 - [INFO] - ✅ PROCESSING COMPLETE
+2025-11-25 09:47:15,075 - [INFO] - ================================================================================
+2025-11-25 09:47:15,076 - [INFO] - Original: 50 rows
+2025-11-25 09:47:15,076 - [INFO] - Removed: 7 rows (duplicates: 3, empty: 4)
+2025-11-25 09:47:15,076 - [INFO] - Final: 43 rows
+2025-11-25 09:47:15,076 - [INFO] - Duration: 69.15s | Cost: $0.014138
+2025-11-25 09:47:15,077 - [INFO] - Language: English
+2025-11-25 09:47:15,077 - [INFO] - Normalization: 31 sub topics → 13 topics (58.1% reduction)
+2025-11-25 09:47:15,077 - [INFO] - Sub Topic (initial): 29/43 (67.4%)
+2025-11-25 09:47:15,078 - [INFO] - Sentiment: 43/43 (100.0%)
+2025-11-25 09:47:15,078 - [INFO] - Spokesperson: 21/43 (48.8%)
+2025-11-25 09:47:15,078 - [INFO] - Sub Topic (after retry): 43/43 (100.0%)
+2025-11-25 09:47:15,078 - [INFO] - Topic: 43/43 (100.0%)
+2025-11-25 09:48:07,826 - [INFO] - 📊 Original rows: 102
+2025-11-25 09:48:07,830 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content'}
+2025-11-25 09:48:07,836 - [INFO] - ✅ Removed 2 duplicate rows
+2025-11-25 09:48:07,838 - [INFO] - 📊 Final rows: 100 (removed 2 rows)
+2025-11-25 09:48:07,839 - [INFO] - 📝 Output language: English (English)
+2025-11-25 09:48:07,841 - [INFO] - 📊 Channel split: Mainstream=19, Social=81
+2025-11-25 09:48:07,841 - [INFO] - 
+================================================================================
+2025-11-25 09:48:07,841 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT (ALL CHANNELS)
+2025-11-25 09:48:07,841 - [INFO] - ================================================================================
+2025-11-25 09:48:20,095 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:48:30,436 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:48:37,081 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 09:48:37,101 - [INFO] - [STEP 1/4] ✅ Sub Topic (initial): 88/100 (88.0%)
+2025-11-25 09:48:37,101 - [INFO] - [STEP 1/4] ✅ Sentiment: 100/100 (100.0%)
+2025-11-25 09:48:37,101 - [INFO] - 
+================================================================================
+2025-11-25 09:48:37,102 - [INFO] - [STEP 2/4] SPOKESPERSON (MAINSTREAM ONLY)
+2025-11-25 09:48:37,103 - [INFO] - ================================================================================
+2025-11-25 09:48:37,110 - [ERROR] - [ERROR] Unalignable boolean Series provided as indexer (index of the boolean Series and of the indexed object do not match).
+Traceback (most recent call last):
+  File "/app/app.py", line 1202, in process_file
+    df_mainstream = df[mainstream_mask].copy()
+                    ~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/core/frame.py", line 4081, in __getitem__
+    return self._getitem_bool_array(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/core/frame.py", line 4137, in _getitem_bool_array
+    key = check_bool_indexer(self.index, key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/core/indexing.py", line 2655, in check_bool_indexer
+    raise IndexingError(
+pandas.errors.IndexingError: Unalignable boolean Series provided as indexer (index of the boolean Series and of the indexed object do not match).

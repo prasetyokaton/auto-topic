@@ -1,0 +1,67 @@
+2025-11-25 06:31:44,025 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-11-25 06:31:45,110 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:31:45,347 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-11-25 06:31:45,366 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-11-25 06:31:45,633 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-11-25 06:31:45,648 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-11-25 06:31:46,147 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-11-25 06:42:43,707 - [INFO] - generated new fontManager
+2025-11-25 06:42:45,843 - [INFO] - 📊 Original rows: 50
+2025-11-25 06:42:45,855 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Title': 'Title', 'Content': 'Content', 'Channel': 'Channel'}
+2025-11-25 06:42:45,861 - [INFO] - ✅ Removed 3 duplicate rows
+2025-11-25 06:42:45,863 - [INFO] - ✅ Removed 4 rows with empty/short content (< 30 chars or < 5 words)
+2025-11-25 06:42:45,864 - [INFO] - 📊 Final rows: 43 (removed 7 rows)
+2025-11-25 06:42:45,864 - [INFO] - 📝 Output language: English (English)
+2025-11-25 06:42:45,867 - [INFO] - 📊 Channel split: Mainstream=43, Social=0
+2025-11-25 06:42:45,867 - [INFO] - 
+================================================================================
+2025-11-25 06:42:45,867 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT (ALL CHANNELS)
+2025-11-25 06:42:45,867 - [INFO] - ================================================================================
+2025-11-25 06:42:58,513 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:43:00,537 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:43:00,563 - [INFO] - [STEP 1/4] ✅ Sub Topic (initial): 33/43 (76.7%)
+2025-11-25 06:43:00,564 - [INFO] - [STEP 1/4] ✅ Sentiment: 43/43 (100.0%)
+2025-11-25 06:43:00,565 - [INFO] - 
+================================================================================
+2025-11-25 06:43:00,565 - [INFO] - [STEP 2/4] SPOKESPERSON (MAINSTREAM ONLY)
+2025-11-25 06:43:00,566 - [INFO] - ================================================================================
+2025-11-25 06:43:26,646 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:43:29,317 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:43:29,330 - [INFO] - [STEP 2/4] ✅ Spokesperson: 24/43 (55.8%)
+2025-11-25 06:43:29,333 - [INFO] - 
+================================================================================
+2025-11-25 06:43:29,334 - [INFO] - [STEP 3/4] RETRY UNKNOWN SUB TOPICS
+2025-11-25 06:43:29,334 - [INFO] - ================================================================================
+2025-11-25 06:43:29,338 - [INFO] - [STEP 3/4] Found 10 unknown sub topics
+2025-11-25 06:43:32,793 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:43:32,807 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 06:43:32,808 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 06:43:32,810 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 06:43:32,811 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 06:43:32,811 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 06:43:32,812 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 06:43:32,813 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 06:43:32,814 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 06:43:32,816 - [INFO] - [STEP 3/4] ✅ Sub Topic (after retry): 43/43 (100.0%)
+2025-11-25 06:43:32,817 - [INFO] - 
+================================================================================
+2025-11-25 06:43:32,817 - [INFO] - [STEP 4/4] NORMALIZATION
+2025-11-25 06:43:32,817 - [INFO] - ================================================================================
+2025-11-25 06:43:32,819 - [INFO] - [STEP 4/4] Found 31 unique sub topics
+2025-11-25 06:43:43,443 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:43:43,475 - [INFO] - [STEP 4/4] ✅ Topic: 43/43 (100.0%)
+2025-11-25 06:44:02,570 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:44:02,712 - [INFO] - 
+================================================================================
+2025-11-25 06:44:02,713 - [INFO] - ✅ PROCESSING COMPLETE
+2025-11-25 06:44:02,713 - [INFO] - ================================================================================
+2025-11-25 06:44:02,713 - [INFO] - Original: 50 rows
+2025-11-25 06:44:02,713 - [INFO] - Removed: 7 rows (duplicates: 3, empty: 4)
+2025-11-25 06:44:02,715 - [INFO] - Final: 43 rows
+2025-11-25 06:44:02,715 - [INFO] - Duration: 76.82s | Cost: $0.013653
+2025-11-25 06:44:02,715 - [INFO] - Language: English
+2025-11-25 06:44:02,716 - [INFO] - Sub Topic (initial): 33/43 (76.7%)
+2025-11-25 06:44:02,716 - [INFO] - Sentiment: 43/43 (100.0%)
+2025-11-25 06:44:02,717 - [INFO] - Spokesperson: 24/43 (55.8%)
+2025-11-25 06:44:02,718 - [INFO] - Sub Topic (after retry): 43/43 (100.0%)
+2025-11-25 06:44:02,718 - [INFO] - Topic: 43/43 (100.0%)

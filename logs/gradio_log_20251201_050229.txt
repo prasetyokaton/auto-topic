@@ -1,0 +1,139 @@
+2025-12-01 05:02:29,700 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-12-01 05:02:31,320 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:02:31,563 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-12-01 05:02:31,574 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-12-01 05:02:31,581 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-12-01 05:02:32,454 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-12-01 05:02:40,158 - [INFO] - generated new fontManager
+2025-12-01 05:02:45,216 - [INFO] - 📊 Original rows: 873
+2025-12-01 05:02:45,219 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content'}
+2025-12-01 05:02:45,223 - [INFO] - ✅ Removed 275 duplicate rows
+2025-12-01 05:02:45,233 - [INFO] - ✅ Removed 4 rows with empty/short content (< 30 chars or < 5 words)
+2025-12-01 05:02:45,233 - [INFO] - 📊 Final rows: 594 (removed 279 rows)
+2025-12-01 05:02:45,233 - [INFO] - 📝 Output language: Indonesia (Bahasa Indonesia)
+2025-12-01 05:02:45,235 - [INFO] - ✅ Converted Noise Tag to text
+2025-12-01 05:02:45,235 - [INFO] - 📊 Channel split: Mainstream=0, Social=594
+2025-12-01 05:02:45,235 - [INFO] - 
+================================================================================
+2025-12-01 05:02:45,235 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT (ALL CHANNELS)
+2025-12-01 05:02:45,236 - [INFO] - ================================================================================
+2025-12-01 05:02:45,237 - [INFO] - ⏭️ Skipped 1 rows (Noise Tag = 2)
+2025-12-01 05:02:45,238 - [INFO] - 📊 Processing 593 rows (skipped 1 rows)
+2025-12-01 05:03:00,551 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:03:11,876 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:03:28,073 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:03:39,018 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:03:53,453 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:04:06,468 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:04:20,082 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:04:33,799 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:04:46,104 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:05:01,956 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:05:15,168 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:05:30,021 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:05:45,269 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:05:59,102 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:06:12,015 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:06:12,063 - [INFO] - [STEP 1/4] ✅ Sub Topic (initial): 496/594 (83.5%)
+2025-12-01 05:06:12,064 - [INFO] - [STEP 1/4] ✅ Sentiment: 593/594 (99.8%)
+2025-12-01 05:06:12,065 - [INFO] - 
+================================================================================
+2025-12-01 05:06:12,065 - [INFO] - [STEP 3/4] RETRY UNKNOWN SUB TOPICS
+2025-12-01 05:06:12,065 - [INFO] - ================================================================================
+2025-12-01 05:06:12,067 - [INFO] - [STEP 3/4] Found 98 unknown sub topics
+2025-12-01 05:06:18,312 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:06:18,325 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,326 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,327 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,327 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,328 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,328 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,329 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,329 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,329 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,330 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,330 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,331 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,331 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:18,331 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,125 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:06:24,150 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,150 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,151 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,151 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,151 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,152 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,152 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,152 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,153 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,153 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,153 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,153 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,154 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,154 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,154 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,154 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,155 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,155 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:24,155 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,694 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:06:33,702 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,703 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,704 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,705 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,705 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,706 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,706 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,707 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,707 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,707 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,708 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:33,708 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:35,727 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:06:35,734 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:35,735 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:35,735 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:35,736 - [INFO] - 🌍 Language mismatch detected: English → Indonesia, using placeholder: Topik Konten Media
+2025-12-01 05:06:35,746 - [INFO] - [STEP 3/4] ✅ Sub Topic (after retry): 594/594 (100.0%)
+2025-12-01 05:06:35,747 - [INFO] - 
+================================================================================
+2025-12-01 05:06:35,747 - [INFO] - [STEP 4/4] TWO-STEP NORMALIZATION (PER CAMPAIGN)
+2025-12-01 05:06:35,747 - [INFO] - ================================================================================
+2025-12-01 05:06:35,748 - [INFO] - [STEP 4/4] Found 4 unique campaigns
+2025-12-01 05:06:35,752 - [INFO] - [STEP 4/4] Campaign 'Allianz Syariah': 159 sub topics
+2025-12-01 05:06:38,589 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:06:38,605 - [INFO] - ✅ Identified 15 main themes: ['Maqasid Syariah', 'Asuransi Syariah', 'Pendidikan dan Beasiswa', 'Perlindungan Keluarga', 'Kesehatan dan Proteksi', 'Investasi dan Aset', 'Kegiatan Komunitas', 'Edukasi Keuangan', 'Akad dan Prinsip Syariah', 'Transformasi dan Perubahan', 'Giveaway dan Promosi', 'Pengelolaan Risiko', 'Warisan dan Kebaikan', 'Dukungan dan Komitmen', 'Olahraga dan Kesehatan']
+2025-12-01 05:07:40,392 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:07:40,405 - [INFO] - ✅ Normalization result: 159 sub topics → 26 topics (83.6% reduction)
+2025-12-01 05:07:40,435 - [INFO] - [STEP 4/4] Campaign 'Prudential Syariah': 123 sub topics
+2025-12-01 05:07:44,161 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:07:44,164 - [INFO] - ✅ Identified 15 main themes: ['Asuransi dan Perlindungan', 'Kesehatan dan Kesejahteraan', 'Edukasi Keuangan', 'Inovasi dalam Asuransi', 'Perlindungan Keluarga', 'Risiko dan Manajemen', 'Kewirausahaan dan Bisnis', 'Adaptasi Perubahan Iklim', 'Komunitas dan Kolaborasi', 'Investasi Berkelanjutan', 'Literasi Keuangan Syariah', 'Program Loyalitas', 'Tantangan Ekonomi', 'Kesiapan Masa Depan', 'Kegiatan dan Event Komunitas']
+2025-12-01 05:08:26,561 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:08:26,572 - [INFO] - ✅ Normalization result: 123 sub topics → 40 topics (67.5% reduction)
+2025-12-01 05:08:26,591 - [INFO] - [STEP 4/4] Campaign 'AIA Syariah': 3 sub topics
+2025-12-01 05:08:29,521 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:08:29,523 - [INFO] - ✅ Identified 15 main themes: ['Persiapan Ibadah', 'Manfaat Keuangan', 'Layanan Asuransi', 'Perencanaan Keuangan', 'Edukasi Haji', 'Dukungan Komunitas', 'Kesejahteraan Jamaah', 'Pengelolaan Risiko', 'Program Perlindungan', 'Investasi Spiritual', 'Pengalaman Haji', 'Kegiatan Sosial', 'Kesiapan Fisik', 'Manajemen Waktu', 'Keterlibatan Masyarakat']
+2025-12-01 05:08:31,673 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:08:31,675 - [INFO] - ✅ Normalization result: 3 sub topics → 3 topics (0.0% reduction)
+2025-12-01 05:08:31,680 - [INFO] - [STEP 4/4] Campaign 'Manulife Syariah': 28 sub topics
+2025-12-01 05:08:36,592 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:08:36,594 - [INFO] - ✅ Identified 15 main themes: ['Peluncuran Produk Asuransi', 'Edukasi dan Kesadaran Asuransi', 'Kesempatan Bisnis dan Karir', 'Dukungan dan Penguatan Syariah', 'Kegiatan Sosial dan Komunitas', 'Program Asuransi Jiwa Syariah', 'Promosi dan Penawaran Khusus', 'Penghargaan dan Pengakuan', 'Kesehatan dan Kesejahteraan', 'Perayaan dan Acara Khusus', 'Persiapan Masa Depan Keuangan', 'Ekonomi Syariah', 'Aksi Sosial dan Donasi', 'Peningkatan Diri dan Pengembangan', 'Kegiatan Internal Perusahaan']
+2025-12-01 05:08:46,433 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 05:08:46,436 - [INFO] - ✅ Normalization result: 28 sub topics → 16 topics (42.9% reduction)
+2025-12-01 05:08:46,439 - [INFO] - [STEP 4/4] Total: 310 sub topics → 78 topics across all campaigns
+2025-12-01 05:08:46,446 - [INFO] - [STEP 4/4] ✅ Topic: 594/594 (100.0%)
+2025-12-01 05:08:46,446 - [INFO] - [STEP 4/4] 📊 Grouping: 310 sub topics → 78 topics (74.8% reduction)
+2025-12-01 05:08:46,874 - [INFO] - 
+================================================================================
+2025-12-01 05:08:46,874 - [INFO] - ✅ PROCESSING COMPLETE
+2025-12-01 05:08:46,875 - [INFO] - ================================================================================
+2025-12-01 05:08:46,875 - [INFO] - Original: 873 rows
+2025-12-01 05:08:46,875 - [INFO] - Removed: 279 rows (duplicates: 275, empty: 4)
+2025-12-01 05:08:46,875 - [INFO] - Final: 594 rows
+2025-12-01 05:08:46,875 - [INFO] - Duration: 361.56s | Cost: $0.024823
+2025-12-01 05:08:46,875 - [INFO] - Language: Indonesia
+2025-12-01 05:08:46,875 - [INFO] - Normalization: 310 sub topics → 78 topics (74.8% reduction)
+2025-12-01 05:08:46,875 - [INFO] - Sub Topic (initial): 496/594 (83.5%)
+2025-12-01 05:08:46,875 - [INFO] - Sentiment: 593/594 (99.8%)
+2025-12-01 05:08:46,875 - [INFO] - Sub Topic (after retry): 594/594 (100.0%)
+2025-12-01 05:08:46,875 - [INFO] - Topic: 594/594 (100.0%)

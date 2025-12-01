@@ -1,0 +1,59 @@
+2025-11-25 06:06:24,955 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-11-25 06:06:26,080 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:06:26,255 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-11-25 06:06:26,268 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-11-25 06:06:26,498 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-11-25 06:06:26,499 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-11-25 06:06:26,965 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-11-25 06:07:01,468 - [INFO] - generated new fontManager
+2025-11-25 06:07:05,398 - [INFO] - 📊 Original rows: 50
+2025-11-25 06:07:05,405 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Title': 'Title', 'Content': 'Content', 'Channel': 'Channel'}
+2025-11-25 06:07:05,409 - [INFO] - ✅ Removed 3 duplicate rows
+2025-11-25 06:07:05,413 - [INFO] - ✅ Removed 4 rows with empty/short content (< 30 chars or < 5 words)
+2025-11-25 06:07:05,414 - [INFO] - 📊 Final rows: 43 (removed 7 rows)
+2025-11-25 06:07:05,414 - [INFO] - 📝 Output language: English (English)
+2025-11-25 06:07:05,417 - [INFO] - 📊 Channel split: Mainstream=43, Social=0
+2025-11-25 06:07:05,417 - [INFO] - 
+================================================================================
+2025-11-25 06:07:05,417 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT (ALL CHANNELS)
+2025-11-25 06:07:05,417 - [INFO] - ================================================================================
+2025-11-25 06:07:20,318 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:07:25,345 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:07:25,374 - [INFO] - [STEP 1/4] ✅ Sub Topic (initial): 33/43 (76.7%)
+2025-11-25 06:07:25,374 - [INFO] - [STEP 1/4] ✅ Sentiment: 43/43 (100.0%)
+2025-11-25 06:07:25,374 - [INFO] - 
+================================================================================
+2025-11-25 06:07:25,374 - [INFO] - [STEP 2/4] SPOKESPERSON (MAINSTREAM ONLY)
+2025-11-25 06:07:25,375 - [INFO] - ================================================================================
+2025-11-25 06:07:55,224 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:08:00,561 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:08:00,600 - [INFO] - [STEP 2/4] ✅ Spokesperson: 26/43 (60.5%)
+2025-11-25 06:08:00,606 - [INFO] - 
+================================================================================
+2025-11-25 06:08:00,606 - [INFO] - [STEP 3/4] RETRY UNKNOWN SUB TOPICS
+2025-11-25 06:08:00,607 - [INFO] - ================================================================================
+2025-11-25 06:08:00,609 - [INFO] - [STEP 3/4] Found 10 unknown sub topics
+2025-11-25 06:08:03,789 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:08:03,802 - [INFO] - [STEP 3/4] ✅ Sub Topic (after retry): 43/43 (100.0%)
+2025-11-25 06:08:03,802 - [INFO] - 
+================================================================================
+2025-11-25 06:08:03,803 - [INFO] - [STEP 4/4] NORMALIZATION
+2025-11-25 06:08:03,803 - [INFO] - ================================================================================
+2025-11-25 06:08:03,806 - [INFO] - [STEP 4/4] Found 31 unique sub topics
+2025-11-25 06:08:18,591 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:08:18,623 - [INFO] - [STEP 4/4] ✅ Topic: 43/43 (100.0%)
+2025-11-25 06:08:41,929 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 06:08:42,040 - [INFO] - 
+================================================================================
+2025-11-25 06:08:42,040 - [INFO] - ✅ PROCESSING COMPLETE
+2025-11-25 06:08:42,041 - [INFO] - ================================================================================
+2025-11-25 06:08:42,041 - [INFO] - Original: 50 rows
+2025-11-25 06:08:42,041 - [INFO] - Removed: 7 rows (duplicates: 3, empty: 4)
+2025-11-25 06:08:42,041 - [INFO] - Final: 43 rows
+2025-11-25 06:08:42,041 - [INFO] - Duration: 96.60s | Cost: $0.013758
+2025-11-25 06:08:42,042 - [INFO] - Language: English
+2025-11-25 06:08:42,042 - [INFO] - Sub Topic (initial): 33/43 (76.7%)
+2025-11-25 06:08:42,042 - [INFO] - Sentiment: 43/43 (100.0%)
+2025-11-25 06:08:42,043 - [INFO] - Spokesperson: 26/43 (60.5%)
+2025-11-25 06:08:42,043 - [INFO] - Sub Topic (after retry): 43/43 (100.0%)
+2025-11-25 06:08:42,043 - [INFO] - Topic: 43/43 (100.0%)

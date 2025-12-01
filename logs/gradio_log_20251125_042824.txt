@@ -1,0 +1,98 @@
+2025-11-25 04:28:25,138 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-11-25 04:28:25,436 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:28:25,599 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-11-25 04:28:25,602 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-11-25 04:28:25,612 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-11-25 04:28:26,356 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-11-25 04:32:24,700 - [INFO] - generated new fontManager
+2025-11-25 04:32:30,066 - [INFO] - 📊 Original rows: 303
+2025-11-25 04:32:30,067 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Title': 'Title', 'Content': 'Content', 'Channel': 'Channel'}
+2025-11-25 04:32:30,071 - [INFO] - ✅ Removed 14 duplicate rows
+2025-11-25 04:32:30,078 - [INFO] - ✅ Removed 14 rows with empty/short content (< 30 chars or < 5 words)
+2025-11-25 04:32:30,078 - [INFO] - 📊 Final rows: 275 (removed 28 rows)
+2025-11-25 04:32:30,080 - [INFO] - 🌍 Detected content language: Thailand (scores: {'Indonesia': 0, 'English': 1, 'Thailand': 48, 'China': 0})
+2025-11-25 04:32:30,080 - [INFO] - 🌍 Content language detected: Thailand
+2025-11-25 04:32:30,080 - [INFO] - 📝 Output language (user selected): English
+2025-11-25 04:32:30,083 - [INFO] - 📊 Channel split: Mainstream=275, Social=0
+2025-11-25 04:32:30,083 - [INFO] - 
+================================================================================
+2025-11-25 04:32:30,083 - [INFO] - [STEP 1/5] SUB TOPIC (ALL CHANNELS)
+2025-11-25 04:32:30,084 - [INFO] - ================================================================================
+2025-11-25 04:32:43,682 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:33:07,560 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:33:26,498 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:33:43,082 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:33:54,452 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:34:00,989 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:34:01,018 - [INFO] - [STEP 1/5] ✅ Sub Topic: 217/275 (78.9%)
+2025-11-25 04:34:01,021 - [INFO] - 
+================================================================================
+2025-11-25 04:34:01,021 - [INFO] - [STEP 2/5] SUMMARY (MAINSTREAM ONLY)
+2025-11-25 04:34:01,022 - [INFO] - ================================================================================
+2025-11-25 04:34:24,967 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:34:42,580 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:35:02,962 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:35:26,205 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:35:48,323 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:36:00,098 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:36:00,163 - [INFO] - [STEP 2/5] Summary (initial): 162/275 (58.9%)
+2025-11-25 04:36:00,165 - [INFO] - [STEP 2/5] 🔄 Retrying 113 empty summaries...
+2025-11-25 04:36:11,410 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:36:52,134 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:37:08,038 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:37:18,939 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:37:18,961 - [INFO] - [STEP 2/5] ✅ Summary (final): 181/275 (65.8%) | Recovered: 19
+2025-11-25 04:37:18,961 - [INFO] - 
+================================================================================
+2025-11-25 04:37:18,961 - [INFO] - [STEP 3/5] SENTIMENT (ALL CHANNELS)
+2025-11-25 04:37:18,962 - [INFO] - ================================================================================
+2025-11-25 04:37:26,843 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:37:49,369 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:37:57,761 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:38:09,746 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:38:19,069 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:38:22,542 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:38:22,556 - [INFO] - [STEP 3/5] ✅ Sentiment: 275/275 (100.0%)
+2025-11-25 04:38:22,559 - [INFO] - 
+================================================================================
+2025-11-25 04:38:22,560 - [INFO] - [STEP 4/5] SPOKESPERSON (MAINSTREAM ONLY)
+2025-11-25 04:38:22,560 - [INFO] - ================================================================================
+2025-11-25 04:38:54,370 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:39:21,572 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:39:57,171 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:40:25,741 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:40:50,626 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:41:03,475 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:41:03,513 - [INFO] - [STEP 4/5] ✅ Spokesperson: 173/275 (62.9%)
+2025-11-25 04:41:03,518 - [INFO] - 
+================================================================================
+2025-11-25 04:41:03,518 - [INFO] - [STEP 5/5] RETRY UNKNOWN SUB TOPICS
+2025-11-25 04:41:03,518 - [INFO] - ================================================================================
+2025-11-25 04:41:03,521 - [INFO] - [STEP 5/5] Found 58 unknown sub topics
+2025-11-25 04:41:11,934 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:41:37,652 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:41:37,692 - [INFO] - [STEP 5/5] ✅ Sub Topic (after retry): 275/275 (100.0%)
+2025-11-25 04:41:37,692 - [INFO] - 
+================================================================================
+2025-11-25 04:41:37,692 - [INFO] - [STEP 5/5] NORMALIZING TOPICS
+2025-11-25 04:41:37,693 - [INFO] - ================================================================================
+2025-11-25 04:41:37,696 - [INFO] - [STEP 5/5] Found 247 unique sub topics
+2025-11-25 04:42:53,474 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:42:53,513 - [INFO] - [STEP 5/5] ✅ Topic: 275/275 (100.0%)
+2025-11-25 04:44:14,039 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 04:44:14,296 - [INFO] - 
+================================================================================
+2025-11-25 04:44:14,296 - [INFO] - ✅ PROCESSING COMPLETE
+2025-11-25 04:44:14,296 - [INFO] - ================================================================================
+2025-11-25 04:44:14,296 - [INFO] - Original: 303 rows
+2025-11-25 04:44:14,297 - [INFO] - Removed: 28 rows (duplicates: 14, empty: 14)
+2025-11-25 04:44:14,297 - [INFO] - Final: 275 rows
+2025-11-25 04:44:14,297 - [INFO] - Duration: 704.09s | Cost: $0.171652
+2025-11-25 04:44:14,297 - [INFO] - Language: Thailand (detected) → English (output)
+2025-11-25 04:44:14,297 - [INFO] - Sub Topic: 217/275 (78.9%)
+2025-11-25 04:44:14,297 - [INFO] - Summary (initial): 162/275 (58.9%)
+2025-11-25 04:44:14,298 - [INFO] - Summary (final): 181/275 (65.8%)
+2025-11-25 04:44:14,298 - [INFO] - Sentiment: 275/275 (100.0%)
+2025-11-25 04:44:14,298 - [INFO] - Spokesperson: 173/275 (62.9%)
+2025-11-25 04:44:14,299 - [INFO] - Sub Topic (after retry): 275/275 (100.0%)
+2025-11-25 04:44:14,299 - [INFO] - Topic: 275/275 (100.0%)

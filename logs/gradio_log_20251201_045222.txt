@@ -1,0 +1,24 @@
+2025-12-01 04:52:22,649 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-12-01 04:52:24,805 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-01 04:52:24,965 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-12-01 04:52:24,976 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-12-01 04:52:25,798 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-12-01 04:52:25,919 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-12-01 04:52:25,922 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-12-01 04:58:14,233 - [INFO] - generated new fontManager
+2025-12-01 04:58:42,790 - [INFO] - 📊 Original rows: 873
+2025-12-01 04:58:42,793 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Media Type': 'Channel'}
+2025-12-01 04:58:42,796 - [INFO] - ✅ Removed 275 duplicate rows
+2025-12-01 04:58:42,802 - [INFO] - ✅ Removed 4 rows with empty/short content (< 30 chars or < 5 words)
+2025-12-01 04:58:42,803 - [INFO] - 📊 Final rows: 594 (removed 279 rows)
+2025-12-01 04:58:42,803 - [INFO] - 📝 Output language: Indonesia (Bahasa Indonesia)
+2025-12-01 04:58:42,804 - [ERROR] - [ERROR] Cannot set a DataFrame with multiple columns to the single column _channel_original
+Traceback (most recent call last):
+  File "/app/app.py", line 1143, in process_file
+    df['_channel_original'] = df[channel_col].copy()
+    ~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/core/frame.py", line 4289, in __setitem__
+    self._set_item_frame_value(key, value)
+  File "/usr/local/lib/python3.11/site-packages/pandas/core/frame.py", line 4447, in _set_item_frame_value
+    raise ValueError(
+ValueError: Cannot set a DataFrame with multiple columns to the single column _channel_original

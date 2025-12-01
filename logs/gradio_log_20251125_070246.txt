@@ -1,0 +1,69 @@
+2025-11-25 07:02:47,431 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:02:47,653 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-11-25 07:02:47,705 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-11-25 07:02:47,728 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-11-25 07:02:48,402 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-11-25 07:02:54,912 - [INFO] - generated new fontManager
+2025-11-25 07:02:57,421 - [INFO] - 📊 Original rows: 50
+2025-11-25 07:02:57,426 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Title': 'Title', 'Content': 'Content', 'Channel': 'Channel'}
+2025-11-25 07:02:57,433 - [INFO] - ✅ Removed 3 duplicate rows
+2025-11-25 07:02:57,446 - [INFO] - ✅ Removed 4 rows with empty/short content (< 30 chars or < 5 words)
+2025-11-25 07:02:57,447 - [INFO] - 📊 Final rows: 43 (removed 7 rows)
+2025-11-25 07:02:57,448 - [INFO] - 📝 Output language: English (English)
+2025-11-25 07:02:57,452 - [INFO] - 📊 Channel split: Mainstream=43, Social=0
+2025-11-25 07:02:57,452 - [INFO] - 
+================================================================================
+2025-11-25 07:02:57,453 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT (ALL CHANNELS)
+2025-11-25 07:02:57,453 - [INFO] - ================================================================================
+2025-11-25 07:03:18,798 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:03:20,910 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:03:20,927 - [INFO] - [STEP 1/4] ✅ Sub Topic (initial): 33/43 (76.7%)
+2025-11-25 07:03:20,927 - [INFO] - [STEP 1/4] ✅ Sentiment: 43/43 (100.0%)
+2025-11-25 07:03:20,928 - [INFO] - 
+================================================================================
+2025-11-25 07:03:20,928 - [INFO] - [STEP 2/4] SPOKESPERSON (MAINSTREAM ONLY)
+2025-11-25 07:03:20,928 - [INFO] - ================================================================================
+2025-11-25 07:03:52,961 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:03:57,619 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:03:57,654 - [INFO] - [STEP 2/4] ✅ Spokesperson: 21/43 (48.8%)
+2025-11-25 07:03:57,658 - [INFO] - 
+================================================================================
+2025-11-25 07:03:57,658 - [INFO] - [STEP 3/4] RETRY UNKNOWN SUB TOPICS
+2025-11-25 07:03:57,659 - [INFO] - ================================================================================
+2025-11-25 07:03:57,663 - [INFO] - [STEP 3/4] Found 10 unknown sub topics
+2025-11-25 07:04:00,129 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:04:00,149 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 07:04:00,150 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 07:04:00,151 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 07:04:00,152 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 07:04:00,152 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 07:04:00,153 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 07:04:00,153 - [INFO] - 🌍 Language mismatch detected: Thailand → English, using placeholder: Media Content Topic
+2025-11-25 07:04:00,154 - [INFO] - [STEP 3/4] ✅ Sub Topic (after retry): 43/43 (100.0%)
+2025-11-25 07:04:00,155 - [INFO] - 
+================================================================================
+2025-11-25 07:04:00,155 - [INFO] - [STEP 4/4] TWO-STEP NORMALIZATION
+2025-11-25 07:04:00,155 - [INFO] - ================================================================================
+2025-11-25 07:04:00,157 - [INFO] - [STEP 4/4] Found 37 unique sub topics
+2025-11-25 07:04:01,675 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:04:01,677 - [INFO] - ✅ Identified 15 main themes: ['Collaboration Initiatives', 'Community Development', 'Cultural Events', 'Health and Wellness', 'Economic Strategies', 'Credit Products', 'Banking Services', 'Social Impact', 'Government Support Programs', 'Education and Empowerment', 'Recognition and Awards', 'Political Issues', 'Digital Innovation', 'Agricultural Development', 'Financial Challenges']
+2025-11-25 07:04:12,548 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:04:12,571 - [INFO] - ✅ Normalization result: 37 sub topics → 14 topics (62.2% reduction)
+2025-11-25 07:04:12,586 - [INFO] - [STEP 4/4] ✅ Topic: 43/43 (100.0%)
+2025-11-25 07:04:12,587 - [INFO] - [STEP 4/4] 📊 Grouping: 37 sub topics → 14 topics (62.2% reduction)
+2025-11-25 07:04:41,285 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-25 07:04:41,459 - [INFO] - 
+================================================================================
+2025-11-25 07:04:41,460 - [INFO] - ✅ PROCESSING COMPLETE
+2025-11-25 07:04:41,460 - [INFO] - ================================================================================
+2025-11-25 07:04:41,460 - [INFO] - Original: 50 rows
+2025-11-25 07:04:41,460 - [INFO] - Removed: 7 rows (duplicates: 3, empty: 4)
+2025-11-25 07:04:41,461 - [INFO] - Final: 43 rows
+2025-11-25 07:04:41,461 - [INFO] - Duration: 103.98s | Cost: $0.013885
+2025-11-25 07:04:41,461 - [INFO] - Language: English
+2025-11-25 07:04:41,461 - [INFO] - Normalization: 37 sub topics → 14 topics (62.2% reduction)
+2025-11-25 07:04:41,462 - [INFO] - Sub Topic (initial): 33/43 (76.7%)
+2025-11-25 07:04:41,463 - [INFO] - Sentiment: 43/43 (100.0%)
+2025-11-25 07:04:41,463 - [INFO] - Spokesperson: 21/43 (48.8%)
+2025-11-25 07:04:41,463 - [INFO] - Sub Topic (after retry): 43/43 (100.0%)
+2025-11-25 07:04:41,463 - [INFO] - Topic: 43/43 (100.0%)

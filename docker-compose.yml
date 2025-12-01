@@ -1,16 +1,50 @@
-version: '3.9'
+version: '3.8'
 
 services:
-  mainstream_v1:
-    container_name: mainstream_v1
+  insights-generator:
     build:
       context: .
       dockerfile: Dockerfile
-    image: mainstream_v1:latest
+    container_name: insights_app
     ports:
-      - "8566:8501"
+      - "7860:7860"
+    
+    # Load environment variables from .env file
+    env_file:
+      - .secretcontainer/.env
+    
+    # Optional: Mount volumes for persistence
     volumes:
-      - .:/app
-      - ./.secretcontainer:/app/.secretcontainer
+      # Keep logs outside container
+      - ./logs:/app/logs
+      # Optional: Mount uploads if needed
+      # - ./uploads:/app/uploads
+    
+    # Auto-restart on failure
     restart: unless-stopped
-    pull_policy: never   
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Resource limits (optional)
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    
+    # Environment overrides (optional - will override .env file)
+    # environment:
+    #   - OPENAI_MODEL=gpt-4o-mini
+    #   - BATCH_SIZE=50
+    
+    # Network mode
+    network_mode: bridge

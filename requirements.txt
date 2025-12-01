@@ -1,6 +1,14 @@
-streamlit
-pandas
-openai
-python-dotenv
-gspread
-oauth2client
+# Core dependencies with STABLE Gradio version
+gradio==4.39.0  # Stable version without bool schema bug
+pandas==2.2.0
+openpyxl==3.1.2
+xlsxwriter==3.2.0
+python-dotenv==1.0.0
+
+# OpenAI with compatible httpx
+openai==1.54.0
+httpx==0.27.2
+httpcore==1.0.6
+
+# Fix HfFolder issue
+huggingface-hub==0.22.2
