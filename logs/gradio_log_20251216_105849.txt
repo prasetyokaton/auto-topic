@@ -1,0 +1,150 @@
+2025-12-16 10:58:49,708 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-12-16 10:58:50,305 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 10:58:50,630 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-12-16 10:58:50,648 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-12-16 10:58:50,659 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-12-16 10:58:51,411 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-12-16 10:59:01,451 - [INFO] - generated new fontManager
+2025-12-16 10:59:01,940 - [INFO] - ✅ Normalized columns: {'Campaign': 'Campaigns', 'Channel': 'Channel', 'Type': 'Type', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2025-12-16 10:59:09,627 - [INFO] - 📊 Original rows: 500
+2025-12-16 10:59:09,629 - [INFO] - ✅ Normalized columns: {'Campaign': 'Campaigns', 'Channel': 'Channel', 'Type': 'Type', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2025-12-16 10:59:09,630 - [INFO] - 
+================================================================================
+2025-12-16 10:59:09,630 - [INFO] - [CAMPAIGN SELECTION]
+2025-12-16 10:59:09,630 - [INFO] - ================================================================================
+2025-12-16 10:59:09,630 - [INFO] - Total campaigns in file: 1
+2025-12-16 10:59:09,630 - [INFO] - Selected for processing: 1
+2025-12-16 10:59:09,630 - [INFO] - Skipped campaigns: 0
+2025-12-16 10:59:09,630 - [INFO] - Original rows: 500
+2025-12-16 10:59:09,630 - [INFO] - Filtered rows (selected campaigns): 500
+2025-12-16 10:59:09,630 - [INFO] - Selected campaigns: Le Minerale.
+2025-12-16 10:59:09,631 - [INFO] - 
+================================================================================
+2025-12-16 10:59:09,631 - [INFO] - [TYPE FILTER]
+2025-12-16 10:59:09,631 - [INFO] - ================================================================================
+2025-12-16 10:59:09,631 - [INFO] - Comment: 0 rows (will be excluded from topic extraction)
+2025-12-16 10:59:09,631 - [INFO] - Reply: 199 rows (will be excluded from topic extraction)
+2025-12-16 10:59:09,631 - [INFO] - Other: 301 rows (will process for topics)
+2025-12-16 10:59:09,631 - [INFO] - Note: Sentiment & Spokesperson will process ALL 500 rows
+2025-12-16 10:59:09,633 - [INFO] - 
+================================================================================
+2025-12-16 10:59:09,633 - [INFO] - [DEDUPLICATION] Creating groups for identical content (selected campaigns only)
+2025-12-16 10:59:09,633 - [INFO] - ================================================================================
+2025-12-16 10:59:09,640 - [INFO] - ✅ Deduplication: 500 rows → 495 unique groups + 5 duplicates
+2025-12-16 10:59:09,640 - [INFO] - 💰 API savings from deduplication: 5 calls
+2025-12-16 10:59:09,641 - [INFO] - 📊 Channel split: Mainstream=22, Social=478
+2025-12-16 10:59:09,641 - [INFO] - 
+================================================================================
+2025-12-16 10:59:09,641 - [INFO] - [PRE-FILTER] Checking content eligibility
+2025-12-16 10:59:09,641 - [INFO] - ================================================================================
+2025-12-16 10:59:09,657 - [INFO] - ✅ Content filter: 283 eligible, 217 skipped
+2025-12-16 10:59:09,657 - [INFO] -    └─ Skipped: 18 (<5 words)
+2025-12-16 10:59:09,657 - [INFO] -    └─ Excluded: 199 (Comment/Reply)
+2025-12-16 10:59:09,657 - [INFO] - 💰 API savings from pre-filter: 217 topic extractions skipped
+2025-12-16 10:59:09,658 - [INFO] - 
+================================================================================
+2025-12-16 10:59:09,658 - [INFO] - [PROCESSING CAMPAIGN 1/1] 'Le Minerale.'
+2025-12-16 10:59:09,658 - [INFO] - ================================================================================
+2025-12-16 10:59:09,658 - [INFO] - Campaign rows: 500
+2025-12-16 10:59:09,658 - [INFO] - 
+================================================================================
+2025-12-16 10:59:09,658 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT - Le Minerale.
+2025-12-16 10:59:09,658 - [INFO] - Strategy: Aggressive Quality (smaller batches, longer content)
+2025-12-16 10:59:09,659 - [INFO] - ================================================================================
+2025-12-16 10:59:09,660 - [INFO] - 📊 Processing 278 master rows
+2025-12-16 10:59:09,660 - [INFO] -    Initial: Batch 20 × 200 words
+2025-12-16 10:59:16,146 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 10:59:22,650 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 10:59:28,180 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 10:59:35,264 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 10:59:45,789 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 10:59:50,211 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 10:59:54,395 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:01,254 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:05,759 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:11,593 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:18,348 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:22,040 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:29,297 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:36,291 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:36,331 - [INFO] - 📋 Copying results to duplicate rows...
+2025-12-16 11:00:36,423 - [INFO] - [STEP 1/4] ✅ Sub Topic: 184/500 (36.8%)
+2025-12-16 11:00:36,424 - [INFO] - 
+================================================================================
+2025-12-16 11:00:36,424 - [INFO] - [STEP 3/4] RETRY #1 - Le Minerale.
+2025-12-16 11:00:36,424 - [INFO] - Strategy: Batch 15 × 250 words
+2025-12-16 11:00:36,425 - [INFO] - Current success: 36.8%
+2025-12-16 11:00:36,425 - [INFO] - ================================================================================
+2025-12-16 11:00:36,426 - [INFO] - [STEP 3/4] Found 97 rows still missing sub topics
+2025-12-16 11:00:40,283 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:43,454 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:47,312 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:00:57,561 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:00,848 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:04,839 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:07,755 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:07,774 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-16 11:01:07,816 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #1: 235/500 (47.0%)
+2025-12-16 11:01:07,816 - [INFO] - 
+================================================================================
+2025-12-16 11:01:07,816 - [INFO] - [STEP 3/4] RETRY #2 - Le Minerale.
+2025-12-16 11:01:07,817 - [INFO] - Strategy: Batch 10 × 300 words
+2025-12-16 11:01:07,817 - [INFO] - Current success: 47.0%
+2025-12-16 11:01:07,817 - [INFO] - ================================================================================
+2025-12-16 11:01:07,819 - [INFO] - [STEP 3/4] Found 47 rows still missing sub topics
+2025-12-16 11:01:11,242 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:14,055 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:17,145 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:20,978 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:24,403 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:24,414 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-16 11:01:24,440 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #2: 256/500 (51.2%)
+2025-12-16 11:01:24,441 - [INFO] - 
+================================================================================
+2025-12-16 11:01:24,441 - [INFO] - [STEP 3/4] RETRY #3 - Le Minerale.
+2025-12-16 11:01:24,441 - [INFO] - Strategy: Batch 5 × 400 words
+2025-12-16 11:01:24,441 - [INFO] - Current success: 51.2%
+2025-12-16 11:01:24,441 - [INFO] - ================================================================================
+2025-12-16 11:01:24,444 - [INFO] - [STEP 3/4] Found 26 rows still missing sub topics
+2025-12-16 11:01:26,612 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:28,933 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:31,098 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:33,275 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:35,317 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:36,703 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:36,724 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-16 11:01:36,743 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #3: 263/500 (52.6%)
+2025-12-16 11:01:36,744 - [INFO] - [STEP 3/4] Applying fallback keyword extraction to 237 rows...
+2025-12-16 11:01:36,763 - [INFO] - 
+================================================================================
+2025-12-16 11:01:36,763 - [INFO] - [STEP 4/4] NORMALIZATION (BATCHED 500 + CONSOLIDATION)
+2025-12-16 11:01:36,763 - [INFO] - Strategy: Per 100 sub topics = 5 topics (ratio 20:1)
+2025-12-16 11:01:36,763 - [INFO] - ================================================================================
+2025-12-16 11:01:36,763 - [INFO] - 
+================================================================================
+2025-12-16 11:01:36,763 - [INFO] - [NORMALIZATION 1/1] Campaign: 'Le Minerale.'
+2025-12-16 11:01:36,763 - [INFO] - ================================================================================
+2025-12-16 11:01:36,777 - [INFO] -   └─ Sub topics: 244
+2025-12-16 11:01:36,777 - [INFO] -   └─ Single batch normalization (244 ≤ 500)
+2025-12-16 11:01:36,777 - [INFO] -   └─ Target topics: 10 (ratio: 5 per 100)
+2025-12-16 11:01:39,964 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:01:39,967 - [INFO] - Generated 10 normalized topics
+2025-12-16 11:01:39,967 - [INFO] -   └─ Generated 10 topics
+2025-12-16 11:03:09,372 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-16 11:03:09,384 - [INFO] - Mapped 102/244 sub topics (142 unmapped)
+2025-12-16 11:03:09,388 - [INFO] -   └─ Final topics: 15
+2025-12-16 11:03:09,388 - [INFO] -   └─ Reduction: 93.9%
+2025-12-16 11:03:09,407 - [INFO] - [STEP 4/4] ✅ Topic: 0/500 (0.0%)
+2025-12-16 11:03:09,408 - [INFO] - 
+================================================================================
+2025-12-16 11:03:09,408 - [INFO] - [FINALIZATION] Preparing output
+2025-12-16 11:03:09,409 - [INFO] - ================================================================================
+2025-12-16 11:03:09,413 - [INFO] - ✅ Rows after processing: 500
+2025-12-16 11:03:09,781 - [INFO] - 
+================================================================================
+2025-12-16 11:03:09,781 - [INFO] - ✅ PROCESSING COMPLETE
+2025-12-16 11:03:09,782 - [INFO] - ================================================================================
+2025-12-16 11:03:09,782 - [INFO] - Campaigns: 1/1 selected
+2025-12-16 11:03:09,782 - [INFO] - Rows: 500 → 500 (selected) → 500 (final)
+2025-12-16 11:03:09,782 - [INFO] - Duration: 240.06s | Cost: $0.003987
+2025-12-16 11:03:09,782 - [INFO] - Topic: 0/500 (0.0%)

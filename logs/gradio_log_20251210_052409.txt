@@ -1,0 +1,110 @@
+2025-12-10 05:24:09,903 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-12-10 05:24:10,403 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:24:10,573 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-12-10 05:24:10,585 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-12-10 05:24:10,631 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-12-10 05:24:10,705 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-12-10 05:24:11,461 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-12-10 05:24:29,425 - [INFO] - 📊 Original rows: 500
+2025-12-10 05:24:29,427 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2025-12-10 05:24:29,427 - [INFO] - ✅ Converted Noise Tag to text
+2025-12-10 05:24:29,427 - [INFO] - ✅ NO DELETION - All 500 rows will be processed
+2025-12-10 05:24:29,429 - [INFO] - 
+================================================================================
+2025-12-10 05:24:29,429 - [INFO] - [DEDUPLICATION] Creating groups for identical content
+2025-12-10 05:24:29,429 - [INFO] - ================================================================================
+2025-12-10 05:24:29,434 - [INFO] - ✅ Deduplication: 500 rows → 488 unique groups + 12 duplicates
+2025-12-10 05:24:29,434 - [INFO] - 💰 API savings from deduplication: 12 calls
+2025-12-10 05:24:29,435 - [INFO] - 📊 Channel split: Mainstream=67, Social=433
+2025-12-10 05:24:29,435 - [INFO] - 
+================================================================================
+2025-12-10 05:24:29,435 - [INFO] - [PRE-FILTER] Checking content eligibility
+2025-12-10 05:24:29,435 - [INFO] - ================================================================================
+2025-12-10 05:24:29,459 - [INFO] - ✅ Content filter: 460 eligible, 40 skipped (<5 words)
+2025-12-10 05:24:29,459 - [INFO] - 💰 API savings from pre-filter: 40 topic extractions skipped
+2025-12-10 05:24:29,460 - [INFO] - 
+================================================================================
+2025-12-10 05:24:29,460 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT (MASTER ROWS, ELIGIBLE CONTENT)
+2025-12-10 05:24:29,460 - [INFO] - ================================================================================
+2025-12-10 05:24:29,461 - [INFO] - 📊 Processing 300 master rows (eligible content only)
+2025-12-10 05:24:42,086 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:24:56,935 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:25:03,388 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:25:18,283 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:25:30,875 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:25:38,920 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:25:38,970 - [INFO] - 📋 Copying results to duplicate rows...
+2025-12-10 05:25:39,054 - [INFO] - [STEP 1/4] ✅ Sub Topic: 203/500 (40.6%)
+2025-12-10 05:25:39,055 - [INFO] - [STEP 1/4] ✅ Sentiment: 500/500 (100.0%)
+2025-12-10 05:25:39,055 - [INFO] - 
+================================================================================
+2025-12-10 05:25:39,055 - [INFO] - [STEP 3/4] RETRY FAILED SUB TOPICS (success rate: 40.6% < 95%)
+2025-12-10 05:25:39,055 - [INFO] - ================================================================================
+2025-12-10 05:25:39,057 - [INFO] - [STEP 3/4] Found 250 master rows with failed sub topics
+2025-12-10 05:25:46,288 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:25:54,478 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:26:01,226 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:26:08,813 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:26:17,621 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:26:26,224 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:26:33,188 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:26:40,043 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:26:42,885 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:26:42,905 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-10 05:26:42,973 - [INFO] - [STEP 3/4] ✅ Sub Topic (after retry): 391/500 (78.2%)
+2025-12-10 05:26:42,973 - [INFO] - 
+================================================================================
+2025-12-10 05:26:42,974 - [INFO] - [STEP 4/4] NORMALIZATION (PER CAMPAIGN WITH ENGAGEMENT)
+2025-12-10 05:26:42,974 - [INFO] - ================================================================================
+2025-12-10 05:26:42,974 - [INFO] - [PREP] Calculating engagement weights...
+2025-12-10 05:26:42,979 - [INFO] - 
+================================================================================
+2025-12-10 05:26:42,979 - [INFO] - [NORMALIZATION 1/1] Campaign: 'Le Minerale.'
+2025-12-10 05:26:42,979 - [INFO] - ================================================================================
+2025-12-10 05:26:42,980 - [INFO] -   └─ Sub topics: 347
+2025-12-10 05:26:42,980 - [INFO] -   └─ Total Engagement: 463,943
+2025-12-10 05:26:42,996 - [INFO] -   └─ Pre-clustering: 347 → 239 groups
+2025-12-10 05:26:42,996 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2025-12-10 05:27:12,616 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-10 05:27:12,632 - [INFO] -   └─ Consolidation: 239 groups → 17 topics
+2025-12-10 05:27:12,663 - [INFO] - 
+================================================================================
+2025-12-10 05:27:12,663 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Le Minerale.'
+2025-12-10 05:27:12,663 - [INFO] - ================================================================================
+2025-12-10 05:27:12,663 - [INFO] - Total Engagement: 463,943
+2025-12-10 05:27:12,663 - [INFO] - 
+Top 10 Topics by Engagement:
+2025-12-10 05:27:12,664 - [INFO] -   1. Dukungan Le Minerale                     | Engagement:    210,537 ( 45.4%) | Sub Topics: 116
+2025-12-10 05:27:12,664 - [INFO] -   2. Lainnya                                  | Engagement:     75,098 ( 16.2%) | Sub Topics: 301
+2025-12-10 05:27:12,664 - [INFO] -   3. Kesadaran Merek Le Minerale              | Engagement:     70,424 ( 15.2%) | Sub Topics:   3
+2025-12-10 05:27:12,664 - [INFO] -   4. Kegiatan Lari Le Minerale                | Engagement:     50,543 ( 10.9%) | Sub Topics:  17
+2025-12-10 05:27:12,665 - [INFO] -   5. Kekhawatiran Konsumen                    | Engagement:     26,960 (  5.8%) | Sub Topics:   3
+2025-12-10 05:27:12,665 - [INFO] -   6. Dukungan untuk Pelari Pemula             | Engagement:     25,618 (  5.5%) | Sub Topics:   7
+2025-12-10 05:27:12,665 - [INFO] -   7. Perbandingan Merek Air Mineral           | Engagement:      2,316 (  0.5%) | Sub Topics:   6
+2025-12-10 05:27:12,665 - [INFO] -   8. Kualitas Air Mineral                     | Engagement:      1,680 (  0.4%) | Sub Topics:   7
+2025-12-10 05:27:12,665 - [INFO] -   9. Hidrasi Sehat                            | Engagement:        498 (  0.1%) | Sub Topics:   6
+2025-12-10 05:27:12,665 - [INFO] -   10. Dukungan Acara Olahraga                  | Engagement:        139 (  0.0%) | Sub Topics:   4
+2025-12-10 05:27:12,666 - [INFO] - 
+📊 Top 3 topics cover 80% of engagement
+2025-12-10 05:27:12,666 - [INFO] -   └─ Reduction: 95.1%
+2025-12-10 05:27:12,679 - [INFO] - [STEP 4/4] ✅ Topic: 391/500 (78.2%)
+2025-12-10 05:27:12,679 - [INFO] - [STEP 4/4] 📊 Grouping: 346 sub topics → 18 topics (94.8% reduction)
+2025-12-10 05:27:12,679 - [INFO] - 
+================================================================================
+2025-12-10 05:27:12,679 - [INFO] - [FINALIZATION] Preparing output
+2025-12-10 05:27:12,679 - [INFO] - ================================================================================
+2025-12-10 05:27:12,681 - [INFO] - ✅ Row count verified: 500 → 500 (unchanged)
+2025-12-10 05:27:12,902 - [INFO] - 
+================================================================================
+2025-12-10 05:27:12,902 - [INFO] - ✅ PROCESSING COMPLETE
+2025-12-10 05:27:12,902 - [INFO] - ================================================================================
+2025-12-10 05:27:12,903 - [INFO] - Rows: 500 → 500 (unchanged: True)
+2025-12-10 05:27:12,903 - [INFO] - Deduplication: 488 groups, 12 duplicates (saved 12 calls)
+2025-12-10 05:27:12,903 - [INFO] - Pre-filter: 460 eligible, 40 skipped (saved 40 topic calls)
+2025-12-10 05:27:12,903 - [INFO] - Duration: 163.36s | Cost: $0.017133
+2025-12-10 05:27:12,903 - [INFO] - Language: Indonesia
+2025-12-10 05:27:12,903 - [INFO] - Normalization: 347 sub topics → 18 topics (94.8% reduction)
+2025-12-10 05:27:12,903 - [INFO] - Sub Topic (initial): 203/500 (40.6%)
+2025-12-10 05:27:12,903 - [INFO] - Sentiment: 500/500 (100.0%)
+2025-12-10 05:27:12,903 - [INFO] - Sub Topic (after retry): 391/500 (78.2%)
+2025-12-10 05:27:12,903 - [INFO] - Topic: 391/500 (78.2%)
