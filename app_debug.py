@@ -59,23 +59,20 @@ if not OPENAI_API_KEY:
 client = OpenAI(api_key=OPENAI_API_KEY)
 MODEL_NAME = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
-INITIAL_BATCH_SIZE = 20
-INITIAL_TRUNCATE = 200
-
-RETRY_CONFIGS = [
-    {"batch_size": 15, "truncate": 250},
-    {"batch_size": 10, "truncate": 300},
-    {"batch_size": 5, "truncate": 400}
-]
-
+BATCH_SIZE = 50
 MAINSTREAM_BATCH_SIZE = 30
-MAX_RETRIES = 3
+RETRY_BATCH_SIZE = 30
+MAX_RETRIES = 2
+TRUNCATE_WORDS = 100
+MAINSTREAM_TRUNCATE_WORDS = 150
+RETRY_TRUNCATE_WORDS = 200
 
 MIN_CONTENT_WORDS_FOR_TOPIC = 5
 
+SIMILARITY_THRESHOLD = 0.40
+TARGET_TOPICS_PER_CAMPAIGN = 20
+SKIP_RETRY_THRESHOLD = 0.95
 ENGAGEMENT_WEIGHT = 0.7
-NORMALIZATION_BATCH_SIZE = 500
-TOPICS_PER_100_SUBTOPICS = 5
 
 MAINSTREAM_CHANNELS = [
     'tv', 'radio', 'newspaper', 'online', 'printmedia', 'site',
@@ -90,7 +87,7 @@ LANGUAGE_CONFIGS = {
         "code": "id",
         "name": "Bahasa Indonesia",
         "prompt_instruction": "Use Bahasa Indonesia for topic and sub_topic",
-        "word_count": "3-8 kata",
+        "word_count": "3-7 kata",
         "stopwords": ['yang', 'dan', 'di', 'dari', 'ke', 'untuk', 'dengan', 'pada',
                      'ini', 'itu', 'adalah', 'akan', 'atau', 'juga', 'tidak', 'bisa',
                      'ada', 'sudah', 'nya', 'si', 'oleh', 'dalam', 'sebagai', 'telah']
@@ -99,7 +96,7 @@ LANGUAGE_CONFIGS = {
         "code": "en",
         "name": "English",
         "prompt_instruction": "Use English for topic and sub_topic",
-        "word_count": "3-8 words",
+        "word_count": "3-10 words",
         "stopwords": ['the', 'a', 'an', 'in', 'on', 'at', 'to', 'of', 'for', 'is', 
                      'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had',
                      'do', 'does', 'did', 'will', 'would', 'should', 'could', 'can']
@@ -108,14 +105,14 @@ LANGUAGE_CONFIGS = {
         "code": "th",
         "name": "ภาษาไทย (Thai)",
         "prompt_instruction": "Use Thai language (ภาษาไทย) for topic and sub_topic",
-        "word_count": "3-8 คำ",
+        "word_count": "3-7 คำ",
         "stopwords": ['ที่', 'และ', 'ใน', 'เป็น', 'ของ', 'กับ', 'ได้', 'มี', 'ให้', 'จาก']
     },
     "China": {
         "code": "zh",
         "name": "简体中文 (Simplified Chinese)",
         "prompt_instruction": "Use Simplified Chinese (简体中文) for topic and sub_topic",
-        "word_count": "3-8 个词",
+        "word_count": "3-7 个词",
         "stopwords": ['的', '是', '在', '了', '和', '有', '为', '也', '与', '或']
     }
 }
@@ -218,7 +215,7 @@ class TokenTracker:
 def safe_text(x):
     return "" if pd.isna(x) else str(x).strip()
 
-def truncate_to_first_n_words(text: str, n: int) -> str:
+def truncate_to_first_n_words(text: str, n: int = TRUNCATE_WORDS) -> str:
     words = text.split()
     return " ".join(words[:n])
 
@@ -243,8 +240,6 @@ def normalize_column_names(df: pd.DataFrame) -> pd.DataFrame:
             column_mapping[col] = 'Content'
         elif col_lower in ['engagement']:
             column_mapping[col] = 'Engagement'
-        elif col_lower == 'type':
-            column_mapping[col] = 'Type'
     
     if column_mapping:
         df = df.rename(columns=column_mapping)
@@ -254,6 +249,7 @@ def normalize_column_names(df: pd.DataFrame) -> pd.DataFrame:
 
 def clean_content_for_analysis(text: str) -> str:
     text = re.sub(r'http\S+|www\.\S+', '', text)
+    
     text = re.sub(r'#\w+', '', text)
     
     emoji_pattern = re.compile("["
@@ -282,7 +278,9 @@ def normalize_topic_text(text: str, language: str) -> str:
         return ""
     
     text = re.sub(r'#\w+', '', text)
+    
     text = re.sub(r'@\w+', '', text)
+    
     text = re.sub(r'http\S+|www\.\S+', '', text)
     
     emoji_pattern = re.compile("["
@@ -298,6 +296,7 @@ def normalize_topic_text(text: str, language: str) -> str:
     text = emoji_pattern.sub('', text)
     
     text = re.sub(r'[^\w\s\u0E00-\u0E7F\u4E00-\u9FFF]', ' ', text)
+    
     text = re.sub(r'\s+', ' ', text).strip()
     
     noise_words = {
@@ -322,7 +321,7 @@ def normalize_topic_text(text: str, language: str) -> str:
     else:
         return text.title()
 
-def validate_and_normalize_subtopic(text: str, language: str, min_words: int = 3, max_words: int = 8) -> str:
+def validate_and_normalize_subtopic(text: str, language: str, min_words: int = 3, max_words: int = 10) -> str:
     normalized = normalize_topic_text(text, language)
     
     if not normalized:
@@ -336,7 +335,7 @@ def validate_and_normalize_subtopic(text: str, language: str, min_words: int = 3
     
     return normalized
 
-def validate_and_normalize_topic(text: str, language: str, min_words: int = 3, max_words: int = 8) -> str:
+def validate_and_normalize_topic(text: str, language: str, min_words: int = 2, max_words: int = 6) -> str:
     normalized = normalize_topic_text(text, language)
     
     if not normalized:
@@ -483,7 +482,7 @@ def create_dedup_hash(row, title_col, content_col):
     combined = combine_title_content_row(row, title_col, content_col)
     return hashlib.md5(combined.encode()).hexdigest()
 
-def build_toon_input(batch_df, title_col, content_col, batch_size, truncate_words, clean_content=False):
+def build_toon_input(batch_df, title_col, content_col, batch_size, truncate_words=TRUNCATE_WORDS, clean_content=False):
     lines = [f"batch[{batch_size}]{{row|text}}:"]
     
     for idx, row in batch_df.iterrows():
@@ -545,7 +544,7 @@ def parse_gpt_response(response: str, expected_fields: list, batch_size: int, tr
     tracker.add_parse_result("failed")
     return [], "failed"
 
-def chat_create(model, messages, token_tracker=None, max_retries=2):
+def chat_create(model, messages, token_tracker=None, max_retries=MAX_RETRIES):
     for attempt in range(max_retries):
         try:
             response = client.chat.completions.create(
@@ -579,14 +578,10 @@ def process_batch_combined(
     language: str,
     conf_threshold: int,
     token_tracker: TokenTracker,
-    batch_size: int,
-    truncate_words: int,
-    campaign_name: str = "",
-    campaign_progress: str = "",
     progress=gr.Progress()
 ) -> pd.DataFrame:
     
-    actual_batch_size = len(batch_df)
+    batch_size = len(batch_df)
     lang_config = LANGUAGE_CONFIGS[language]
     
     if 'Sub Topic' not in batch_df.columns:
@@ -596,7 +591,7 @@ def process_batch_combined(
     if 'New Sentiment Level' not in batch_df.columns:
         batch_df['New Sentiment Level'] = 0
     
-    input_toon = build_toon_input(batch_df, title_col, content_col, actual_batch_size, truncate_words, clean_content=True)
+    input_toon = build_toon_input(batch_df, title_col, content_col, batch_size, clean_content=True)
     
     nonce = random.randint(100000, 999999)
     
@@ -611,54 +606,40 @@ INPUT (TOON format, content may be in ANY language):
 TASK: Analyze content and extract insights
 - Content may be in: Thai (ภาษาไทย), English, Chinese (中文), Indonesian, mixed languages, etc.
 - You MUST UNDERSTAND content regardless of input language
-- EXTRACT specific sub topic ({lang_config['word_count']})
+- EXTRACT core concept/topic ({lang_config['word_count']})
 - ANALYZE sentiment (positive/negative/neutral)
 - ASSESS confidence (0-100)
 - OUTPUT everything in {language}
 
-MANDATORY SPECIFICITY RULES FOR SUB TOPIC:
-1. MUST be CONCRETE and SPECIFIC - include context/event/issue/activity
-2. MUST include brand/product name if mentioned prominently
-3. AVOID abstract feelings: kesegaran, manfaat, pengaruh, reaksi, kesan
-4. PREFER specific: event names, issues, activities, locations
-5. Length: {lang_config['word_count']} - be descriptive but concise
-
-GOOD EXAMPLES (SPECIFIC):
-✅ "Le Minerale di Jakarta Running Festival" (event + brand)
-✅ "Klarifikasi Sumber Air Le Minerale" (specific issue)
-✅ "Promo Galon Le Minerale di Alfamart" (specific activity + location)
-✅ "Kritik Kualitas Kemasan Le Minerale" (specific criticism)
-
-BAD EXAMPLES (TOO GENERIC):
-❌ "Kesegaran Le Minerale" (abstract feeling)
-❌ "Manfaat Air Mineral" (too broad)
-❌ "Pengaruh Le Minerale" (vague)
-❌ "Info Terbaru" (noise words)
+CRITICAL RULES:
+- Sub topic MUST be in {language} ({lang_config['word_count']})
+- Capture core meaning, not literal word-by-word translation
+- Sub topic: clear and specific, NO generic words like "berita", "news", "info", "viral", "trending"
+- Sentiment: positive/negative/neutral based on emotion
+- Confidence: 0-100 (your certainty level)
+- NEVER use "unknown", "nan", "none", "tidak jelas"
+- NEVER output in source language if different from {language}
+- If you cannot determine sub topic, leave it EMPTY (use "-")
+- DO NOT include noise words: berita, info, informasi, viral, trending, terbaru
 
 SENTIMENT RULES:
 - positive: clear positive emotion, praise, satisfaction, achievement
 - negative: clear negative emotion, complaint, disappointment, criticism
 - neutral: factual, informational, no clear emotion, or ambiguous
 
-CRITICAL:
-- NEVER use "unknown", "nan", "none", "tidak jelas"
-- NEVER use noise words: berita, info, viral, trending, update, artikel
-- If cannot extract SPECIFIC sub topic, use "-"
-
 OUTPUT FORMAT (TOON with pipe delimiter |):
-result[{actual_batch_size}]{{row|sub_topic|sentiment|confidence}}:
-<row_index>|<specific sub_topic in {language} or ->|<sentiment>|<confidence_0-100>
+result[{batch_size}]{{row|sub_topic|sentiment|confidence}}:
+<row_index>|<sub_topic in {language} or ->|<sentiment>|<confidence_0-100>
 
 YOUR OUTPUT (TOON format only):"""
     
     try:
-        progress_desc = f"[STEP 1/4] {campaign_progress}Sub Topic+Sentiment {batch_num}/{total_batches}"
-        progress(0.5, desc=progress_desc)
+        progress(0.5, desc=f"Sub Topic+Sentiment {batch_num}/{total_batches}")
         
         response = chat_create(
             MODEL_NAME,
             [
-                {"role": "system", "content": f"You are an insights professional. Output TOON format only. {lang_config['prompt_instruction']}. Handle multi-language input, output in {language}. FOCUS ON SPECIFIC CONTEXT."},
+                {"role": "system", "content": f"You are an insights professional. Output TOON format only. {lang_config['prompt_instruction']}. Handle multi-language input, output in {language}."},
                 {"role": "user", "content": prompt}
             ],
             token_tracker=token_tracker
@@ -668,7 +649,7 @@ YOUR OUTPUT (TOON format only):"""
             raise Exception("API call failed")
         
         raw = response.choices[0].message.content.strip()
-        data, format_type = parse_gpt_response(raw, ['row', 'sub_topic', 'sentiment', 'confidence'], actual_batch_size, token_tracker)
+        data, format_type = parse_gpt_response(raw, ['row', 'sub_topic', 'sentiment', 'confidence'], batch_size, token_tracker)
         
         if not data:
             return batch_df
@@ -725,8 +706,6 @@ def process_batch_spokesperson(
     title_col: str,
     content_col: str,
     token_tracker: TokenTracker,
-    campaign_name: str = "",
-    campaign_progress: str = "",
     progress=gr.Progress()
 ) -> pd.DataFrame:
     
@@ -734,7 +713,7 @@ def process_batch_spokesperson(
     
     batch_df['New Spokesperson'] = ''
     
-    input_toon = build_toon_input(batch_df, title_col, content_col, batch_size, 150)
+    input_toon = build_toon_input(batch_df, title_col, content_col, batch_size, truncate_words=MAINSTREAM_TRUNCATE_WORDS)
     
     nonce = random.randint(100000, 999999)
     
@@ -760,8 +739,7 @@ result[{batch_size}]{{row|spokesperson}}:
 YOUR OUTPUT (TOON format only):"""
     
     try:
-        progress_desc = f"[STEP 2/4] {campaign_progress}Spokesperson {batch_num}/{total_batches}"
-        progress(0.5, desc=progress_desc)
+        progress(0.5, desc=f"Spokesperson {batch_num}/{total_batches}")
         
         response = chat_create(
             MODEL_NAME,
@@ -811,72 +789,55 @@ def retry_sub_topic_batch(
     content_col: str,
     language: str,
     token_tracker: TokenTracker,
-    batch_size: int,
-    truncate_words: int,
-    retry_num: int,
-    campaign_progress: str = "",
     progress=gr.Progress()
 ) -> pd.DataFrame:
     
-    actual_size = len(batch_df)
+    batch_size = len(batch_df)
     lang_config = LANGUAGE_CONFIGS[language]
     
     input_toon = build_toon_input(
         batch_df, 
         title_col, 
         content_col, 
-        actual_size,
-        truncate_words,
+        batch_size,
+        truncate_words=RETRY_TRUNCATE_WORDS,
         clean_content=True
     )
     
     nonce = random.randint(100000, 999999)
     
-    prompt = f"""🚨🚨🚨 RETRY #{retry_num} - MANDATORY SPECIFIC EXTRACTION 🚨🚨🚨
+    prompt = f"""🚨🚨🚨 FINAL WARNING - MANDATORY EXTRACTION 🚨🚨🚨
+
+THIS IS YOUR ABSOLUTE LAST CHANCE!
 
 [Request ID: {nonce}]
 [OUTPUT LANGUAGE: {language}]
-[EXTENDED CONTEXT: {truncate_words} words for better analysis]
 
 INPUT (TOON format, content may be ANY language):
 {input_toon}
 
-CRITICAL MISSION: Extract SPECIFIC sub topic from EVERY row
-
-MANDATORY SPECIFICITY RULES:
-1. Content may be ANY language - you MUST understand it
-2. Extract CONCRETE context: WHO/WHAT/WHERE/WHEN if available
-3. AVOID abstract: kesegaran, manfaat, pengaruh, reaksi
-4. PREFER specific: event names, issues, activities, products
-5. Include brand/product if mentioned
-6. Length: {lang_config['word_count']}
-
-EXAMPLES:
-✅ "Klarifikasi Sumber Air Le Minerale di DPR"
-✅ "Promo Galon Le Minerale di Alfamart"
-✅ "Jakarta Running Festival dengan Le Minerale"
-❌ "Manfaat Le Minerale" (too generic)
-❌ "Info Terbaru" (noise words)
-
-RULES:
-- NEVER use: "unknown", "tidak jelas", "berita", "info", "viral"
-- If really cannot extract SPECIFIC context, use "-"
-- OUTPUT in {language} only
+MANDATORY RULES:
+1. Content may be in ANY language (Thai, English, Chinese, mixed, etc.)
+2. You MUST UNDERSTAND and EXTRACT main topic from EVERY row
+3. OUTPUT in {language} ({lang_config['word_count']})
+4. Even if unclear, extract KEYWORDS or main concept
+5. NEVER use: "unknown", "tidak jelas", "nan", "berita", "info", "viral", "trending"
+6. NEVER output in source language - ALWAYS use {language}
+7. If you really cannot extract anything meaningful, use "-"
 
 OUTPUT (TOON format):
-result[{actual_size}]{{row|sub_topic}}:
-<row_index>|<specific sub_topic in {language} or ->
+result[{batch_size}]{{row|sub_topic}}:
+<row_index>|<sub_topic in {language} or ->
 
 YOUR OUTPUT:"""
     
     try:
-        progress_desc = f"[STEP 3/4] {campaign_progress}Retry #{retry_num} ({actual_size} rows, {truncate_words}w)..."
-        progress(0.95, desc=progress_desc)
+        progress(0.95, desc=f"Retrying Sub Topics...")
         
         response = chat_create(
             MODEL_NAME,
             [
-                {"role": "system", "content": f"CRITICAL RETRY. {lang_config['prompt_instruction']}. Multi-language input. EXTRACT SPECIFIC CONTEXT. No generic terms."},
+                {"role": "system", "content": f"CRITICAL RETRY. {lang_config['prompt_instruction']}. Handle multi-language input. NEVER use 'unknown'."},
                 {"role": "user", "content": prompt}
             ],
             token_tracker=token_tracker
@@ -886,7 +847,7 @@ YOUR OUTPUT:"""
             raise Exception("API call failed")
         
         raw = response.choices[0].message.content.strip()
-        data, format_type = parse_gpt_response(raw, ['row', 'sub_topic'], actual_size, token_tracker)
+        data, format_type = parse_gpt_response(raw, ['row', 'sub_topic'], batch_size, token_tracker)
         
         if not data:
             data = []
@@ -913,560 +874,410 @@ YOUR OUTPUT:"""
                     if sub_topic:
                         batch_df.at[idx, 'Sub Topic'] = sub_topic
         
+        still_empty_mask = (batch_df['Sub Topic'].isna()) | (batch_df['Sub Topic'].astype(str).str.strip() == '')
+        
+        if still_empty_mask.sum() > 0:
+            for idx in batch_df[still_empty_mask].index:
+                row = batch_df.loc[idx]
+                combined = combine_title_content_row(row, title_col, content_col)
+                combined = clean_content_for_analysis(combined)
+                fallback_topic = extract_keywords_fallback(combined, output_language=language)
+                
+                if fallback_topic != GENERIC_PLACEHOLDERS.get(language, "Media Content Topic"):
+                    fallback_topic = validate_and_normalize_subtopic(fallback_topic, language)
+                    if fallback_topic:
+                        batch_df.at[idx, 'Sub Topic'] = fallback_topic
+        
         return batch_df
         
     except Exception as e:
+        still_empty_mask = (batch_df['Sub Topic'].isna()) | (batch_df['Sub Topic'].astype(str).str.strip() == '')
+        
+        for idx in batch_df[still_empty_mask].index:
+            row = batch_df.loc[idx]
+            combined = combine_title_content_row(row, title_col, content_col)
+            combined = clean_content_for_analysis(combined)
+            fallback_topic = extract_keywords_fallback(combined, output_language=language)
+            
+            if fallback_topic != GENERIC_PLACEHOLDERS.get(language, "Media Content Topic"):
+                fallback_topic = validate_and_normalize_subtopic(fallback_topic, language)
+                if fallback_topic:
+                    batch_df.at[idx, 'Sub Topic'] = fallback_topic
+        
         return batch_df
 
-def calculate_target_topics(unique_count: int) -> int:
-    """Calculate target topics: 5 topics per 100 sub topics"""
-    target = max(5, (unique_count // 100) * 5)
-    if unique_count % 100 >= 50:
-        target += 5
-    return target
-
-def openai_generate_topics(
-    sub_topics_with_engagement: list,
-    language: str,
-    target_topics: int,
-    token_tracker: TokenTracker
-) -> list:
+def prepare_engagement_data(df, campaign_col='Campaigns'):
+    engagement_col = 'Engagement' if 'Engagement' in df.columns else None
     
-    lang_config = LANGUAGE_CONFIGS[language]
-    nonce = random.randint(100000, 999999)
-    
-    sub_topics_text = "\n".join([
-        f"{i+1}. {st['sub_topic']} ({st['engagement']:,.0f} engagement, {st['frequency']} mentions)"
-        for i, st in enumerate(sub_topics_with_engagement)
-    ])
-    
-    prompt = f"""You are a topic normalization expert with focus on SPECIFIC, MEANINGFUL categories.
-
-[Request ID: {nonce}]
-[OUTPUT LANGUAGE: {language}]
-
-INPUT: {len(sub_topics_with_engagement)} sub topics (sorted by engagement, highest first)
-
-Sub Topics:
-{sub_topics_text}
-
-TASK:
-Generate approximately {target_topics} NORMALIZED TOPICS (range: {max(5, target_topics-5)} to {target_topics+5})
-- Each topic: 3-8 words in {language}
-- Topics must be SPECIFIC, CONCRETE, and MEANINGFUL
-- Group similar sub topics under clear category names
-- HIGH-ENGAGEMENT sub topics (top of list) are MOST IMPORTANT for naming
-
-MANDATORY RULES:
-⭐ Prioritize HIGH-ENGAGEMENT content for topic names
-⭐ Topics must be SPECIFIC and ACTIONABLE
-⭐ AVOID generic/abstract: manfaat, kesegaran, pengaruh, reaksi
-⭐ PREFER concrete: specific events, issues, activities, products
-⭐ NO noise words: berita, info, viral, trending, update, artikel
-⭐ Each topic must be DISTINCT and NON-OVERLAPPING
-
-GOOD EXAMPLES (SPECIFIC):
-✅ "Klarifikasi Sumber Air di DPR" (specific issue)
-✅ "Le Minerale di Event Olahraga" (specific context)
-✅ "Promo dan Jastip Galon" (specific activity)
-✅ "Kritik Kualitas dan Kemasan" (specific problem)
-
-BAD EXAMPLES (TOO GENERIC):
-❌ "Manfaat Le Minerale" (abstract)
-❌ "Info Produk" (noise words)
-❌ "Kesegaran dan Hidrasi" (too vague)
-
-OUTPUT FORMAT (TOON with pipe delimiter |):
-topics[{target_topics}]{{topic}}:
-<topic_name_1>
-<topic_name_2>
-...
-
-YOUR OUTPUT (TOON format only):"""
-    
-    try:
-        response = chat_create(
-            MODEL_NAME,
-            [
-                {"role": "system", "content": f"You are a topic expert. {lang_config['prompt_instruction']}. Output TOON format only. FOCUS ON SPECIFIC, CONCRETE CATEGORIES."},
-                {"role": "user", "content": prompt}
-            ],
-            token_tracker=token_tracker
+    if not engagement_col:
+        logging.warning("⚠️ 'Engagement' column not found, using frequency only")
+        engagement_map = df.groupby([campaign_col, 'Sub Topic']).agg({
+            'Title': 'count'
+        }).reset_index()
+        engagement_map.columns = [campaign_col, 'Sub Topic', 'Frequency']
+        engagement_map['Total_Engagement'] = 0
+        engagement_map['Weight_Score'] = engagement_map['Frequency']
+    else:
+        engagement_map = df.groupby([campaign_col, 'Sub Topic']).agg({
+            engagement_col: 'sum',
+            'Title': 'count'
+        }).reset_index()
+        
+        engagement_map.columns = [campaign_col, 'Sub Topic', 'Total_Engagement', 'Frequency']
+        
+        engagement_map['Weight_Score'] = (
+            engagement_map['Total_Engagement'] * ENGAGEMENT_WEIGHT +
+            engagement_map['Frequency'] * (1 - ENGAGEMENT_WEIGHT)
         )
-        
-        if not response:
-            logging.warning("Topic generation API call failed")
-            return []
-        
-        raw = response.choices[0].message.content.strip()
-        lines = raw.strip().split('\n')
-        
-        topics = []
-        data_start = False
-        
-        for line in lines:
-            if 'topics[' in line.lower() and '{' in line and '}' in line:
-                data_start = True
-                continue
-            
-            if data_start:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    topic = validate_and_normalize_topic(line, language)
-                    if topic:
-                        topics.append(topic)
-        
-        logging.info(f"Generated {len(topics)} normalized topics")
-        return topics
-        
-    except Exception as e:
-        logging.error(f"Topic generation error: {e}")
-        return []
-
-def openai_map_subtopics(
-    all_sub_topics: list,
-    normalized_topics: list,
-    language: str,
-    token_tracker: TokenTracker
-) -> dict:
     
-    if not normalized_topics:
-        logging.warning("No normalized topics provided for mapping")
-        return {}
+    return engagement_map
+
+def extract_significant_words(text: str, language: str) -> list:
+    stopwords = set(LANGUAGE_CONFIGS.get(language, {}).get('stopwords', []))
     
-    lang_config = LANGUAGE_CONFIGS[language]
-    nonce = random.randint(100000, 999999)
+    words = text.lower().split()
+    keywords = [w for w in words if w not in stopwords and len(w) > 2 and not w.isdigit()]
     
-    topics_text = "\n".join([f"{i+1}. {topic}" for i, topic in enumerate(normalized_topics)])
-    sub_topics_text = "\n".join([f"{i+1}. {st}" for i, st in enumerate(all_sub_topics)])
+    return keywords
+
+def pre_cluster_with_engagement(sub_topics: list, 
+                                engagement_data: pd.DataFrame,
+                                language: str,
+                                threshold: float = SIMILARITY_THRESHOLD) -> dict:
+    engagement_lookup = dict(zip(
+        engagement_data['Sub Topic'], 
+        engagement_data['Weight_Score']
+    ))
     
-    prompt = f"""You are a mapping expert with focus on SEMANTIC SIMILARITY.
-
-[Request ID: {nonce}]
-
-INPUT:
-{len(normalized_topics)} Normalized Topics:
-{topics_text}
-
-{len(all_sub_topics)} Sub Topics to Map:
-{sub_topics_text}
-
-TASK:
-Map each sub topic to the MOST SEMANTICALLY SIMILAR normalized topic.
-
-RULES:
-- Match based on MEANING and CONTEXT, not just keywords
-- If sub topic clearly belongs to a topic category, map it
-- If NO good semantic match exists, leave UNMAPPED (use "-")
-- NEVER force mapping if similarity is low
-- Consider: same event, same issue, same activity type, same product focus
-
-OUTPUT FORMAT (TOON with pipe delimiter |):
-mapping[{len(all_sub_topics)}]{{sub_topic|normalized_topic}}:
-<sub_topic_1>|<matched_topic or ->
-<sub_topic_2>|<matched_topic or ->
-...
-
-YOUR OUTPUT (TOON format only):"""
+    keyword_map = {}
+    for st in sub_topics:
+        keywords = extract_significant_words(st, language)
+        keyword_map[st] = set(keywords)
     
-    try:
-        response = chat_create(
-            MODEL_NAME,
-            [
-                {"role": "system", "content": f"You are a mapping expert. {lang_config['prompt_instruction']}. Output TOON format only. Focus on SEMANTIC SIMILARITY."},
-                {"role": "user", "content": prompt}
-            ],
-            token_tracker=token_tracker
-        )
-        
-        if not response:
-            logging.warning("Mapping API call failed")
-            return {}
-        
-        raw = response.choices[0].message.content.strip()
-        
-        # ========================================
-        # MORE ROBUST PARSING - CRITICAL FIX
-        # ========================================
-        lines = raw.strip().split('\n')
-        
-        mapping = {}
-        
-        for line in lines:
-            line = line.strip()
-            
-            # Skip empty lines, comments, code blocks
-            if not line or line.startswith('#') or line.startswith('```') or line.startswith('**'):
-                continue
-            
-            # Skip header lines (contain 'mapping[' or descriptive text without |)
-            if 'mapping[' in line.lower():
-                continue
-            if '{' in line and '}' in line and ':' in line and '|' not in line:
-                continue
-            
-            # Skip explanation lines (no pipe delimiter)
-            if '|' not in line:
-                continue
-            
-            # Parse data lines (must contain |)
-            parts = line.split('|', 1)
-            if len(parts) == 2:
-                sub_topic = parts[0].strip()
-                topic = parts[1].strip()
-                
-                # Remove numbering if present (e.g., "1. Sub Topic" → "Sub Topic")
-                if sub_topic and sub_topic[0].isdigit():
-                    if '. ' in sub_topic:
-                        sub_topic = sub_topic.split('. ', 1)[1].strip()
-                    elif ' ' in sub_topic and sub_topic.split()[0].replace('.', '').isdigit():
-                        sub_topic = ' '.join(sub_topic.split()[1:]).strip()
-                
-                # Validate and add to mapping
-                if (sub_topic and topic and 
-                    len(sub_topic) >= 3 and  # Real sub topic
-                    topic != '-' and 
-                    not is_invalid_value(topic)):
-                    mapping[sub_topic] = topic
-        
-        mapped_count = len(mapping)
-        unmapped_count = len(all_sub_topics) - mapped_count
-        
-        logging.info(f"Mapped {mapped_count}/{len(all_sub_topics)} sub topics ({unmapped_count} unmapped)")
-        
-        # ========================================
-        # ENHANCED DEBUG LOGGING
-        # ========================================
-        if mapped_count == 0:
-            logging.error(f"❌ ZERO MAPPINGS CREATED!")
-            logging.error(f"Raw API response (first 500 chars):")
-            logging.error(raw[:500])
-            logging.error(f"Response has {len(lines)} lines")
-            logging.error(f"Lines preview: {lines[:5]}")
-        elif mapped_count < len(all_sub_topics) * 0.3:
-            logging.warning(f"⚠️ LOW MAPPING RATE: {mapped_count}/{len(all_sub_topics)} ({mapped_count/len(all_sub_topics)*100:.1f}%)")
-            logging.warning(f"Sample unmapped sub topics (first 5):")
-            unmapped = [st for st in all_sub_topics if st not in mapping]
-            for st in unmapped[:5]:
-                logging.warning(f"   - '{st}'")
-        
-        return mapping
-        
-    except Exception as e:
-        logging.error(f"Mapping error: {e}")
-        import traceback
-        logging.error(traceback.format_exc())
-        return {}
-
-def openai_consolidate_topics(
-    all_topics: list,
-    target_final: int,
-    language: str,
-    token_tracker: TokenTracker
-) -> dict:
-    """Consolidate multiple topic sets into final unified set"""
+    groups = {}
+    used = set()
+    group_id = 0
     
-    lang_config = LANGUAGE_CONFIGS[language]
-    nonce = random.randint(100000, 999999)
+    sorted_subtopics = sorted(
+        sub_topics, 
+        key=lambda x: engagement_lookup.get(x, 0), 
+        reverse=True
+    )
     
-    topics_text = "\n".join([f"{i+1}. {topic}" for i, topic in enumerate(all_topics)])
-    
-    prompt = f"""You are a topic consolidation expert.
-
-[Request ID: {nonce}]
-
-INPUT: {len(all_topics)} topics from multiple batches (may have duplicates/overlaps)
-
-Topics:
-{topics_text}
-
-TASK:
-Consolidate into {target_final} FINAL UNIFIED TOPICS (range: {target_final-5} to {target_final+5})
-
-RULES:
-- MERGE similar/duplicate topics
-- Keep MOST SPECIFIC and MEANINGFUL names
-- Maintain 3-8 words in {language}
-- NO generic terms: manfaat, kesegaran, info, berita
-- Output ONLY consolidated unique topics
-
-OUTPUT FORMAT (TOON):
-consolidated_topics[{target_final}]{{topic}}:
-<final_topic_1>
-<final_topic_2>
-...
-
-YOUR OUTPUT:"""
-    
-    try:
-        response = chat_create(
-            MODEL_NAME,
-            [
-                {"role": "system", "content": f"{lang_config['prompt_instruction']}. Output TOON format only."},
-                {"role": "user", "content": prompt}
-            ],
-            token_tracker=token_tracker
-        )
+    for st1 in sorted_subtopics:
+        if st1 in used:
+            continue
         
-        if not response:
-            return {"topics": all_topics[:target_final]}
-        
-        raw = response.choices[0].message.content.strip()
-        lines = raw.strip().split('\n')
-        
-        consolidated = []
-        data_start = False
-        
-        for line in lines:
-            if 'consolidated_topics[' in line.lower() or 'topics[' in line.lower():
-                data_start = True
-                continue
-            
-            if data_start:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    topic = validate_and_normalize_topic(line, language)
-                    if topic:
-                        consolidated.append(topic)
-        
-        if not consolidated:
-            return {"topics": all_topics[:target_final]}
-        
-        old_to_new = {}
-        for old_topic in all_topics:
-            best_match = None
-            for new_topic in consolidated:
-                if old_topic == new_topic:
-                    best_match = new_topic
-                    break
-                old_words = set(old_topic.lower().split())
-                new_words = set(new_topic.lower().split())
-                if len(old_words & new_words) >= 2:
-                    best_match = new_topic
-                    break
-            
-            if best_match:
-                old_to_new[old_topic] = best_match
-            else:
-                old_to_new[old_topic] = consolidated[0] if consolidated else old_topic
-        
-        logging.info(f"Consolidated {len(all_topics)} topics → {len(consolidated)} final topics")
-        
-        return {
-            "topics": consolidated,
-            "mapping": old_to_new
+        current_group = {
+            'sub_topics': [st1],
+            'engagement_scores': [engagement_lookup.get(st1, 0)],
+            'total_engagement': engagement_lookup.get(st1, 0)
         }
+        used.add(st1)
+        
+        for st2 in sub_topics:
+            if st2 in used:
+                continue
+            
+            if not keyword_map[st1] or not keyword_map[st2]:
+                continue
+                
+            similarity = len(keyword_map[st1] & keyword_map[st2]) / \
+                        len(keyword_map[st1] | keyword_map[st2])
+            
+            if similarity >= threshold:
+                current_group['sub_topics'].append(st2)
+                current_group['engagement_scores'].append(
+                    engagement_lookup.get(st2, 0)
+                )
+                current_group['total_engagement'] += engagement_lookup.get(st2, 0)
+                used.add(st2)
+        
+        current_group['avg_engagement'] = (
+            current_group['total_engagement'] / len(current_group['sub_topics'])
+        )
+        
+        groups[f"group_{group_id}"] = current_group
+        group_id += 1
+    
+    sorted_groups = dict(
+        sorted(groups.items(), 
+               key=lambda x: x[1]['total_engagement'], 
+               reverse=True)
+    )
+    
+    return sorted_groups
+
+def consolidate_with_engagement_priority(groups: dict, 
+                                        language: str,
+                                        token_tracker: TokenTracker,
+                                        target_topics: int = TARGET_TOPICS_PER_CAMPAIGN) -> dict:
+    group_summary = []
+    
+    for group_id, group_data in groups.items():
+        sub_topics = group_data['sub_topics']
+        engagement_scores = group_data['engagement_scores']
+        
+        sorted_pairs = sorted(
+            zip(sub_topics, engagement_scores),
+            key=lambda x: x[1],
+            reverse=True
+        )
+        
+        top_samples = [st for st, _ in sorted_pairs[:5]]
+        top_engagement = sum([eng for _, eng in sorted_pairs[:5]])
+        
+        group_summary.append({
+            "group_id": group_id,
+            "count": len(sub_topics),
+            "total_engagement": group_data['total_engagement'],
+            "avg_engagement": group_data['avg_engagement'],
+            "top_samples": top_samples,
+            "sample_engagement": top_engagement
+        })
+    
+    group_summary.sort(key=lambda x: x['total_engagement'], reverse=True)
+    
+    nonce = random.randint(100000, 999999)
+    
+    prompt = f"""You are a topic normalization expert with ENGAGEMENT PRIORITY.
+
+[Request ID: {nonce}]
+
+INPUT: {len(groups)} preliminary groups (SORTED BY ENGAGEMENT - highest first!)
+
+Groups (in order of importance by engagement):
+{json.dumps(group_summary, indent=2, ensure_ascii=False)}
+
+TASK:
+1. Analyze groups and MERGE similar ones
+2. Create approximately {target_topics} FINAL topics (15-25 range)
+3. Each topic should be 2-6 words in {language}
+4. Topics should be CLEAN and PROFESSIONAL
+
+CRITICAL ENGAGEMENT RULES:
+⭐ HIGH-ENGAGEMENT groups at the TOP are MOST IMPORTANT
+⭐ Topic names should reflect HIGH-ENGAGEMENT content
+⭐ When merging groups, prioritize naming based on high-engagement samples
+⭐ Ensure high-engagement sub topics get meaningful, specific topic names
+⭐ DO NOT use generic/noise words: berita, info, informasi, viral, trending, news, update, artikel
+
+GOOD BALANCE for {target_topics} topics:
+✅ "Promo KPR Subsidi" (specific, clean)
+✅ "Peluncuran Produk Digital" (specific, professional)
+✅ "Program Beasiswa CSR" (specific, meaningful)
+
+BAD EXAMPLES:
+❌ "Informasi KPR" (generic!)
+❌ "Berita Viral" (noise word!)
+❌ "Update Trending" (noise words!)
+❌ "Info Produk Terbaru" (too generic!)
+
+OUTPUT FORMAT (JSON):
+{{
+  "topics": [
+    {{
+      "topic_name": "...",
+      "merged_groups": ["group_0", "group_3"],
+      "estimated_engagement": 75000,
+      "description": "Why this naming (based on high-engagement content)"
+    }},
+    ...
+  ],
+  "total_topics": {target_topics}
+}}
+
+OUTPUT (JSON only):"""
+    
+    try:
+        response = chat_create(
+            MODEL_NAME,
+            [{"role": "user", "content": prompt}],
+            token_tracker=token_tracker
+        )
+        
+        if not response:
+            logging.warning("Consolidation API call failed")
+            return {"topics": [], "total_topics": 0}
+        
+        raw = response.choices[0].message.content.strip()
+        result = extract_json_from_response(raw)
+        
+        if not result or 'topics' not in result:
+            logging.warning("Invalid consolidation result")
+            return {"topics": [], "total_topics": 0}
+        
+        for topic_info in result['topics']:
+            if 'topic_name' in topic_info:
+                original = topic_info['topic_name']
+                normalized = validate_and_normalize_topic(original, language)
+                if normalized:
+                    topic_info['topic_name'] = normalized
+                else:
+                    logging.warning(f"Topic normalization failed for: {original}")
+        
+        return result
         
     except Exception as e:
         logging.error(f"Consolidation error: {e}")
-        return {"topics": all_topics[:target_final]}
+        return {"topics": [], "total_topics": 0}
 
-def normalize_topics_v13_batched(
-    df: pd.DataFrame,
-    selected_campaigns: list,
-    campaign_col: str = 'Campaigns',
-    engagement_col: str = 'Engagement',
-    language: str = 'Indonesia',
-    token_tracker: TokenTracker = None,
-    progress=gr.Progress()
-) -> dict:
+def validate_engagement_coverage(df, mapping: dict, 
+                                campaign: str,
+                                engagement_col='Engagement'):
+    campaign_df = df[df['Campaigns'] == campaign].copy()
+    
+    campaign_df['Topic'] = campaign_df['Sub Topic'].map(mapping)
+    
+    if engagement_col not in campaign_df.columns:
+        logging.warning("Engagement column not found for validation")
+        return pd.DataFrame()
+    
+    topic_engagement = campaign_df.groupby('Topic').agg({
+        engagement_col: 'sum',
+        'Sub Topic': 'count'
+    }).reset_index()
+    
+    topic_engagement.columns = ['Topic', 'Total_Engagement', 'Sub_Topic_Count']
+    topic_engagement = topic_engagement.sort_values('Total_Engagement', ascending=False)
+    
+    total_engagement = campaign_df[engagement_col].sum()
+    
+    if total_engagement > 0:
+        topic_engagement['Engagement_Share'] = (
+            topic_engagement['Total_Engagement'] / total_engagement * 100
+        )
+        topic_engagement['Cumulative_Share'] = topic_engagement['Engagement_Share'].cumsum()
+    else:
+        topic_engagement['Engagement_Share'] = 0
+        topic_engagement['Cumulative_Share'] = 0
+    
+    logging.info(f"\n{'='*80}")
+    logging.info(f"[ENGAGEMENT COVERAGE] Campaign: '{campaign}'")
+    logging.info(f"{'='*80}")
+    logging.info(f"Total Engagement: {total_engagement:,.0f}")
+    logging.info(f"\nTop 10 Topics by Engagement:")
+    
+    for idx, (_, row) in enumerate(topic_engagement.head(10).iterrows(), 1):
+        logging.info(
+            f"  {idx}. {str(row['Topic']):<40} | "
+            f"Engagement: {row['Total_Engagement']:>10,.0f} ({row['Engagement_Share']:>5.1f}%) | "
+            f"Sub Topics: {row['Sub_Topic_Count']:>3}"
+        )
+    
+    if total_engagement > 0:
+        top_80_topics = topic_engagement[topic_engagement['Cumulative_Share'] <= 80]
+        logging.info(f"\n📊 Top {len(top_80_topics)} topics cover 80% of engagement")
+    
+    return topic_engagement
+
+def normalize_topics_v3_with_engagement(df, 
+                                       campaign_col='Campaigns',
+                                       engagement_col='Engagement',
+                                       language='Indonesia',
+                                       target_topics=TARGET_TOPICS_PER_CAMPAIGN,
+                                       similarity_threshold=SIMILARITY_THRESHOLD,
+                                       token_tracker=None,
+                                       progress=gr.Progress()):
+    logging.info("[PREP] Calculating engagement weights...")
+    engagement_data = prepare_engagement_data(df, campaign_col)
     
     results = {}
-    total_campaigns = len(selected_campaigns)
+    total_campaigns = df[campaign_col].nunique()
     
-    for idx, campaign in enumerate(selected_campaigns, 1):
+    for idx, campaign in enumerate(df[campaign_col].unique(), 1):
         logging.info(f"\n{'='*80}")
         logging.info(f"[NORMALIZATION {idx}/{total_campaigns}] Campaign: '{campaign}'")
         logging.info(f"{'='*80}")
         
-        campaign_df = df[df[campaign_col] == campaign].copy()
+        campaign_df = df[df[campaign_col] == campaign]
+        campaign_engagement = engagement_data[engagement_data[campaign_col] == campaign]
         
-        sub_topics = campaign_df['Sub Topic'].dropna()
-        sub_topics = sub_topics[sub_topics.astype(str).str.strip() != '']
-        sub_topics = sub_topics[~sub_topics.apply(lambda x: is_invalid_value(str(x)))]
-        unique_sub_topics = sub_topics.unique().tolist()
-        
-        if len(unique_sub_topics) == 0:
-            logging.warning(f"  └─ No valid sub topics for campaign '{campaign}', skipping")
-            results[campaign] = {
-                'mapping': {},
-                'topics': [],
-                'stats': {
-                    'original_subtopics': 0,
-                    'final_topics': 0,
-                    'cost_usd': 0
-                }
-            }
-            continue
+        sub_topics = campaign_engagement['Sub Topic'].tolist()
         
         if engagement_col in campaign_df.columns:
-            engagement_map = campaign_df.groupby('Sub Topic').agg({
-                engagement_col: 'sum',
-                'Title': 'count'
-            }).reset_index()
-            engagement_map.columns = ['Sub Topic', 'Total_Engagement', 'Frequency']
-            
-            engagement_map['Weight_Score'] = (
-                engagement_map['Total_Engagement'] * ENGAGEMENT_WEIGHT +
-                engagement_map['Frequency'] * (1 - ENGAGEMENT_WEIGHT)
-            )
-            
-            engagement_map = engagement_map.sort_values('Weight_Score', ascending=False)
+            total_engagement = campaign_df[engagement_col].sum()
         else:
-            engagement_map = campaign_df.groupby('Sub Topic').agg({
-                'Title': 'count'
-            }).reset_index()
-            engagement_map.columns = ['Sub Topic', 'Frequency']
-            engagement_map['Total_Engagement'] = 0
-            engagement_map['Weight_Score'] = engagement_map['Frequency']
-            engagement_map = engagement_map.sort_values('Weight_Score', ascending=False)
+            total_engagement = 0
         
-        engagement_map = engagement_map[engagement_map['Sub Topic'].isin(unique_sub_topics)]
+        logging.info(f"  └─ Sub topics: {len(sub_topics)}")
+        if total_engagement > 0:
+            logging.info(f"  └─ Total Engagement: {total_engagement:,.0f}")
         
-        logging.info(f"  └─ Sub topics: {len(unique_sub_topics)}")
-        
-        campaign_progress = f"Campaign {campaign} ({idx}/{total_campaigns}) - "
         progress_val = 0.85 + (idx / total_campaigns) * 0.10
+        progress(progress_val, desc=f"[STEP 4/4] Normalizing campaign {idx}/{total_campaigns}")
         
-        if len(unique_sub_topics) <= NORMALIZATION_BATCH_SIZE:
-            logging.info(f"  └─ Single batch normalization ({len(unique_sub_topics)} ≤ {NORMALIZATION_BATCH_SIZE})")
-            
-            target_topics = calculate_target_topics(len(unique_sub_topics))
-            logging.info(f"  └─ Target topics: {target_topics} (ratio: 5 per 100)")
-            
-            sub_topics_with_engagement = [
-                {
-                    'sub_topic': row['Sub Topic'],
-                    'engagement': row['Total_Engagement'],
-                    'frequency': row['Frequency']
-                }
-                for _, row in engagement_map.iterrows()
-            ]
-            
-            progress(progress_val, desc=f"[STEP 4/4] {campaign_progress}Generating Topics...")
-            
-            normalized_topics = openai_generate_topics(
-                sub_topics_with_engagement,
-                language,
-                target_topics,
-                token_tracker
-            )
-            
-            if not normalized_topics:
-                logging.warning(f"  └─ Topic generation failed, using fallback")
-                mapping = {st: "" for st in unique_sub_topics}
-            else:
-                logging.info(f"  └─ Generated {len(normalized_topics)} topics")
-                
-                progress(progress_val + 0.02, desc=f"[STEP 4/4] {campaign_progress}Mapping Sub Topics...")
-                
-                mapping = openai_map_subtopics(
-                    unique_sub_topics,
-                    normalized_topics,
-                    language,
-                    token_tracker
-                )
+        groups = pre_cluster_with_engagement(
+            sub_topics,
+            campaign_engagement,
+            language,
+            threshold=similarity_threshold
+        )
         
+        logging.info(f"  └─ Pre-clustering: {len(sub_topics)} → {len(groups)} groups")
+        logging.info(f"     └─ Groups sorted by engagement (highest first)")
+        
+        topic_result = consolidate_with_engagement_priority(
+            groups,
+            language,
+            token_tracker,
+            target_topics=target_topics
+        )
+        
+        if not topic_result or 'topics' not in topic_result or len(topic_result['topics']) == 0:
+            logging.warning(f"  └─ Consolidation failed for campaign '{campaign}', using fallback")
+            
+            mapping = {}
+            for group_id, group_data in groups.items():
+                first_topic = group_data['sub_topics'][0]
+                topic_name = validate_and_normalize_topic(first_topic, language)
+                
+                if not topic_name:
+                    topic_name = ""
+                
+                for st in group_data['sub_topics']:
+                    mapping[st] = topic_name
+            
+            final_topics = len([t for t in set(mapping.values()) if t])
         else:
-            logging.info(f"  └─ Multi-batch normalization ({len(unique_sub_topics)} > {NORMALIZATION_BATCH_SIZE})")
+            final_topics = len(topic_result['topics'])
             
-            num_batches = math.ceil(len(unique_sub_topics) / NORMALIZATION_BATCH_SIZE)
-            logging.info(f"  └─ Splitting into {num_batches} batches of {NORMALIZATION_BATCH_SIZE}")
+            logging.info(f"  └─ Consolidation: {len(groups)} groups → {final_topics} topics")
             
-            all_batch_topics = []
-            batch_mappings = {}
+            mapping = {}
+            group_to_topic = {}
             
-            for batch_idx in range(num_batches):
-                start_idx = batch_idx * NORMALIZATION_BATCH_SIZE
-                end_idx = min(start_idx + NORMALIZATION_BATCH_SIZE, len(engagement_map))
-                
-                batch_engagement = engagement_map.iloc[start_idx:end_idx]
-                batch_sub_topics = batch_engagement['Sub Topic'].tolist()
-                
-                batch_target = calculate_target_topics(len(batch_sub_topics))
-                
-                logging.info(f"  └─ Batch {batch_idx+1}/{num_batches}: {len(batch_sub_topics)} sub topics → target {batch_target} topics")
-                
-                sub_topics_with_engagement = [
-                    {
-                        'sub_topic': row['Sub Topic'],
-                        'engagement': row['Total_Engagement'],
-                        'frequency': row['Frequency']
-                    }
-                    for _, row in batch_engagement.iterrows()
-                ]
-                
-                progress(progress_val + (batch_idx/num_batches)*0.04, 
-                        desc=f"[STEP 4/4] {campaign_progress}Gen Topics Batch {batch_idx+1}/{num_batches}...")
-                
-                batch_topics = openai_generate_topics(
-                    sub_topics_with_engagement,
-                    language,
-                    batch_target,
-                    token_tracker
-                )
-                
-                if batch_topics:
-                    all_batch_topics.extend(batch_topics)
-                    logging.info(f"     └─ Generated {len(batch_topics)} topics for batch {batch_idx+1}")
-                    
-                    for st in batch_sub_topics:
-                        batch_mappings[st] = batch_topics
+            for topic_info in topic_result['topics']:
+                topic_name = topic_info['topic_name']
+                for group_id in topic_info['merged_groups']:
+                    group_to_topic[group_id] = topic_name
             
-            if not all_batch_topics:
-                logging.warning(f"  └─ All batches failed, using fallback")
-                mapping = {st: "" for st in unique_sub_topics}
-                normalized_topics = []
-            else:
-                logging.info(f"  └─ Total topics from all batches: {len(all_batch_topics)}")
-                
-                final_target = calculate_target_topics(len(unique_sub_topics))
-                logging.info(f"  └─ Consolidating {len(all_batch_topics)} → {final_target} final topics")
-                
-                progress(progress_val + 0.05, desc=f"[STEP 4/4] {campaign_progress}Consolidating Topics...")
-                
-                consolidation_result = openai_consolidate_topics(
-                    all_batch_topics,
-                    final_target,
-                    language,
-                    token_tracker
-                )
-                
-                normalized_topics = consolidation_result.get('topics', all_batch_topics[:final_target])
-                batch_to_final = consolidation_result.get('mapping', {})
-                
-                logging.info(f"  └─ Final consolidated topics: {len(normalized_topics)}")
-                
-                progress(progress_val + 0.07, desc=f"[STEP 4/4] {campaign_progress}Final Mapping...")
-                
-                mapping = {}
-                for sub_topic, batch_topics in batch_mappings.items():
-                    temp_mapping = openai_map_subtopics(
-                        [sub_topic],
-                        batch_topics,
-                        language,
-                        token_tracker
-                    )
-                    
-                    if sub_topic in temp_mapping:
-                        batch_topic = temp_mapping[sub_topic]
-                        final_topic = batch_to_final.get(batch_topic, batch_topic)
-                        mapping[sub_topic] = final_topic
+            for group_id, group_data in groups.items():
+                topic = group_to_topic.get(group_id, "")
+                for st in group_data['sub_topics']:
+                    mapping[st] = topic
         
-        final_topics = len([t for t in set(mapping.values()) if t])
-        reduction_rate = (1 - final_topics/len(unique_sub_topics)) * 100 if len(unique_sub_topics) > 0 else 0
+        if engagement_col in df.columns:
+            topic_engagement = validate_engagement_coverage(
+                df, mapping, campaign, engagement_col
+            )
+        else:
+            topic_engagement = pd.DataFrame()
+        
+        reduction_rate = (1 - final_topics/len(sub_topics)) * 100 if len(sub_topics) > 0 else 0
         
         results[campaign] = {
             'mapping': mapping,
-            'topics': normalized_topics if isinstance(normalized_topics, list) else [],
+            'topics': topic_result.get('topics', []),
+            'topic_engagement': topic_engagement,
             'stats': {
-                'original_subtopics': len(unique_sub_topics),
+                'original_subtopics': len(sub_topics),
                 'final_topics': final_topics,
+                'total_engagement': total_engagement,
                 'reduction_rate': reduction_rate
             }
         }
         
-        logging.info(f"  └─ Final topics: {final_topics}")
         logging.info(f"  └─ Reduction: {reduction_rate:.1f}%")
     
     return results
@@ -1526,36 +1337,9 @@ Output:"""
     except Exception as e:
         return {sp: sp for sp in unique_spokespersons}
 
-def load_campaigns_from_file(file_path, sheet_name):
-    """Load campaigns with row counts from Excel file"""
-    try:
-        df = pd.read_excel(file_path, sheet_name=sheet_name)
-        df = normalize_column_names(df)
-        
-        if 'Campaigns' not in df.columns:
-            return []
-        
-        campaign_counts = df['Campaigns'].value_counts().to_dict()
-        
-        campaigns_with_counts = []
-        for campaign, count in sorted(campaign_counts.items(), key=lambda x: x[1], reverse=True):
-            campaign_name = str(campaign) if pd.notna(campaign) and str(campaign).strip() else "(Unnamed Campaign)"
-            campaigns_with_counts.append({
-                'name': campaign_name,
-                'count': int(count),
-                'label': f"{campaign_name} ({count:,} rows)"
-            })
-        
-        return campaigns_with_counts
-        
-    except Exception as e:
-        logging.error(f"Error loading campaigns: {e}")
-        return []
-
 def process_file(
     file_path: str,
     sheet_name: str,
-    selected_campaigns: list,
     language: str,
     generate_topic: bool,
     generate_sentiment: bool,
@@ -1580,29 +1364,6 @@ def process_file(
         if not is_valid:
             return None, {}, error_msg
         
-        total_campaigns_in_file = df['Campaigns'].nunique()
-        
-        if not selected_campaigns or len(selected_campaigns) == 0:
-            return None, {}, "❌ Error: Please select at least one campaign!"
-        
-        df = df[df['Campaigns'].isin(selected_campaigns)].copy()
-        
-        if len(df) == 0:
-            return None, {}, "❌ Error: No data for selected campaigns!"
-        
-        filtered_row_count = len(df)
-        skipped_campaigns = total_campaigns_in_file - len(selected_campaigns)
-        
-        logging.info(f"\n{'='*80}")
-        logging.info(f"[CAMPAIGN SELECTION]")
-        logging.info(f"{'='*80}")
-        logging.info(f"Total campaigns in file: {total_campaigns_in_file}")
-        logging.info(f"Selected for processing: {len(selected_campaigns)}")
-        logging.info(f"Skipped campaigns: {skipped_campaigns}")
-        logging.info(f"Original rows: {original_row_count}")
-        logging.info(f"Filtered rows (selected campaigns): {filtered_row_count}")
-        logging.info(f"Selected campaigns: {', '.join(selected_campaigns)}")
-        
         title_col = get_col(df, ["Title", "Judul"])
         content_col = get_col(df, ["Content", "Konten", "Isi"])
         channel_col = "Channel"
@@ -1615,27 +1376,7 @@ def process_file(
             logging.warning("⚠️ 'Engagement' column not found, normalization will use frequency only")
             df['Engagement'] = 0
         
-        has_type_column = 'Type' in df.columns
-        
-        if has_type_column:
-            type_comment_reply = df['Type'].isin(['Comment', 'Reply'])
-            comment_count = (df['Type'] == 'Comment').sum()
-            reply_count = (df['Type'] == 'Reply').sum()
-            other_count = (~type_comment_reply).sum()
-            
-            logging.info(f"\n{'='*80}")
-            logging.info(f"[TYPE FILTER]")
-            logging.info(f"{'='*80}")
-            logging.info(f"Comment: {comment_count} rows (will be excluded from topic extraction)")
-            logging.info(f"Reply: {reply_count} rows (will be excluded from topic extraction)")
-            logging.info(f"Other: {other_count} rows (will process for topics)")
-            logging.info(f"Note: Sentiment & Spokesperson will process ALL {filtered_row_count} rows")
-        else:
-            logging.info(f"\n{'='*80}")
-            logging.info(f"[TYPE FILTER]")
-            logging.info(f"{'='*80}")
-            logging.info(f"'Type' column not found - processing all rows for topics")
-            type_comment_reply = pd.Series([False] * len(df), index=df.index)
+        logging.info(f"✅ NO DELETION - All {original_row_count} rows will be processed")
         
         df['_original_index'] = df.index
         df['_channel_original'] = df[channel_col].copy()
@@ -1646,7 +1387,7 @@ def process_file(
             return None, {}, f"❌ Error: {empty_channels.sum()} baris memiliki Channel kosong!"
         
         logging.info("\n" + "="*80)
-        logging.info("[DEDUPLICATION] Creating groups for identical content (selected campaigns only)")
+        logging.info("[DEDUPLICATION] Creating groups for identical content")
         logging.info("="*80)
         
         df['_dedup_hash'] = df.apply(lambda row: create_dedup_hash(row, title_col, content_col), axis=1)
@@ -1681,18 +1422,10 @@ def process_file(
         
         df['_eligible_for_topic'] = df['_word_count'] >= MIN_CONTENT_WORDS_FOR_TOPIC
         
-        if has_type_column:
-            df.loc[type_comment_reply, '_eligible_for_topic'] = False
-        
         total_eligible = df['_eligible_for_topic'].sum()
         total_skipped = (~df['_eligible_for_topic']).sum()
         
-        logging.info(f"✅ Content filter: {total_eligible} eligible, {total_skipped} skipped")
-        if has_type_column:
-            logging.info(f"   └─ Skipped: {(~df['_eligible_for_topic'] & ~type_comment_reply).sum()} (<{MIN_CONTENT_WORDS_FOR_TOPIC} words)")
-            logging.info(f"   └─ Excluded: {type_comment_reply.sum()} (Comment/Reply)")
-        else:
-            logging.info(f"   └─ Skipped: {total_skipped} (<{MIN_CONTENT_WORDS_FOR_TOPIC} words)")
+        logging.info(f"✅ Content filter: {total_eligible} eligible, {total_skipped} skipped (<{MIN_CONTENT_WORDS_FOR_TOPIC} words)")
         logging.info(f"💰 API savings from pre-filter: {total_skipped} topic extractions skipped")
         
         if generate_topic:
@@ -1717,202 +1450,165 @@ def process_file(
         tracker = TokenTracker()
         start_time = time.time()
         
-        per_campaign_stats = {}
+        if generate_topic or generate_sentiment:
+            logging.info("\n" + "="*80)
+            logging.info("[STEP 1/4] SUB TOPIC + SENTIMENT (MASTER ROWS, ELIGIBLE CONTENT)")
+            logging.info("="*80)
+            
+            process_mask = df['_is_master'] & df['_eligible_for_topic']
+            
+            if generate_topic and 'Topic' in df.columns and 'Sub Topic' in df.columns:
+                has_both = (df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')) & \
+                          (df['Sub Topic'].notna() & (df['Sub Topic'].astype(str).str.strip() != ''))
+                process_mask = process_mask & ~has_both
+            
+            if 'Noise Tag' in df.columns:
+                noise_tag_2 = df['Noise Tag'] == "2"
+                process_mask = process_mask & ~noise_tag_2
+            
+            df_to_process = df[process_mask].copy()
+            logging.info(f"📊 Processing {len(df_to_process)} master rows (eligible content only)")
+            
+            if len(df_to_process) > 0:
+                all_batches = []
+                total_batches = math.ceil(len(df_to_process) / BATCH_SIZE)
+                
+                for batch_num in range(total_batches):
+                    start_idx = batch_num * BATCH_SIZE
+                    end_idx = min(start_idx + BATCH_SIZE, len(df_to_process))
+                    batch_df = df_to_process.iloc[start_idx:end_idx].copy()
+                    
+                    progress_val = 0.1 + (batch_num / total_batches) * 0.30
+                    progress(progress_val, desc=f"[STEP 1/4] Processing {batch_num + 1}/{total_batches}")
+                    
+                    result_batch = process_batch_combined(
+                        batch_df, batch_num + 1, total_batches,
+                        title_col, content_col, language, conf_threshold, tracker, progress
+                    )
+                    
+                    all_batches.append(result_batch)
+                
+                df_processed = pd.concat(all_batches, ignore_index=False)
+                
+                for idx in df_processed.index:
+                    if generate_topic and 'Sub Topic' in df_processed.columns:
+                        df.at[idx, 'Sub Topic'] = df_processed.at[idx, 'Sub Topic']
+                    if generate_sentiment:
+                        df.at[idx, 'New Sentiment'] = df_processed.at[idx, 'New Sentiment']
+                        df.at[idx, 'New Sentiment Level'] = df_processed.at[idx, 'New Sentiment Level']
+                
+                logging.info("📋 Copying results to duplicate rows...")
+                for hash_val in df['_dedup_hash'].unique():
+                    group = df[df['_dedup_hash'] == hash_val]
+                    if len(group) > 1:
+                        master_idx = group[group['_is_master']].index[0]
+                        duplicate_indices = group[~group['_is_master']].index
+                        
+                        for dup_idx in duplicate_indices:
+                            if generate_topic and 'Sub Topic' in df.columns:
+                                df.at[dup_idx, 'Sub Topic'] = df.at[master_idx, 'Sub Topic']
+                            if generate_sentiment:
+                                df.at[dup_idx, 'New Sentiment'] = df.at[master_idx, 'New Sentiment']
+                                df.at[dup_idx, 'New Sentiment Level'] = df.at[master_idx, 'New Sentiment Level']
+                
+                if generate_topic:
+                    sub_topic_filled = df['Sub Topic'].notna() & (df['Sub Topic'].astype(str).str.strip() != '')
+                    success_count = sub_topic_filled.sum()
+                    tracker.add_step_stat("Sub Topic (initial)", success_count, len(df))
+                    logging.info(f"[STEP 1/4] ✅ Sub Topic: {success_count}/{len(df)} ({success_count/len(df)*100:.1f}%)")
+                
+                if generate_sentiment:
+                    sentiment_filled = df['New Sentiment'].notna()
+                    success_count = sentiment_filled.sum()
+                    tracker.add_step_stat("Sentiment", success_count, len(df))
+                    logging.info(f"[STEP 1/4] ✅ Sentiment: {success_count}/{len(df)} ({success_count/len(df)*100:.1f}%)")
         
-        for camp_idx, campaign in enumerate(selected_campaigns, 1):
-            campaign_start_time = time.time()
-            campaign_tracker = TokenTracker()
+        if generate_spokesperson and mainstream_count > 0:
+            logging.info("\n" + "="*80)
+            logging.info("[STEP 2/4] SPOKESPERSON (MAINSTREAM MASTER ROWS, ELIGIBLE CONTENT)")
+            logging.info("="*80)
             
-            logging.info(f"\n{'='*80}")
-            logging.info(f"[PROCESSING CAMPAIGN {camp_idx}/{len(selected_campaigns)}] '{campaign}'")
-            logging.info(f"{'='*80}")
+            mainstream_process_mask = df['_is_master'] & mainstream_mask & df['_eligible_for_topic']
+            df_mainstream = df[mainstream_process_mask].copy()
             
-            campaign_df_mask = df['Campaigns'] == campaign
-            campaign_row_count = campaign_df_mask.sum()
+            logging.info(f"📊 Processing {len(df_mainstream)} mainstream master rows (eligible content only)")
             
-            logging.info(f"Campaign rows: {campaign_row_count}")
+            if len(df_mainstream) > 0:
+                mainstream_batches = []
+                total_batches = math.ceil(len(df_mainstream) / MAINSTREAM_BATCH_SIZE)
+                
+                for batch_num in range(total_batches):
+                    start_idx = batch_num * MAINSTREAM_BATCH_SIZE
+                    end_idx = min(start_idx + MAINSTREAM_BATCH_SIZE, len(df_mainstream))
+                    batch_df = df_mainstream.iloc[start_idx:end_idx].copy()
+                    
+                    progress_val = 0.45 + (batch_num / total_batches) * 0.15
+                    progress(progress_val, desc=f"[STEP 2/4] Spokesperson {batch_num + 1}/{total_batches}")
+                    
+                    result_batch = process_batch_spokesperson(
+                        batch_df, batch_num + 1, total_batches,
+                        title_col, content_col, tracker, progress
+                    )
+                    
+                    mainstream_batches.append(result_batch)
+                
+                df_mainstream_processed = pd.concat(mainstream_batches, ignore_index=False)
+                
+                for idx in df_mainstream_processed.index:
+                    if 'New Spokesperson' in df_mainstream_processed.columns:
+                        df.at[idx, 'New Spokesperson'] = df_mainstream_processed.at[idx, 'New Spokesperson']
+                
+                logging.info("📋 Copying spokesperson to duplicate rows...")
+                for hash_val in df[mainstream_mask]['_dedup_hash'].unique():
+                    group = df[(df['_dedup_hash'] == hash_val) & mainstream_mask]
+                    if len(group) > 1:
+                        master_idx = group[group['_is_master']].index[0]
+                        duplicate_indices = group[~group['_is_master']].index
+                        
+                        for dup_idx in duplicate_indices:
+                            df.at[dup_idx, 'New Spokesperson'] = df.at[master_idx, 'New Spokesperson']
+                
+                spokes_filled = df[mainstream_mask]['New Spokesperson'].notna() & \
+                               (df[mainstream_mask]['New Spokesperson'].astype(str).str.strip() != '')
+                success_count = spokes_filled.sum()
+                tracker.add_step_stat("Spokesperson", success_count, mainstream_count)
+                
+                logging.info(f"[STEP 2/4] ✅ Spokesperson: {success_count}/{mainstream_count} ({success_count/mainstream_count*100:.1f}%)")
             
-            campaign_progress = f"Campaign {campaign} ({camp_idx}/{len(selected_campaigns)}) - "
+            df.loc[social_mask, 'New Spokesperson'] = ''
+        
+        if generate_topic:
+            sub_topic_filled = df['Sub Topic'].notna() & (df['Sub Topic'].astype(str).str.strip() != '')
+            success_rate = sub_topic_filled.sum() / len(df)
             
-            if generate_topic or generate_sentiment:
+            if success_rate < SKIP_RETRY_THRESHOLD:
                 logging.info("\n" + "="*80)
-                logging.info(f"[STEP 1/4] SUB TOPIC + SENTIMENT - {campaign}")
-                logging.info(f"Strategy: Aggressive Quality (smaller batches, longer content)")
+                logging.info(f"[STEP 3/4] RETRY FAILED SUB TOPICS (success rate: {success_rate:.1%} < {SKIP_RETRY_THRESHOLD:.0%})")
                 logging.info("="*80)
                 
-                process_mask = df['_is_master'] & df['_eligible_for_topic'] & campaign_df_mask
+                unknown_mask = df['_is_master'] & df['_eligible_for_topic'] & \
+                              ((df['Sub Topic'].isna()) | \
+                               (df['Sub Topic'].astype(str).str.strip() == '') | \
+                               (df['Sub Topic'].apply(lambda x: is_invalid_value(str(x)))))
                 
-                if generate_topic and 'Topic' in df.columns and 'Sub Topic' in df.columns:
-                    has_both = (df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')) & \
-                              (df['Sub Topic'].notna() & (df['Sub Topic'].astype(str).str.strip() != ''))
-                    process_mask = process_mask & ~has_both
+                df_unknown = df[unknown_mask].copy()
+                unknown_count = len(df_unknown)
                 
-                if 'Noise Tag' in df.columns:
-                    noise_tag_2 = df['Noise Tag'] == "2"
-                    process_mask = process_mask & ~noise_tag_2
+                logging.info(f"[STEP 3/4] Found {unknown_count} master rows with failed sub topics")
                 
-                df_to_process = df[process_mask].copy()
-                logging.info(f"📊 Processing {len(df_to_process)} master rows")
-                logging.info(f"   Initial: Batch {INITIAL_BATCH_SIZE} × {INITIAL_TRUNCATE} words")
-                
-                if len(df_to_process) > 0:
-                    all_batches = []
-                    total_batches = math.ceil(len(df_to_process) / INITIAL_BATCH_SIZE)
-                    
-                    for batch_num in range(total_batches):
-                        start_idx = batch_num * INITIAL_BATCH_SIZE
-                        end_idx = min(start_idx + INITIAL_BATCH_SIZE, len(df_to_process))
-                        batch_df = df_to_process.iloc[start_idx:end_idx].copy()
-                        
-                        progress_val = 0.1 + ((camp_idx-1) / len(selected_campaigns)) * 0.30 + (batch_num / total_batches / len(selected_campaigns)) * 0.30
-                        
-                        result_batch = process_batch_combined(
-                            batch_df, batch_num + 1, total_batches,
-                            title_col, content_col, language, conf_threshold, 
-                            campaign_tracker, INITIAL_BATCH_SIZE, INITIAL_TRUNCATE,
-                            campaign, campaign_progress, progress
-                        )
-                        
-                        all_batches.append(result_batch)
-                    
-                    df_processed = pd.concat(all_batches, ignore_index=False)
-                    
-                    for idx in df_processed.index:
-                        if generate_topic and 'Sub Topic' in df_processed.columns:
-                            df.at[idx, 'Sub Topic'] = df_processed.at[idx, 'Sub Topic']
-                        if generate_sentiment:
-                            df.at[idx, 'New Sentiment'] = df_processed.at[idx, 'New Sentiment']
-                            df.at[idx, 'New Sentiment Level'] = df_processed.at[idx, 'New Sentiment Level']
-                    
-                    logging.info("📋 Copying results to duplicate rows...")
-                    for hash_val in df[campaign_df_mask]['_dedup_hash'].unique():
-                        group = df[(df['_dedup_hash'] == hash_val) & campaign_df_mask]
-                        if len(group) > 1:
-                            master_idx = group[group['_is_master']].index[0]
-                            duplicate_indices = group[~group['_is_master']].index
-                            
-                            for dup_idx in duplicate_indices:
-                                if generate_topic and 'Sub Topic' in df.columns:
-                                    df.at[dup_idx, 'Sub Topic'] = df.at[master_idx, 'Sub Topic']
-                                if generate_sentiment:
-                                    df.at[dup_idx, 'New Sentiment'] = df.at[master_idx, 'New Sentiment']
-                                    df.at[dup_idx, 'New Sentiment Level'] = df.at[master_idx, 'New Sentiment Level']
-                    
-                    if generate_topic:
-                        campaign_sub_filled = df[campaign_df_mask]['Sub Topic'].notna() & \
-                                            (df[campaign_df_mask]['Sub Topic'].astype(str).str.strip() != '')
-                        success_count = campaign_sub_filled.sum()
-                        logging.info(f"[STEP 1/4] ✅ Sub Topic: {success_count}/{campaign_row_count} ({success_count/campaign_row_count*100:.1f}%)")
-                    
-                    if generate_sentiment:
-                        campaign_sent_filled = df[campaign_df_mask]['New Sentiment'].notna()
-                        success_count = campaign_sent_filled.sum()
-                        logging.info(f"[STEP 1/4] ✅ Sentiment: {success_count}/{campaign_row_count} ({success_count/campaign_row_count*100:.1f}%)")
-            
-            if generate_spokesperson:
-                campaign_mainstream = mainstream_mask & campaign_df_mask
-                campaign_mainstream_count = campaign_mainstream.sum()
-                
-                if campaign_mainstream_count > 0:
-                    logging.info("\n" + "="*80)
-                    logging.info(f"[STEP 2/4] SPOKESPERSON - {campaign} (Mainstream Only)")
-                    logging.info("="*80)
-                    
-                    mainstream_process_mask = df['_is_master'] & campaign_mainstream & df['_eligible_for_topic']
-                    df_mainstream = df[mainstream_process_mask].copy()
-                    
-                    logging.info(f"📊 Processing {len(df_mainstream)} mainstream master rows")
-                    
-                    if len(df_mainstream) > 0:
-                        mainstream_batches = []
-                        total_batches = math.ceil(len(df_mainstream) / MAINSTREAM_BATCH_SIZE)
-                        
-                        for batch_num in range(total_batches):
-                            start_idx = batch_num * MAINSTREAM_BATCH_SIZE
-                            end_idx = min(start_idx + MAINSTREAM_BATCH_SIZE, len(df_mainstream))
-                            batch_df = df_mainstream.iloc[start_idx:end_idx].copy()
-                            
-                            progress_val = 0.45 + ((camp_idx-1) / len(selected_campaigns)) * 0.15 + (batch_num / total_batches / len(selected_campaigns)) * 0.15
-                            
-                            result_batch = process_batch_spokesperson(
-                                batch_df, batch_num + 1, total_batches,
-                                title_col, content_col, campaign_tracker,
-                                campaign, campaign_progress, progress
-                            )
-                            
-                            mainstream_batches.append(result_batch)
-                        
-                        df_mainstream_processed = pd.concat(mainstream_batches, ignore_index=False)
-                        
-                        for idx in df_mainstream_processed.index:
-                            if 'New Spokesperson' in df_mainstream_processed.columns:
-                                df.at[idx, 'New Spokesperson'] = df_mainstream_processed.at[idx, 'New Spokesperson']
-                        
-                        logging.info("📋 Copying spokesperson to duplicate rows...")
-                        for hash_val in df[campaign_mainstream]['_dedup_hash'].unique():
-                            group = df[(df['_dedup_hash'] == hash_val) & campaign_mainstream]
-                            if len(group) > 1:
-                                master_idx = group[group['_is_master']].index[0]
-                                duplicate_indices = group[~group['_is_master']].index
-                                
-                                for dup_idx in duplicate_indices:
-                                    df.at[dup_idx, 'New Spokesperson'] = df.at[master_idx, 'New Spokesperson']
-                        
-                        spokes_filled = df[campaign_mainstream]['New Spokesperson'].notna() & \
-                                       (df[campaign_mainstream]['New Spokesperson'].astype(str).str.strip() != '')
-                        success_count = spokes_filled.sum()
-                        
-                        logging.info(f"[STEP 2/4] ✅ Spokesperson: {success_count}/{campaign_mainstream_count} ({success_count/campaign_mainstream_count*100:.1f}%)")
-                else:
-                    logging.info(f"\n[STEP 2/4] ⚠️ No mainstream content in campaign '{campaign}', skipping spokesperson")
-            
-            if generate_topic:
-                campaign_sub_filled = df[campaign_df_mask]['Sub Topic'].notna() & \
-                                     (df[campaign_df_mask]['Sub Topic'].astype(str).str.strip() != '')
-                success_rate = campaign_sub_filled.sum() / campaign_row_count
-                
-                retry_count = 0
-                
-                while retry_count < MAX_RETRIES and success_rate < 1.0:
-                    retry_config = RETRY_CONFIGS[retry_count]
-                    
-                    logging.info("\n" + "="*80)
-                    logging.info(f"[STEP 3/4] RETRY #{retry_count+1} - {campaign}")
-                    logging.info(f"Strategy: Batch {retry_config['batch_size']} × {retry_config['truncate']} words")
-                    logging.info(f"Current success: {success_rate:.1%}")
-                    logging.info("="*80)
-                    
-                    unknown_mask = df['_is_master'] & df['_eligible_for_topic'] & campaign_df_mask & \
-                                  ((df['Sub Topic'].isna()) | \
-                                   (df['Sub Topic'].astype(str).str.strip() == '') | \
-                                   (df['Sub Topic'].apply(lambda x: is_invalid_value(str(x)))))
-                    
-                    df_unknown = df[unknown_mask].copy()
-                    unknown_count = len(df_unknown)
-                    
-                    if unknown_count == 0:
-                        logging.info(f"[STEP 3/4] ✅ All sub topics extracted, skipping remaining retries")
-                        break
-                    
-                    logging.info(f"[STEP 3/4] Found {unknown_count} rows still missing sub topics")
-                    
-                    retry_batch_size = min(unknown_count, retry_config['batch_size'])
-                    retry_truncation = retry_config['truncate']
+                if unknown_count > 0:
+                    progress(0.65, desc=f"[STEP 3/4] Retrying {unknown_count} Sub Topics...")
                     
                     retry_batches = []
-                    total_batches = math.ceil(unknown_count / retry_batch_size)
+                    total_batches = math.ceil(unknown_count / RETRY_BATCH_SIZE)
                     
                     for batch_num in range(total_batches):
-                        start_idx = batch_num * retry_batch_size
-                        end_idx = min(start_idx + retry_batch_size, unknown_count)
+                        start_idx = batch_num * RETRY_BATCH_SIZE
+                        end_idx = min(start_idx + RETRY_BATCH_SIZE, unknown_count)
                         batch_df = df_unknown.iloc[start_idx:end_idx].copy()
                         
-                        progress_val = 0.65 + ((camp_idx-1) / len(selected_campaigns)) * 0.20 + (batch_num / total_batches / len(selected_campaigns)) * 0.20
-                        
                         result_batch = retry_sub_topic_batch(
-                            batch_df, title_col, content_col, language, 
-                            campaign_tracker, retry_batch_size, retry_truncation, retry_count + 1,
-                            campaign_progress, progress
+                            batch_df, title_col, content_col, language, tracker, progress
                         )
                         
                         retry_batches.append(result_batch)
@@ -1925,90 +1621,84 @@ def process_file(
                     logging.info("📋 Copying retried results to duplicate rows...")
                     for idx in df_unknown.index:
                         hash_val = df.at[idx, '_dedup_hash']
-                        duplicate_indices = df[(df['_dedup_hash'] == hash_val) & (~df['_is_master']) & campaign_df_mask].index
+                        duplicate_indices = df[(df['_dedup_hash'] == hash_val) & (~df['_is_master'])].index
                         
                         for dup_idx in duplicate_indices:
                             df.at[dup_idx, 'Sub Topic'] = df.at[idx, 'Sub Topic']
                     
-                    campaign_sub_filled = df[campaign_df_mask]['Sub Topic'].notna() & \
-                                         (df[campaign_df_mask]['Sub Topic'].astype(str).str.strip() != '')
-                    success_rate = campaign_sub_filled.sum() / campaign_row_count
+                    sub_topic_filled = df['Sub Topic'].notna() & \
+                                      (df['Sub Topic'].astype(str).str.strip() != '')
+                    final_success = sub_topic_filled.sum()
+                    tracker.add_step_stat("Sub Topic (after retry)", final_success, len(df))
                     
-                    logging.info(f"[STEP 3/4] ✅ Sub Topic after retry #{retry_count+1}: {campaign_sub_filled.sum()}/{campaign_row_count} ({success_rate:.1%})")
-                    
-                    retry_count += 1
-                
-                still_empty_mask = campaign_df_mask & \
-                                  ((df['Sub Topic'].isna()) | \
-                                   (df['Sub Topic'].astype(str).str.strip() == ''))
-                
-                if still_empty_mask.sum() > 0:
-                    logging.info(f"[STEP 3/4] Applying fallback keyword extraction to {still_empty_mask.sum()} rows...")
-                    
-                    for idx in df[still_empty_mask].index:
-                        row = df.loc[idx]
-                        combined = combine_title_content_row(row, title_col, content_col)
-                        combined = clean_content_for_analysis(combined)
-                        fallback_topic = extract_keywords_fallback(combined, output_language=language)
-                        
-                        if fallback_topic != GENERIC_PLACEHOLDERS.get(language, "Media Content Topic"):
-                            fallback_topic = validate_and_normalize_subtopic(fallback_topic, language)
-                            if fallback_topic:
-                                df.at[idx, 'Sub Topic'] = fallback_topic
-            
-            campaign_duration = time.time() - campaign_start_time
-            campaign_cost = campaign_tracker.get_cost(MODEL_NAME)
-            
-            per_campaign_stats[campaign] = {
-                'rows': int(campaign_row_count),
-                'duration_sec': float(campaign_duration),
-                'cost_usd': float(campaign_cost),
-                'api_calls': int(campaign_tracker.api_calls)
-            }
-            
-            for k, v in campaign_tracker.get_summary(MODEL_NAME).items():
-                if k not in ['step_stats']:
-                    tracker.__dict__[k] = tracker.__dict__.get(k, 0) + (v if isinstance(v, (int, float)) else 0)
+                    logging.info(f"[STEP 3/4] ✅ Sub Topic (after retry): {final_success}/{len(df)} ({final_success/len(df)*100:.1f}%)")
+            else:
+                logging.info("\n" + "="*80)
+                logging.info(f"[STEP 3/4] ⚡ SKIPPING RETRY (success rate: {success_rate:.1%} >= {SKIP_RETRY_THRESHOLD:.0%})")
+                logging.info("="*80)
+                tracker.add_step_stat("Sub Topic (after retry)", sub_topic_filled.sum(), len(df))
+        
+        logging.info("\n" + "="*80)
+        logging.info("[STEP 4/4] NORMALIZATION (PER CAMPAIGN WITH ENGAGEMENT)")
+        logging.info("="*80)
         
         if generate_topic:
-            logging.info("\n" + "="*80)
-            logging.info("[STEP 4/4] NORMALIZATION (BATCHED 500 + CONSOLIDATION)")
-            logging.info(f"Strategy: Per 100 sub topics = 5 topics (ratio 20:1)")
-            logging.info("="*80)
+            progress(0.85, desc="[STEP 4/4] Normalizing Topics (per campaign)...")
             
-            progress(0.85, desc="[STEP 4/4] Normalizing Topics...")
+            if 'Topic' not in df.columns:
+                df['Topic'] = ''
             
-            results = normalize_topics_v13_batched(
-                df,
-                selected_campaigns,
-                campaign_col='Campaigns',
-                engagement_col='Engagement',
-                language=language,
-                token_tracker=tracker,
-                progress=progress
-            )
-            
-            for campaign, result in results.items():
-                mapping = result['mapping']
-                campaign_mask = df['Campaigns'] == campaign
+            if 'Campaigns' not in df.columns:
+                logging.warning("⚠️ 'Campaigns' column not found, performing global normalization")
                 
-                for idx in df[campaign_mask].index:
-                    sub_topic_val = df.at[idx, 'Sub Topic']
-                    if sub_topic_val and str(sub_topic_val).strip() and not is_invalid_value(str(sub_topic_val)):
-                        mapped_topic = mapping.get(sub_topic_val, '')
-                        if mapped_topic:
+                sub_topics = df['Sub Topic'].dropna()
+                sub_topics = sub_topics[sub_topics.astype(str).str.strip() != '']
+                sub_topics = sub_topics[~sub_topics.apply(lambda x: is_invalid_value(str(x)))]
+                unique_sub_topics = sorted(sub_topics.unique().tolist())
+                
+                if unique_sub_topics:
+                    logging.warning("Global normalization not implemented with engagement, using simple mapping")
+                    for st in unique_sub_topics:
+                        words = st.split()
+                        if len(words) > 4:
+                            df.loc[df['Sub Topic'] == st, 'Topic'] = " ".join(words[:4])
+                        else:
+                            df.loc[df['Sub Topic'] == st, 'Topic'] = st
+            else:
+                results = normalize_topics_v3_with_engagement(
+                    df,
+                    campaign_col='Campaigns',
+                    engagement_col='Engagement',
+                    language=language,
+                    target_topics=TARGET_TOPICS_PER_CAMPAIGN,
+                    similarity_threshold=SIMILARITY_THRESHOLD,
+                    token_tracker=tracker,
+                    progress=progress
+                )
+                
+                for campaign, result in results.items():
+                    mapping = result['mapping']
+                    campaign_mask = df['Campaigns'] == campaign
+                    
+                    for idx in df[campaign_mask].index:
+                        sub_topic_val = df.at[idx, 'Sub Topic']
+                        if sub_topic_val and str(sub_topic_val).strip() and not is_invalid_value(str(sub_topic_val)):
+                            mapped_topic = mapping.get(sub_topic_val, sub_topic_val)
                             df.at[idx, 'Topic'] = mapped_topic
-                
-                if 'stats' in result and campaign in per_campaign_stats:
-                    per_campaign_stats[campaign]['unique_sub_topics'] = result['stats']['original_subtopics']
-                    per_campaign_stats[campaign]['final_topics'] = result['stats']['final_topics']
-                    per_campaign_stats[campaign]['grouping_efficiency'] = f"{result['stats']['reduction_rate']:.1f}%"
             
             topic_filled = df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')
             topic_success = topic_filled.sum()
             tracker.add_step_stat("Topic", topic_success, len(df))
             
+            sub_topics_all = df['Sub Topic'].dropna()
+            sub_topics_all = sub_topics_all[sub_topics_all.astype(str).str.strip() != '']
+            sub_topics_all = sub_topics_all[~sub_topics_all.apply(lambda x: is_invalid_value(str(x)))]
+            unique_sub_topics_count = len(sub_topics_all.unique())
+            unique_topics_final = df['Topic'].nunique()
+            grouping_rate = (1 - unique_topics_final / unique_sub_topics_count) * 100 if unique_sub_topics_count > 0 else 0
+            
             logging.info(f"[STEP 4/4] ✅ Topic: {topic_success}/{len(df)} ({topic_success/len(df)*100:.1f}%)")
+            logging.info(f"[STEP 4/4] 📊 Grouping: {unique_sub_topics_count} sub topics → {unique_topics_final} topics ({grouping_rate:.1f}% reduction)")
         
         if generate_spokesperson:
             progress(0.95, desc="[STEP 4/4] Normalizing Spokesperson...")
@@ -2055,8 +1745,10 @@ def process_file(
         df = df[cols]
         
         final_row_count = len(df)
-        
-        logging.info(f"✅ Rows after processing: {final_row_count}")
+        if final_row_count != original_row_count:
+            logging.warning(f"⚠️ Row count mismatch! Original: {original_row_count}, Final: {final_row_count}")
+        else:
+            logging.info(f"✅ Row count verified: {original_row_count} → {final_row_count} (unchanged)")
         
         progress(0.98, desc="Saving...")
         
@@ -2070,26 +1762,39 @@ def process_file(
             duration = time.time() - start_time
             token_summary = tracker.get_summary(MODEL_NAME)
             
-            # FIX: Extract nested f-string
-            retry_configs_str = ', '.join([f"B{c['batch_size']}×{c['truncate']}w" for c in RETRY_CONFIGS])
+            if generate_topic and 'Sub Topic' in df.columns:
+                sub_topics = df['Sub Topic'].dropna()
+                sub_topics = sub_topics[sub_topics.astype(str).str.strip() != '']
+                avg_sub_topic_words = sub_topics.astype(str).str.split().str.len().mean() if len(sub_topics) > 0 else 0
+            else:
+                avg_sub_topic_words = 0
+            
+            if generate_sentiment and 'New Sentiment' in df.columns:
+                sentiment_dist = df['New Sentiment'].value_counts(normalize=True) * 100
+                sentiment_str = ", ".join([f"{k}({v:.1f}%)" for k, v in sentiment_dist.items()])
+            else:
+                sentiment_str = "N/A"
+            
+            toon_rate = (token_summary['toon_success'] / token_summary['api_calls'] * 100) if token_summary['api_calls'] > 0 else 0
+            
+            if generate_topic:
+                unique_topics_final = df['Topic'].nunique()
+                unique_sub_topics_count = df['Sub Topic'].nunique()
+                grouping_rate = (1 - unique_topics_final / unique_sub_topics_count) * 100 if unique_sub_topics_count > 0 else 0
+            else:
+                unique_topics_final = 0
+                unique_sub_topics_count = 0
+                grouping_rate = 0
             
             meta_data = [
                 {"key": "processed_at", "value": datetime.now().strftime("%Y-%m-%d %H:%M:%S")},
-                {"key": "version", "value": "v13.0 - Aggressive Quality + Batched Normalization"},
+                {"key": "version", "value": "v11.0 - Engagement-Aware + Clean Normalization"},
                 {"key": "model", "value": MODEL_NAME},
                 {"key": "output_language", "value": f"{language} ({LANGUAGE_CONFIGS[language]['name']})"},
-                {"key": "extraction_strategy", "value": f"Initial: B{INITIAL_BATCH_SIZE}×{INITIAL_TRUNCATE}w, Retry: {retry_configs_str}"},
-                {"key": "normalization_strategy", "value": f"Batch {NORMALIZATION_BATCH_SIZE} + Consolidation, Ratio 5:100"},
-                {"key": "sub_topic_range", "value": "3-8 words (specific context required)"},
-                {"key": "topic_range", "value": "3-8 words"},
                 {"key": "duration_sec", "value": f"{duration:.2f}"},
-                {"key": "file_campaigns_total", "value": int(total_campaigns_in_file)},
-                {"key": "selected_campaigns_count", "value": int(len(selected_campaigns))},
-                {"key": "skipped_campaigns", "value": int(skipped_campaigns)},
-                {"key": "selected_campaigns", "value": ", ".join(selected_campaigns)},
-                {"key": "original_rows_in_file", "value": int(original_row_count)},
-                {"key": "filtered_rows_selected", "value": int(filtered_row_count)},
+                {"key": "original_rows", "value": int(original_row_count)},
                 {"key": "final_rows", "value": int(final_row_count)},
+                {"key": "row_unchanged", "value": "YES" if original_row_count == final_row_count else "NO"},
                 {"key": "deduplication_groups", "value": int(master_rows)},
                 {"key": "duplicate_rows", "value": int(duplicate_rows)},
                 {"key": "dedup_api_savings", "value": int(duplicate_rows)},
@@ -2098,12 +1803,20 @@ def process_file(
                 {"key": "prefilter_api_savings", "value": int(total_skipped)},
                 {"key": "mainstream_rows", "value": int(mainstream_count)},
                 {"key": "social_rows", "value": int(social_count)},
-                {"key": "type_filter_enabled", "value": "Yes" if has_type_column else "No"},
+                {"key": "batch_size", "value": int(BATCH_SIZE)},
+                {"key": "similarity_threshold", "value": f"{SIMILARITY_THRESHOLD*100}%"},
+                {"key": "target_topics_per_campaign", "value": int(TARGET_TOPICS_PER_CAMPAIGN)},
+                {"key": "skip_retry_threshold", "value": f"{SKIP_RETRY_THRESHOLD*100}%"},
                 {"key": "input_tokens", "value": int(token_summary["input_tokens"])},
                 {"key": "output_tokens", "value": int(token_summary["output_tokens"])},
                 {"key": "total_tokens", "value": int(token_summary["total_tokens"])},
                 {"key": "api_calls", "value": int(token_summary["api_calls"])},
                 {"key": "cost_usd", "value": f"${token_summary['estimated_cost_usd']:.6f}"},
+                {"key": "format", "value": "TOON with pipe delimiter"},
+                {"key": "toon_success_rate", "value": f"{toon_rate:.1f}%"},
+                {"key": "unique_sub_topics", "value": int(unique_sub_topics_count)},
+                {"key": "unique_topics", "value": int(unique_topics_final)},
+                {"key": "grouping_efficiency", "value": f"{grouping_rate:.1f}%"},
             ]
             
             for step_name, step_data in token_summary['step_stats'].items():
@@ -2112,36 +1825,17 @@ def process_file(
                     "value": f"{step_data['success']}/{step_data['total']} ({step_data['rate']:.1f}%)"
                 })
             
+            meta_data.extend([
+                {"key": "avg_sub_topic_words", "value": f"{avg_sub_topic_words:.1f}"},
+                {"key": "sentiment_distribution", "value": sentiment_str},
+            ])
+            
             meta = pd.DataFrame(meta_data)
             meta.to_excel(writer, index=False, sheet_name="Meta")
-            
-            if per_campaign_stats:
-                campaign_stats_data = []
-                for campaign, stats in per_campaign_stats.items():
-                    campaign_stats_data.append({
-                        'Campaign': campaign,
-                        'Rows': stats.get('rows', 0),
-                        'Unique Sub Topics': stats.get('unique_sub_topics', 0),
-                        'Final Topics': stats.get('final_topics', 0),
-                        'Grouping Efficiency': stats.get('grouping_efficiency', 'N/A'),
-                        'Duration (sec)': f"{stats.get('duration_sec', 0):.2f}",
-                        'API Calls': stats.get('api_calls', 0),
-                        'Cost (USD)': f"${stats.get('cost_usd', 0):.6f}"
-                    })
-                
-                campaign_stats_df = pd.DataFrame(campaign_stats_data)
-                campaign_stats_df.to_excel(writer, index=False, sheet_name="Campaign Stats")
         
         stats = {
-            "file_campaigns_total": int(total_campaigns_in_file),
-            "selected_campaigns": selected_campaigns,
-            "selected_count": int(len(selected_campaigns)),
-            "skipped_campaigns": int(skipped_campaigns),
-            "original_rows_in_file": int(original_row_count),
-            "filtered_rows": int(filtered_row_count),
-            "final_rows": int(final_row_count),
-            "extraction_strategy": f"Aggressive Quality - Initial B{INITIAL_BATCH_SIZE}×{INITIAL_TRUNCATE}w",
-            "normalization_strategy": f"Batched {NORMALIZATION_BATCH_SIZE} + Consolidation",
+            "total_rows": int(len(df)),
+            "unchanged": "YES ✅" if original_row_count == final_row_count else f"NO ❌ ({original_row_count} → {final_row_count})",
             "deduplication": {
                 "unique_groups": int(master_rows),
                 "duplicate_rows": int(duplicate_rows),
@@ -2156,15 +1850,16 @@ def process_file(
                 "mainstream": int(mainstream_count),
                 "social": int(social_count)
             },
-            "type_filter": {
-                "enabled": has_type_column,
-                "comment_count": int(comment_count) if has_type_column else 0,
-                "reply_count": int(reply_count) if has_type_column else 0
-            },
             "language": {
                 "output": f"{language} ({LANGUAGE_CONFIGS[language]['name']})"
             },
-            "per_campaign_stats": per_campaign_stats,
+            "normalization": {
+                "unique_sub_topics": int(unique_sub_topics_count),
+                "unique_topics": int(unique_topics_final),
+                "grouping_efficiency": f"{grouping_rate:.1f}%",
+                "similarity_threshold": f"{SIMILARITY_THRESHOLD*100}%",
+                "target_topics": int(TARGET_TOPICS_PER_CAMPAIGN)
+            },
             "duration": f"{duration:.2f}s",
             "cost": f"${token_summary['estimated_cost_usd']:.6f}",
             "success_rates": token_summary['step_stats']
@@ -2173,9 +1868,14 @@ def process_file(
         logging.info("\n" + "="*80)
         logging.info("✅ PROCESSING COMPLETE")
         logging.info("="*80)
-        logging.info(f"Campaigns: {len(selected_campaigns)}/{total_campaigns_in_file} selected")
-        logging.info(f"Rows: {original_row_count} → {filtered_row_count} (selected) → {final_row_count} (final)")
+        logging.info(f"Rows: {original_row_count} → {final_row_count} (unchanged: {original_row_count == final_row_count})")
+        logging.info(f"Deduplication: {master_rows} groups, {duplicate_rows} duplicates (saved {duplicate_rows} calls)")
+        logging.info(f"Pre-filter: {total_eligible} eligible, {total_skipped} skipped (saved {total_skipped} topic calls)")
         logging.info(f"Duration: {duration:.2f}s | Cost: ${token_summary['estimated_cost_usd']:.6f}")
+        logging.info(f"Language: {language}")
+        
+        if generate_topic:
+            logging.info(f"Normalization: {unique_sub_topics_count} sub topics → {unique_topics_final} topics ({grouping_rate:.1f}% reduction)")
         
         for step_name, step_data in token_summary['step_stats'].items():
             logging.info(f"{step_name}: {step_data['success']}/{step_data['total']} ({step_data['rate']:.1f}%)")
@@ -2188,88 +1888,43 @@ def process_file(
         return None, {}, f"❌ Error: {str(e)}"
 
 def create_gradio_interface():
-    with gr.Blocks(title="Insights Generator v13.0", theme=gr.themes.Soft()) as app:
-        gr.Markdown("# 📊 Insights Generator v13.0 - Aggressive Quality + Specific Sub Topics")
+    with gr.Blocks(title="Insights Generator v11.0", theme=gr.themes.Soft()) as app:
+        gr.Markdown("# 📊 Insights Generator v11.0 - Engagement-Aware Normalization")
         gr.Markdown("""
-        **New in v13.0:**
-        - 🎯 **Aggressive Quality** - Batch 20×200w initial, 15×250w, 10×300w, 5×400w retry
-        - 🔍 **Specific Sub Topics** - 3-8 words with mandatory context (events/issues/activities)
-        - 📊 **Batched Normalization** - Process 500 at a time, consolidate if >500
-        - 🎲 **Dynamic Topics** - 5 topics per 100 sub topics (ratio 20:1)
-        - 🗂️ **Type Filter** - Exclude Comment/Reply from topic extraction
-        - 📈 **Strict Prompts** - Focus on concrete, actionable categories
+        **New in v11.0:**
+        - 🎯 **Engagement-weighted normalization** (topics reflect high-engagement content)
+        - 🧹 **Clean normalization** (remove hashtags, @mentions, noise words)
+        - 🚀 **3-tier normalization** (pre-clustering + smart consolidation + mapping)
+        - ⚡ **Skip retry if success >95%** (faster processing)
+        - 📊 **Batch size 50** with optimized truncation (100/150/200 words)
+        - 📈 **Target 20 topics per campaign** with similarity threshold 40%
+        - ❌ **No "Lainnya"** (unmapped items remain empty)
         - 💾 **Output:** `{original_filename}_phase2.xlsx`
+        
+        **Channels:**
+        - Mainstream: tv, radio, newspaper, online, printmedia, site  
+        - Social: tiktok, instagram, youtube, facebook, twitter, x, blog, forum
         
         **Requirements:**
         - Excel with: Channel, Campaigns, Title/Content
-        - Optional: Engagement, Type columns
+        - Optional: Engagement column (for better topic prioritization)
         """)
-        
-        file_state = gr.State(None)
         
         with gr.Row():
             with gr.Column(scale=2):
                 file_input = gr.File(label="📁 Upload Excel", file_types=[".xlsx"], type="filepath")
                 sheet_selector = gr.Dropdown(label="📊 Sheet", choices=[], interactive=True)
                 
-                campaign_selector = gr.CheckboxGroup(
-                    label="📋 Select Campaigns",
-                    choices=[],
-                    value=[],
-                    interactive=True,
-                    visible=False
-                )
-                
                 def load_sheets(file_path):
                     if file_path:
                         try:
                             xl = pd.ExcelFile(file_path)
-                            return (
-                                gr.Dropdown(choices=xl.sheet_names, value=xl.sheet_names[0]),
-                                file_path,
-                                gr.CheckboxGroup(visible=False, choices=[], value=[])
-                            )
+                            return gr.Dropdown(choices=xl.sheet_names, value=xl.sheet_names[0])
                         except Exception as e:
-                            return (
-                                gr.Dropdown(choices=[]),
-                                None,
-                                gr.CheckboxGroup(visible=False, choices=[], value=[])
-                            )
-                    return (
-                        gr.Dropdown(choices=[]),
-                        None,
-                        gr.CheckboxGroup(visible=False, choices=[], value=[])
-                    )
+                            return gr.Dropdown(choices=[])
+                    return gr.Dropdown(choices=[])
                 
-                file_input.change(
-                    load_sheets, 
-                    inputs=file_input, 
-                    outputs=[sheet_selector, file_state, campaign_selector]
-                )
-                
-                def load_campaigns(file_path, sheet_name):
-                    if not file_path or not sheet_name:
-                        return gr.CheckboxGroup(visible=False, choices=[], value=[])
-                    
-                    campaigns = load_campaigns_from_file(file_path, sheet_name)
-                    
-                    if campaigns:
-                        labels = [c['label'] for c in campaigns]
-                        
-                        return gr.CheckboxGroup(
-                            visible=True,
-                            choices=labels,
-                            value=labels,
-                            label=f"📋 Select Campaigns ({len(campaigns)} total, all selected by default)"
-                        )
-                    else:
-                        return gr.CheckboxGroup(visible=False, choices=[], value=[])
-                
-                sheet_selector.change(
-                    load_campaigns,
-                    inputs=[file_state, sheet_selector],
-                    outputs=[campaign_selector]
-                )
+                file_input.change(load_sheets, inputs=file_input, outputs=sheet_selector)
             
             with gr.Column(scale=1):
                 gr.Markdown("### 🌍 Language")
@@ -2284,7 +1939,7 @@ def create_gradio_interface():
                 conf_threshold = gr.Slider(label="Sentiment Confidence Threshold", minimum=0, maximum=100, value=85, step=5)
                 
                 gr.Markdown("### ✅ Features (Select at least 1)")
-                gen_topic = gr.Checkbox(label="📌 Topic & Sub Topic (batched normalization)", value=False)
+                gen_topic = gr.Checkbox(label="📌 Topic & Sub Topic (all channels)", value=False)
                 gen_sentiment = gr.Checkbox(label="😊 Sentiment (all channels)", value=False)
                 gen_spokesperson = gr.Checkbox(label="🎤 Spokesperson (mainstream only)", value=False)
         
@@ -2296,32 +1951,33 @@ def create_gradio_interface():
             with gr.Column():
                 output_file = gr.File(label="📥 Download")
             with gr.Column():
-                stats_output = gr.Textbox(label="📊 Stats", lines=20, interactive=False)
+                stats_output = gr.Textbox(label="📊 Stats", lines=16, interactive=False)
         
         error_output = gr.Textbox(label="⚠️ Status", lines=3, visible=True)
         
-        def validate_all(topic, sentiment, spokesperson, campaigns):
-            errors = []
-            
+        def validate_features(topic, sentiment, spokesperson):
             if not any([topic, sentiment, spokesperson]):
-                errors.append("⚠️ Please select at least one feature")
-            
-            if not campaigns or len(campaigns) == 0:
-                errors.append("⚠️ Please select at least one campaign")
-            
-            if errors:
-                return gr.Button(interactive=False), gr.Markdown("<br>".join(errors), visible=True)
+                return gr.Button(interactive=False), gr.Markdown("⚠️ **Please select at least one feature to process**", visible=True)
             else:
                 return gr.Button(interactive=True), gr.Markdown("", visible=False)
         
-        for component in [gen_topic, gen_sentiment, gen_spokesperson, campaign_selector]:
-            component.change(
-                validate_all,
-                inputs=[gen_topic, gen_sentiment, gen_spokesperson, campaign_selector],
-                outputs=[process_btn, validation_error]
-            )
+        gen_topic.change(
+            validate_features,
+            inputs=[gen_topic, gen_sentiment, gen_spokesperson],
+            outputs=[process_btn, validation_error]
+        )
+        gen_sentiment.change(
+            validate_features,
+            inputs=[gen_topic, gen_sentiment, gen_spokesperson],
+            outputs=[process_btn, validation_error]
+        )
+        gen_spokesperson.change(
+            validate_features,
+            inputs=[gen_topic, gen_sentiment, gen_spokesperson],
+            outputs=[process_btn, validation_error]
+        )
         
-        def process_wrapper(file_path, sheet_name, campaigns_with_counts, language, topic, sentiment, spokesperson, conf, progress=gr.Progress()):
+        def process_wrapper(file_path, sheet_name, language, topic, sentiment, spokesperson, conf, progress=gr.Progress()):
             try:
                 if not file_path:
                     return None, "", "❌ Please upload an Excel file"
@@ -2329,19 +1985,11 @@ def create_gradio_interface():
                 if not sheet_name:
                     return None, "", "❌ Please select a sheet"
                 
-                if not campaigns_with_counts or len(campaigns_with_counts) == 0:
-                    return None, "", "❌ Please select at least one campaign"
-                
                 if not any([topic, sentiment, spokesperson]):
                     return None, "", "❌ Please select at least one feature"
                 
-                selected_campaigns = []
-                for label in campaigns_with_counts:
-                    campaign_name = label.split(' (')[0] if ' (' in label else label
-                    selected_campaigns.append(campaign_name)
-                
                 result_path, stats, error = process_file(
-                    file_path, sheet_name, selected_campaigns, language, topic, sentiment, spokesperson, conf, progress
+                    file_path, sheet_name, language, topic, sentiment, spokesperson, conf, progress
                 )
                 
                 if error:
@@ -2382,7 +2030,7 @@ def create_gradio_interface():
         
         process_btn.click(
             process_wrapper,
-            inputs=[file_state, sheet_selector, campaign_selector, language_selector, gen_topic, gen_sentiment, gen_spokesperson, conf_threshold],
+            inputs=[file_input, sheet_selector, language_selector, gen_topic, gen_sentiment, gen_spokesperson, conf_threshold],
             outputs=[output_file, stats_output, error_output]
         )
     

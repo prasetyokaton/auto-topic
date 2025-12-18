@@ -1,0 +1,95 @@
+2025-12-17 06:55:42,259 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-12-17 06:55:43,021 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:55:43,267 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-12-17 06:55:43,275 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-12-17 06:55:43,315 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-12-17 06:55:44,956 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-12-17 06:55:50,620 - [INFO] - generated new fontManager
+2025-12-17 06:55:54,538 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Type': 'Type', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2025-12-17 06:56:05,365 - [INFO] - 📊 Original rows: 9246
+2025-12-17 06:56:05,367 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Type': 'Type', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2025-12-17 06:56:05,372 - [INFO] - 
+================================================================================
+2025-12-17 06:56:05,372 - [INFO] - [CAMPAIGN SELECTION]
+2025-12-17 06:56:05,372 - [INFO] - ================================================================================
+2025-12-17 06:56:05,372 - [INFO] - Total campaigns in file: 4
+2025-12-17 06:56:05,372 - [INFO] - Selected for processing: 4
+2025-12-17 06:56:05,372 - [INFO] - Skipped campaigns: 0
+2025-12-17 06:56:05,372 - [INFO] - Original rows: 9246
+2025-12-17 06:56:05,373 - [INFO] - Filtered rows (selected campaigns): 9246
+2025-12-17 06:56:05,373 - [INFO] - Selected campaigns: Lintas Resonan, Signature Time, Performer Lintas Resonan, KOL Lintas Resonan
+2025-12-17 06:56:05,374 - [INFO] - 
+================================================================================
+2025-12-17 06:56:05,374 - [INFO] - [TYPE FILTER]
+2025-12-17 06:56:05,374 - [INFO] - ================================================================================
+2025-12-17 06:56:05,374 - [INFO] - Comment: 7812 rows (will be excluded from topic extraction)
+2025-12-17 06:56:05,374 - [INFO] - Reply: 10 rows (will be excluded from topic extraction)
+2025-12-17 06:56:05,374 - [INFO] - Other: 1424 rows (will process for topics)
+2025-12-17 06:56:05,374 - [INFO] - Note: Sentiment & Spokesperson will process ALL 9246 rows
+2025-12-17 06:56:05,377 - [INFO] - 
+================================================================================
+2025-12-17 06:56:05,378 - [INFO] - [DEDUPLICATION] Creating groups for identical content (selected campaigns only)
+2025-12-17 06:56:05,378 - [INFO] - ================================================================================
+2025-12-17 06:56:05,434 - [INFO] - ✅ Deduplication: 9246 rows → 8170 unique groups + 1076 duplicates
+2025-12-17 06:56:05,434 - [INFO] - 💰 API savings from deduplication: 1076 calls
+2025-12-17 06:56:05,439 - [INFO] - 📊 Channel split: Mainstream=63, Social=9183
+2025-12-17 06:56:05,439 - [INFO] - 
+================================================================================
+2025-12-17 06:56:05,439 - [INFO] - [PRE-FILTER] Checking content eligibility
+2025-12-17 06:56:05,439 - [INFO] - ================================================================================
+2025-12-17 06:56:05,686 - [INFO] - ✅ Content filter: 1383 eligible, 7863 skipped
+2025-12-17 06:56:05,687 - [INFO] -    └─ Skipped: 41 (<5 words)
+2025-12-17 06:56:05,687 - [INFO] -    └─ Excluded: 7822 (Comment/Reply)
+2025-12-17 06:56:05,687 - [INFO] - 💰 API savings from pre-filter: 7863 topic extractions skipped
+2025-12-17 06:56:05,688 - [INFO] - 
+================================================================================
+2025-12-17 06:56:05,688 - [INFO] - [PROCESSING CAMPAIGN 1/4] 'Lintas Resonan'
+2025-12-17 06:56:05,688 - [INFO] - ================================================================================
+2025-12-17 06:56:05,689 - [INFO] - Campaign rows: 4566
+2025-12-17 06:56:05,689 - [INFO] - 
+================================================================================
+2025-12-17 06:56:05,689 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT - Lintas Resonan
+2025-12-17 06:56:05,689 - [INFO] - Strategy: Aggressive Quality (smaller batches, longer content)
+2025-12-17 06:56:05,689 - [INFO] - ================================================================================
+2025-12-17 06:56:05,698 - [INFO] - 📊 Processing 597 master rows
+2025-12-17 06:56:05,699 - [INFO] -    Initial: Batch 20 × 200 words
+2025-12-17 06:56:14,350 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:56:22,727 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:56:27,968 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:56:37,486 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:56:46,083 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:56:52,782 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:00,867 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:09,584 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:15,737 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:24,236 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:32,174 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:38,266 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:42,294 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:49,553 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:57:55,852 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:58:03,756 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:58:13,041 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:58:23,854 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:58:32,389 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:58:38,269 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:58:47,709 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:58:54,250 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:02,761 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:11,452 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:18,881 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:26,853 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:29,819 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:37,019 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:40,656 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:47,847 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 06:59:47,890 - [INFO] - 📋 Copying results to duplicate rows...
+2025-12-17 06:59:47,940 - [ERROR] - [ERROR] index 0 is out of bounds for axis 0 with size 0
+Traceback (most recent call last):
+  File "/app/app.py", line 1791, in process_file
+    master_idx = group[group['_is_master']].index[0]
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/local/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 5385, in __getitem__
+    return getitem(key)
+           ^^^^^^^^^^^^
+IndexError: index 0 is out of bounds for axis 0 with size 0

@@ -1,0 +1,506 @@
+2025-12-17 07:43:00,874 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:43:01,122 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-12-17 07:43:01,166 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2025-12-17 07:43:01,184 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-12-17 07:43:01,194 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2025-12-17 07:43:03,477 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-12-17 07:43:10,391 - [INFO] - generated new fontManager
+2025-12-17 07:43:14,747 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Type': 'Type', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2025-12-17 07:43:22,949 - [INFO] - 📊 Original rows: 9246
+2025-12-17 07:43:22,951 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Type': 'Type', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2025-12-17 07:43:22,955 - [INFO] - 
+================================================================================
+2025-12-17 07:43:22,955 - [INFO] - [CAMPAIGN SELECTION]
+2025-12-17 07:43:22,955 - [INFO] - ================================================================================
+2025-12-17 07:43:22,955 - [INFO] - Total campaigns in file: 4
+2025-12-17 07:43:22,955 - [INFO] - Selected for processing: 4
+2025-12-17 07:43:22,955 - [INFO] - Skipped campaigns: 0
+2025-12-17 07:43:22,955 - [INFO] - Original rows: 9246
+2025-12-17 07:43:22,955 - [INFO] - Filtered rows (selected campaigns): 9246
+2025-12-17 07:43:22,955 - [INFO] - Selected campaigns: Lintas Resonan, Signature Time, Performer Lintas Resonan, KOL Lintas Resonan
+2025-12-17 07:43:22,957 - [INFO] - 
+================================================================================
+2025-12-17 07:43:22,957 - [INFO] - [TYPE FILTER]
+2025-12-17 07:43:22,957 - [INFO] - ================================================================================
+2025-12-17 07:43:22,957 - [INFO] - Comment: 7812 rows (will be excluded from topic extraction)
+2025-12-17 07:43:22,957 - [INFO] - Reply: 10 rows (will be excluded from topic extraction)
+2025-12-17 07:43:22,957 - [INFO] - Other: 1424 rows (will process for topics)
+2025-12-17 07:43:22,957 - [INFO] - Note: Sentiment & Spokesperson will process ALL 9246 rows
+2025-12-17 07:43:22,960 - [INFO] - 
+================================================================================
+2025-12-17 07:43:22,960 - [INFO] - [DEDUPLICATION] Creating groups for identical content (selected campaigns only)
+2025-12-17 07:43:22,960 - [INFO] - ================================================================================
+2025-12-17 07:43:23,017 - [INFO] - ✅ Deduplication: 9246 rows → 8170 unique groups + 1076 duplicates
+2025-12-17 07:43:23,017 - [INFO] - 💰 API savings from deduplication: 1076 calls
+2025-12-17 07:43:23,023 - [INFO] - 📊 Channel split: Mainstream=63, Social=9183
+2025-12-17 07:43:23,023 - [INFO] - 
+================================================================================
+2025-12-17 07:43:23,023 - [INFO] - [PRE-FILTER] Checking content eligibility
+2025-12-17 07:43:23,023 - [INFO] - ================================================================================
+2025-12-17 07:43:23,141 - [INFO] - ✅ Content filter: 1383 eligible, 7863 skipped
+2025-12-17 07:43:23,141 - [INFO] -    └─ Skipped: 41 (<5 words)
+2025-12-17 07:43:23,141 - [INFO] -    └─ Excluded: 7822 (Comment/Reply)
+2025-12-17 07:43:23,141 - [INFO] - 💰 API savings from pre-filter: 7863 topic extractions skipped
+2025-12-17 07:43:23,142 - [INFO] - 
+================================================================================
+2025-12-17 07:43:23,142 - [INFO] - [PROCESSING CAMPAIGN 1/4] 'Lintas Resonan'
+2025-12-17 07:43:23,142 - [INFO] - ================================================================================
+2025-12-17 07:43:23,142 - [INFO] - Campaign rows: 4566
+2025-12-17 07:43:23,143 - [INFO] - 
+================================================================================
+2025-12-17 07:43:23,143 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT - Lintas Resonan
+2025-12-17 07:43:23,143 - [INFO] - Strategy: Aggressive Quality (smaller batches, longer content)
+2025-12-17 07:43:23,143 - [INFO] - ================================================================================
+2025-12-17 07:43:23,146 - [INFO] - 📊 Processing 597 master rows
+2025-12-17 07:43:23,146 - [INFO] -    Initial: Batch 20 × 200 words
+2025-12-17 07:43:29,026 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:43:36,788 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:43:39,502 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:43:45,809 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:43:53,797 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:00,383 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:06,664 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:13,358 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:19,136 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:27,894 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:36,359 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:43,357 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:51,868 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:44:59,654 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:45:06,804 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:45:15,351 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:45:22,076 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:45:29,697 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:45:39,321 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:45:46,435 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:45:54,940 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:03,946 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:13,567 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:21,679 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:30,146 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:35,125 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:37,830 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:44,285 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:48,603 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:56,405 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:46:56,464 - [INFO] - 📋 Copying results to duplicate rows...
+2025-12-17 07:46:59,944 - [INFO] - [STEP 1/4] ✅ Sub Topic: 285/4566 (6.2%)
+2025-12-17 07:46:59,949 - [INFO] - 
+================================================================================
+2025-12-17 07:46:59,949 - [INFO] - [STEP 3/4] RETRY #1 - Lintas Resonan
+2025-12-17 07:46:59,949 - [INFO] - Strategy: Batch 15 × 250 words
+2025-12-17 07:46:59,949 - [INFO] - Current success: 6.2%
+2025-12-17 07:46:59,949 - [INFO] - ================================================================================
+2025-12-17 07:46:59,953 - [INFO] - [STEP 3/4] Found 330 rows still missing sub topics
+2025-12-17 07:47:05,522 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:09,176 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:13,893 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:19,729 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:25,152 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:29,348 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:34,709 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:39,528 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:43,770 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:53,311 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:47:58,353 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:06,954 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:11,462 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:18,170 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:23,491 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:27,516 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:31,870 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:36,897 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:43,890 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:47,327 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:52,216 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:57,334 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:48:57,372 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:48:57,562 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #1: 401/4566 (8.8%)
+2025-12-17 07:48:57,562 - [INFO] - 
+================================================================================
+2025-12-17 07:48:57,562 - [INFO] - [STEP 3/4] RETRY #2 - Lintas Resonan
+2025-12-17 07:48:57,562 - [INFO] - Strategy: Batch 10 × 300 words
+2025-12-17 07:48:57,562 - [INFO] - Current success: 8.8%
+2025-12-17 07:48:57,562 - [INFO] - ================================================================================
+2025-12-17 07:48:57,566 - [INFO] - [STEP 3/4] Found 222 rows still missing sub topics
+2025-12-17 07:49:02,069 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:05,714 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:08,077 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:10,714 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:13,885 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:17,265 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:20,458 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:24,452 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:26,912 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:29,487 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:32,440 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:35,392 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:39,381 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:42,098 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:45,494 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:48,254 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:52,578 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:55,260 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:49:58,392 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:00,682 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:03,929 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:07,263 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:09,590 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:09,613 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:50:09,753 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #2: 445/4566 (9.7%)
+2025-12-17 07:50:09,753 - [INFO] - 
+================================================================================
+2025-12-17 07:50:09,754 - [INFO] - [STEP 3/4] RETRY #3 - Lintas Resonan
+2025-12-17 07:50:09,754 - [INFO] - Strategy: Batch 5 × 400 words
+2025-12-17 07:50:09,754 - [INFO] - Current success: 9.7%
+2025-12-17 07:50:09,754 - [INFO] - ================================================================================
+2025-12-17 07:50:09,758 - [INFO] - [STEP 3/4] Found 190 rows still missing sub topics
+2025-12-17 07:50:11,605 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:13,285 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:15,654 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:17,497 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:20,024 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:21,431 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:23,291 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:24,975 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:28,119 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:29,888 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:32,365 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:34,234 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:36,223 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:37,756 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:40,078 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:41,849 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:43,892 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:45,470 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:47,754 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:49,085 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:51,216 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:53,391 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:56,289 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:50:58,219 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:00,392 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:02,564 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:04,832 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:06,962 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:09,215 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:12,186 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:14,157 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:16,084 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:17,922 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:20,474 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:22,191 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:24,577 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:26,733 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:29,080 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:29,123 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:51:29,264 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #3: 456/4566 (10.0%)
+2025-12-17 07:51:29,266 - [INFO] - [STEP 3/4] Applying fallback keyword extraction to 4110 rows...
+2025-12-17 07:51:29,425 - [INFO] - 
+================================================================================
+2025-12-17 07:51:29,425 - [INFO] - [PROCESSING CAMPAIGN 2/4] 'Signature Time'
+2025-12-17 07:51:29,425 - [INFO] - ================================================================================
+2025-12-17 07:51:29,426 - [INFO] - Campaign rows: 4075
+2025-12-17 07:51:29,426 - [INFO] - 
+================================================================================
+2025-12-17 07:51:29,426 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT - Signature Time
+2025-12-17 07:51:29,426 - [INFO] - Strategy: Aggressive Quality (smaller batches, longer content)
+2025-12-17 07:51:29,426 - [INFO] - ================================================================================
+2025-12-17 07:51:29,437 - [INFO] - 📊 Processing 333 master rows
+2025-12-17 07:51:29,437 - [INFO] -    Initial: Batch 20 × 200 words
+2025-12-17 07:51:35,344 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:41,391 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:48,868 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:51:55,097 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:00,986 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:06,016 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:13,709 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:19,277 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:26,144 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:33,119 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:36,894 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:43,605 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:49,990 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:52:54,780 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:00,054 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:03,313 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:07,465 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:07,514 - [INFO] - 📋 Copying results to duplicate rows...
+2025-12-17 07:53:10,129 - [INFO] - [STEP 1/4] ✅ Sub Topic: 218/4075 (5.3%)
+2025-12-17 07:53:10,132 - [INFO] - 
+================================================================================
+2025-12-17 07:53:10,132 - [INFO] - [STEP 3/4] RETRY #1 - Signature Time
+2025-12-17 07:53:10,132 - [INFO] - Strategy: Batch 15 × 250 words
+2025-12-17 07:53:10,132 - [INFO] - Current success: 5.3%
+2025-12-17 07:53:10,133 - [INFO] - ================================================================================
+2025-12-17 07:53:10,137 - [INFO] - [STEP 3/4] Found 117 rows still missing sub topics
+2025-12-17 07:53:16,123 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:19,696 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:24,236 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:28,207 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:32,941 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:37,735 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:41,202 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:51,956 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:51,989 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:53:52,083 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #1: 259/4075 (6.4%)
+2025-12-17 07:53:52,084 - [INFO] - 
+================================================================================
+2025-12-17 07:53:52,084 - [INFO] - [STEP 3/4] RETRY #2 - Signature Time
+2025-12-17 07:53:52,085 - [INFO] - Strategy: Batch 10 × 300 words
+2025-12-17 07:53:52,085 - [INFO] - Current success: 6.4%
+2025-12-17 07:53:52,086 - [INFO] - ================================================================================
+2025-12-17 07:53:52,094 - [INFO] - [STEP 3/4] Found 76 rows still missing sub topics
+2025-12-17 07:53:55,180 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:53:58,479 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:02,498 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:05,364 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:08,692 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:11,324 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:14,702 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:16,940 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:16,970 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:54:17,047 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #2: 277/4075 (6.8%)
+2025-12-17 07:54:17,047 - [INFO] - 
+================================================================================
+2025-12-17 07:54:17,047 - [INFO] - [STEP 3/4] RETRY #3 - Signature Time
+2025-12-17 07:54:17,047 - [INFO] - Strategy: Batch 5 × 400 words
+2025-12-17 07:54:17,047 - [INFO] - Current success: 6.8%
+2025-12-17 07:54:17,047 - [INFO] - ================================================================================
+2025-12-17 07:54:17,053 - [INFO] - [STEP 3/4] Found 58 rows still missing sub topics
+2025-12-17 07:54:19,325 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:22,126 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:24,640 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:29,017 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:31,260 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:33,510 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:35,219 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:37,044 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:39,125 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:41,737 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:43,494 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:48,478 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:54:48,514 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:54:48,575 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #3: 279/4075 (6.8%)
+2025-12-17 07:54:48,577 - [INFO] - [STEP 3/4] Applying fallback keyword extraction to 3796 rows...
+2025-12-17 07:54:48,729 - [INFO] - 
+================================================================================
+2025-12-17 07:54:48,729 - [INFO] - [PROCESSING CAMPAIGN 3/4] 'Performer Lintas Resonan'
+2025-12-17 07:54:48,729 - [INFO] - ================================================================================
+2025-12-17 07:54:48,730 - [INFO] - Campaign rows: 303
+2025-12-17 07:54:48,730 - [INFO] - 
+================================================================================
+2025-12-17 07:54:48,730 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT - Performer Lintas Resonan
+2025-12-17 07:54:48,730 - [INFO] - Strategy: Aggressive Quality (smaller batches, longer content)
+2025-12-17 07:54:48,730 - [INFO] - ================================================================================
+2025-12-17 07:54:48,746 - [INFO] - 📊 Processing 187 master rows
+2025-12-17 07:54:48,746 - [INFO] -    Initial: Batch 20 × 200 words
+2025-12-17 07:54:56,751 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:04,523 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:12,302 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:21,407 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:28,681 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:34,292 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:40,167 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:47,725 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:53,724 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:56,680 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:55:56,910 - [INFO] - 📋 Copying results to duplicate rows...
+2025-12-17 07:55:57,296 - [INFO] - [STEP 1/4] ✅ Sub Topic: 100/303 (33.0%)
+2025-12-17 07:55:57,297 - [INFO] - 
+================================================================================
+2025-12-17 07:55:57,298 - [INFO] - [STEP 3/4] RETRY #1 - Performer Lintas Resonan
+2025-12-17 07:55:57,299 - [INFO] - Strategy: Batch 15 × 250 words
+2025-12-17 07:55:57,300 - [INFO] - Current success: 33.0%
+2025-12-17 07:55:57,300 - [INFO] - ================================================================================
+2025-12-17 07:55:57,308 - [INFO] - [STEP 3/4] Found 90 rows still missing sub topics
+2025-12-17 07:56:02,607 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:05,496 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:13,520 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:18,162 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:22,799 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:26,387 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:26,415 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:56:26,482 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #1: 138/303 (45.5%)
+2025-12-17 07:56:26,482 - [INFO] - 
+================================================================================
+2025-12-17 07:56:26,482 - [INFO] - [STEP 3/4] RETRY #2 - Performer Lintas Resonan
+2025-12-17 07:56:26,482 - [INFO] - Strategy: Batch 10 × 300 words
+2025-12-17 07:56:26,483 - [INFO] - Current success: 45.5%
+2025-12-17 07:56:26,483 - [INFO] - ================================================================================
+2025-12-17 07:56:26,488 - [INFO] - [STEP 3/4] Found 52 rows still missing sub topics
+2025-12-17 07:56:28,593 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:31,196 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:34,816 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:37,031 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:40,910 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:42,559 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:42,598 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:56:42,657 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #2: 151/303 (49.8%)
+2025-12-17 07:56:42,658 - [INFO] - 
+================================================================================
+2025-12-17 07:56:42,658 - [INFO] - [STEP 3/4] RETRY #3 - Performer Lintas Resonan
+2025-12-17 07:56:42,658 - [INFO] - Strategy: Batch 5 × 400 words
+2025-12-17 07:56:42,658 - [INFO] - Current success: 49.8%
+2025-12-17 07:56:42,658 - [INFO] - ================================================================================
+2025-12-17 07:56:42,665 - [INFO] - [STEP 3/4] Found 39 rows still missing sub topics
+2025-12-17 07:56:44,359 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:46,855 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:49,919 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:52,089 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:54,056 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:56,077 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:56:59,117 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:01,554 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:01,563 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:57:01,594 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #3: 155/303 (51.2%)
+2025-12-17 07:57:01,596 - [INFO] - [STEP 3/4] Applying fallback keyword extraction to 148 rows...
+2025-12-17 07:57:01,605 - [INFO] - 
+================================================================================
+2025-12-17 07:57:01,606 - [INFO] - [PROCESSING CAMPAIGN 4/4] 'KOL Lintas Resonan'
+2025-12-17 07:57:01,606 - [INFO] - ================================================================================
+2025-12-17 07:57:01,606 - [INFO] - Campaign rows: 302
+2025-12-17 07:57:01,607 - [INFO] - 
+================================================================================
+2025-12-17 07:57:01,607 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT - KOL Lintas Resonan
+2025-12-17 07:57:01,607 - [INFO] - Strategy: Aggressive Quality (smaller batches, longer content)
+2025-12-17 07:57:01,607 - [INFO] - ================================================================================
+2025-12-17 07:57:01,613 - [INFO] - 📊 Processing 96 master rows
+2025-12-17 07:57:01,614 - [INFO] -    Initial: Batch 20 × 200 words
+2025-12-17 07:57:09,236 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:18,103 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:31,168 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:40,678 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:48,834 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:48,863 - [INFO] - 📋 Copying results to duplicate rows...
+2025-12-17 07:57:49,192 - [INFO] - [STEP 1/4] ✅ Sub Topic: 72/302 (23.8%)
+2025-12-17 07:57:49,194 - [INFO] - 
+================================================================================
+2025-12-17 07:57:49,194 - [INFO] - [STEP 3/4] RETRY #1 - KOL Lintas Resonan
+2025-12-17 07:57:49,194 - [INFO] - Strategy: Batch 15 × 250 words
+2025-12-17 07:57:49,195 - [INFO] - Current success: 23.8%
+2025-12-17 07:57:49,195 - [INFO] - ================================================================================
+2025-12-17 07:57:49,202 - [INFO] - [STEP 3/4] Found 25 rows still missing sub topics
+2025-12-17 07:57:53,665 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:56,801 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:57:56,814 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:57:56,860 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #1: 79/302 (26.2%)
+2025-12-17 07:57:56,860 - [INFO] - 
+================================================================================
+2025-12-17 07:57:56,860 - [INFO] - [STEP 3/4] RETRY #2 - KOL Lintas Resonan
+2025-12-17 07:57:56,861 - [INFO] - Strategy: Batch 10 × 300 words
+2025-12-17 07:57:56,861 - [INFO] - Current success: 26.2%
+2025-12-17 07:57:56,861 - [INFO] - ================================================================================
+2025-12-17 07:57:56,868 - [INFO] - [STEP 3/4] Found 18 rows still missing sub topics
+2025-12-17 07:58:00,173 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:58:03,303 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:58:03,312 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:58:03,341 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #2: 80/302 (26.5%)
+2025-12-17 07:58:03,341 - [INFO] - 
+================================================================================
+2025-12-17 07:58:03,341 - [INFO] - [STEP 3/4] RETRY #3 - KOL Lintas Resonan
+2025-12-17 07:58:03,342 - [INFO] - Strategy: Batch 5 × 400 words
+2025-12-17 07:58:03,342 - [INFO] - Current success: 26.5%
+2025-12-17 07:58:03,342 - [INFO] - ================================================================================
+2025-12-17 07:58:03,351 - [INFO] - [STEP 3/4] Found 17 rows still missing sub topics
+2025-12-17 07:58:05,261 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:58:08,171 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:58:10,493 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:58:12,059 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:58:12,066 - [INFO] - 📋 Copying retried results to duplicate rows...
+2025-12-17 07:58:12,089 - [INFO] - [STEP 3/4] ✅ Sub Topic after retry #3: 80/302 (26.5%)
+2025-12-17 07:58:12,092 - [INFO] - [STEP 3/4] Applying fallback keyword extraction to 222 rows...
+2025-12-17 07:58:12,104 - [INFO] - 
+================================================================================
+2025-12-17 07:58:12,105 - [INFO] - [STEP 4/4] NORMALIZATION (BATCHED 500 + CONSOLIDATION)
+2025-12-17 07:58:12,105 - [INFO] - Strategy: Per 100 sub topics = 5 topics (ratio 20:1)
+2025-12-17 07:58:12,105 - [INFO] - ================================================================================
+2025-12-17 07:58:12,106 - [INFO] - 
+================================================================================
+2025-12-17 07:58:12,106 - [INFO] - [NORMALIZATION 1/4] Campaign: 'Lintas Resonan'
+2025-12-17 07:58:12,106 - [INFO] - ================================================================================
+2025-12-17 07:58:12,166 - [INFO] -   └─ Sub topics: 385
+2025-12-17 07:58:12,166 - [INFO] -   └─ Single batch normalization (385 ≤ 500)
+2025-12-17 07:58:12,166 - [INFO] -   └─ Target topics: 20 (ratio: 5 per 100)
+2025-12-17 07:58:15,844 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 07:58:15,853 - [INFO] - Generated 20 normalized topics
+2025-12-17 07:58:15,853 - [INFO] -   └─ Generated 20 topics
+2025-12-17 08:00:34,077 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 08:00:34,318 - [INFO] - Mapped 61/385 sub topics (324 unmapped)
+2025-12-17 08:00:34,319 - [WARNING] - ⚠️ LOW MAPPING RATE: 61/385 (15.8%)
+2025-12-17 08:00:34,319 - [WARNING] - Sample unmapped sub topics (first 5):
+2025-12-17 08:00:34,320 - [WARNING] -    - 'Kolaborasi Barasuara Dan Perunggu Di Semarang'
+2025-12-17 08:00:34,320 - [WARNING] -    - 'Momen Favorit Danilla Dan Perunggu Di Youtube'
+2025-12-17 08:00:34,320 - [WARNING] -    - 'Reaksi Terhadap Kolaborasi Perunggu Dan Danilla'
+2025-12-17 08:00:34,321 - [WARNING] -    - 'Tebak Judul Lagu Gerald Di Link Bio'
+2025-12-17 08:00:34,321 - [WARNING] -    - 'Persiapan Konser Kolaborasi Danilla Dan Perunggu'
+2025-12-17 08:00:34,321 - [INFO] -   └─ Final topics: 61
+2025-12-17 08:00:34,322 - [INFO] -   └─ Reduction: 84.2%
+2025-12-17 08:00:34,322 - [INFO] - 
+================================================================================
+2025-12-17 08:00:34,322 - [INFO] - [NORMALIZATION 2/4] Campaign: 'Signature Time'
+2025-12-17 08:00:34,322 - [INFO] - ================================================================================
+2025-12-17 08:00:34,455 - [INFO] -   └─ Sub topics: 272
+2025-12-17 08:00:34,455 - [INFO] -   └─ Single batch normalization (272 ≤ 500)
+2025-12-17 08:00:34,455 - [INFO] -   └─ Target topics: 15 (ratio: 5 per 100)
+2025-12-17 08:00:39,157 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 08:00:39,166 - [INFO] - Generated 16 normalized topics
+2025-12-17 08:00:39,169 - [INFO] -   └─ Generated 16 topics
+2025-12-17 08:01:41,951 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 08:01:41,969 - [INFO] - Mapped 35/272 sub topics (237 unmapped)
+2025-12-17 08:01:41,970 - [WARNING] - ⚠️ LOW MAPPING RATE: 35/272 (12.9%)
+2025-12-17 08:01:41,970 - [WARNING] - Sample unmapped sub topics (first 5):
+2025-12-17 08:01:41,970 - [WARNING] -    - 'Brightspotmkrt 2024 Di Agora Mall'
+2025-12-17 08:01:41,970 - [WARNING] -    - 'Mybca X Brightspotmrkt 2024 Di Jakarta'
+2025-12-17 08:01:41,970 - [WARNING] -    - 'Aktivasi Path Of Passion Di Brightspot'
+2025-12-17 08:01:41,970 - [WARNING] -    - 'Booth Path Of Passion Di Brightspot'
+2025-12-17 08:01:41,970 - [WARNING] -    - 'Tes Karakter Di Brightspot'
+2025-12-17 08:01:41,971 - [INFO] -   └─ Final topics: 16
+2025-12-17 08:01:41,971 - [INFO] -   └─ Reduction: 94.1%
+2025-12-17 08:01:41,971 - [INFO] - 
+================================================================================
+2025-12-17 08:01:41,971 - [INFO] - [NORMALIZATION 3/4] Campaign: 'Performer Lintas Resonan'
+2025-12-17 08:01:41,971 - [INFO] - ================================================================================
+2025-12-17 08:01:42,017 - [INFO] -   └─ Sub topics: 143
+2025-12-17 08:01:42,018 - [INFO] -   └─ Single batch normalization (143 ≤ 500)
+2025-12-17 08:01:42,018 - [INFO] -   └─ Target topics: 5 (ratio: 5 per 100)
+2025-12-17 08:01:45,760 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 08:01:45,773 - [INFO] - Generated 5 normalized topics
+2025-12-17 08:01:45,773 - [INFO] -   └─ Generated 5 topics
+2025-12-17 08:02:09,792 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 08:02:09,823 - [INFO] - Mapped 10/143 sub topics (133 unmapped)
+2025-12-17 08:02:09,826 - [WARNING] - ⚠️ LOW MAPPING RATE: 10/143 (7.0%)
+2025-12-17 08:02:09,827 - [WARNING] - Sample unmapped sub topics (first 5):
+2025-12-17 08:02:09,827 - [WARNING] -    - 'Acara Sunset Di Kebun Raya Purwodadi'
+2025-12-17 08:02:09,827 - [WARNING] -    - 'Panggung Spesial Nike Ardilla Di Synchronize Festival 2024'
+2025-12-17 08:02:09,828 - [WARNING] -    - 'Menikmati Sunset Di Kebun Raya Purwodadi'
+2025-12-17 08:02:09,828 - [WARNING] -    - 'Festival Sunset Di Kebun Raya Purwodadi 2024'
+2025-12-17 08:02:09,828 - [WARNING] -    - 'Pameran Harta Karun Arkeologi Gaza Di Jenewa'
+2025-12-17 08:02:09,828 - [INFO] -   └─ Final topics: 5
+2025-12-17 08:02:09,829 - [INFO] -   └─ Reduction: 96.5%
+2025-12-17 08:02:09,829 - [INFO] - 
+================================================================================
+2025-12-17 08:02:09,829 - [INFO] - [NORMALIZATION 4/4] Campaign: 'KOL Lintas Resonan'
+2025-12-17 08:02:09,829 - [INFO] - ================================================================================
+2025-12-17 08:02:09,870 - [INFO] -   └─ Sub topics: 78
+2025-12-17 08:02:09,871 - [INFO] -   └─ Single batch normalization (78 ≤ 500)
+2025-12-17 08:02:09,871 - [INFO] -   └─ Target topics: 10 (ratio: 5 per 100)
+2025-12-17 08:02:12,704 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 08:02:12,710 - [INFO] - Generated 10 normalized topics
+2025-12-17 08:02:12,710 - [INFO] -   └─ Generated 10 topics
+2025-12-17 08:02:39,136 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-17 08:02:39,143 - [INFO] - Mapped 28/78 sub topics (50 unmapped)
+2025-12-17 08:02:39,144 - [INFO] -   └─ Final topics: 12
+2025-12-17 08:02:39,144 - [INFO] -   └─ Reduction: 84.6%
+2025-12-17 08:02:39,211 - [INFO] - [STEP 4/4] ✅ Topic: 68/9246 (0.7%)
+2025-12-17 08:02:39,211 - [INFO] - 
+================================================================================
+2025-12-17 08:02:39,211 - [INFO] - [FINALIZATION] Preparing output
+2025-12-17 08:02:39,211 - [INFO] - ================================================================================
+2025-12-17 08:02:39,224 - [INFO] - ✅ Rows after processing: 9246
+2025-12-17 08:02:41,909 - [ERROR] - [ERROR] int() argument must be a string, a bytes-like object or a real number, not 'DataFrame'
+Traceback (most recent call last):
+  File "/app/app.py", line 2117, in process_file
+    {"key": "deduplication_groups", "value": int(master_rows)},
+                                             ^^^^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'DataFrame'
