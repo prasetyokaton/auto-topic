@@ -1,0 +1,907 @@
+2026-01-13 21:31:57,148 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2026-01-13 21:31:58,538 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:31:58,676 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2026-01-13 21:31:58,691 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2026-01-13 21:31:58,703 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-01-13 21:31:58,812 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-01-13 21:31:59,574 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-01-13 21:33:20,191 - [INFO] - generated new fontManager
+2026-01-13 21:33:27,421 - [INFO] - 📊 Original rows: 7199
+2026-01-13 21:33:27,425 - [INFO] - ✅ Normalized columns: {'Campaign': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2026-01-13 21:33:27,426 - [INFO] - ✅ NO DELETION - All 7199 rows will be processed
+2026-01-13 21:33:27,429 - [INFO] - 
+================================================================================
+2026-01-13 21:33:27,429 - [INFO] - [DEDUPLICATION] Creating groups for identical content
+2026-01-13 21:33:27,429 - [INFO] - ================================================================================
+2026-01-13 21:33:27,514 - [INFO] - ✅ Deduplication: 7199 rows → 5434 unique groups + 1765 duplicates
+2026-01-13 21:33:27,514 - [INFO] - 💰 API savings from deduplication: 1765 calls
+2026-01-13 21:33:27,518 - [INFO] - 📊 Channel split: Mainstream=2892, Social=4307
+2026-01-13 21:33:27,518 - [INFO] - 
+================================================================================
+2026-01-13 21:33:27,518 - [INFO] - [PRE-FILTER] Checking content eligibility
+2026-01-13 21:33:27,519 - [INFO] - ================================================================================
+2026-01-13 21:33:28,331 - [INFO] - ✅ Content filter: 5327 eligible, 1872 skipped (<5 words)
+2026-01-13 21:33:28,331 - [INFO] - 💰 API savings from pre-filter: 1872 topic extractions skipped
+2026-01-13 21:33:28,332 - [INFO] - 
+================================================================================
+2026-01-13 21:33:28,332 - [INFO] - [STEP 1/4] SUB TOPIC + SENTIMENT (MASTER ROWS, ELIGIBLE CONTENT)
+2026-01-13 21:33:28,332 - [INFO] - ================================================================================
+2026-01-13 21:33:28,341 - [INFO] - 📊 Processing 3957 master rows (eligible content only)
+2026-01-13 21:33:41,568 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:33:54,505 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:34:27,749 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:34:39,017 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:34:54,786 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:35:03,077 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:35:18,859 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:35:28,057 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:35:42,203 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:36:00,046 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:36:17,035 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:36:37,012 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:36:52,659 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:37:12,756 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:37:29,753 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:37:49,923 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:38:07,944 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:38:24,892 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:38:49,010 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:39:09,996 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:39:28,639 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:39:45,942 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:40:02,120 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:40:17,049 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:40:30,283 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:40:35,709 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:40:57,830 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:41:12,288 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:41:28,753 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:41:39,849 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:41:52,921 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:42:07,252 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:42:23,230 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:42:40,612 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:42:41,148 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2026-01-13 21:42:41,149 - [INFO] - Retrying request to /chat/completions in 0.385633 seconds
+2026-01-13 21:42:53,755 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:43:08,594 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:43:27,248 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:43:44,229 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:44:02,863 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:44:12,796 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:44:25,393 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:44:39,599 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:44:51,364 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:45:05,184 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:45:17,721 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:45:32,901 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:45:49,260 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:46:08,705 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:46:24,264 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:46:38,717 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:46:51,520 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:47:09,176 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:47:25,722 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:47:54,089 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:48:07,809 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:48:17,236 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:48:28,796 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:48:40,779 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:48:52,963 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:49:06,480 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:49:18,564 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:49:30,953 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:49:46,623 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:50:00,138 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:50:13,653 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:50:29,121 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:50:38,945 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:50:52,158 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:51:06,188 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:51:21,269 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:51:35,031 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:51:49,167 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:52:02,916 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:52:13,599 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:52:20,274 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:52:37,938 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:52:53,606 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:53:09,030 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:53:19,821 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:53:24,014 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:53:24,277 - [INFO] - 📋 Copying results to duplicate rows...
+2026-01-13 21:53:26,462 - [INFO] - [STEP 1/4] ✅ Sub Topic: 3580/7199 (49.7%)
+2026-01-13 21:53:26,462 - [INFO] - [STEP 1/4] ✅ Sentiment: 7199/7199 (100.0%)
+2026-01-13 21:53:26,463 - [INFO] - 
+================================================================================
+2026-01-13 21:53:26,463 - [INFO] - [STEP 2/4] SPOKESPERSON (MAINSTREAM MASTER ROWS, ELIGIBLE CONTENT)
+2026-01-13 21:53:26,463 - [INFO] - ================================================================================
+2026-01-13 21:53:26,468 - [INFO] - 📊 Processing 1838 mainstream master rows (eligible content only)
+2026-01-13 21:53:31,899 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:53:38,564 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:53:43,483 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:53:49,105 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:53:58,015 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:54:08,456 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:54:16,512 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:54:21,260 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:54:29,858 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:54:46,244 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:54:53,102 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:54:59,236 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:55:06,346 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:55:11,942 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:55:19,727 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:55:30,064 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:55:39,701 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:55:48,278 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:55:56,366 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:56:02,612 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:56:17,551 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:56:30,166 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:56:39,771 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:56:48,169 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:56:56,392 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:57:02,258 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:57:08,219 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:57:16,323 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:57:25,034 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:57:33,017 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:57:43,158 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:57:52,064 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:58:01,421 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:58:10,800 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:58:20,471 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:58:29,468 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:58:39,272 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:58:50,942 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:59:01,286 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:59:09,377 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:59:17,668 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:59:24,639 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:59:33,950 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:59:40,197 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:59:47,683 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 21:59:57,194 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:00:07,945 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:00:15,422 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:00:22,898 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:00:30,055 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:00:38,871 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:00:50,200 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:00:55,462 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:01:03,140 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:01:12,223 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:01:22,587 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:01:32,863 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:01:51,884 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:01:59,305 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:02:11,469 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:02:17,986 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:02:21,266 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:02:21,333 - [INFO] - 📋 Copying spokesperson to duplicate rows...
+2026-01-13 22:02:22,266 - [INFO] - [STEP 2/4] ✅ Spokesperson: 885/2892 (30.6%)
+2026-01-13 22:02:22,269 - [INFO] - 
+================================================================================
+2026-01-13 22:02:22,269 - [INFO] - [STEP 3/4] RETRY FAILED SUB TOPICS (success rate: 49.7% < 95%)
+2026-01-13 22:02:22,269 - [INFO] - ================================================================================
+2026-01-13 22:02:22,282 - [INFO] - [STEP 3/4] Found 1375 master rows with failed sub topics
+2026-01-13 22:02:31,031 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:02:38,400 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:02:45,495 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:02:54,456 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:02:59,998 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:03:11,245 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:03:21,719 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:03:30,079 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:03:38,700 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:03:47,573 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:03:57,033 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:04:04,521 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:04:15,462 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:04:21,217 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:04:31,522 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:04:43,501 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:04:52,458 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:05:02,002 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:05:06,438 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:05:14,766 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:05:23,846 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:05:34,497 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:05:42,512 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:05:50,171 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:05:57,699 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:06:05,525 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:06:11,772 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:06:18,487 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:06:29,999 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:06:37,364 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:06:43,012 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:06:49,312 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:06:56,312 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:07:01,630 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:07:08,806 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:07:15,766 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:07:23,872 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:07:32,315 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:07:40,753 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:07:55,809 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:08:03,995 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:08:11,011 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:08:20,904 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:08:30,009 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:08:37,154 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:08:44,859 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:08:44,914 - [INFO] - 📋 Copying retried results to duplicate rows...
+2026-01-13 22:08:45,461 - [INFO] - [STEP 3/4] ✅ Sub Topic (after retry): 4439/7199 (61.7%)
+2026-01-13 22:08:45,462 - [INFO] - 
+================================================================================
+2026-01-13 22:08:45,462 - [INFO] - [STEP 4/4] NORMALIZATION (PER CAMPAIGN WITH ENGAGEMENT)
+2026-01-13 22:08:45,462 - [INFO] - ================================================================================
+2026-01-13 22:08:45,463 - [INFO] - [PREP] Calculating engagement weights...
+2026-01-13 22:08:45,497 - [INFO] - 
+================================================================================
+2026-01-13 22:08:45,497 - [INFO] - [NORMALIZATION 1/23] Campaign: 'ESG Eksternal'
+2026-01-13 22:08:45,497 - [INFO] - ================================================================================
+2026-01-13 22:08:45,500 - [INFO] -   └─ Sub topics: 118
+2026-01-13 22:08:45,500 - [INFO] -   └─ Total Engagement: 677
+2026-01-13 22:08:45,503 - [INFO] -   └─ Pre-clustering: 118 → 79 groups
+2026-01-13 22:08:45,503 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:09:10,210 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:09:10,221 - [INFO] -   └─ Consolidation: 79 groups → 19 topics
+2026-01-13 22:09:10,253 - [INFO] - 
+================================================================================
+2026-01-13 22:09:10,253 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'ESG Eksternal'
+2026-01-13 22:09:10,253 - [INFO] - ================================================================================
+2026-01-13 22:09:10,253 - [INFO] - Total Engagement: 677
+2026-01-13 22:09:10,253 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:09:10,254 - [INFO] -   1.                                          | Engagement:        204 ( 30.1%) | Sub Topics: 109
+2026-01-13 22:09:10,254 - [INFO] -   2. Konflik Agraria Kalimantan Utara         | Engagement:        204 ( 30.1%) | Sub Topics:   2
+2026-01-13 22:09:10,254 - [INFO] -   3. Pendampingan Lingkungan Oleh Dprd        | Engagement:         86 ( 12.7%) | Sub Topics:   2
+2026-01-13 22:09:10,254 - [INFO] -   4. Aksi Demo Karyawan Tambang               | Engagement:         85 ( 12.6%) | Sub Topics:   1
+2026-01-13 22:09:10,254 - [INFO] -   5. Proses Hukum Di Morowali                 | Engagement:         39 (  5.8%) | Sub Topics:   4
+2026-01-13 22:09:10,254 - [INFO] -   6. Isu Smelter Nikel Morowali               | Engagement:         38 (  5.6%) | Sub Topics:   1
+2026-01-13 22:09:10,254 - [INFO] -   7. Transparansi Izin Tambang                | Engagement:         21 (  3.1%) | Sub Topics:   1
+2026-01-13 22:09:10,254 - [INFO] -   8. Perhatian Terhadap Teknologi             | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:09:10,254 - [INFO] -   9. Transformasi Industri Di Indonesia       | Engagement:          0 (  0.0%) | Sub Topics:  39
+2026-01-13 22:09:10,254 - [INFO] -   10. Transformasi Ekonomi Di Morowali         | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:09:10,255 - [INFO] - 
+📊 Top 3 topics cover 80% of engagement
+2026-01-13 22:09:10,255 - [INFO] -   └─ Reduction: 83.9%
+2026-01-13 22:09:10,255 - [INFO] - 
+================================================================================
+2026-01-13 22:09:10,255 - [INFO] - [NORMALIZATION 2/23] Campaign: 'Regulator & Pemerintah'
+2026-01-13 22:09:10,255 - [INFO] - ================================================================================
+2026-01-13 22:09:10,267 - [INFO] -   └─ Sub topics: 424
+2026-01-13 22:09:10,267 - [INFO] -   └─ Total Engagement: 72,532
+2026-01-13 22:09:10,282 - [INFO] -   └─ Pre-clustering: 424 → 208 groups
+2026-01-13 22:09:10,282 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:09:46,616 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:09:46,630 - [INFO] -   └─ Consolidation: 208 groups → 19 topics
+2026-01-13 22:09:46,663 - [INFO] - 
+================================================================================
+2026-01-13 22:09:46,664 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Regulator & Pemerintah'
+2026-01-13 22:09:46,664 - [INFO] - ================================================================================
+2026-01-13 22:09:46,664 - [INFO] - Total Engagement: 72,532
+2026-01-13 22:09:46,664 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:09:46,664 - [INFO] -   1. Operasi Kejagung Di Kemenhut             | Engagement:     34,290 ( 47.3%) | Sub Topics:  29
+2026-01-13 22:09:46,664 - [INFO] -   2. Kasus Korupsi Di Kemenhut                | Engagement:     17,521 ( 24.2%) | Sub Topics:  83
+2026-01-13 22:09:46,665 - [INFO] -   3. Penyidikan Korupsi Iup                   | Engagement:     13,550 ( 18.7%) | Sub Topics:  29
+2026-01-13 22:09:46,665 - [INFO] -   4.                                          | Engagement:      6,816 (  9.4%) | Sub Topics: 405
+2026-01-13 22:09:46,665 - [INFO] -   5. Pengawasan Smelter Timah                 | Engagement:        222 (  0.3%) | Sub Topics:   6
+2026-01-13 22:09:46,665 - [INFO] -   6. Pengusutan Kasus Nikel                   | Engagement:        109 (  0.2%) | Sub Topics:   9
+2026-01-13 22:09:46,665 - [INFO] -   7. Pemberantasan Korupsi Di Indonesia       | Engagement:         17 (  0.0%) | Sub Topics:   2
+2026-01-13 22:09:46,665 - [INFO] -   8. Pembangunan Infrastruktur Tambang        | Engagement:          4 (  0.0%) | Sub Topics:   2
+2026-01-13 22:09:46,665 - [INFO] -   9. Kepatuhan Regulasi Tambang               | Engagement:          3 (  0.0%) | Sub Topics:   4
+2026-01-13 22:09:46,665 - [INFO] -   10. Kinerja Sektor Energi                    | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:09:46,666 - [INFO] - 
+📊 Top 2 topics cover 80% of engagement
+2026-01-13 22:09:46,666 - [INFO] -   └─ Reduction: 95.5%
+2026-01-13 22:09:46,666 - [INFO] - 
+================================================================================
+2026-01-13 22:09:46,666 - [INFO] - [NORMALIZATION 3/23] Campaign: 'Harita Nikel'
+2026-01-13 22:09:46,666 - [INFO] - ================================================================================
+2026-01-13 22:09:46,670 - [INFO] -   └─ Sub topics: 86
+2026-01-13 22:09:46,670 - [INFO] -   └─ Total Engagement: 855
+2026-01-13 22:09:46,671 - [INFO] -   └─ Pre-clustering: 86 → 46 groups
+2026-01-13 22:09:46,671 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:10:13,124 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:10:13,130 - [INFO] -   └─ Consolidation: 46 groups → 16 topics
+2026-01-13 22:10:13,148 - [INFO] - 
+================================================================================
+2026-01-13 22:10:13,148 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Harita Nikel'
+2026-01-13 22:10:13,148 - [INFO] - ================================================================================
+2026-01-13 22:10:13,149 - [INFO] - Total Engagement: 855
+2026-01-13 22:10:13,149 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:10:13,149 - [INFO] -   1. Rekor Ihsg                               | Engagement:        459 ( 53.7%) | Sub Topics:  10
+2026-01-13 22:10:13,149 - [INFO] -   2. Pergerakan Saham Nikel                   | Engagement:        339 ( 39.6%) | Sub Topics:   1
+2026-01-13 22:10:13,149 - [INFO] -   3. Divestasi Saham Glencore                 | Engagement:         44 (  5.1%) | Sub Topics:  22
+2026-01-13 22:10:13,149 - [INFO] -   4.                                          | Engagement:         13 (  1.5%) | Sub Topics:  31
+2026-01-13 22:10:13,149 - [INFO] -   5. Penguatan Lq45                           | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:10:13,149 - [INFO] -   6. Saham Dan Harga Nikel                    | Engagement:          0 (  0.0%) | Sub Topics:   3
+2026-01-13 22:10:13,150 - [INFO] -   7. Rekomendasi Saham Lq45                   | Engagement:          0 (  0.0%) | Sub Topics:   9
+2026-01-13 22:10:13,150 - [INFO] -   8. Perubahan Kepemilikan Saham              | Engagement:          0 (  0.0%) | Sub Topics:   6
+2026-01-13 22:10:13,150 - [INFO] -   9. Peningkatan Ihsg                         | Engagement:          0 (  0.0%) | Sub Topics:   4
+2026-01-13 22:10:13,150 - [INFO] -   10. Konsentrasi Transaksi Broker             | Engagement:          0 (  0.0%) | Sub Topics:   3
+2026-01-13 22:10:13,151 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:10:13,151 - [INFO] -   └─ Reduction: 81.4%
+2026-01-13 22:10:13,151 - [INFO] - 
+================================================================================
+2026-01-13 22:10:13,151 - [INFO] - [NORMALIZATION 4/23] Campaign: 'PT Vale Indonesia'
+2026-01-13 22:10:13,151 - [INFO] - ================================================================================
+2026-01-13 22:10:13,168 - [INFO] -   └─ Sub topics: 149
+2026-01-13 22:10:13,168 - [INFO] -   └─ Total Engagement: 1,906
+2026-01-13 22:10:13,171 - [INFO] -   └─ Pre-clustering: 149 → 81 groups
+2026-01-13 22:10:13,171 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:10:37,310 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:10:37,320 - [INFO] -   └─ Consolidation: 81 groups → 19 topics
+2026-01-13 22:10:37,345 - [INFO] - 
+================================================================================
+2026-01-13 22:10:37,345 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'PT Vale Indonesia'
+2026-01-13 22:10:37,345 - [INFO] - ================================================================================
+2026-01-13 22:10:37,345 - [INFO] - Total Engagement: 1,906
+2026-01-13 22:10:37,345 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:10:37,346 - [INFO] -   1. Biaya Eksplorasi Nikel                   | Engagement:      1,137 ( 59.7%) | Sub Topics:  13
+2026-01-13 22:10:37,346 - [INFO] -   2. Keselamatan Pertambangan                 | Engagement:        419 ( 22.0%) | Sub Topics:   2
+2026-01-13 22:10:37,346 - [INFO] -   3. Rekrutmen Talenta                        | Engagement:        125 (  6.6%) | Sub Topics:   3
+2026-01-13 22:10:37,346 - [INFO] -   4.                                          | Engagement:        118 (  6.2%) | Sub Topics: 124
+2026-01-13 22:10:37,346 - [INFO] -   5. Kecelakaan Lalu Lintas                   | Engagement:         43 (  2.3%) | Sub Topics:   1
+2026-01-13 22:10:37,346 - [INFO] -   6. Program Pemberdayaan Masyarakat          | Engagement:         31 (  1.6%) | Sub Topics:   4
+2026-01-13 22:10:37,346 - [INFO] -   7. Komitmen Serikat Pekerja                 | Engagement:         17 (  0.9%) | Sub Topics:   1
+2026-01-13 22:10:37,346 - [INFO] -   8. Proyek Nursery Pertambangan              | Engagement:         16 (  0.8%) | Sub Topics:   4
+2026-01-13 22:10:37,346 - [INFO] -   9. Penguatan Ihsg                           | Engagement:          0 (  0.0%) | Sub Topics:  23
+2026-01-13 22:10:37,347 - [INFO] -   10. Rekomendasi Saham Lq45                   | Engagement:          0 (  0.0%) | Sub Topics:   8
+2026-01-13 22:10:37,347 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:10:37,347 - [INFO] -   └─ Reduction: 87.2%
+2026-01-13 22:10:37,347 - [INFO] - 
+================================================================================
+2026-01-13 22:10:37,347 - [INFO] - [NORMALIZATION 5/23] Campaign: 'Industri Nikel & Narasi Geopolitik'
+2026-01-13 22:10:37,347 - [INFO] - ================================================================================
+2026-01-13 22:10:37,368 - [INFO] -   └─ Sub topics: 947
+2026-01-13 22:10:37,368 - [INFO] -   └─ Total Engagement: 111,320
+2026-01-13 22:10:37,462 - [INFO] -   └─ Pre-clustering: 947 → 568 groups
+2026-01-13 22:10:37,462 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:11:10,133 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:11:10,149 - [INFO] -   └─ Consolidation: 568 groups → 19 topics
+2026-01-13 22:11:10,182 - [INFO] - 
+================================================================================
+2026-01-13 22:11:10,183 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Industri Nikel & Narasi Geopolitik'
+2026-01-13 22:11:10,183 - [INFO] - ================================================================================
+2026-01-13 22:11:10,183 - [INFO] - Total Engagement: 111,320
+2026-01-13 22:11:10,183 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:11:10,183 - [INFO] -   1. Kasus Korupsi Nikel                      | Engagement:     84,192 ( 75.6%) | Sub Topics:  34
+2026-01-13 22:11:10,183 - [INFO] -   2.                                          | Engagement:      9,292 (  8.3%) | Sub Topics: 1112
+2026-01-13 22:11:10,183 - [INFO] -   3. Pemangkasan Produksi Mineral             | Engagement:      8,011 (  7.2%) | Sub Topics:  56
+2026-01-13 22:11:10,183 - [INFO] -   4. Penggeledahan Kasus Korupsi              | Engagement:      3,473 (  3.1%) | Sub Topics:  44
+2026-01-13 22:11:10,184 - [INFO] -   5. Perubahan Kebijakan Energi               | Engagement:      2,236 (  2.0%) | Sub Topics:  17
+2026-01-13 22:11:10,184 - [INFO] -   6. Perlindungan Ekosistem Karst             | Engagement:      1,931 (  1.7%) | Sub Topics:   1
+2026-01-13 22:11:10,184 - [INFO] -   7. Kekhawatiran Sosial Dalam Pertambangan   | Engagement:        564 (  0.5%) | Sub Topics:   7
+2026-01-13 22:11:10,184 - [INFO] -   8. Penyelidikan Pajak Dan Korupsi           | Engagement:        398 (  0.4%) | Sub Topics:  26
+2026-01-13 22:11:10,184 - [INFO] -   9. Ekspansi Industri Nikel                  | Engagement:        357 (  0.3%) | Sub Topics:   3
+2026-01-13 22:11:10,184 - [INFO] -   10. Keterlibatan Masyarakat Dalam Tambang    | Engagement:        342 (  0.3%) | Sub Topics:  23
+2026-01-13 22:11:10,184 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:11:10,184 - [INFO] -   └─ Reduction: 98.0%
+2026-01-13 22:11:10,185 - [INFO] - 
+================================================================================
+2026-01-13 22:11:10,185 - [INFO] - [NORMALIZATION 6/23] Campaign: 'Risiko Litigasi & Hukum Eksternal'
+2026-01-13 22:11:10,185 - [INFO] - ================================================================================
+2026-01-13 22:11:10,187 - [INFO] -   └─ Sub topics: 26
+2026-01-13 22:11:10,187 - [INFO] -   └─ Total Engagement: 69
+2026-01-13 22:11:10,187 - [INFO] -   └─ Pre-clustering: 26 → 25 groups
+2026-01-13 22:11:10,187 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:11:40,435 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:11:40,441 - [INFO] -   └─ Consolidation: 25 groups → 20 topics
+2026-01-13 22:11:40,457 - [INFO] - 
+================================================================================
+2026-01-13 22:11:40,457 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Risiko Litigasi & Hukum Eksternal'
+2026-01-13 22:11:40,458 - [INFO] - ================================================================================
+2026-01-13 22:11:40,458 - [INFO] - Total Engagement: 69
+2026-01-13 22:11:40,458 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:11:40,458 - [INFO] -   1. Aksi Pembakaran Kantor Tambang           | Engagement:         69 (100.0%) | Sub Topics:   1
+2026-01-13 22:11:40,458 - [INFO] -   2.                                          | Engagement:          0 (  0.0%) | Sub Topics:  18
+2026-01-13 22:11:40,458 - [INFO] -   3. Penertiban Tambang Ilegal                | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:11:40,458 - [INFO] -   4. Tindakan Terhadap Pelanggaran Hukum      | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:11:40,458 - [INFO] -   5. Stabilisasi Harga Komoditas              | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:11:40,458 - [INFO] -   6. Serah Terima Jabatan Di Imigrasi         | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:11:40,459 - [INFO] -   7. Represi Terhadap Aktivis                 | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:11:40,459 - [INFO] -   8. Rapat Kepegawaian Pemkab Morut           | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:11:40,459 - [INFO] -   9. Proyek Industri Dan Warga                | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:11:40,459 - [INFO] -   10. Penyelesaian Konflik Secara Damai        | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:11:40,459 - [INFO] - 
+📊 Top 0 topics cover 80% of engagement
+2026-01-13 22:11:40,459 - [INFO] -   └─ Reduction: 23.1%
+2026-01-13 22:11:40,459 - [INFO] - 
+================================================================================
+2026-01-13 22:11:40,459 - [INFO] - [NORMALIZATION 7/23] Campaign: 'Morowali Issue'
+2026-01-13 22:11:40,459 - [INFO] - ================================================================================
+2026-01-13 22:11:40,466 - [INFO] -   └─ Sub topics: 102
+2026-01-13 22:11:40,466 - [INFO] -   └─ Total Engagement: 5,025
+2026-01-13 22:11:40,468 - [INFO] -   └─ Pre-clustering: 102 → 79 groups
+2026-01-13 22:11:40,468 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:12:10,060 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:12:10,063 - [INFO] -   └─ Consolidation: 79 groups → 20 topics
+2026-01-13 22:12:10,071 - [INFO] - 
+================================================================================
+2026-01-13 22:12:10,071 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Morowali Issue'
+2026-01-13 22:12:10,071 - [INFO] - ================================================================================
+2026-01-13 22:12:10,071 - [INFO] - Total Engagement: 5,025
+2026-01-13 22:12:10,072 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:12:10,072 - [INFO] -   1. Pemadaman Listrik Morowali               | Engagement:      3,231 ( 64.3%) | Sub Topics:  60
+2026-01-13 22:12:10,072 - [INFO] -   2. Dampak Phk Di Pt Bumanik                 | Engagement:        630 ( 12.5%) | Sub Topics:   2
+2026-01-13 22:12:10,072 - [INFO] -   3. Krisis Kepercayaan Publik                | Engagement:        353 (  7.0%) | Sub Topics:   2
+2026-01-13 22:12:10,072 - [INFO] -   4. Konflik Agraria Kalimantan               | Engagement:        204 (  4.1%) | Sub Topics:   2
+2026-01-13 22:12:10,072 - [INFO] -   5.                                          | Engagement:        189 (  3.8%) | Sub Topics:  63
+2026-01-13 22:12:10,072 - [INFO] -   6. Banjir Di Sulawesi                       | Engagement:        181 (  3.6%) | Sub Topics:   2
+2026-01-13 22:12:10,073 - [INFO] -   7. Aksi Pembakaran Kantor Tambang           | Engagement:        139 (  2.8%) | Sub Topics:   5
+2026-01-13 22:12:10,073 - [INFO] -   8. Penegakan Hukum Di Morowali              | Engagement:         48 (  1.0%) | Sub Topics:   4
+2026-01-13 22:12:10,073 - [INFO] -   9. Kawasan Konservasi Pulau Sombori         | Engagement:         29 (  0.6%) | Sub Topics:   1
+2026-01-13 22:12:10,073 - [INFO] -   10. Transparansi Izin Tambang                | Engagement:         21 (  0.4%) | Sub Topics:   1
+2026-01-13 22:12:10,073 - [INFO] - 
+📊 Top 2 topics cover 80% of engagement
+2026-01-13 22:12:10,073 - [INFO] -   └─ Reduction: 80.4%
+2026-01-13 22:12:10,073 - [INFO] - 
+================================================================================
+2026-01-13 22:12:10,073 - [INFO] - [NORMALIZATION 8/23] Campaign: 'Sentimen Finansial, Investor, pasar'
+2026-01-13 22:12:10,074 - [INFO] - ================================================================================
+2026-01-13 22:12:10,081 - [INFO] -   └─ Sub topics: 285
+2026-01-13 22:12:10,081 - [INFO] -   └─ Total Engagement: 740
+2026-01-13 22:12:10,092 - [INFO] -   └─ Pre-clustering: 285 → 184 groups
+2026-01-13 22:12:10,092 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:12:32,253 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:12:32,257 - [INFO] -   └─ Consolidation: 184 groups → 19 topics
+2026-01-13 22:12:32,268 - [INFO] - 
+================================================================================
+2026-01-13 22:12:32,268 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Sentimen Finansial, Investor, pasar'
+2026-01-13 22:12:32,268 - [INFO] - ================================================================================
+2026-01-13 22:12:32,268 - [INFO] - Total Engagement: 740
+2026-01-13 22:12:32,268 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:12:32,269 - [INFO] -   1.                                          | Engagement:        375 ( 50.7%) | Sub Topics: 289
+2026-01-13 22:12:32,269 - [INFO] -   2. Tuduhan Saham Tidak Berdasar             | Engagement:        127 ( 17.2%) | Sub Topics:   1
+2026-01-13 22:12:32,269 - [INFO] -   3. Strategi Investasi Saham                 | Engagement:        115 ( 15.5%) | Sub Topics:   4
+2026-01-13 22:12:32,269 - [INFO] -   4. Penguatan Sektor Nikel                   | Engagement:         38 (  5.1%) | Sub Topics:   3
+2026-01-13 22:12:32,269 - [INFO] -   5. Prospek Saham Nikel 2026                 | Engagement:         21 (  2.8%) | Sub Topics:   6
+2026-01-13 22:12:32,269 - [INFO] -   6. Luhut Bantah Kepemilikan Saham           | Engagement:         20 (  2.7%) | Sub Topics:   6
+2026-01-13 22:12:32,269 - [INFO] -   7. Pemangkasan Rkab Energi                  | Engagement:         18 (  2.4%) | Sub Topics:   6
+2026-01-13 22:12:32,270 - [INFO] -   8. Perpisahan Dengan Uang Receh             | Engagement:         16 (  2.2%) | Sub Topics:   1
+2026-01-13 22:12:32,270 - [INFO] -   9. Investasi Di Emas Dan Nikel              | Engagement:          5 (  0.7%) | Sub Topics:   1
+2026-01-13 22:12:32,270 - [INFO] -   10. Harga Nikel Global                       | Engagement:          4 (  0.5%) | Sub Topics:  12
+2026-01-13 22:12:32,270 - [INFO] - 
+📊 Top 2 topics cover 80% of engagement
+2026-01-13 22:12:32,270 - [INFO] -   └─ Reduction: 93.3%
+2026-01-13 22:12:32,270 - [INFO] - 
+================================================================================
+2026-01-13 22:12:32,270 - [INFO] - [NORMALIZATION 9/23] Campaign: 'Pekerja / Ketenagakerjaan & Konflik Sosial'
+2026-01-13 22:12:32,270 - [INFO] - ================================================================================
+2026-01-13 22:12:32,273 - [INFO] -   └─ Sub topics: 32
+2026-01-13 22:12:32,273 - [INFO] -   └─ Total Engagement: 180
+2026-01-13 22:12:32,274 - [INFO] -   └─ Pre-clustering: 32 → 26 groups
+2026-01-13 22:12:32,274 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:12:59,931 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:12:59,938 - [INFO] -   └─ Consolidation: 26 groups → 19 topics
+2026-01-13 22:12:59,958 - [INFO] - 
+================================================================================
+2026-01-13 22:12:59,958 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Pekerja / Ketenagakerjaan & Konflik Sosial'
+2026-01-13 22:12:59,959 - [INFO] - ================================================================================
+2026-01-13 22:12:59,959 - [INFO] - Total Engagement: 180
+2026-01-13 22:12:59,959 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:12:59,959 - [INFO] -   1. Kekhawatiran Pembayaran Gaji             | Engagement:        134 ( 74.4%) | Sub Topics:  25
+2026-01-13 22:12:59,959 - [INFO] -   2. Melawan Kerasnya Dunia                   | Engagement:         22 ( 12.2%) | Sub Topics:   1
+2026-01-13 22:12:59,959 - [INFO] -   3. Tanggapan Terhadap Lelucon               | Engagement:         15 (  8.3%) | Sub Topics:   1
+2026-01-13 22:12:59,960 - [INFO] -   4. Gaji Dan Persaingan                      | Engagement:          9 (  5.0%) | Sub Topics:   1
+2026-01-13 22:12:59,960 - [INFO] -   5.                                          | Engagement:          0 (  0.0%) | Sub Topics:   6
+2026-01-13 22:12:59,960 - [INFO] -   6. Masalah Sosial Di Morowali               | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:12:59,960 - [INFO] -   7. Represi Terhadap Aktivis Lingkungan      | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:12:59,960 - [INFO] -   8. Rehabilitasi Mangrove Oleh Imip          | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:12:59,960 - [INFO] -   9. Produksi Nikel Indonesia                 | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:12:59,960 - [INFO] -   10. Peringatan Bulan K3 Di Imip              | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:12:59,960 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:12:59,961 - [INFO] -   └─ Reduction: 40.6%
+2026-01-13 22:12:59,961 - [INFO] - 
+================================================================================
+2026-01-13 22:12:59,961 - [INFO] - [NORMALIZATION 10/23] Campaign: 'ESG Internal'
+2026-01-13 22:12:59,961 - [INFO] - ================================================================================
+2026-01-13 22:12:59,965 - [INFO] -   └─ Sub topics: 53
+2026-01-13 22:12:59,965 - [INFO] -   └─ Total Engagement: 130
+2026-01-13 22:12:59,966 - [INFO] -   └─ Pre-clustering: 53 → 48 groups
+2026-01-13 22:12:59,966 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:13:23,303 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:13:23,310 - [INFO] -   └─ Consolidation: 48 groups → 18 topics
+2026-01-13 22:13:23,325 - [INFO] - 
+================================================================================
+2026-01-13 22:13:23,325 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'ESG Internal'
+2026-01-13 22:13:23,325 - [INFO] - ================================================================================
+2026-01-13 22:13:23,325 - [INFO] - Total Engagement: 130
+2026-01-13 22:13:23,325 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:13:23,326 - [INFO] -   1. Hilirisasi Industri Di Indonesia         | Engagement:         65 ( 50.0%) | Sub Topics:   3
+2026-01-13 22:13:23,326 - [INFO] -   2. Penipuan Melalui Media Sosial            | Engagement:         61 ( 46.9%) | Sub Topics:   1
+2026-01-13 22:13:23,326 - [INFO] -   3. Keselamatan Kerja Dan K3                 | Engagement:          4 (  3.1%) | Sub Topics:  18
+2026-01-13 22:13:23,326 - [INFO] -   4.                                          | Engagement:          0 (  0.0%) | Sub Topics:  29
+2026-01-13 22:13:23,326 - [INFO] -   5. Kualitas Pendidikan Dan Sdm              | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:13:23,326 - [INFO] -   6. Sosialisasi Program Csr                  | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:23,326 - [INFO] -   7. Reformasi Komando Di Papua               | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:23,326 - [INFO] -   8. Pengelolaan Sumber Daya Alam             | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:13:23,327 - [INFO] -   9. Pelatihan Bahasa Mandarin                | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:23,327 - [INFO] -   10. Pekerjaan Untuk Warga Lokal              | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:23,327 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:13:23,327 - [INFO] -   └─ Reduction: 66.0%
+2026-01-13 22:13:23,327 - [INFO] - 
+================================================================================
+2026-01-13 22:13:23,327 - [INFO] - [NORMALIZATION 11/23] Campaign: 'Indonesia Morowali Industrial Park'
+2026-01-13 22:13:23,327 - [INFO] - ================================================================================
+2026-01-13 22:13:23,337 - [INFO] -   └─ Sub topics: 855
+2026-01-13 22:13:23,337 - [INFO] -   └─ Total Engagement: 87,187
+2026-01-13 22:13:23,438 - [INFO] -   └─ Pre-clustering: 855 → 634 groups
+2026-01-13 22:13:23,439 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:13:46,931 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:13:46,935 - [INFO] -   └─ Consolidation: 634 groups → 18 topics
+2026-01-13 22:13:46,950 - [INFO] - 
+================================================================================
+2026-01-13 22:13:46,950 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Indonesia Morowali Industrial Park'
+2026-01-13 22:13:46,950 - [INFO] - ================================================================================
+2026-01-13 22:13:46,950 - [INFO] - Total Engagement: 87,187
+2026-01-13 22:13:46,950 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:13:46,950 - [INFO] -   1. Pertanyaan Tentang Karir                 | Engagement:     58,327 ( 66.9%) | Sub Topics: 1824
+2026-01-13 22:13:46,951 - [INFO] -   2.                                          | Engagement:     16,305 ( 18.7%) | Sub Topics: 836
+2026-01-13 22:13:46,951 - [INFO] -   3. Kesedihan Dan Kehilangan                 | Engagement:      9,301 ( 10.7%) | Sub Topics:   5
+2026-01-13 22:13:46,951 - [INFO] -   4. Pengalaman Sosial                        | Engagement:        639 (  0.7%) | Sub Topics:   4
+2026-01-13 22:13:46,951 - [INFO] -   5. Kehidupan Sehari Hari                    | Engagement:        560 (  0.6%) | Sub Topics:   2
+2026-01-13 22:13:46,951 - [INFO] -   6. Keselamatan Kerja                        | Engagement:        429 (  0.5%) | Sub Topics:   6
+2026-01-13 22:13:46,951 - [INFO] -   7. Kehidupan Di Tempat Kerja                | Engagement:        402 (  0.5%) | Sub Topics:   6
+2026-01-13 22:13:46,951 - [INFO] -   8. Kekerasan Dalam Rumah Tangga             | Engagement:        389 (  0.4%) | Sub Topics:   1
+2026-01-13 22:13:46,951 - [INFO] -   9. Pendidikan Dan Karir                     | Engagement:        172 (  0.2%) | Sub Topics:   3
+2026-01-13 22:13:46,951 - [INFO] -   10. Perlindungan Terhadap Kejahatan          | Engagement:        162 (  0.2%) | Sub Topics:   3
+2026-01-13 22:13:46,952 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:13:46,952 - [INFO] -   └─ Reduction: 97.9%
+2026-01-13 22:13:46,952 - [INFO] - 
+================================================================================
+2026-01-13 22:13:46,952 - [INFO] - [NORMALIZATION 12/23] Campaign: 'Tenant 2'
+2026-01-13 22:13:46,952 - [INFO] - ================================================================================
+2026-01-13 22:13:46,954 - [INFO] -   └─ Sub topics: 13
+2026-01-13 22:13:46,955 - [INFO] -   └─ Pre-clustering: 13 → 10 groups
+2026-01-13 22:13:46,955 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:13:58,536 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:13:58,554 - [INFO] -   └─ Consolidation: 10 groups → 12 topics
+2026-01-13 22:13:58,592 - [INFO] - 
+================================================================================
+2026-01-13 22:13:58,594 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Tenant 2'
+2026-01-13 22:13:58,595 - [INFO] - ================================================================================
+2026-01-13 22:13:58,595 - [INFO] - Total Engagement: 0
+2026-01-13 22:13:58,595 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:13:58,598 - [INFO] -   1. Isu Penutupan Imip                       | Engagement:          0 (  0.0%) | Sub Topics:   3
+2026-01-13 22:13:58,599 - [INFO] -   2. Kecelakaan Kerja Di Industri             | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:58,599 - [INFO] -   3. Kesehatan Dan Hak Karyawan               | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:58,599 - [INFO] -   4. Konflik Tambang Di Morowali              | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:58,599 - [INFO] -   5. Kritik Korupsi Dan Kebijakan             | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:13:58,600 - [INFO] -   6. Peluang Kerja Di Smelter                 | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:58,600 - [INFO] -   7. Pemangkasan Produksi Nikel               | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:58,600 - [INFO] -   8. Pertanyaan Tentang Lingkungan            | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:58,601 - [INFO] -   9. Produksi Nikel Indonesia                 | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:58,601 - [INFO] -   10. Rekomendasi Perusahaan                   | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:13:58,602 - [INFO] -   └─ Reduction: 7.7%
+2026-01-13 22:13:58,603 - [INFO] - 
+================================================================================
+2026-01-13 22:13:58,604 - [INFO] - [NORMALIZATION 13/23] Campaign: 'NGO, Aktivis, & Tekanan Transnasional'
+2026-01-13 22:13:58,604 - [INFO] - ================================================================================
+2026-01-13 22:13:58,631 - [INFO] -   └─ Sub topics: 63
+2026-01-13 22:13:58,631 - [INFO] -   └─ Total Engagement: 4,196
+2026-01-13 22:13:58,633 - [INFO] -   └─ Pre-clustering: 63 → 49 groups
+2026-01-13 22:13:58,633 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:14:21,745 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:14:21,755 - [INFO] -   └─ Consolidation: 49 groups → 17 topics
+2026-01-13 22:14:21,774 - [INFO] - 
+================================================================================
+2026-01-13 22:14:21,774 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'NGO, Aktivis, & Tekanan Transnasional'
+2026-01-13 22:14:21,774 - [INFO] - ================================================================================
+2026-01-13 22:14:21,774 - [INFO] - Total Engagement: 4,196
+2026-01-13 22:14:21,774 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:14:21,775 - [INFO] -   1. Penggeledahan Kemenhut Korupsi           | Engagement:      2,968 ( 70.7%) | Sub Topics:   4
+2026-01-13 22:14:21,775 - [INFO] -   2. Konflik Korporasi Dan Masyarakat         | Engagement:        974 ( 23.2%) | Sub Topics:   1
+2026-01-13 22:14:21,775 - [INFO] -   3. Kritik Kebijakan Lingkungan              | Engagement:        138 (  3.3%) | Sub Topics:   2
+2026-01-13 22:14:21,775 - [INFO] -   4. Banjir Dan Lingkungan                    | Engagement:         62 (  1.5%) | Sub Topics:   2
+2026-01-13 22:14:21,775 - [INFO] -   5. Program Kerja Sama Lingkungan            | Engagement:         30 (  0.7%) | Sub Topics:   3
+2026-01-13 22:14:21,775 - [INFO] -   6.                                          | Engagement:         11 (  0.3%) | Sub Topics:  33
+2026-01-13 22:14:21,775 - [INFO] -   7. Tambang Emas Ilegal                      | Engagement:          9 (  0.2%) | Sub Topics:   1
+2026-01-13 22:14:21,776 - [INFO] -   8. Desakan Terhadap Kebijakan Tambang       | Engagement:          2 (  0.0%) | Sub Topics:   7
+2026-01-13 22:14:21,776 - [INFO] -   9. Krisis Ekologis Dan Industri             | Engagement:          1 (  0.0%) | Sub Topics:   2
+2026-01-13 22:14:21,776 - [INFO] -   10. Tanggung Jawab Deforestasi               | Engagement:          1 (  0.0%) | Sub Topics:   3
+2026-01-13 22:14:21,776 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:14:21,776 - [INFO] -   └─ Reduction: 73.0%
+2026-01-13 22:14:21,777 - [INFO] - 
+================================================================================
+2026-01-13 22:14:21,777 - [INFO] - [NORMALIZATION 14/23] Campaign: 'Lingkungan, Safety, dan Resiko Insiden Industrial'
+2026-01-13 22:14:21,777 - [INFO] - ================================================================================
+2026-01-13 22:14:21,783 - [INFO] -   └─ Sub topics: 25
+2026-01-13 22:14:21,783 - [INFO] -   └─ Total Engagement: 879
+2026-01-13 22:14:21,783 - [INFO] -   └─ Pre-clustering: 25 → 24 groups
+2026-01-13 22:14:21,783 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:14:40,120 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:14:40,127 - [INFO] -   └─ Consolidation: 24 groups → 18 topics
+2026-01-13 22:14:40,146 - [INFO] - 
+================================================================================
+2026-01-13 22:14:40,146 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Lingkungan, Safety, dan Resiko Insiden Industrial'
+2026-01-13 22:14:40,146 - [INFO] - ================================================================================
+2026-01-13 22:14:40,146 - [INFO] - Total Engagement: 879
+2026-01-13 22:14:40,147 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:14:40,147 - [INFO] -   1.                                          | Engagement:        720 ( 81.9%) | Sub Topics:  16
+2026-01-13 22:14:40,147 - [INFO] -   2. Kegiatan Pertanian Di Kolaka             | Engagement:         84 (  9.6%) | Sub Topics:   1
+2026-01-13 22:14:40,147 - [INFO] -   3. Penipuan Melalui Media Sosial            | Engagement:         61 (  6.9%) | Sub Topics:   1
+2026-01-13 22:14:40,147 - [INFO] -   4. Memperingati Bulan K3                    | Engagement:         12 (  1.4%) | Sub Topics:   1
+2026-01-13 22:14:40,147 - [INFO] -   5. Komitmen Keselamatan Kerja               | Engagement:          2 (  0.2%) | Sub Topics:   1
+2026-01-13 22:14:40,148 - [INFO] -   6. Rekomendasi Pilihan Perusahaan           | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:14:40,148 - [INFO] -   7. Reformasi Komando Di Papua               | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:14:40,148 - [INFO] -   8. Prospek Saham Nikel                      | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:14:40,148 - [INFO] -   9. Pertanyaan Tentang Ngo Lingkungan        | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:14:40,148 - [INFO] -   10. Penerapan K3 Di Imip                     | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:14:40,148 - [INFO] - 
+📊 Top 0 topics cover 80% of engagement
+2026-01-13 22:14:40,148 - [INFO] -   └─ Reduction: 28.0%
+2026-01-13 22:14:40,149 - [INFO] - 
+================================================================================
+2026-01-13 22:14:40,149 - [INFO] - [NORMALIZATION 15/23] Campaign: 'Risiko Litigasi & Hukum Internal'
+2026-01-13 22:14:40,149 - [INFO] - ================================================================================
+2026-01-13 22:14:40,151 - [INFO] -   └─ Sub topics: 10
+2026-01-13 22:14:40,151 - [INFO] -   └─ Total Engagement: 907
+2026-01-13 22:14:40,151 - [INFO] -   └─ Pre-clustering: 10 → 9 groups
+2026-01-13 22:14:40,151 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:15:02,892 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:15:02,904 - [INFO] -   └─ Consolidation: 9 groups → 19 topics
+2026-01-13 22:15:02,919 - [INFO] - 
+================================================================================
+2026-01-13 22:15:02,919 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Risiko Litigasi & Hukum Internal'
+2026-01-13 22:15:02,920 - [INFO] - ================================================================================
+2026-01-13 22:15:02,920 - [INFO] - Total Engagement: 907
+2026-01-13 22:15:02,920 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:15:02,920 - [INFO] -   1.                                          | Engagement:        831 ( 91.6%) | Sub Topics:  16
+2026-01-13 22:15:02,920 - [INFO] -   2. Tanggung Jawab Sosial Perusahaan         | Engagement:         64 (  7.1%) | Sub Topics:   2
+2026-01-13 22:15:02,920 - [INFO] -   3. Kesadaran K3                             | Engagement:         12 (  1.3%) | Sub Topics:   1
+2026-01-13 22:15:02,920 - [INFO] -   4. Advokasi Lingkungan                      | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:15:02,921 - [INFO] -   5. Aktivis Dan Ngo Lokal                    | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:15:02,921 - [INFO] -   6. Kepemimpinan Transparan                  | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:15:02,921 - [INFO] -   7. Kesejahteraan Pekerja                    | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:15:02,921 - [INFO] -   8. Perubahan Kepemimpinan                   | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:15:02,921 - [INFO] - 
+📊 Top 0 topics cover 80% of engagement
+2026-01-13 22:15:02,921 - [INFO] -   └─ Reduction: -90.0%
+2026-01-13 22:15:02,921 - [INFO] - 
+================================================================================
+2026-01-13 22:15:02,921 - [INFO] - [NORMALIZATION 16/23] Campaign: 'Regulator & Pemerintah 2'
+2026-01-13 22:15:02,921 - [INFO] - ================================================================================
+2026-01-13 22:15:02,923 - [INFO] -   └─ Sub topics: 2
+2026-01-13 22:15:02,923 - [INFO] -   └─ Pre-clustering: 2 → 2 groups
+2026-01-13 22:15:02,923 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:15:27,795 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:15:27,806 - [INFO] -   └─ Consolidation: 2 groups → 21 topics
+2026-01-13 22:15:27,819 - [INFO] - 
+================================================================================
+2026-01-13 22:15:27,819 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Regulator & Pemerintah 2'
+2026-01-13 22:15:27,819 - [INFO] - ================================================================================
+2026-01-13 22:15:27,819 - [INFO] - Total Engagement: 0
+2026-01-13 22:15:27,819 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:15:27,819 - [INFO] -   1. Dukungan Suplai Listrik                  | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:15:27,819 - [INFO] -   2. Logika Pengolahan Sumber Daya            | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:15:27,820 - [INFO] -   └─ Reduction: -950.0%
+2026-01-13 22:15:27,820 - [INFO] - 
+================================================================================
+2026-01-13 22:15:27,820 - [INFO] - [NORMALIZATION 17/23] Campaign: 'Mind ID'
+2026-01-13 22:15:27,820 - [INFO] - ================================================================================
+2026-01-13 22:15:27,845 - [INFO] -   └─ Sub topics: 167
+2026-01-13 22:15:27,845 - [INFO] -   └─ Total Engagement: 56
+2026-01-13 22:15:27,847 - [INFO] -   └─ Pre-clustering: 167 → 67 groups
+2026-01-13 22:15:27,847 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:15:50,584 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:15:50,595 - [INFO] -   └─ Consolidation: 67 groups → 19 topics
+2026-01-13 22:15:50,620 - [INFO] - 
+================================================================================
+2026-01-13 22:15:50,620 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Mind ID'
+2026-01-13 22:15:50,621 - [INFO] - ================================================================================
+2026-01-13 22:15:50,621 - [INFO] - Total Engagement: 56
+2026-01-13 22:15:50,621 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:15:50,621 - [INFO] -   1. Hilirisasi Batu Bara                     | Engagement:         31 ( 55.4%) | Sub Topics: 130
+2026-01-13 22:15:50,621 - [INFO] -   2.                                          | Engagement:         25 ( 44.6%) | Sub Topics: 129
+2026-01-13 22:15:50,622 - [INFO] -   3. Optimalisasi Bauksit                     | Engagement:          0 (  0.0%) | Sub Topics:  17
+2026-01-13 22:15:50,622 - [INFO] -   4. Transformasi Energi                      | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:15:50,622 - [INFO] -   5. Swasembada Aluminium                     | Engagement:          0 (  0.0%) | Sub Topics:  15
+2026-01-13 22:15:50,622 - [INFO] -   6. Strategi Hilirisasi Bumn                 | Engagement:          0 (  0.0%) | Sub Topics:   3
+2026-01-13 22:15:50,622 - [INFO] -   7. Performa Emiten Mind Id                  | Engagement:          0 (  0.0%) | Sub Topics:  22
+2026-01-13 22:15:50,622 - [INFO] -   8. Pengembangan Wisata                      | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:15:50,622 - [INFO] -   9. Pemberdayaan Petani                      | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:15:50,622 - [INFO] -   10. Optimalisasi Rantai Pasok                | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:15:50,623 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:15:50,623 - [INFO] -   └─ Reduction: 88.6%
+2026-01-13 22:15:50,623 - [INFO] - 
+================================================================================
+2026-01-13 22:15:50,624 - [INFO] - [NORMALIZATION 18/23] Campaign: 'Tenant'
+2026-01-13 22:15:50,624 - [INFO] - ================================================================================
+2026-01-13 22:15:50,627 - [INFO] -   └─ Sub topics: 29
+2026-01-13 22:15:50,627 - [INFO] -   └─ Total Engagement: 133
+2026-01-13 22:15:50,628 - [INFO] -   └─ Pre-clustering: 29 → 24 groups
+2026-01-13 22:15:50,628 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:16:11,518 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:16:11,525 - [INFO] -   └─ Consolidation: 24 groups → 20 topics
+2026-01-13 22:16:11,542 - [INFO] - 
+================================================================================
+2026-01-13 22:16:11,542 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Tenant'
+2026-01-13 22:16:11,543 - [INFO] - ================================================================================
+2026-01-13 22:16:11,543 - [INFO] - Total Engagement: 133
+2026-01-13 22:16:11,543 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:16:11,543 - [INFO] -   1. Penipuan Melalui Media Sosial            | Engagement:         61 ( 45.9%) | Sub Topics:   1
+2026-01-13 22:16:11,543 - [INFO] -   2. Isu Smelter Nikel Morowali               | Engagement:         38 ( 28.6%) | Sub Topics:   2
+2026-01-13 22:16:11,543 - [INFO] -   3. Kesuksesan Alumni                        | Engagement:         34 ( 25.6%) | Sub Topics:   1
+2026-01-13 22:16:11,543 - [INFO] -   4.                                          | Engagement:          0 (  0.0%) | Sub Topics:  24
+2026-01-13 22:16:11,544 - [INFO] -   5. Ledakan Smelter Di Pt Itss               | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:16:11,544 - [INFO] -   6. Prospek Saham Nikel                      | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:16:11,544 - [INFO] -   7. Promosi Slot Dan Togel                   | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:16:11,544 - [INFO] -   8. Perubahan Pembiayaan Mbma                | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:16:11,544 - [INFO] -   9. Peringatan Bulan K3                      | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:16:11,544 - [INFO] -   10. Penerapan K3 Di Imip                     | Engagement:          0 (  0.0%) | Sub Topics:   2
+2026-01-13 22:16:11,544 - [INFO] - 
+📊 Top 2 topics cover 80% of engagement
+2026-01-13 22:16:11,544 - [INFO] -   └─ Reduction: 31.0%
+2026-01-13 22:16:11,545 - [INFO] - 
+================================================================================
+2026-01-13 22:16:11,545 - [INFO] - [NORMALIZATION 19/23] Campaign: 'Indonesia Morowali Industrial Park 2'
+2026-01-13 22:16:11,545 - [INFO] - ================================================================================
+2026-01-13 22:16:11,546 - [INFO] -   └─ Sub topics: 2
+2026-01-13 22:16:11,547 - [INFO] -   └─ Pre-clustering: 2 → 2 groups
+2026-01-13 22:16:11,547 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:16:31,165 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:16:31,172 - [INFO] -   └─ Consolidation: 2 groups → 20 topics
+2026-01-13 22:16:31,184 - [INFO] - 
+================================================================================
+2026-01-13 22:16:31,184 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Indonesia Morowali Industrial Park 2'
+2026-01-13 22:16:31,184 - [INFO] - ================================================================================
+2026-01-13 22:16:31,185 - [INFO] - Total Engagement: 0
+2026-01-13 22:16:31,185 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:16:31,185 - [INFO] -   1. Kegiatan Sosial Masyarakat               | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:16:31,185 - [INFO] -   2. Perencanaan Energi Jangka Panjang        | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:16:31,185 - [INFO] -   └─ Reduction: -900.0%
+2026-01-13 22:16:31,185 - [INFO] - 
+================================================================================
+2026-01-13 22:16:31,185 - [INFO] - [NORMALIZATION 20/23] Campaign: 'OA IMIP For Dashboard'
+2026-01-13 22:16:31,185 - [INFO] - ================================================================================
+2026-01-13 22:16:31,189 - [INFO] -   └─ Sub topics: 5
+2026-01-13 22:16:31,189 - [INFO] -   └─ Total Engagement: 695
+2026-01-13 22:16:31,189 - [INFO] -   └─ Pre-clustering: 5 → 3 groups
+2026-01-13 22:16:31,189 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:16:53,627 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:16:53,695 - [INFO] -   └─ Consolidation: 3 groups → 20 topics
+2026-01-13 22:16:53,713 - [INFO] - 
+================================================================================
+2026-01-13 22:16:53,714 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'OA IMIP For Dashboard'
+2026-01-13 22:16:53,714 - [INFO] - ================================================================================
+2026-01-13 22:16:53,715 - [INFO] - Total Engagement: 695
+2026-01-13 22:16:53,715 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:16:53,720 - [INFO] -   1. Kampanye Kesadaran Lingkungan            | Engagement:        412 ( 59.3%) | Sub Topics:   4
+2026-01-13 22:16:53,720 - [INFO] -   2. Inisiatif Lingkungan Hidup               | Engagement:        144 ( 20.7%) | Sub Topics:   3
+2026-01-13 22:16:53,720 - [INFO] -   3. Program Sembako Untuk Masyarakat         | Engagement:        139 ( 20.0%) | Sub Topics:   3
+2026-01-13 22:16:53,721 - [INFO] - 
+📊 Top 2 topics cover 80% of engagement
+2026-01-13 22:16:53,721 - [INFO] -   └─ Reduction: -300.0%
+2026-01-13 22:16:53,721 - [INFO] - 
+================================================================================
+2026-01-13 22:16:53,721 - [INFO] - [NORMALIZATION 21/23] Campaign: 'Indonesia Wedabay Industrial Park'
+2026-01-13 22:16:53,721 - [INFO] - ================================================================================
+2026-01-13 22:16:53,756 - [INFO] -   └─ Sub topics: 369
+2026-01-13 22:16:53,756 - [INFO] -   └─ Total Engagement: 788
+2026-01-13 22:16:53,776 - [INFO] -   └─ Pre-clustering: 369 → 226 groups
+2026-01-13 22:16:53,777 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:17:14,140 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:17:14,150 - [INFO] -   └─ Consolidation: 226 groups → 18 topics
+2026-01-13 22:17:14,171 - [INFO] - 
+================================================================================
+2026-01-13 22:17:14,171 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Indonesia Wedabay Industrial Park'
+2026-01-13 22:17:14,171 - [INFO] - ================================================================================
+2026-01-13 22:17:14,171 - [INFO] - Total Engagement: 788
+2026-01-13 22:17:14,172 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:17:14,172 - [INFO] -   1. Kerja Sama Tsingshan Group               | Engagement:        370 ( 47.0%) | Sub Topics:   2
+2026-01-13 22:17:14,172 - [INFO] -   2.                                          | Engagement:        245 ( 31.1%) | Sub Topics: 531
+2026-01-13 22:17:14,172 - [INFO] -   3. Kritik Terhadap Polisi                   | Engagement:         67 (  8.5%) | Sub Topics:  36
+2026-01-13 22:17:14,172 - [INFO] -   4. Kebakaran Desa Weokob                    | Engagement:         56 (  7.1%) | Sub Topics:   1
+2026-01-13 22:17:14,172 - [INFO] -   5. Kawasan Industri Nikel                   | Engagement:         27 (  3.4%) | Sub Topics:   3
+2026-01-13 22:17:14,172 - [INFO] -   6. Prediksi Masa Depan Indonesia            | Engagement:         16 (  2.0%) | Sub Topics:   2
+2026-01-13 22:17:14,172 - [INFO] -   7. Perlindungan Hak Rakyat                  | Engagement:          5 (  0.6%) | Sub Topics:   7
+2026-01-13 22:17:14,173 - [INFO] -   8. Kondisi Masyarakat Saat Ini              | Engagement:          2 (  0.3%) | Sub Topics:   8
+2026-01-13 22:17:14,173 - [INFO] -   9. Kritik Terhadap Pemerintahan             | Engagement:          0 (  0.0%) | Sub Topics:   4
+2026-01-13 22:17:14,173 - [INFO] -   10. Perjuangan Rakyat Melawan Penindasan     | Engagement:          0 (  0.0%) | Sub Topics:   5
+2026-01-13 22:17:14,173 - [INFO] - 
+📊 Top 2 topics cover 80% of engagement
+2026-01-13 22:17:14,173 - [INFO] -   └─ Reduction: 95.1%
+2026-01-13 22:17:14,173 - [INFO] - 
+================================================================================
+2026-01-13 22:17:14,173 - [INFO] - [NORMALIZATION 22/23] Campaign: 'Serikat Pekerja'
+2026-01-13 22:17:14,174 - [INFO] - ================================================================================
+2026-01-13 22:17:14,176 - [INFO] -   └─ Sub topics: 4
+2026-01-13 22:17:14,176 - [INFO] -   └─ Total Engagement: 84
+2026-01-13 22:17:14,176 - [INFO] -   └─ Pre-clustering: 4 → 4 groups
+2026-01-13 22:17:14,176 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:17:35,182 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:17:35,194 - [INFO] -   └─ Consolidation: 4 groups → 20 topics
+2026-01-13 22:17:35,213 - [INFO] - 
+================================================================================
+2026-01-13 22:17:35,214 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Serikat Pekerja'
+2026-01-13 22:17:35,214 - [INFO] - ================================================================================
+2026-01-13 22:17:35,214 - [INFO] - Total Engagement: 84
+2026-01-13 22:17:35,214 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:17:35,214 - [INFO] -   1.                                          | Engagement:         63 ( 75.0%) | Sub Topics:   3
+2026-01-13 22:17:35,214 - [INFO] -   2. Karyawan Indomaret Di Kawasan Imip       | Engagement:         21 ( 25.0%) | Sub Topics:   1
+2026-01-13 22:17:35,214 - [INFO] -   3. Bipartit Di Pt Tsi                       | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:17:35,215 - [INFO] -   4. Hubungan Industrial Yang Adil            | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:17:35,215 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:17:35,215 - [INFO] -   └─ Reduction: -400.0%
+2026-01-13 22:17:35,215 - [INFO] - 
+================================================================================
+2026-01-13 22:17:35,215 - [INFO] - [NORMALIZATION 23/23] Campaign: 'Indonesia Huabao Industrial Park'
+2026-01-13 22:17:35,215 - [INFO] - ================================================================================
+2026-01-13 22:17:35,217 - [INFO] -   └─ Sub topics: 3
+2026-01-13 22:17:35,217 - [INFO] -   └─ Total Engagement: 963
+2026-01-13 22:17:35,218 - [INFO] -   └─ Pre-clustering: 3 → 3 groups
+2026-01-13 22:17:35,218 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-13 22:17:56,811 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:17:56,816 - [INFO] -   └─ Consolidation: 3 groups → 19 topics
+2026-01-13 22:17:56,835 - [INFO] - 
+================================================================================
+2026-01-13 22:17:56,835 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Indonesia Huabao Industrial Park'
+2026-01-13 22:17:56,835 - [INFO] - ================================================================================
+2026-01-13 22:17:56,835 - [INFO] - Total Engagement: 963
+2026-01-13 22:17:56,835 - [INFO] - 
+Top 10 Topics by Engagement:
+2026-01-13 22:17:56,835 - [INFO] -   1. Inovasi Produk Ramah Lingkungan          | Engagement:        724 ( 75.2%) | Sub Topics:   4
+2026-01-13 22:17:56,836 - [INFO] -   2. E Commerce Dan Transformasi Retail       | Engagement:        239 ( 24.8%) | Sub Topics:   1
+2026-01-13 22:17:56,836 - [INFO] -   3. Desain Scoopy 2025                       | Engagement:          0 (  0.0%) | Sub Topics:   1
+2026-01-13 22:17:56,836 - [INFO] - 
+📊 Top 1 topics cover 80% of engagement
+2026-01-13 22:17:56,836 - [INFO] -   └─ Reduction: -533.3%
+2026-01-13 22:17:56,978 - [INFO] - [STEP 4/4] ✅ Topic: 1516/7199 (21.1%)
+2026-01-13 22:17:56,978 - [INFO] - [STEP 4/4] 📊 Grouping: 2788 sub topics → 284 topics (89.8% reduction)
+2026-01-13 22:19:47,915 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-13 22:19:48,222 - [INFO] - 
+================================================================================
+2026-01-13 22:19:48,223 - [INFO] - [FINALIZATION] Preparing output
+2026-01-13 22:19:48,223 - [INFO] - ================================================================================
+2026-01-13 22:19:48,260 - [INFO] - ✅ Row count verified: 7199 → 7199 (unchanged)
+2026-01-13 22:19:52,035 - [INFO] - 
+================================================================================
+2026-01-13 22:19:52,035 - [INFO] - ✅ PROCESSING COMPLETE
+2026-01-13 22:19:52,035 - [INFO] - ================================================================================
+2026-01-13 22:19:52,036 - [INFO] - Rows: 7199 → 7199 (unchanged: True)
+2026-01-13 22:19:52,036 - [INFO] - Deduplication: 5434 groups, 1765 duplicates (saved 1765 calls)
+2026-01-13 22:19:52,036 - [INFO] - Pre-filter: 5327 eligible, 1872 skipped (saved 1872 topic calls)
+2026-01-13 22:19:52,036 - [INFO] - Duration: 2782.10s | Cost: $0.299705
+2026-01-13 22:19:52,036 - [INFO] - Language: Indonesia
+2026-01-13 22:19:52,036 - [INFO] - Normalization: 2789 sub topics → 284 topics (89.8% reduction)
+2026-01-13 22:19:52,036 - [INFO] - Sub Topic (initial): 3580/7199 (49.7%)
+2026-01-13 22:19:52,036 - [INFO] - Sentiment: 7199/7199 (100.0%)
+2026-01-13 22:19:52,036 - [INFO] - Spokesperson: 885/2892 (30.6%)
+2026-01-13 22:19:52,037 - [INFO] - Sub Topic (after retry): 4439/7199 (61.7%)
+2026-01-13 22:19:52,037 - [INFO] - Topic: 1516/7199 (21.1%)
