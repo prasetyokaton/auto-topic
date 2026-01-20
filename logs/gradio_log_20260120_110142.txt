@@ -1,0 +1,242 @@
+2026-01-20 11:01:42,739 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:01:42,885 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-01-20 11:01:42,907 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2026-01-20 11:01:42,923 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2026-01-20 11:01:43,295 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2026-01-20 11:01:44,719 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-01-20 11:01:57,072 - [INFO] - generated new fontManager
+2026-01-20 11:02:00,544 - [INFO] - 📊 Original rows: 87
+2026-01-20 11:02:00,547 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2026-01-20 11:02:00,547 - [INFO] - ✅ NO DELETION - All 87 rows will be processed
+2026-01-20 11:02:00,550 - [INFO] - 
+================================================================================
+2026-01-20 11:02:00,550 - [INFO] - [DEDUPLICATION] Creating groups for identical content
+2026-01-20 11:02:00,550 - [INFO] - ================================================================================
+2026-01-20 11:02:00,555 - [INFO] - ✅ Deduplication: 87 rows → 76 unique groups + 11 duplicates
+2026-01-20 11:02:00,555 - [INFO] - 💰 API savings from deduplication: 11 calls
+2026-01-20 11:02:00,555 - [INFO] - 📊 Channel split: Mainstream=10, Social=77
+2026-01-20 11:02:00,555 - [INFO] - 
+================================================================================
+2026-01-20 11:02:00,555 - [INFO] - [PRE-FILTER] Checking content eligibility
+2026-01-20 11:02:00,556 - [INFO] - ================================================================================
+2026-01-20 11:02:00,571 - [INFO] - ✅ Content filter: 87 eligible, 0 skipped (<5 words)
+2026-01-20 11:02:00,571 - [INFO] - 💰 API savings from pre-filter: 0 topic extractions skipped
+2026-01-20 11:02:00,572 - [INFO] - 
+================================================================================
+2026-01-20 11:02:00,572 - [INFO] - [STEP 1/4] PILLAR + TOPIC + SENTIMENT (v13.2 - Enhanced Quality)
+2026-01-20 11:02:00,572 - [INFO] - ================================================================================
+2026-01-20 11:02:00,573 - [INFO] - 📊 Processing 76 master rows (eligible content only)
+2026-01-20 11:02:01,064 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:02,348 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:04,605 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:04,608 - [ERROR] - Error in combined processing: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:04,877 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:06,237 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:08,553 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:08,556 - [ERROR] - Error in combined processing: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:09,100 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:10,432 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:12,791 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:12,794 - [ERROR] - Error in combined processing: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:13,089 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:14,425 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:16,687 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:16,689 - [ERROR] - Error in combined processing: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:16,991 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:18,281 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:20,818 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:20,821 - [ERROR] - Error in combined processing: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:21,075 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:22,411 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:24,769 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:24,771 - [ERROR] - Error in combined processing: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:24,793 - [INFO] - 📋 Copying results to duplicate rows...
+2026-01-20 11:02:24,822 - [INFO] - [STEP 1/4] ✅ Pillar: 0/87 (0.0%)
+2026-01-20 11:02:24,823 - [INFO] - [STEP 1/4] ✅ Topic: 0/87 (0.0%)
+2026-01-20 11:02:24,823 - [INFO] - [STEP 1/4] ✅ Sentiment: 87/87 (100.0%)
+2026-01-20 11:02:24,824 - [INFO] - 
+================================================================================
+2026-01-20 11:02:24,824 - [INFO] - [STEP 3/4] RETRY FAILED TOPICS (success rate: 0.0% < 80%)
+2026-01-20 11:02:24,824 - [INFO] - ================================================================================
+2026-01-20 11:02:24,825 - [INFO] - [STEP 3/4] Found 76 master rows with failed topics
+2026-01-20 11:02:24,826 - [INFO] - [STEP 3/4] Retry attempt 1/3
+2026-01-20 11:02:25,090 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:26,354 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:28,814 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:28,816 - [ERROR] - Retry attempt 1 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:29,169 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:30,441 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:32,796 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:32,803 - [ERROR] - Retry attempt 1 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:33,125 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:34,389 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:36,727 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:36,729 - [ERROR] - Retry attempt 1 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:37,054 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:38,387 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:40,660 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:40,662 - [ERROR] - Retry attempt 1 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:41,149 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:42,420 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:44,838 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:44,839 - [ERROR] - Retry attempt 1 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:45,109 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:46,560 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:49,037 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:49,039 - [ERROR] - Retry attempt 1 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:49,303 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:50,566 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:53,198 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:53,205 - [ERROR] - Retry attempt 1 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:53,746 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:55,027 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:57,434 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:57,441 - [ERROR] - Retry attempt 1 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:02:57,457 - [INFO] - 📋 Copying retried results to duplicate rows...
+2026-01-20 11:02:57,489 - [INFO] - [STEP 3/4] After retry 1: 0/87 (0.0%)
+2026-01-20 11:02:57,490 - [INFO] - [STEP 3/4] Retry attempt 2/3
+2026-01-20 11:02:57,842 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:02:59,185 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:01,529 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:01,530 - [ERROR] - Retry attempt 2 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:02,042 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:03,376 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:05,648 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:05,650 - [ERROR] - Retry attempt 2 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:06,037 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:07,303 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:09,580 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:09,581 - [ERROR] - Retry attempt 2 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:09,853 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:11,157 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:13,614 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:13,615 - [ERROR] - Retry attempt 2 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:13,892 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:15,358 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:17,636 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:17,638 - [ERROR] - Retry attempt 2 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:18,223 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:19,759 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:22,319 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:22,322 - [ERROR] - Retry attempt 2 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:22,635 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:23,897 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:26,313 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:26,316 - [ERROR] - Retry attempt 2 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:26,618 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:27,950 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:30,718 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:30,720 - [ERROR] - Retry attempt 2 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:30,758 - [INFO] - 📋 Copying retried results to duplicate rows...
+2026-01-20 11:03:30,784 - [INFO] - [STEP 3/4] After retry 2: 0/87 (0.0%)
+2026-01-20 11:03:30,785 - [INFO] - [STEP 3/4] Retry attempt 3/3
+2026-01-20 11:03:31,229 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:32,661 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:34,951 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:34,953 - [ERROR] - Retry attempt 3 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:35,229 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:36,558 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:38,910 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:38,913 - [ERROR] - Retry attempt 3 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:39,420 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:40,855 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:43,118 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:43,120 - [ERROR] - Retry attempt 3 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:43,515 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:44,847 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:47,408 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:47,411 - [ERROR] - Retry attempt 3 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:47,721 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:49,251 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:51,620 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:51,621 - [ERROR] - Retry attempt 3 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:52,059 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:53,394 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:55,849 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:55,852 - [ERROR] - Retry attempt 3 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:03:56,139 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:57,544 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:59,803 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:03:59,804 - [ERROR] - Retry attempt 3 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:04:00,086 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:04:01,354 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:04:03,696 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:04:03,699 - [ERROR] - Retry attempt 3 failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:04:03,715 - [INFO] - 📋 Copying retried results to duplicate rows...
+2026-01-20 11:04:03,744 - [INFO] - [STEP 3/4] After retry 3: 0/87 (0.0%)
+2026-01-20 11:04:03,747 - [INFO] - [STEP 3/4] ✅ Pillar (after retry): 0/87 (0.0%)
+2026-01-20 11:04:03,748 - [INFO] - [STEP 3/4] ✅ Topic (after retry): 0/87 (0.0%)
+2026-01-20 11:04:03,748 - [INFO] - 
+================================================================================
+2026-01-20 11:04:03,748 - [INFO] - [STEP 3.5/4] v13.2 - AGGRESSIVE FINAL FALLBACK (Ensuring 100% Coverage)
+2026-01-20 11:04:03,748 - [INFO] - ================================================================================
+2026-01-20 11:04:03,749 - [INFO] -   └─ Found 87 eligible rows with empty topics
+2026-01-20 11:04:03,749 - [INFO] -   └─ Applying aggressive fallback extraction...
+2026-01-20 11:04:03,766 - [INFO] -   └─ Copying fallback topics to duplicate rows...
+2026-01-20 11:04:03,779 - [INFO] -   └─ Results:
+2026-01-20 11:04:03,779 - [INFO] -       • Fixed with fallback: 0
+2026-01-20 11:04:03,779 - [INFO] -       • Fixed with last resort: 76
+2026-01-20 11:04:03,779 - [INFO] -       • Remaining empty: 0
+2026-01-20 11:04:03,779 - [INFO] -   └─ ✅ 100% Topic coverage achieved!
+2026-01-20 11:04:03,780 - [INFO] - 
+================================================================================
+2026-01-20 11:04:03,780 - [INFO] - [STEP 4/4] NORMALIZATION (TOPICS → PILLARS PER CAMPAIGN)
+2026-01-20 11:04:03,780 - [INFO] - ================================================================================
+2026-01-20 11:04:03,780 - [INFO] - [PREP] Calculating engagement weights for Topics → Pillars...
+2026-01-20 11:04:03,786 - [INFO] - 
+================================================================================
+2026-01-20 11:04:03,786 - [INFO] - [NORMALIZATION 1/1] Campaign: 'Memecoin'
+2026-01-20 11:04:03,786 - [INFO] - ================================================================================
+2026-01-20 11:04:03,786 - [INFO] -   └─ Topics: 69
+2026-01-20 11:04:03,786 - [INFO] -   └─ Total Engagement: 22,674
+2026-01-20 11:04:03,788 - [INFO] -   └─ Pre-clustering: 69 topics → 69 groups
+2026-01-20 11:04:04,204 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:04:05,548 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:04:08,195 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-20 11:04:08,196 - [ERROR] - Pillar consolidation error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************UHkA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-01-20 11:04:08,197 - [WARNING] -   └─ Pillar consolidation failed for campaign 'Memecoin', using fallback
+2026-01-20 11:04:08,230 - [INFO] - 
+================================================================================
+2026-01-20 11:04:08,230 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Memecoin'
+2026-01-20 11:04:08,230 - [INFO] - ================================================================================
+2026-01-20 11:04:08,231 - [INFO] - Total Engagement: 22,674
+2026-01-20 11:04:08,231 - [INFO] - 
+Top 10 Pillars by Engagement:
+2026-01-20 11:04:08,232 - [INFO] -   1. Baru Launching Tapi Udah                 | Engagement:      6,200 ( 27.3%) | Topics:   2
+2026-01-20 11:04:08,232 - [INFO] -   2. Januari Trump Resmi Dilantik             | Engagement:      3,164 ( 14.0%) | Topics:   1
+2026-01-20 11:04:08,233 - [INFO] -   3. Bitcoin Melonjak Level Tertinggi         | Engagement:      3,008 ( 13.3%) | Topics:   1
+2026-01-20 11:04:08,233 - [INFO] -   4. Trump Kabarnya Bakal Tancap              | Engagement:      2,691 ( 11.9%) | Topics:   1
+2026-01-20 11:04:08,233 - [INFO] -   5. Memecoin Ini Muncul Menjelang            | Engagement:        958 (  4.2%) | Topics:   2
+2026-01-20 11:04:08,233 - [INFO] -   6. Pasca Pelantikan Menunjuk Resmi          | Engagement:        904 (  4.0%) | Topics:   1
+2026-01-20 11:04:08,234 - [INFO] -   7. Memecoins Punya Potensi Besar            | Engagement:        811 (  3.6%) | Topics:   1
+2026-01-20 11:04:08,234 - [INFO] -   8. Donald Trump Rilis Meme                  | Engagement:        638 (  2.8%) | Topics:   1
+2026-01-20 11:04:08,234 - [INFO] -   9. Kekius Naik Ribuan Persen                | Engagement:        574 (  2.5%) | Topics:   1
+2026-01-20 11:04:08,234 - [INFO] -   10. Token Kemarin Barusan Listing            | Engagement:        568 (  2.5%) | Topics:   1
+2026-01-20 11:04:08,235 - [INFO] - 
+📊 Top 7 pillars cover 80% of engagement
+2026-01-20 11:04:08,235 - [INFO] -   └─ Reduction: 0.0%
+2026-01-20 11:04:08,240 - [INFO] - [STEP 4/4] ✅ Pillar (normalized): 87/87 (100.0%)
+2026-01-20 11:04:08,241 - [INFO] - [STEP 4/4] 📊 Grouping: 69 topics → 69 pillars (0.0% reduction)
+2026-01-20 11:04:08,241 - [INFO] - 
+================================================================================
+2026-01-20 11:04:08,241 - [INFO] - [FINALIZATION] Preparing output
+2026-01-20 11:04:08,241 - [INFO] - ================================================================================
+2026-01-20 11:04:08,244 - [INFO] - ✅ Row count verified: 87 → 87 (unchanged)
+2026-01-20 11:04:08,334 - [INFO] - 
+================================================================================
+2026-01-20 11:04:08,334 - [INFO] - ✅ PROCESSING COMPLETE - v13.2 PRODUCTION
+2026-01-20 11:04:08,334 - [INFO] - ================================================================================
+2026-01-20 11:04:08,334 - [INFO] - Rows: 87 → 87 (unchanged: True)
+2026-01-20 11:04:08,334 - [INFO] - Deduplication: 76 groups, 11 duplicates (saved 11 calls)
+2026-01-20 11:04:08,334 - [INFO] - Pre-filter: 87 eligible, 0 skipped (saved 0 topic calls)
+2026-01-20 11:04:08,335 - [INFO] - Duration: 127.74s | Cost: $0.000000
+2026-01-20 11:04:08,335 - [INFO] - Language: Indonesia
+2026-01-20 11:04:08,335 - [INFO] - Quality v13.2: Pillar=4.0 words, Topic=8.0 words
+2026-01-20 11:04:08,335 - [INFO] - Normalization: 69 topics → 69 pillars (0.0% reduction)
+2026-01-20 11:04:08,335 - [INFO] - Pillar (initial): 0/87 (0.0%)
+2026-01-20 11:04:08,336 - [INFO] - Topic (initial): 0/87 (0.0%)
+2026-01-20 11:04:08,336 - [INFO] - Sentiment: 87/87 (100.0%)
+2026-01-20 11:04:08,336 - [INFO] - Pillar (after retry): 0/87 (0.0%)
+2026-01-20 11:04:08,336 - [INFO] - Topic (after retry): 0/87 (0.0%)
+2026-01-20 11:04:08,336 - [INFO] - Topic (after fallback): 87/87 (100.0%)
+2026-01-20 11:04:08,336 - [INFO] - Pillar (normalized): 87/87 (100.0%)
