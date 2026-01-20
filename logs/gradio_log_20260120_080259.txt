@@ -1,0 +1,108 @@
+2026-01-20 08:03:00,562 - [INFO] - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2026-01-20 08:03:00,563 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-20 08:03:00,708 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2026-01-20 08:03:00,722 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2026-01-20 08:03:00,922 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-01-20 08:03:00,987 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-01-20 08:03:01,764 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-01-20 08:05:17,663 - [INFO] - generated new fontManager
+2026-01-20 08:05:21,579 - [INFO] - 📊 Original rows: 87
+2026-01-20 08:05:21,581 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Engagement': 'Engagement'}
+2026-01-20 08:05:21,581 - [INFO] - ✅ NO DELETION - All 87 rows will be processed
+2026-01-20 08:05:21,583 - [INFO] - 
+================================================================================
+2026-01-20 08:05:21,583 - [INFO] - [DEDUPLICATION] Creating groups for identical content
+2026-01-20 08:05:21,583 - [INFO] - ================================================================================
+2026-01-20 08:05:21,588 - [INFO] - ✅ Deduplication: 87 rows → 76 unique groups + 11 duplicates
+2026-01-20 08:05:21,588 - [INFO] - 💰 API savings from deduplication: 11 calls
+2026-01-20 08:05:21,589 - [INFO] - 📊 Channel split: Mainstream=10, Social=77
+2026-01-20 08:05:21,589 - [INFO] - 
+================================================================================
+2026-01-20 08:05:21,589 - [INFO] - [PRE-FILTER] Checking content eligibility
+2026-01-20 08:05:21,589 - [INFO] - ================================================================================
+2026-01-20 08:05:21,606 - [INFO] - ✅ Content filter: 87 eligible, 0 skipped (<5 words)
+2026-01-20 08:05:21,606 - [INFO] - 💰 API savings from pre-filter: 0 topic extractions skipped
+2026-01-20 08:05:21,607 - [INFO] - 
+================================================================================
+2026-01-20 08:05:21,607 - [INFO] - [STEP 1/4] PILLAR + TOPIC + SENTIMENT (MASTER ROWS, ELIGIBLE CONTENT)
+2026-01-20 08:05:21,608 - [INFO] - ================================================================================
+2026-01-20 08:05:21,610 - [INFO] - 📊 Processing 76 master rows (eligible content only)
+2026-01-20 08:05:39,089 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-20 08:05:51,205 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-20 08:06:02,657 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-20 08:06:04,534 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-20 08:06:04,555 - [INFO] - 📋 Copying results to duplicate rows...
+2026-01-20 08:06:04,588 - [INFO] - [STEP 1/4] ✅ Pillar: 63/87 (72.4%)
+2026-01-20 08:06:04,588 - [INFO] - [STEP 1/4] ✅ Topic: 56/87 (64.4%)
+2026-01-20 08:06:04,588 - [INFO] - [STEP 1/4] ✅ Sentiment: 87/87 (100.0%)
+2026-01-20 08:06:04,589 - [INFO] - 
+================================================================================
+2026-01-20 08:06:04,589 - [INFO] - [STEP 3/4] RETRY FAILED TOPICS (success rate: 64.4% < 90%)
+2026-01-20 08:06:04,589 - [INFO] - ================================================================================
+2026-01-20 08:06:04,592 - [INFO] - [STEP 3/4] Found 29 master rows with failed topics
+2026-01-20 08:06:04,592 - [INFO] - [STEP 3/4] Retry attempt 1/3
+2026-01-20 08:06:13,026 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-20 08:06:17,977 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-20 08:06:17,981 - [INFO] - 📋 Copying retried results to duplicate rows...
+2026-01-20 08:06:17,989 - [INFO] - [STEP 3/4] After retry 1: 79/87 (90.8%)
+2026-01-20 08:06:17,990 - [INFO] - [STEP 3/4] ✅ Success rate reached threshold, stopping retries
+2026-01-20 08:06:17,991 - [INFO] - [STEP 3/4] ✅ Pillar (after retry): 77/87 (88.5%)
+2026-01-20 08:06:17,991 - [INFO] - [STEP 3/4] ✅ Topic (after retry): 79/87 (90.8%)
+2026-01-20 08:06:17,991 - [INFO] - 
+================================================================================
+2026-01-20 08:06:17,991 - [INFO] - [STEP 4/4] NORMALIZATION (TOPICS → PILLARS PER CAMPAIGN)
+2026-01-20 08:06:17,991 - [INFO] - ================================================================================
+2026-01-20 08:06:17,992 - [INFO] - [PREP] Calculating engagement weights for Topics → Pillars...
+2026-01-20 08:06:17,997 - [INFO] - 
+================================================================================
+2026-01-20 08:06:17,997 - [INFO] - [NORMALIZATION 1/1] Campaign: 'Memecoin'
+2026-01-20 08:06:17,997 - [INFO] - ================================================================================
+2026-01-20 08:06:17,999 - [INFO] -   └─ Topics: 68
+2026-01-20 08:06:17,999 - [INFO] -   └─ Total Engagement: 22,674
+2026-01-20 08:06:18,002 - [INFO] -   └─ Pre-clustering: 68 topics → 66 groups
+2026-01-20 08:06:18,002 - [INFO] -      └─ Groups sorted by engagement (highest first)
+2026-01-20 08:06:36,787 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-20 08:06:36,803 - [INFO] -   └─ Consolidation: 66 groups → 14 pillars
+2026-01-20 08:06:36,816 - [INFO] - 
+================================================================================
+2026-01-20 08:06:36,816 - [INFO] - [ENGAGEMENT COVERAGE] Campaign: 'Memecoin'
+2026-01-20 08:06:36,817 - [INFO] - ================================================================================
+2026-01-20 08:06:36,817 - [INFO] - Total Engagement: 22,674
+2026-01-20 08:06:36,817 - [INFO] - 
+Top 10 Pillars by Engagement:
+2026-01-20 08:06:36,818 - [INFO] -   1. Pelantikan Trump                         | Engagement:     12,402 ( 54.7%) | Topics:   5
+2026-01-20 08:06:36,818 - [INFO] -   2. Regulasi Kripto                          | Engagement:      4,124 ( 18.2%) | Topics:   9
+2026-01-20 08:06:36,819 - [INFO] -   3. Meme Coin Populer                        | Engagement:      1,832 (  8.1%) | Topics:   2
+2026-01-20 08:06:36,819 - [INFO] -   4. Tips Trading Kripto                      | Engagement:      1,027 (  4.5%) | Topics:   4
+2026-01-20 08:06:36,820 - [INFO] -   5. Dukungan Investor Besar                  | Engagement:        812 (  3.6%) | Topics:   2
+2026-01-20 08:06:36,820 - [INFO] -   6. Tren Memecoin                            | Engagement:        748 (  3.3%) | Topics:   2
+2026-01-20 08:06:36,821 - [INFO] -   7. Kegiatan Kripto Global                   | Engagement:        534 (  2.4%) | Topics:   2
+2026-01-20 08:06:36,821 - [INFO] -   8. Pergerakan Harga Dogecoin                | Engagement:        429 (  1.9%) | Topics:   3
+2026-01-20 08:06:36,822 - [INFO] -   9.                                          | Engagement:        400 (  1.8%) | Topics:  46
+2026-01-20 08:06:36,822 - [INFO] -   10. Proyeksi Harga Bitcoin                   | Engagement:        304 (  1.3%) | Topics:   2
+2026-01-20 08:06:36,823 - [INFO] - 
+📊 Top 2 pillars cover 80% of engagement
+2026-01-20 08:06:36,823 - [INFO] -   └─ Reduction: 79.4%
+2026-01-20 08:06:36,828 - [INFO] - [STEP 4/4] ✅ Pillar (normalized): 80/87 (92.0%)
+2026-01-20 08:06:36,828 - [INFO] - [STEP 4/4] 📊 Grouping: 67 topics → 50 pillars (25.4% reduction)
+2026-01-20 08:06:36,829 - [INFO] - 
+================================================================================
+2026-01-20 08:06:36,829 - [INFO] - [FINALIZATION] Preparing output
+2026-01-20 08:06:36,829 - [INFO] - ================================================================================
+2026-01-20 08:06:36,832 - [INFO] - ✅ Row count verified: 87 → 87 (unchanged)
+2026-01-20 08:06:36,918 - [INFO] - 
+================================================================================
+2026-01-20 08:06:36,918 - [INFO] - ✅ PROCESSING COMPLETE - v12.0
+2026-01-20 08:06:36,918 - [INFO] - ================================================================================
+2026-01-20 08:06:36,918 - [INFO] - Rows: 87 → 87 (unchanged: True)
+2026-01-20 08:06:36,918 - [INFO] - Deduplication: 76 groups, 11 duplicates (saved 11 calls)
+2026-01-20 08:06:36,919 - [INFO] - Pre-filter: 87 eligible, 0 skipped (saved 0 topic calls)
+2026-01-20 08:06:36,919 - [INFO] - Duration: 75.29s | Cost: $0.005882
+2026-01-20 08:06:36,919 - [INFO] - Language: Indonesia
+2026-01-20 08:06:36,919 - [INFO] - Normalization: 68 topics → 50 pillars (26.5% reduction)
+2026-01-20 08:06:36,919 - [INFO] - Pillar (initial): 63/87 (72.4%)
+2026-01-20 08:06:36,919 - [INFO] - Topic (initial): 56/87 (64.4%)
+2026-01-20 08:06:36,919 - [INFO] - Sentiment: 87/87 (100.0%)
+2026-01-20 08:06:36,919 - [INFO] - Pillar (after retry): 77/87 (88.5%)
+2026-01-20 08:06:36,920 - [INFO] - Topic (after retry): 79/87 (90.8%)
+2026-01-20 08:06:36,920 - [INFO] - Pillar (normalized): 80/87 (92.0%)

@@ -1,4 +1,3 @@
-# Combine Part 1 and Part 2
 import gradio as gr
 import pandas as pd
 import os
@@ -60,23 +59,24 @@ if not OPENAI_API_KEY:
 client = OpenAI(api_key=OPENAI_API_KEY)
 MODEL_NAME = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
-# v13.2: Conservative batch sizes for better quality
-BATCH_SIZE = 15  # Reduced from 20
-MAINSTREAM_BATCH_SIZE = 15
-RETRY_BATCH_SIZE = 10  # Reduced from 15
-MAX_RETRIES = 3
-TRUNCATE_WORDS = 350  # Increased from 300 for better context
-MAINSTREAM_TRUNCATE_WORDS = 350
-RETRY_TRUNCATE_WORDS = 450
+# NEW BATCH SIZES - SMALLER FOR BETTER QUALITY
+BATCH_SIZE = 25
+MAINSTREAM_BATCH_SIZE = 25
+RETRY_BATCH_SIZE = 20
+MAX_RETRIES = 3  # Increased from 2 to 3
+TRUNCATE_WORDS = 200  # Increased from 100 to 200
+MAINSTREAM_TRUNCATE_WORDS = 200  # Increased from 150
+RETRY_TRUNCATE_WORDS = 250  # Increased from 200
 
 MIN_CONTENT_WORDS_FOR_TOPIC = 5
 
-PILLAR_ENGAGEMENT_WEIGHT = 0.8
-TOPIC_ENGAGEMENT_WEIGHT = 0.6
+# NEW: Separate engagement weights for Pillar and Topic
+PILLAR_ENGAGEMENT_WEIGHT = 0.8  # High priority for strategic categorization
+TOPIC_ENGAGEMENT_WEIGHT = 0.6   # Medium-high for variety with priority
 SIMILARITY_THRESHOLD = 0.40
-TARGET_PILLARS_PER_CAMPAIGN = 15
-TARGET_TOPICS_PER_PILLAR = 3
-SKIP_RETRY_THRESHOLD = 0.80
+TARGET_PILLARS_PER_CAMPAIGN = 15  # Target pillars (was topics)
+TARGET_TOPICS_PER_PILLAR = 3  # Average topics per pillar
+SKIP_RETRY_THRESHOLD = 0.90  # More aggressive retry (was 0.95)
 
 MAINSTREAM_CHANNELS = [
     'tv', 'radio', 'newspaper', 'online', 'printmedia', 'site',
@@ -91,38 +91,36 @@ LANGUAGE_CONFIGS = {
         "code": "id",
         "name": "Bahasa Indonesia",
         "prompt_instruction": "Use Bahasa Indonesia for pillar and topic",
-        "pillar_word_count": "2-4 kata",  # v13.2: More strict
-        "topic_word_count": "4-8 kata",   # v13.2: More strict
+        "pillar_word_count": "2-6 kata",
+        "topic_word_count": "5-15 kata",
         "stopwords": ['yang', 'dan', 'di', 'dari', 'ke', 'untuk', 'dengan', 'pada',
                      'ini', 'itu', 'adalah', 'akan', 'atau', 'juga', 'tidak', 'bisa',
-                     'ada', 'sudah', 'nya', 'si', 'oleh', 'dalam', 'sebagai', 'telah',
-                     'sambil', 'ketika', 'saat', 'tentang', 'mengenai']  # Added narrative words
+                     'ada', 'sudah', 'nya', 'si', 'oleh', 'dalam', 'sebagai', 'telah']
     },
     "English": {
         "code": "en",
         "name": "English",
         "prompt_instruction": "Use English for pillar and topic",
-        "pillar_word_count": "2-4 words",
-        "topic_word_count": "4-8 words",
+        "pillar_word_count": "2-6 words",
+        "topic_word_count": "5-15 words",
         "stopwords": ['the', 'a', 'an', 'in', 'on', 'at', 'to', 'of', 'for', 'is', 
                      'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had',
-                     'do', 'does', 'did', 'will', 'would', 'should', 'could', 'can',
-                     'while', 'when', 'about', 'regarding']
+                     'do', 'does', 'did', 'will', 'would', 'should', 'could', 'can']
     },
     "Thailand": {
         "code": "th",
         "name": "ภาษาไทย (Thai)",
         "prompt_instruction": "Use Thai language (ภาษาไทย) for pillar and topic",
-        "pillar_word_count": "2-4 คำ",
-        "topic_word_count": "4-8 คำ",
+        "pillar_word_count": "2-6 คำ",
+        "topic_word_count": "5-15 คำ",
         "stopwords": ['ที่', 'และ', 'ใน', 'เป็น', 'ของ', 'กับ', 'ได้', 'มี', 'ให้', 'จาก']
     },
     "China": {
         "code": "zh",
         "name": "简体中文 (Simplified Chinese)",
         "prompt_instruction": "Use Simplified Chinese (简体中文) for pillar and topic",
-        "pillar_word_count": "2-4 个词",
-        "topic_word_count": "4-8 个词",
+        "pillar_word_count": "2-6 个词",
+        "topic_word_count": "5-15 个词",
         "stopwords": ['的', '是', '在', '了', '和', '有', '为', '也', '与', '或']
     }
 }
@@ -327,51 +325,8 @@ def normalize_topic_text(text: str, language: str) -> str:
     else:
         return text.title()
 
-# v13.2: NEW - Quality validation for Pillar/Topic hierarchy
-def validate_pillar_topic_hierarchy(pillar: str, topic: str, language: str) -> tuple:
-    """
-    Validate that Pillar and Topic have proper hierarchical relationship
-    Returns: (is_valid, reason)
-    """
-    if not pillar or not topic:
-        return False, "empty"
-    
-    pillar_words = len(pillar.split())
-    topic_words = len(topic.split())
-    
-    # Rule 1: Word count validation
-    if pillar_words < 2 or pillar_words > 4:
-        return False, f"pillar_words_{pillar_words}"
-    
-    if topic_words < 4 or topic_words > 8:
-        return False, f"topic_words_{topic_words}"
-    
-    # Rule 2: Topic should be MORE SPECIFIC than Pillar
-    # Check overlap - if too similar, it's bad
-    pillar_set = set(pillar.lower().split())
-    topic_set = set(topic.lower().split())
-    
-    if len(pillar_set) == 0:
-        return False, "empty_pillar"
-    
-    overlap = len(pillar_set & topic_set) / len(pillar_set)
-    
-    # If 80%+ overlap, they're too similar
-    if overlap > 0.8:
-        return False, f"too_similar_{overlap:.2f}"
-    
-    # Rule 3: Avoid narrative words in both
-    narrative_words = LANGUAGE_CONFIGS.get(language, {}).get('stopwords', [])
-    narrative_in_topic = [w for w in topic.lower().split() if w in narrative_words]
-    
-    # Allow max 1 narrative word in topic
-    if len(narrative_in_topic) > 1:
-        return False, "too_narrative"
-    
-    return True, "valid"
-
-def validate_and_normalize_topic(text: str, language: str, min_words: int = 4, max_words: int = 8) -> str:
-    """v13.2: Stricter validation"""
+def validate_and_normalize_topic(text: str, language: str, min_words: int = 2, max_words: int = 15) -> str:
+    """NEW: Topic validation with 2-15 words (lowered from 5 to accept valid short topics)"""
     normalized = normalize_topic_text(text, language)
     
     if not normalized:
@@ -388,8 +343,8 @@ def validate_and_normalize_topic(text: str, language: str, min_words: int = 4, m
     
     return normalized
 
-def validate_and_normalize_pillar(text: str, language: str, min_words: int = 2, max_words: int = 4) -> str:
-    """v13.2: Stricter validation"""
+def validate_and_normalize_pillar(text: str, language: str, min_words: int = 2, max_words: int = 6) -> str:
+    """NEW: Pillar validation with 2-6 words"""
     normalized = normalize_topic_text(text, language)
     
     if not normalized:
@@ -411,7 +366,7 @@ def count_meaningful_words(text: str) -> int:
     words = cleaned.split()
     return len(words)
 
-def extract_keywords_fallback(content: str, max_words: int = 6, output_language: str = "English") -> str:
+def extract_keywords_fallback(content: str, max_words: int = 5, output_language: str = "English") -> str:
     has_thai = bool(re.search(r'[\u0E00-\u0E7F]', content))
     has_chinese = bool(re.search(r'[\u4E00-\u9FFF]', content))
     has_indonesian = any(word in content.lower() for word in ['yang', 'dan', 'dengan', 'untuk', 'dari', 'akan'])
@@ -440,9 +395,9 @@ def extract_keywords_fallback(content: str, max_words: int = 6, output_language:
     counter = Counter(words)
     top_words = [w for w, _ in counter.most_common(max_words)]
     
-    if len(top_words) >= 4:  # v13.2: Min 4 words
-        return " ".join(top_words[:6]).title()
-    elif len(top_words) >= 2:
+    if len(top_words) >= 3:
+        return " ".join(top_words[:5]).title()
+    elif len(top_words) > 0:
         return " ".join(top_words).title()
     else:
         return GENERIC_PLACEHOLDERS.get(output_language, "Media Content Topic")
@@ -532,13 +487,6 @@ def is_invalid_value(value: str) -> bool:
         if invalid in value_lower:
             return True
     return False
-
-def is_truly_empty_topic(val):
-    """v13.2: Better empty detection"""
-    if pd.isna(val):
-        return True
-    val_str = str(val).strip().lower()
-    return val_str in ['', 'nan', 'null', 'none', 'n/a', '-', 'na']
 
 def create_dedup_hash(row, title_col, content_col):
     combined = combine_title_content_row(row, title_col, content_col)
@@ -642,6 +590,7 @@ def process_batch_combined(
     token_tracker: TokenTracker,
     progress=gr.Progress()
 ) -> pd.DataFrame:
+    """NEW v12: Enhanced prompt for Pillar + Topic extraction"""
     
     batch_size = len(batch_df)
     lang_config = LANGUAGE_CONFIGS[language]
@@ -659,131 +608,76 @@ def process_batch_combined(
     
     nonce = random.randint(100000, 999999)
     
-    # v13.2: ENHANCED PROMPT with better examples and stricter guidelines
-    prompt = f"""You are an ELITE insights analyst with expertise in categorization and topic extraction.
+    prompt = f"""You are an ELITE insights analyst with CRITICAL THINKING skills.
 
 [Request ID: {nonce}]
-[OUTPUT LANGUAGE: {language}]
+[OUTPUT LANGUAGE: {language} - OPTIMIZED for Bahasa Indonesia]
 
 INPUT (TOON format, content may be in ANY language):
 {input_toon}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️ CRITICAL REQUIREMENTS - v13.2 PRODUCTION GRADE ⚠️
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 YOUR MISSION: Extract DEEP INSIGHTS with CRITICAL ANALYSIS
 
-🎯 PILLAR vs TOPIC HIERARCHY:
+You MUST analyze content with FORENSIC DETAIL and capture:
+1. **WHO**: Named entities (people, organizations, places)
+   Examples: IMIP, Morowali, WN RRC, Satgas, specific names
+   
+2. **WHAT**: Specific actions/events (NOT generic!)
+   ✅ GOOD: "Penutupan IMIP", "Perkelahian pekerja", "Pelanggaran kapal ilegal"
+   ❌ BAD: "Berita", "Informasi", "Update"
+   
+3. **INTENT**: What is this content about?
+   - Pertanyaan (asking question)
+   - Keluhan (complaint)
+   - Resiko/Dampak (risk/impact)
+   - Pelanggaran (violation)
+   - Informasi (information)
+   
+4. **CONTEXT**: Specific details that matter
+   Examples: "85rb+ lapangan kerja hilang", "US$15B+ ekspor anjlok"
 
-**PILLAR** ({lang_config['pillar_word_count']} STRICT):
-  → HIGH-LEVEL strategic category
-  → Broad theme that groups multiple topics
-  → NO narrative words (sambil, tentang, ketika)
-  → NO overly specific details
+OUTPUT STRUCTURE:
 
-**TOPIC** ({lang_config['topic_word_count']} STRICT):
-  → SPECIFIC event/issue/theme within the Pillar
-  → Concrete and actionable
-  → Clearly MORE SPECIFIC than Pillar
-  → Must differ significantly from Pillar (not just longer version)
+**PILLAR** ({lang_config['pillar_word_count']} - MINIMUM 2 WORDS):
+- Strategic CATEGORIZATION
+- Capture main issue/theme
+- MUST be at least 2 words for specificity
+- ✅ Examples: "Resiko IMIP Tutup", "Perkelahian Pekerja", "Pelanggaran Hukum"
+- ❌ NEVER: "Berita", "Info", "Update", "Viral", single words
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📚 LEARN FROM EXAMPLES:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+**TOPIC** ({lang_config['topic_word_count']} - MINIMUM 2 WORDS):
+- DETAILED and SPECIFIC description
+- MUST be at least 2 words - be descriptive!
+- Include WHO + WHAT + WHERE when relevant
+- Preserve important entities (IMIP, Morowali, WN RRC, etc.)
+- ✅ Examples: "Pertanyaan tentang isu IMIP di Morowali", "Perkelahian pekerja di kawasan IMIP", "Pelanggaran hukum kapal ilegal dari WN RRC"
+- ❌ NEVER: Generic terms, single words, or topics without details
 
-✅ EXCELLENT (Strategic Pillar + Specific Topic):
+**SENTIMENT**:
+- positive: Clear positive emotion, praise, satisfaction
+- negative: Clear negative emotion, complaint, criticism, concern
+- neutral: Factual, informational, question without emotion
 
-Content: "Elon Musk tweet soal Doge bikin harga naik..."
-Pillar: "Pengaruh Tokoh Publik" (3 words, strategic) ✅
-Topic: "Elon Musk Pompa Harga Doge" (5 words, specific) ✅
-WHY GOOD: Clear hierarchy, Pillar is category, Topic is specific event
+**CONFIDENCE** (0-100):
+- How certain are you about pillar, topic, and sentiment?
+- Be honest about ambiguity
 
-Content: "Platform Bittime sediakan trading DOGE, SHIB, PEPE..."
-Pillar: "Platform Trading" (2 words, broad) ✅
-Topic: "Bittime Sediakan Trading Meme Coin" (5 words, specific) ✅
-WHY GOOD: Pillar is general category, Topic names specific platform
-
-Content: "Volatilitas meme coin sangat tinggi, risiko besar..."
-Pillar: "Risiko Investasi" (2 words, strategic) ✅
-Topic: "Volatilitas Ekstrem Pada Meme Coin" (5 words, specific) ✅
-WHY GOOD: Different words, clear parent-child relationship
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-❌ BAD EXAMPLES (Learn what to AVOID):
-
-Content: "Jelle coin baru siap terbang, holder DOGE SHIB cari alternatif..."
-❌ BAD:
-Pillar: "Meme Coin Mencari Investor Baru" (5 words - TOO SPECIFIC!)
-Topic: "Meme Coin Jelle Di Kalangan Holder" (6 words - almost same!)
-WHY BAD: Pillar too specific, Topic just repeats Pillar
-
-✅ BETTER:
-Pillar: "Peluncuran Token Baru" (3 words - strategic)
-Topic: "Jelle Coin Targetkan Holder Doge Shib" (6 words - specific)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Content: "Ngopi di teras sambil baca berita tentang Doge..."
-❌ BAD:
-Pillar: "Investasi Dengan Dogecoin" (3 words - okay)
-Topic: "Ngopi Sambil Membaca Keuangan Tentang Doge" (6 words - TOO NARRATIVE!)
-WHY BAD: Topic is narrative, contains "sambil", "tentang"
-
-✅ BETTER:
-Pillar: "Diskusi Investor" (2 words - strategic)
-Topic: "Pembahasan Informal Tentang Performa Doge" (5 words - cleaner)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Content: "Doge dipompa, terus di-pump..."
-❌ BAD:
-Pillar: "Regulasi Dan Memecoin" (3 words)
-Topic: "Doge Pom Pom Elon Dan Pendapat Nfa Dyor" (8 words - MESSY!)
-WHY BAD: Topic contains too many elements, unclear focus
-
-✅ BETTER:
-Pillar: "Manipulasi Harga" (2 words - strategic)
-Topic: "Pompa Harga Doge Oleh Influencer" (5 words - clear)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🚨 FORBIDDEN PATTERNS:
-
-Pillar MUST NOT:
-  ❌ Be too specific (e.g., "Meme Coin Mencari Investor Baru")
-  ❌ Contain narrative words (sambil, ketika, tentang, saat)
-  ❌ Be >4 words
-  ❌ Use generic noise (Berita, Info, Update, Viral)
-
-Topic MUST NOT:
-  ❌ Be just a longer version of Pillar
-  ❌ Contain >2 narrative/stopwords
-  ❌ Be <4 words or >8 words
-  ❌ Be vague (e.g., "Kondisi Pasar Yang Jenuh")
-  ❌ Copy Pillar structure exactly
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🔍 SELF-CHECK BEFORE OUTPUT (MANDATORY):
-
-For EACH row:
-1. Pillar word count: 2-4? ✓
-2. Topic word count: 4-8? ✓
-3. Pillar is strategic category? ✓
-4. Topic is specific event/issue? ✓
-5. Topic clearly MORE SPECIFIC than Pillar? ✓
-6. <80% word overlap between them? ✓
-7. No excessive narrative words in Topic? ✓
-
-If ANY check fails → REVISE!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CRITICAL RULES:
+- Content can be in ANY language → You MUST understand it → Output in {language}
+- PILLAR and TOPIC must EACH be at least 2 words - NO single words!
+- NEVER use noise words: berita, info, informasi, viral, trending, update, artikel
+- NEVER output "unknown", "tidak jelas", "nan"
+- If you cannot extract meaningful insights, use "-" for that field
+- CAPTURE entity names exactly (IMIP, Morowali, etc.)
+- BE SPECIFIC - avoid generic categorization
+- Topic MUST be 2-15 words with clear details
+- Pillar MUST be 2-6 words categorization
 
 OUTPUT FORMAT (TOON with pipe delimiter |):
 result[{batch_size}]{{row|pillar|topic|sentiment|confidence}}:
-<row_index>|<pillar (2-4 words) or ->|<topic (4-8 words) or ->|<sentiment>|<confidence>
+<row_index>|<pillar in {language} or ->|<topic in {language} or ->|<sentiment>|<confidence_0-100>
 
-YOUR OUTPUT:"""
+YOUR OUTPUT (TOON format only):"""
     
     try:
         progress(0.5, desc=f"Pillar+Topic+Sentiment {batch_num}/{total_batches}")
@@ -791,20 +685,7 @@ YOUR OUTPUT:"""
         response = chat_create(
             MODEL_NAME,
             [
-                {"role": "system", "content": f"""You are an ELITE insights analyst with PRODUCTION-GRADE quality standards.
-
-{lang_config['prompt_instruction']}.
-Handle multi-language input. Output in {language}.
-
-🚨 MANDATORY QUALITY RULES:
-- Pillar: 2-4 words ONLY, strategic category
-- Topic: 4-8 words ONLY, specific and concrete
-- Topic MUST be clearly more specific than Pillar
-- NO narrative words (sambil, ketika, tentang, saat)
-- NO generic terms (berita, info, update, viral)
-- Topic and Pillar must have <80% word overlap
-
-SELF-CHECK: Before outputting, verify ALL requirements met."""},
+                {"role": "system", "content": f"You are an ELITE insights analyst with critical thinking. {lang_config['prompt_instruction']}. Handle multi-language input. Output in {language}. NEVER use generic terms."},
                 {"role": "user", "content": prompt}
             ],
             token_tracker=token_tracker
@@ -827,42 +708,39 @@ SELF-CHECK: Before outputting, verify ALL requirements met."""},
             except:
                 continue
         
-        # v13.2: Post-processing with quality validation
         for idx in batch_df.index:
             if idx in result_dict:
                 item = result_dict[idx]
                 
-                # Process Pillar
+                # Process PILLAR (new)
                 current_pillar = batch_df.at[idx, 'Pillar']
                 if pd.isna(current_pillar) or str(current_pillar).strip() == '':
                     pillar = str(item.get('pillar', '')).strip()
                     
-                    if pillar != '-' and not is_invalid_value(pillar):
-                        pillar = validate_and_normalize_pillar(pillar, language, min_words=2, max_words=4)
+                    if pillar == '-' or is_invalid_value(pillar):
+                        pillar = ''
+                    
+                    if pillar:
+                        pillar = validate_and_normalize_pillar(pillar, language)
+                        
                         if pillar:
                             batch_df.at[idx, 'Pillar'] = pillar
                 
-                # Process Topic
+                # Process TOPIC (enhanced from old sub_topic)
                 current_topic = batch_df.at[idx, 'Topic']
                 if pd.isna(current_topic) or str(current_topic).strip() == '':
                     topic = str(item.get('topic', '')).strip()
                     
-                    if topic != '-' and not is_invalid_value(topic):
-                        topic = validate_and_normalize_topic(topic, language, min_words=4, max_words=8)
+                    if topic == '-' or is_invalid_value(topic):
+                        topic = ''
+                    
+                    if topic:
+                        topic = validate_and_normalize_topic(topic, language)
                         
                         if topic:
-                            # Validate hierarchy
-                            pillar_val = batch_df.at[idx, 'Pillar']
-                            if pd.notna(pillar_val) and str(pillar_val).strip():
-                                is_valid, reason = validate_pillar_topic_hierarchy(str(pillar_val), topic, language)
-                                if is_valid:
-                                    batch_df.at[idx, 'Topic'] = topic
-                                else:
-                                    logging.warning(f"Row {idx}: Topic validation failed - {reason}")
-                            else:
-                                batch_df.at[idx, 'Topic'] = topic
+                            batch_df.at[idx, 'Topic'] = topic
                 
-                # Process Sentiment
+                # Process SENTIMENT
                 sentiment = str(item.get('sentiment', 'neutral')).lower().strip()
                 if sentiment in ['positive', 'negative', 'neutral']:
                     try:
@@ -976,10 +854,12 @@ def retry_topic_batch(
     token_tracker: TokenTracker,
     progress=gr.Progress()
 ) -> pd.DataFrame:
+    """NEW v12: Enhanced retry with increasing aggression per attempt"""
     
     batch_size = len(batch_df)
     lang_config = LANGUAGE_CONFIGS[language]
     
+    # Increase truncate words per attempt
     truncate_words = RETRY_TRUNCATE_WORDS + (retry_attempt * 50)
     
     input_toon = build_toon_input(
@@ -993,6 +873,7 @@ def retry_topic_batch(
     
     nonce = random.randint(100000, 999999)
     
+    # More aggressive prompt per attempt
     aggression_level = ["FINAL WARNING", "ABSOLUTE LAST CHANCE", "ULTIMATE DEADLINE"][min(retry_attempt-1, 2)]
     
     prompt = f"""🚨🚨🚨 {aggression_level} - RETRY ATTEMPT {retry_attempt}/3 🚨🚨🚨
@@ -1004,39 +885,52 @@ def retry_topic_batch(
 INPUT (TOON format, content may be ANY language):
 {input_toon}
 
-⚡ THIS IS YOUR RETRY #{retry_attempt} - PRODUCTION QUALITY REQUIRED! ⚡
+⚡ THIS IS YOUR RETRY #{retry_attempt} - YOU MUST SUCCEED! ⚡
 
-MANDATORY EXTRACTION RULES v13.2:
+PREVIOUS ATTEMPT FAILED - This time you MUST:
+1. Read FULL context carefully ({truncate_words} words provided)
+2. Understand content in ANY language (Thai, English, Chinese, Indonesian, mixed)
+3. Extract SPECIFIC details - WHO, WHAT, WHERE
+4. NEVER use generic terms
+5. Output detailed insights in {language}
 
-**PILLAR** ({lang_config['pillar_word_count']} STRICT):
-- Strategic category (2-4 words ONLY)
-- Examples: "Risiko Investasi", "Platform Trading", "Pengaruh Tokoh"
-- ❌ NO: Generic (Info, Berita), Narrative words, >4 words
+MANDATORY EXTRACTION RULES:
 
-**TOPIC** ({lang_config['topic_word_count']} STRICT):
-- Specific event/issue (4-8 words ONLY)
-- Examples: "Volatilitas Ekstrem Meme Coin", "Bittime Sediakan Trading Doge"
-- ❌ NO: Vague terms, <4 words, >8 words, narrative
+**PILLAR** ({lang_config['pillar_word_count']} - MINIMUM 2 WORDS):
+- Strategic categorization
+- Capture MAIN issue/theme
+- MUST be at least 2 words for clarity
+- Examples: "Resiko IMIP Tutup", "Perkelahian Pekerja", "Pelanggaran Hukum"
+- ❌ NEVER single words like "Resiko", "Info", "Berita"
+
+**TOPIC** ({lang_config['topic_word_count']} - MINIMUM 2 WORDS):
+- DETAILED with specific entities
+- MUST be at least 2 words - be descriptive!
+- Include WHO + WHAT + WHERE
+- Examples: "Pertanyaan tentang isu IMIP di Morowali", "Perkelahian pekerja di kawasan IMIP"
+- ❌ NEVER single words or generic terms
 
 CRITICAL:
-- Topic must be MORE SPECIFIC than Pillar
-- <80% word overlap between Pillar and Topic
-- NO "sambil", "tentang", "ketika" in Topic
+- Content language can be ANYTHING → You MUST understand → Output in {language}
+- PILLAR and TOPIC must EACH be at least 2 words
+- NEVER: "berita", "info", "viral", "trending", "unknown", "tidak jelas"
 - If truly impossible, use "-" but TRY EVERYTHING FIRST
+- Extract KEYWORDS if unclear
+- Be SPECIFIC not generic
 
 OUTPUT (TOON format):
 result[{batch_size}]{{row|pillar|topic}}:
-<row_index>|<pillar (2-4 words) or ->|<topic (4-8 words) or ->
+<row_index>|<pillar in {language} or ->|<topic in {language} or ->
 
 YOUR OUTPUT:"""
     
     try:
-        progress(0.95, desc=f"Retry #{retry_attempt}/3 - Quality Focus...")
+        progress(0.95, desc=f"Retry #{retry_attempt}/3 - Extracting Topics...")
         
         response = chat_create(
             MODEL_NAME,
             [
-                {"role": "system", "content": f"CRITICAL RETRY {retry_attempt}. {lang_config['prompt_instruction']}. PRODUCTION QUALITY. Pillar: 2-4 words. Topic: 4-8 words. Topic MORE SPECIFIC than Pillar."},
+                {"role": "system", "content": f"CRITICAL RETRY ATTEMPT {retry_attempt}. {lang_config['prompt_instruction']}. Multi-language expert. NEVER generic terms. BE SPECIFIC."},
                 {"role": "user", "content": prompt}
             ],
             token_tracker=token_tracker
@@ -1063,41 +957,38 @@ YOUR OUTPUT:"""
             if idx in result_dict:
                 item = result_dict[idx]
                 
-                if is_truly_empty_topic(batch_df.at[idx, 'Pillar']):
+                # Update PILLAR if still empty
+                if pd.isna(batch_df.at[idx, 'Pillar']) or str(batch_df.at[idx, 'Pillar']).strip() == '':
                     pillar = str(item.get('pillar', '')).strip()
                     
                     if pillar != '-' and not is_invalid_value(pillar):
-                        pillar = validate_and_normalize_pillar(pillar, language, min_words=2, max_words=4)
+                        pillar = validate_and_normalize_pillar(pillar, language)
                         if pillar:
                             batch_df.at[idx, 'Pillar'] = pillar
                 
-                if is_truly_empty_topic(batch_df.at[idx, 'Topic']):
+                # Update TOPIC if still empty
+                if pd.isna(batch_df.at[idx, 'Topic']) or str(batch_df.at[idx, 'Topic']).strip() == '':
                     topic = str(item.get('topic', '')).strip()
                     
                     if topic != '-' and not is_invalid_value(topic):
-                        topic = validate_and_normalize_topic(topic, language, min_words=4, max_words=8)
+                        topic = validate_and_normalize_topic(topic, language)
                         if topic:
-                            # Validate hierarchy
-                            pillar_val = batch_df.at[idx, 'Pillar']
-                            if pd.notna(pillar_val) and str(pillar_val).strip():
-                                is_valid, reason = validate_pillar_topic_hierarchy(str(pillar_val), topic, language)
-                                if is_valid:
-                                    batch_df.at[idx, 'Topic'] = topic
-                            else:
-                                batch_df.at[idx, 'Topic'] = topic
+                            batch_df.at[idx, 'Topic'] = topic
         
-        # Apply fallback for still empty
-        still_empty_mask = batch_df['Topic'].apply(is_truly_empty_topic)
+        # Final fallback for still empty rows
+        still_empty_mask = (
+            (batch_df['Topic'].isna()) | (batch_df['Topic'].astype(str).str.strip() == '')
+        )
         
         if still_empty_mask.sum() > 0:
             for idx in batch_df[still_empty_mask].index:
                 row = batch_df.loc[idx]
                 combined = combine_title_content_row(row, title_col, content_col)
                 combined = clean_content_for_analysis(combined)
-                fallback_topic = extract_keywords_fallback(combined, max_words=6, output_language=language)
+                fallback_topic = extract_keywords_fallback(combined, output_language=language)
                 
                 if fallback_topic != GENERIC_PLACEHOLDERS.get(language, "Media Content Topic"):
-                    fallback_topic = validate_and_normalize_topic(fallback_topic, language, min_words=4, max_words=8)
+                    fallback_topic = validate_and_normalize_topic(fallback_topic, language)
                     if fallback_topic:
                         batch_df.at[idx, 'Topic'] = fallback_topic
         
@@ -1106,24 +997,23 @@ YOUR OUTPUT:"""
     except Exception as e:
         logging.error(f"Retry attempt {retry_attempt} failed: {e}")
         
-        still_empty_mask = batch_df['Topic'].apply(is_truly_empty_topic)
+        # Emergency fallback
+        still_empty_mask = (
+            (batch_df['Topic'].isna()) | (batch_df['Topic'].astype(str).str.strip() == '')
+        )
         
         for idx in batch_df[still_empty_mask].index:
             row = batch_df.loc[idx]
             combined = combine_title_content_row(row, title_col, content_col)
             combined = clean_content_for_analysis(combined)
-            fallback_topic = extract_keywords_fallback(combined, max_words=6, output_language=language)
+            fallback_topic = extract_keywords_fallback(combined, output_language=language)
             
             if fallback_topic != GENERIC_PLACEHOLDERS.get(language, "Media Content Topic"):
-                fallback_topic = validate_and_normalize_topic(fallback_topic, language, min_words=4, max_words=8)
+                fallback_topic = validate_and_normalize_topic(fallback_topic, language)
                 if fallback_topic:
                     batch_df.at[idx, 'Topic'] = fallback_topic
         
         return batch_df
-
-# Continue with same normalization functions from v13.0...
-# (prepare_engagement_data, extract_significant_words, etc.)
-# I'll include the key ones needed:
 
 def prepare_engagement_data(df, campaign_col='Campaigns'):
     engagement_col = 'Engagement' if 'Engagement' in df.columns else None
@@ -1144,6 +1034,7 @@ def prepare_engagement_data(df, campaign_col='Campaigns'):
         
         engagement_map.columns = [campaign_col, 'Topic', 'Total_Engagement', 'Frequency']
         
+        # Use TOPIC_ENGAGEMENT_WEIGHT (0.6)
         engagement_map['Weight_Score'] = (
             engagement_map['Total_Engagement'] * TOPIC_ENGAGEMENT_WEIGHT +
             engagement_map['Frequency'] * (1 - TOPIC_ENGAGEMENT_WEIGHT)
@@ -1163,6 +1054,7 @@ def pre_cluster_topics_with_engagement(topics: list,
                                        engagement_data: pd.DataFrame,
                                        language: str,
                                        threshold: float = SIMILARITY_THRESHOLD) -> dict:
+    """Cluster topics by similarity with engagement priority"""
     engagement_lookup = dict(zip(
         engagement_data['Topic'], 
         engagement_data['Weight_Score']
@@ -1231,6 +1123,7 @@ def consolidate_topics_to_pillars(groups: dict,
                                   language: str,
                                   token_tracker: TokenTracker,
                                   target_pillars: int = TARGET_PILLARS_PER_CAMPAIGN) -> dict:
+    """NEW v12: Consolidate topic groups into Pillars"""
     
     group_summary = []
     
@@ -1276,15 +1169,23 @@ TASK:
 3. Each PILLAR should be {lang_config['pillar_word_count']} in {language}
 4. Pillars are CATEGORIZATION level - broad but meaningful
 
+CRITICAL ENGAGEMENT RULES:
+⭐ HIGH-ENGAGEMENT groups at TOP are MOST IMPORTANT
+⭐ Pillar names should reflect HIGH-ENGAGEMENT content
+⭐ When merging groups, prioritize naming from high-engagement samples
+⭐ Ensure high-engagement topics get meaningful pillar categorization
+
 GOOD PILLARS:
-✅ "Risiko Investasi" (2 words, strategic)
-✅ "Platform Trading" (2 words, broad category)
-✅ "Pengaruh Tokoh" (2 words, thematic)
+✅ "Resiko IMIP Tutup" (specific issue category)
+✅ "Perkelahian Pekerja" (specific event category)
+✅ "Pelanggaran Hukum" (specific problem category)
+✅ "Pertanyaan IMIP" (specific intent category)
 
 BAD PILLARS:
-❌ "Meme Coin Mencari Investor" (5 words, too specific!)
-❌ "Berita" (1 word, too generic!)
-❌ "Info Update" (2 words, noise!)
+❌ "Berita" (too generic!)
+❌ "Informasi" (noise word!)
+❌ "Update" (too vague!)
+❌ "Viral" (not meaningful!)
 
 OUTPUT FORMAT (JSON):
 {{
@@ -1293,7 +1194,7 @@ OUTPUT FORMAT (JSON):
       "pillar_name": "...",
       "merged_groups": ["group_0", "group_3"],
       "estimated_engagement": 75000,
-      "description": "Why this categorization"
+      "description": "Why this categorization (based on high-engagement content)"
     }},
     ...
   ],
@@ -1323,7 +1224,7 @@ OUTPUT (JSON only):"""
         for pillar_info in result['pillars']:
             if 'pillar_name' in pillar_info:
                 original = pillar_info['pillar_name']
-                normalized = validate_and_normalize_pillar(original, language, min_words=2, max_words=4)
+                normalized = validate_and_normalize_pillar(original, language)
                 if normalized:
                     pillar_info['pillar_name'] = normalized
                 else:
@@ -1338,6 +1239,7 @@ OUTPUT (JSON only):"""
 def validate_engagement_coverage(df, mapping: dict, 
                                 campaign: str,
                                 engagement_col='Engagement'):
+    """Validate pillar engagement coverage"""
     campaign_df = df[df['Campaigns'] == campaign].copy()
     
     campaign_df['Pillar_Mapped'] = campaign_df['Topic'].map(mapping)
@@ -1392,6 +1294,7 @@ def normalize_topics_to_pillars_v12(df,
                                     similarity_threshold=SIMILARITY_THRESHOLD,
                                     token_tracker=None,
                                     progress=gr.Progress()):
+    """NEW v12: Normalize Topics → Pillars with engagement awareness"""
     
     logging.info("[PREP] Calculating engagement weights for Topics → Pillars...")
     engagement_data = prepare_engagement_data(df, campaign_col)
@@ -1421,6 +1324,7 @@ def normalize_topics_to_pillars_v12(df,
         progress_val = 0.85 + (idx / total_campaigns) * 0.10
         progress(progress_val, desc=f"[STEP 4/4] Normalizing campaign {idx}/{total_campaigns}")
         
+        # Pre-cluster topics
         groups = pre_cluster_topics_with_engagement(
             topics,
             campaign_engagement,
@@ -1429,7 +1333,9 @@ def normalize_topics_to_pillars_v12(df,
         )
         
         logging.info(f"  └─ Pre-clustering: {len(topics)} topics → {len(groups)} groups")
+        logging.info(f"     └─ Groups sorted by engagement (highest first)")
         
+        # Consolidate groups to pillars
         pillar_result = consolidate_topics_to_pillars(
             groups,
             language,
@@ -1443,7 +1349,7 @@ def normalize_topics_to_pillars_v12(df,
             mapping = {}
             for group_id, group_data in groups.items():
                 first_topic = group_data['topics'][0]
-                pillar_name = validate_and_normalize_pillar(first_topic, language, min_words=2, max_words=4)
+                pillar_name = validate_and_normalize_pillar(first_topic, language)
                 
                 if not pillar_name:
                     pillar_name = ""
@@ -1549,14 +1455,6 @@ Output:"""
         
     except Exception as e:
         return {sp: sp for sp in unique_spokespersons}
-
-# Due to length, I'll create the process_file function in next message
-# This covers all the core functions with v13.2 improvements
-
-# ============================================================================
-# PART 2: process_file() function and Gradio interface for v13.2
-# ============================================================================
-# Append this to insights_generator_v13_2_production.py
 
 def process_file(
     file_path: str,
@@ -1671,13 +1569,9 @@ def process_file(
         tracker = TokenTracker()
         start_time = time.time()
         
-        # =================================================================
-        # STEP 1: PILLAR + TOPIC + SENTIMENT (with v13.2 quality control)
-        # =================================================================
-        
         if generate_topic or generate_sentiment:
             logging.info("\n" + "="*80)
-            logging.info("[STEP 1/4] PILLAR + TOPIC + SENTIMENT (v13.2 - Enhanced Quality)")
+            logging.info("[STEP 1/4] PILLAR + TOPIC + SENTIMENT (MASTER ROWS, ELIGIBLE CONTENT)")
             logging.info("="*80)
             
             process_mask = df['_is_master'] & df['_eligible_for_topic']
@@ -1744,7 +1638,7 @@ def process_file(
                 
                 if generate_topic:
                     pillar_filled = df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '')
-                    topic_filled = df['Topic'].apply(lambda x: not is_truly_empty_topic(x))
+                    topic_filled = df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')
                     
                     pillar_success = pillar_filled.sum()
                     topic_success = topic_filled.sum()
@@ -1761,19 +1655,15 @@ def process_file(
                     tracker.add_step_stat("Sentiment", success_count, len(df))
                     logging.info(f"[STEP 1/4] ✅ Sentiment: {success_count}/{len(df)} ({success_count/len(df)*100:.1f}%)")
         
-        # =================================================================
-        # STEP 2: SPOKESPERSON (Mainstream only)
-        # =================================================================
-        
         if generate_spokesperson and mainstream_count > 0:
             logging.info("\n" + "="*80)
-            logging.info("[STEP 2/4] SPOKESPERSON (MAINSTREAM ONLY)")
+            logging.info("[STEP 2/4] SPOKESPERSON (MAINSTREAM MASTER ROWS, ELIGIBLE CONTENT)")
             logging.info("="*80)
             
             mainstream_process_mask = df['_is_master'] & mainstream_mask & df['_eligible_for_topic']
             df_mainstream = df[mainstream_process_mask].copy()
             
-            logging.info(f"📊 Processing {len(df_mainstream)} mainstream master rows")
+            logging.info(f"📊 Processing {len(df_mainstream)} mainstream master rows (eligible content only)")
             
             if len(df_mainstream) > 0:
                 mainstream_batches = []
@@ -1800,8 +1690,7 @@ def process_file(
                     if 'New Spokesperson' in df_mainstream_processed.columns:
                         df.at[idx, 'New Spokesperson'] = df_mainstream_processed.at[idx, 'New Spokesperson']
                 
-                logging.info(f"📋 Copying spokesperson to duplicate rows...")
-                
+                logging.info("📋 Copying spokesperson to duplicate rows...")
                 for hash_val in df[mainstream_mask]['_dedup_hash'].unique():
                     group = df[(df['_dedup_hash'] == hash_val) & mainstream_mask]
                     if len(group) > 1:
@@ -1820,21 +1709,19 @@ def process_file(
             
             df.loc[social_mask, 'New Spokesperson'] = ''
         
-        # =================================================================
-        # STEP 3: RETRY FAILED TOPICS
-        # =================================================================
-        
         if generate_topic:
-            eligible_mask = df['_eligible_for_topic']
-            topic_filled = df[eligible_mask]['Topic'].apply(lambda x: not is_truly_empty_topic(x))
-            success_rate = topic_filled.sum() / eligible_mask.sum() if eligible_mask.sum() > 0 else 1.0
+            topic_filled = df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')
+            success_rate = topic_filled.sum() / len(df)
             
             if success_rate < SKIP_RETRY_THRESHOLD:
                 logging.info("\n" + "="*80)
                 logging.info(f"[STEP 3/4] RETRY FAILED TOPICS (success rate: {success_rate:.1%} < {SKIP_RETRY_THRESHOLD:.0%})")
                 logging.info("="*80)
                 
-                unknown_mask = df['_is_master'] & df['_eligible_for_topic'] & df['Topic'].apply(is_truly_empty_topic)
+                unknown_mask = df['_is_master'] & df['_eligible_for_topic'] & \
+                              ((df['Topic'].isna()) | \
+                               (df['Topic'].astype(str).str.strip() == '') | \
+                               (df['Topic'].apply(lambda x: is_invalid_value(str(x)))))
                 
                 df_unknown = df[unknown_mask].copy()
                 unknown_count = len(df_unknown)
@@ -1844,6 +1731,7 @@ def process_file(
                 if unknown_count > 0:
                     progress(0.65, desc=f"[STEP 3/4] Retrying {unknown_count} Topics...")
                     
+                    # Try up to 3 retries
                     for retry_attempt in range(1, MAX_RETRIES + 1):
                         retry_batches = []
                         total_batches = math.ceil(unknown_count / RETRY_BATCH_SIZE)
@@ -1880,16 +1768,22 @@ def process_file(
                                 if 'Topic' in df.columns:
                                     df.at[dup_idx, 'Topic'] = df.at[idx, 'Topic']
                         
-                        topic_filled = df[eligible_mask]['Topic'].apply(lambda x: not is_truly_empty_topic(x))
-                        current_success_rate = topic_filled.sum() / eligible_mask.sum() if eligible_mask.sum() > 0 else 1.0
+                        # Check if we still have empty topics
+                        topic_filled = df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')
+                        current_success_rate = topic_filled.sum() / len(df)
                         
-                        logging.info(f"[STEP 3/4] After retry {retry_attempt}: {topic_filled.sum()}/{eligible_mask.sum()} ({current_success_rate:.1%})")
+                        logging.info(f"[STEP 3/4] After retry {retry_attempt}: {topic_filled.sum()}/{len(df)} ({current_success_rate:.1%})")
                         
+                        # If we reached threshold, stop retrying
                         if current_success_rate >= SKIP_RETRY_THRESHOLD:
                             logging.info(f"[STEP 3/4] ✅ Success rate reached threshold, stopping retries")
                             break
                         
-                        unknown_mask = df['_is_master'] & df['_eligible_for_topic'] & df['Topic'].apply(is_truly_empty_topic)
+                        # Update df_unknown for next retry
+                        unknown_mask = df['_is_master'] & df['_eligible_for_topic'] & \
+                                      ((df['Topic'].isna()) | \
+                                       (df['Topic'].astype(str).str.strip() == '') | \
+                                       (df['Topic'].apply(lambda x: is_invalid_value(str(x)))))
                         df_unknown = df[unknown_mask].copy()
                         unknown_count = len(df_unknown)
                         
@@ -1898,156 +1792,26 @@ def process_file(
                             break
                     
                     pillar_filled = df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '')
-                    topic_filled_after = df[eligible_mask]['Topic'].apply(lambda x: not is_truly_empty_topic(x))
+                    topic_filled = df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')
                     
                     pillar_final = pillar_filled.sum()
-                    topic_final = topic_filled_after.sum()
+                    topic_final = topic_filled.sum()
                     
                     tracker.add_step_stat("Pillar (after retry)", pillar_final, len(df))
-                    tracker.add_step_stat("Topic (after retry)", topic_final, eligible_mask.sum())
+                    tracker.add_step_stat("Topic (after retry)", topic_final, len(df))
                     
                     logging.info(f"[STEP 3/4] ✅ Pillar (after retry): {pillar_final}/{len(df)} ({pillar_final/len(df)*100:.1f}%)")
-                    logging.info(f"[STEP 3/4] ✅ Topic (after retry): {topic_final}/{eligible_mask.sum()} ({topic_final/eligible_mask.sum()*100:.1f}%)")
+                    logging.info(f"[STEP 3/4] ✅ Topic (after retry): {topic_final}/{len(df)} ({topic_final/len(df)*100:.1f}%)")
             else:
                 logging.info("\n" + "="*80)
                 logging.info(f"[STEP 3/4] ⚡ SKIPPING RETRY (success rate: {success_rate:.1%} >= {SKIP_RETRY_THRESHOLD:.0%})")
                 logging.info("="*80)
                 
                 pillar_filled = df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '')
-                topic_filled_after = df[eligible_mask]['Topic'].apply(lambda x: not is_truly_empty_topic(x))
+                topic_filled = df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')
                 
                 tracker.add_step_stat("Pillar (after retry)", pillar_filled.sum(), len(df))
-                tracker.add_step_stat("Topic (after retry)", topic_filled_after.sum(), eligible_mask.sum())
-        
-        # =================================================================
-        # STEP 3.5: v13.2 - AGGRESSIVE FINAL FALLBACK
-        # =================================================================
-        
-        if generate_topic:
-            logging.info("\n" + "="*80)
-            logging.info("[STEP 3.5/4] v13.2 - AGGRESSIVE FINAL FALLBACK (Ensuring 100% Coverage)")
-            logging.info("="*80)
-            
-            eligible_mask = df['_eligible_for_topic']
-            empty_topic_mask = eligible_mask & df['Topic'].apply(is_truly_empty_topic)
-            
-            empty_count_before = empty_topic_mask.sum()
-            
-            if empty_count_before > 0:
-                logging.info(f"  └─ Found {empty_count_before} eligible rows with empty topics")
-                logging.info(f"  └─ Applying aggressive fallback extraction...")
-                
-                progress(0.82, desc=f"[STEP 3.5/4] Fallback for {empty_count_before} empty topics...")
-                
-                fixed_count = 0
-                last_resort_count = 0
-                
-                # Process only master rows first
-                empty_masters_mask = empty_topic_mask & df['_is_master']
-                
-                for idx in df[empty_masters_mask].index:
-                    row = df.loc[idx]
-                    combined = combine_title_content_row(row, title_col, content_col)
-                    combined = clean_content_for_analysis(combined)
-                    
-                    if not combined or len(combined.split()) < 2:
-                        continue
-                    
-                    # STEP 1: Try keyword fallback
-                    fallback_topic = extract_keywords_fallback(combined, max_words=6, output_language=language)
-                    
-                    # Check if fallback is generic placeholder
-                    is_generic = fallback_topic in GENERIC_PLACEHOLDERS.values()
-                    
-                    if fallback_topic and not is_generic:
-                        # Validate
-                        validated = validate_and_normalize_topic(fallback_topic, language, min_words=4, max_words=8)
-                        
-                        if validated:
-                            df.at[idx, 'Topic'] = validated
-                            fixed_count += 1
-                            continue
-                    
-                    # STEP 2: Last resort - use first meaningful words
-                    words = combined.split()
-                    meaningful_words = []
-                    
-                    # Get stopwords for language
-                    stopwords = set(LANGUAGE_CONFIGS.get(language, {}).get('stopwords', []))
-                    
-                    for word in words:
-                        # Skip short words, numbers, URLs, hashtags
-                        if len(word) < 3:
-                            continue
-                        if word.lower() in stopwords:
-                            continue
-                        if word.isdigit():
-                            continue
-                        if word.startswith(('http', 'www', '#', '@')):
-                            continue
-                        
-                        meaningful_words.append(word)
-                        
-                        if len(meaningful_words) >= 8:
-                            break
-                    
-                    if len(meaningful_words) >= 4:  # v13.2: Min 4 words for topic
-                        last_resort_topic = " ".join(meaningful_words[:8])
-                        
-                        # Normalize based on language
-                        if language in ['Thailand', 'China']:
-                            last_resort_topic = last_resort_topic.strip()
-                        else:
-                            last_resort_topic = last_resort_topic.title()
-                        
-                        df.at[idx, 'Topic'] = last_resort_topic
-                        fixed_count += 1
-                        last_resort_count += 1
-                
-                # Copy fallback results to duplicate rows
-                logging.info(f"  └─ Copying fallback topics to duplicate rows...")
-                
-                for hash_val in df[empty_topic_mask]['_dedup_hash'].unique():
-                    group = df[df['_dedup_hash'] == hash_val]
-                    if len(group) > 1:
-                        master_idx = group[group['_is_master']].index
-                        if len(master_idx) > 0:
-                            master_idx = master_idx[0]
-                            master_topic = df.at[master_idx, 'Topic']
-                            
-                            if not is_truly_empty_topic(master_topic):
-                                duplicate_indices = group[~group['_is_master']].index
-                                for dup_idx in duplicate_indices:
-                                    df.at[dup_idx, 'Topic'] = master_topic
-                
-                # Final check
-                empty_topic_mask_after = eligible_mask & df['Topic'].apply(is_truly_empty_topic)
-                empty_count_after = empty_topic_mask_after.sum()
-                
-                logging.info(f"  └─ Results:")
-                logging.info(f"      • Fixed with fallback: {fixed_count - last_resort_count}")
-                logging.info(f"      • Fixed with last resort: {last_resort_count}")
-                logging.info(f"      • Remaining empty: {empty_count_after}")
-                
-                if empty_count_after > 0:
-                    logging.warning(f"  └─ ⚠️ {empty_count_after} eligible rows still empty!")
-                    # Show first 5 problematic rows
-                    for i, idx in enumerate(df[empty_topic_mask_after].head(5).index):
-                        logging.warning(f"       Row {idx}: Channel={df.at[idx, 'Channel']}, Words={df.at[idx, '_word_count']}")
-                else:
-                    logging.info(f"  └─ ✅ 100% Topic coverage achieved!")
-                
-                # Update tracker stats
-                topic_filled_final = df[eligible_mask]['Topic'].apply(lambda x: not is_truly_empty_topic(x))
-                topic_success_final = topic_filled_final.sum()
-                tracker.add_step_stat("Topic (after fallback)", topic_success_final, eligible_mask.sum())
-                
-            else:
-                logging.info(f"  └─ ✅ All {eligible_mask.sum()} eligible rows already have topics!")
-        
-        # =================================================================
-        # STEP 4: NORMALIZATION (Topics → Pillars per Campaign)
-        # =================================================================
+                tracker.add_step_stat("Topic (after retry)", topic_filled.sum(), len(df))
         
         logging.info("\n" + "="*80)
         logging.info("[STEP 4/4] NORMALIZATION (TOPICS → PILLARS PER CAMPAIGN)")
@@ -2070,13 +1834,14 @@ def process_file(
                     progress=progress
                 )
                 
+                # Apply pillar mapping to original Pillar column
                 for campaign, result in results.items():
                     mapping = result['mapping']
                     campaign_mask = df['Campaigns'] == campaign
                     
                     for idx in df[campaign_mask].index:
                         topic_val = df.at[idx, 'Topic']
-                        if not is_truly_empty_topic(topic_val):
+                        if topic_val and str(topic_val).strip() and not is_invalid_value(str(topic_val)):
                             mapped_pillar = mapping.get(topic_val, '')
                             if mapped_pillar:
                                 df.at[idx, 'Pillar'] = mapped_pillar
@@ -2085,7 +1850,9 @@ def process_file(
                 pillar_success = pillar_filled.sum()
                 tracker.add_step_stat("Pillar (normalized)", pillar_success, len(df))
                 
-                topics_all = df[~df['Topic'].apply(is_truly_empty_topic)]['Topic']
+                topics_all = df['Topic'].dropna()
+                topics_all = topics_all[topics_all.astype(str).str.strip() != '']
+                topics_all = topics_all[~topics_all.apply(lambda x: is_invalid_value(str(x)))]
                 unique_topics_count = len(topics_all.unique())
                 unique_pillars_final = df['Pillar'].nunique()
                 grouping_rate = (1 - unique_pillars_final / unique_topics_count) * 100 if unique_topics_count > 0 else 0
@@ -2106,10 +1873,6 @@ def process_file(
                 df['New Spokesperson'] = df['New Spokesperson'].apply(
                     lambda x: spokesperson_mapping.get(x, x) if pd.notna(x) and str(x).strip() and not is_invalid_value(str(x)) else x
                 )
-        
-        # =================================================================
-        # FINALIZATION & OUTPUT
-        # =================================================================
         
         logging.info("\n" + "="*80)
         logging.info("[FINALIZATION] Preparing output")
@@ -2150,7 +1913,7 @@ def process_file(
         progress(0.98, desc="Saving...")
         
         original_filename = Path(file_path).stem
-        output_filename = f"{original_filename}_phase2_v13_2_PRODUCTION.xlsx"
+        output_filename = f"{original_filename}_phase2_v12.xlsx"
         output_path = os.path.join(tempfile.gettempdir(), output_filename)
         
         with pd.ExcelWriter(output_path, engine='xlsxwriter') as writer:
@@ -2159,12 +1922,10 @@ def process_file(
             duration = time.time() - start_time
             token_summary = tracker.get_summary(MODEL_NAME)
             
-            # Calculate quality metrics
             if generate_topic:
                 if 'Topic' in df.columns:
-                    eligible_mask = df['_word_count'] >= MIN_CONTENT_WORDS_FOR_TOPIC if '_word_count' in df.columns else pd.Series([True] * len(df))
-                    topics = df[eligible_mask]['Topic']
-                    topics = topics[~topics.apply(is_truly_empty_topic)]
+                    topics = df['Topic'].dropna()
+                    topics = topics[topics.astype(str).str.strip() != '']
                     avg_topic_words = topics.astype(str).str.split().str.len().mean() if len(topics) > 0 else 0
                 else:
                     avg_topic_words = 0
@@ -2189,9 +1950,7 @@ def process_file(
             
             if generate_topic:
                 unique_pillars_final = df['Pillar'].nunique()
-                eligible_mask_final = df.get('_word_count', pd.Series([MIN_CONTENT_WORDS_FOR_TOPIC] * len(df))) >= MIN_CONTENT_WORDS_FOR_TOPIC
-                topics_all = df[eligible_mask_final & ~df['Topic'].apply(is_truly_empty_topic)]['Topic']
-                unique_topics_count = len(topics_all.unique())
+                unique_topics_count = df['Topic'].nunique()
                 grouping_rate = (1 - unique_pillars_final / unique_topics_count) * 100 if unique_topics_count > 0 else 0
             else:
                 unique_pillars_final = 0
@@ -2200,7 +1959,7 @@ def process_file(
             
             meta_data = [
                 {"key": "processed_at", "value": datetime.now().strftime("%Y-%m-%d %H:%M:%S")},
-                {"key": "version", "value": "v13.2 PRODUCTION - Enhanced Quality Control"},
+                {"key": "version", "value": "v12.0 - Enhanced Pillar+Topic with Retry"},
                 {"key": "model", "value": MODEL_NAME},
                 {"key": "output_language", "value": f"{language} ({LANGUAGE_CONFIGS[language]['name']})"},
                 {"key": "duration_sec", "value": f"{duration:.2f}"},
@@ -2216,7 +1975,6 @@ def process_file(
                 {"key": "mainstream_rows", "value": int(mainstream_count)},
                 {"key": "social_rows", "value": int(social_count)},
                 {"key": "batch_size", "value": int(BATCH_SIZE)},
-                {"key": "truncate_words", "value": int(TRUNCATE_WORDS)},
                 {"key": "max_retries", "value": int(MAX_RETRIES)},
                 {"key": "similarity_threshold", "value": f"{SIMILARITY_THRESHOLD*100}%"},
                 {"key": "target_pillars_per_campaign", "value": int(TARGET_PILLARS_PER_CAMPAIGN)},
@@ -2245,7 +2003,6 @@ def process_file(
                 {"key": "avg_pillar_words", "value": f"{avg_pillar_words:.1f}"},
                 {"key": "avg_topic_words", "value": f"{avg_topic_words:.1f}"},
                 {"key": "sentiment_distribution", "value": sentiment_str},
-                {"key": "quality_improvements", "value": "Stricter word count, hierarchy validation, aggressive fallback"},
             ])
             
             meta = pd.DataFrame(meta_data)
@@ -2278,19 +2035,13 @@ def process_file(
                 "similarity_threshold": f"{SIMILARITY_THRESHOLD*100}%",
                 "target_pillars": int(TARGET_PILLARS_PER_CAMPAIGN)
             },
-            "quality_v13.2": {
-                "avg_pillar_words": f"{avg_pillar_words:.1f}",
-                "avg_topic_words": f"{avg_topic_words:.1f}",
-                "hierarchy_validation": "ENABLED",
-                "aggressive_fallback": "ENABLED"
-            },
             "duration": f"{duration:.2f}s",
             "cost": f"${token_summary['estimated_cost_usd']:.6f}",
             "success_rates": token_summary['step_stats']
         }
         
         logging.info("\n" + "="*80)
-        logging.info("✅ PROCESSING COMPLETE - v13.2 PRODUCTION")
+        logging.info("✅ PROCESSING COMPLETE - v12.0")
         logging.info("="*80)
         logging.info(f"Rows: {original_row_count} → {final_row_count} (unchanged: {original_row_count == final_row_count})")
         logging.info(f"Deduplication: {master_rows} groups, {duplicate_rows} duplicates (saved {duplicate_rows} calls)")
@@ -2299,7 +2050,6 @@ def process_file(
         logging.info(f"Language: {language}")
         
         if generate_topic:
-            logging.info(f"Quality v13.2: Pillar={avg_pillar_words:.1f} words, Topic={avg_topic_words:.1f} words")
             logging.info(f"Normalization: {unique_topics_count} topics → {unique_pillars_final} pillars ({grouping_rate:.1f}% reduction)")
         
         for step_name, step_data in token_summary['step_stats'].items():
@@ -2313,9 +2063,9 @@ def process_file(
         return None, {}, f"❌ Error: {str(e)}"
 
 def create_gradio_interface():
-    with gr.Blocks(title="Insights Generator v13.2 PRODUCTION", theme=gr.themes.Soft()) as app:
-        gr.Markdown("# 📊 Insights Generator v13.2 - PRODUCTION GRADE")
-        gr.Markdown("**ENHANCED:** Stricter word count (Pillar: 2-4, Topic: 4-8), Hierarchy validation, Aggressive fallback")
+    with gr.Blocks(title="Insights Generator v12.0", theme=gr.themes.Soft()) as app:
+        gr.Markdown("# 📊 Insights Generator v12.0 - Enhanced Pillar+Topic Extraction")
+        gr.Markdown("**NEW:** Pillar (2-6 words categorization) + Topic (5-15 words detailed) with 3x retry + engagement-aware normalization")
         
         with gr.Row():
             with gr.Column(scale=2):
@@ -2336,7 +2086,7 @@ def create_gradio_interface():
             with gr.Column(scale=1):
                 gr.Markdown("### 🌍 Language")
                 language_selector = gr.Dropdown(
-                    label="Output Language",
+                    label="Output Language (Optimized for Indonesia)",
                     choices=list(LANGUAGE_CONFIGS.keys()),
                     value="Indonesia",
                     info="Content can be ANY language, output uses your selection"
@@ -2346,7 +2096,7 @@ def create_gradio_interface():
                 conf_threshold = gr.Slider(label="Sentiment Confidence Threshold", minimum=0, maximum=100, value=85, step=5)
                 
                 gr.Markdown("### ✅ Features (Select at least 1)")
-                gen_topic = gr.Checkbox(label="📌 Pillar & Topic (v13.2 Enhanced)", value=False)
+                gen_topic = gr.Checkbox(label="📌 Pillar & Topic (all channels) - Enhanced with 3x retry", value=False)
                 gen_sentiment = gr.Checkbox(label="😊 Sentiment (all channels)", value=False)
                 gen_spokesperson = gr.Checkbox(label="🎤 Spokesperson (mainstream only)", value=False)
         
@@ -2358,7 +2108,7 @@ def create_gradio_interface():
             with gr.Column():
                 output_file = gr.File(label="📥 Download")
             with gr.Column():
-                stats_output = gr.Textbox(label="📊 Stats", lines=20, interactive=False)
+                stats_output = gr.Textbox(label="📊 Stats", lines=18, interactive=False)
         
         error_output = gr.Textbox(label="⚠️ Status", lines=3, visible=True)
         
