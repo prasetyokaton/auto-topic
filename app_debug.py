@@ -59,32 +59,40 @@ if not OPENAI_API_KEY:
 client = OpenAI(api_key=OPENAI_API_KEY)
 MODEL_NAME = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
-# NEW BATCH SIZES - SMALLER FOR BETTER QUALITY
+# BATCH SIZES
 BATCH_SIZE = 20
 MAINSTREAM_BATCH_SIZE = 20
 RETRY_BATCH_SIZE = 15
-MAX_RETRIES = 3  # Increased from 2 to 3
-TRUNCATE_WORDS = 350  # Increased from 100 to 200
-MAINSTREAM_TRUNCATE_WORDS = 350  # Increased from 150
-RETRY_TRUNCATE_WORDS = 450  # Increased from 200
+MAX_RETRIES = 1  # Only 1 retry now
+TRUNCATE_WORDS = 350
+MAINSTREAM_TRUNCATE_WORDS = 350
+RETRY_TRUNCATE_WORDS = 500  # More context for retry
 
 MIN_CONTENT_WORDS_FOR_TOPIC = 3
 
-# NEW: Separate engagement weights for Pillar and Topic
-PILLAR_ENGAGEMENT_WEIGHT = 0.8  # High priority for strategic categorization
-TOPIC_ENGAGEMENT_WEIGHT = 0.6   # Medium-high for variety with priority
+# RETRY THRESHOLDS
+RETRY_ENGAGEMENT_THRESHOLD = 5000  # Configurable
+RETRY_MAINSTREAM_MAX_ROWS = 100  # Max rows to retry for mainstream
+
+# ENGAGEMENT WEIGHTS
+TOPIC_ENGAGEMENT_WEIGHT = 0.6
 SIMILARITY_THRESHOLD = 0.40
-TARGET_PILLARS_PER_CAMPAIGN = 15  # Target pillars (was topics)
-TARGET_TOPICS_PER_PILLAR = 3  # Average topics per pillar
-#SKIP_RETRY_THRESHOLD = 0.90  # More aggressive retry (was 0.95)
+TARGET_PILLARS_PER_CAMPAIGN = 15  # Flexible target
 
 MAINSTREAM_CHANNELS = [
     'tv', 'radio', 'newspaper', 'online', 'printmedia', 'site',
     'printed', 'printedmedia', 'print', 'online media'
 ]
 
-SOCIAL_CHANNELS = ['tiktok', 'instagram', 'youtube', 'facebook', 'twitter', 'x', 'blog', 'forum']
-INVALID_VALUES = ['nan', 'none', 'null', 'n/a', 'na', 'unknown', 'tidak ada', '-', 'tidak diketahui', 'undefined', 'not available', 'tidak jelas']
+SOCIAL_CHANNELS = [
+    'tiktok', 'instagram', 'youtube', 'facebook', 'twitter', 'x', 
+    'threads', 'blog', 'forum'
+]
+
+INVALID_VALUES = [
+    'nan', 'none', 'null', 'n/a', 'na', 'unknown', 'tidak ada', '-', 
+    'tidak diketahui', 'undefined', 'not available', 'tidak jelas'
+]
 
 LANGUAGE_CONFIGS = {
     "Indonesia": {
@@ -187,7 +195,7 @@ class TokenTracker:
         else:
             self.parse_failed += 1
     
-    def add_step_stat(self, step_name, success_count, total_count):
+    def add_step_stat(self, step_name, success_count, total_count, **kwargs):
         success = int(success_count) if pd.notna(success_count) else 0
         total = int(total_count) if pd.notna(total_count) else 0
         rate = round(float(success / total * 100), 1) if total > 0 else 0.0
@@ -195,7 +203,8 @@ class TokenTracker:
         self.step_stats[step_name] = {
             "success": success,
             "total": total,
-            "rate": rate
+            "rate": rate,
+            **kwargs
         }
     
     def get_cost(self, model_name):
@@ -248,6 +257,8 @@ def normalize_column_names(df: pd.DataFrame) -> pd.DataFrame:
             column_mapping[col] = 'Content'
         elif col_lower in ['engagement']:
             column_mapping[col] = 'Engagement'
+        elif col_lower in ['buzz']:
+            column_mapping[col] = 'Buzz'
     
     if column_mapping:
         df = df.rename(columns=column_mapping)
@@ -326,7 +337,7 @@ def normalize_topic_text(text: str, language: str) -> str:
         return text.title()
 
 def validate_and_normalize_topic(text: str, language: str, min_words: int = 1, max_words: int = 15) -> str:
-    """NEW: Topic validation with 5-15 words"""
+    """Topic validation with 5-15 words"""
     normalized = normalize_topic_text(text, language)
     
     if not normalized:
@@ -344,7 +355,7 @@ def validate_and_normalize_topic(text: str, language: str, min_words: int = 1, m
     return normalized
 
 def validate_and_normalize_pillar(text: str, language: str, min_words: int = 1, max_words: int = 6) -> str:
-    """NEW: Pillar validation with 2-6 words"""
+    """Pillar validation with 2-6 words"""
     normalized = normalize_topic_text(text, language)
     
     if not normalized:
@@ -365,42 +376,6 @@ def count_meaningful_words(text: str) -> int:
     cleaned = clean_content_for_analysis(text)
     words = cleaned.split()
     return len(words)
-
-def extract_keywords_fallback(content: str, max_words: int = 5, output_language: str = "English") -> str:
-    has_thai = bool(re.search(r'[\u0E00-\u0E7F]', content))
-    has_chinese = bool(re.search(r'[\u4E00-\u9FFF]', content))
-    has_indonesian = any(word in content.lower() for word in ['yang', 'dan', 'dengan', 'untuk', 'dari', 'akan'])
-    has_english = bool(re.search(r'\b[a-zA-Z]{4,}\b', content))
-    
-    if has_thai:
-        content_lang = "Thailand"
-    elif has_chinese:
-        content_lang = "China"
-    elif has_indonesian and not has_english:
-        content_lang = "Indonesia"
-    elif has_english:
-        content_lang = "English"
-    else:
-        content_lang = "Unknown"
-    
-    if content_lang != output_language and content_lang != "Unknown":
-        placeholder = GENERIC_PLACEHOLDERS.get(output_language, "Media Content Topic")
-        return placeholder
-    
-    stopwords = set(LANGUAGE_CONFIGS.get(output_language, {}).get('stopwords', []))
-    
-    content = re.sub(r'http\S+|www\.\S+|#\w+', '', content)
-    words = re.findall(r'\b\w+\b', content.lower())
-    words = [w for w in words if len(w) > 3 and w not in stopwords and not w.isdigit()]
-    counter = Counter(words)
-    top_words = [w for w, _ in counter.most_common(max_words)]
-    
-    if len(top_words) >= 3:
-        return " ".join(top_words[:5]).title()
-    elif len(top_words) > 0:
-        return " ".join(top_words).title()
-    else:
-        return GENERIC_PLACEHOLDERS.get(output_language, "Media Content Topic")
 
 def extract_json_from_response(s: str):
     if not s:
@@ -554,7 +529,7 @@ def parse_gpt_response(response: str, expected_fields: list, batch_size: int, tr
     tracker.add_parse_result("failed")
     return [], "failed"
 
-def chat_create(model, messages, token_tracker=None, max_retries=MAX_RETRIES):
+def chat_create(model, messages, token_tracker=None, max_retries=3):
     for attempt in range(max_retries):
         try:
             response = client.chat.completions.create(
@@ -579,7 +554,7 @@ def chat_create(model, messages, token_tracker=None, max_retries=MAX_RETRIES):
     
     return None
 
-def process_batch_combined(
+def process_batch_topic_sentiment(
     batch_df: pd.DataFrame,
     batch_num: int,
     total_batches: int,
@@ -590,66 +565,41 @@ def process_batch_combined(
     token_tracker: TokenTracker,
     progress=gr.Progress()
 ) -> pd.DataFrame:
-    """NEW v12: Enhanced prompt for Pillar + Topic extraction"""
+    """Step 1: Extract Topic + Sentiment only (no Pillar yet)"""
     
     batch_size = len(batch_df)
     lang_config = LANGUAGE_CONFIGS[language]
     
     if 'Topic' not in batch_df.columns:
         batch_df['Topic'] = ''
-    if 'Pillar' not in batch_df.columns:
-        batch_df['Pillar'] = ''
     if 'New Sentiment' not in batch_df.columns:
         batch_df['New Sentiment'] = 'neutral'
     if 'New Sentiment Level' not in batch_df.columns:
         batch_df['New Sentiment Level'] = 0
     
-    input_toon = build_toon_input(batch_df, title_col, content_col, batch_size, truncate_words=TRUNCATE_WORDS, clean_content=True)
+    input_toon = build_toon_input(batch_df, title_col, content_col, batch_size, 
+                                  truncate_words=TRUNCATE_WORDS, clean_content=True)
     
     nonce = random.randint(100000, 999999)
     
     prompt = f"""You are an ELITE insights analyst with CRITICAL THINKING skills.
 
 [Request ID: {nonce}]
-[OUTPUT LANGUAGE: {language} - OPTIMIZED for Bahasa Indonesia]
+[OUTPUT LANGUAGE: {language}]
 
 INPUT (TOON format, content may be in ANY language):
 {input_toon}
 
-🎯 YOUR MISSION: Extract DEEP INSIGHTS with CRITICAL ANALYSIS
+🎯 YOUR MISSION: Extract TOPIC + SENTIMENT with DEEP INSIGHTS
 
 You MUST analyze content with FORENSIC DETAIL and capture:
-1. **WHO**: Named entities (people, organizations, places)
-   Examples: IMIP, Morowali, WN RRC, Satgas, specific names
-   
-2. **WHAT**: Specific actions/events (NOT generic!)
-   ✅ GOOD: "Penutupan IMIP", "Perkelahian pekerja", "Pelanggaran kapal ilegal"
-   ❌ BAD: "Berita", "Informasi", "Update"
-   
-3. **INTENT**: What is this content about?
-   - Pertanyaan (asking question)
-   - Keluhan (complaint)
-   - Resiko/Dampak (risk/impact)
-   - Pelanggaran (violation)
-   - Informasi (information)
-   
-4. **CONTEXT**: Specific details that matter
-   Examples: "85rb+ lapangan kerja hilang", "US$15B+ ekspor anjlok"
-
-OUTPUT STRUCTURE:
-
-**PILLAR** ({lang_config['pillar_word_count']}):
-- Strategic CATEGORIZATION
-- Capture main issue/theme
-- ✅ Examples: "Resiko IMIP Tutup", "Perkelahian Pekerja", "Pelanggaran Hukum"
-- ❌ NEVER: "Berita", "Info", "Update", "Viral"
 
 **TOPIC** ({lang_config['topic_word_count']}):
 - DETAILED and SPECIFIC description
 - Include WHO + WHAT + WHERE when relevant
-- Preserve important entities (IMIP, Morowali, WN RRC, etc.)
-- ✅ Examples: "Pertanyaan tentang isu IMIP di Morowali", "Perkelahian pekerja di kawasan IMIP", "Pelanggaran hukum kapal ilegal dari WN RRC"
-- ❌ NEVER: Generic terms without details
+- Preserve important entities (names, places, organizations)
+- ✅ Examples: "Pertanyaan tentang isu IMIP di Morowali", "Perkelahian pekerja di kawasan IMIP"
+- ❌ NEVER: Generic terms like "berita", "info", "update", "viral"
 
 **SENTIMENT**:
 - positive: Clear positive emotion, praise, satisfaction
@@ -657,7 +607,7 @@ OUTPUT STRUCTURE:
 - neutral: Factual, informational, question without emotion
 
 **CONFIDENCE** (0-100):
-- How certain are you about pillar, topic, and sentiment?
+- How certain are you about topic and sentiment?
 - Be honest about ambiguity
 
 CRITICAL RULES:
@@ -665,24 +615,23 @@ CRITICAL RULES:
 - NEVER use noise words: berita, info, informasi, viral, trending, update, artikel
 - NEVER output "unknown", "tidak jelas", "nan"
 - If you cannot extract meaningful insights, use "-" for that field
-- CAPTURE entity names exactly (IMIP, Morowali, etc.)
 - BE SPECIFIC - avoid generic categorization
 - Topic MUST be 5-15 words with clear details
-- Pillar MUST be 2-6 words categorization
 
 OUTPUT FORMAT (TOON with pipe delimiter |):
-result[{batch_size}]{{row|pillar|topic|sentiment|confidence}}:
-<row_index>|<pillar in {language} or ->|<topic in {language} or ->|<sentiment>|<confidence_0-100>
+result[{batch_size}]{{row|topic|sentiment|confidence}}:
+<row_index>|<topic in {language} or ->|<sentiment>|<confidence_0-100>
 
 YOUR OUTPUT (TOON format only):"""
     
     try:
-        progress(0.5, desc=f"Pillar+Topic+Sentiment {batch_num}/{total_batches}")
+        progress_val = 0.1 + (batch_num / total_batches) * 0.30
+        progress(progress_val, desc=f"[STEP 1/5] Topic+Sentiment {batch_num}/{total_batches}")
         
         response = chat_create(
             MODEL_NAME,
             [
-                {"role": "system", "content": f"You are an ELITE insights analyst with critical thinking. {lang_config['prompt_instruction']}. Handle multi-language input. Output in {language}. NEVER use generic terms."},
+                {"role": "system", "content": f"You are an ELITE insights analyst. {lang_config['prompt_instruction']}. Handle multi-language input. Output in {language}. NEVER use generic terms."},
                 {"role": "user", "content": prompt}
             ],
             token_tracker=token_tracker
@@ -692,7 +641,8 @@ YOUR OUTPUT (TOON format only):"""
             raise Exception("API call failed")
         
         raw = response.choices[0].message.content.strip()
-        data, format_type = parse_gpt_response(raw, ['row', 'pillar', 'topic', 'sentiment', 'confidence'], batch_size, token_tracker)
+        data, format_type = parse_gpt_response(raw, ['row', 'topic', 'sentiment', 'confidence'], 
+                                               batch_size, token_tracker)
         
         if not data:
             return batch_df
@@ -709,29 +659,12 @@ YOUR OUTPUT (TOON format only):"""
             if idx in result_dict:
                 item = result_dict[idx]
                 
-                # Process PILLAR (new)
-                current_pillar = batch_df.at[idx, 'Pillar']
-                # Update PILLAR if still empty
-                if pd.isna(batch_df.at[idx, 'Pillar']) or str(batch_df.at[idx, 'Pillar']).strip() == '':
-                    pillar = str(item.get('pillar', '')).strip()
-
-                    if pillar != '-' and not is_invalid_value(pillar):
-                        pillar = validate_and_normalize_pillar(pillar, language)
-                        if pillar:
-                            batch_df.at[idx, 'Pillar'] = pillar
-
-                
-                # Process TOPIC (enhanced from old sub_topic)
-                current_topic = batch_df.at[idx, 'Topic']
-                if pd.isna(current_topic) or str(current_topic).strip() == '':
+                # Process TOPIC
+                if pd.isna(batch_df.at[idx, 'Topic']) or str(batch_df.at[idx, 'Topic']).strip() == '':
                     topic = str(item.get('topic', '')).strip()
                     
-                    if topic == '-' or is_invalid_value(topic):
-                        topic = ''
-                    
-                    if topic:
+                    if topic != '-' and not is_invalid_value(topic):
                         topic = validate_and_normalize_topic(topic, language)
-                        
                         if topic:
                             batch_df.at[idx, 'Topic'] = topic
                 
@@ -753,55 +686,78 @@ YOUR OUTPUT (TOON format only):"""
         return batch_df
         
     except Exception as e:
-        logging.error(f"Error in combined processing: {e}")
+        logging.error(f"Error in topic+sentiment processing: {e}")
         return batch_df
 
-def process_batch_spokesperson(
+def retry_topic_batch_smart(
     batch_df: pd.DataFrame,
-    batch_num: int,
-    total_batches: int,
     title_col: str,
     content_col: str,
+    language: str,
     token_tracker: TokenTracker,
     progress=gr.Progress()
 ) -> pd.DataFrame:
+    """Step 2: Smart retry for empty topics with more context"""
     
     batch_size = len(batch_df)
+    lang_config = LANGUAGE_CONFIGS[language]
     
-    batch_df['New Spokesperson'] = ''
-    
-    input_toon = build_toon_input(batch_df, title_col, content_col, batch_size, truncate_words=MAINSTREAM_TRUNCATE_WORDS)
+    input_toon = build_toon_input(
+        batch_df, 
+        title_col, 
+        content_col, 
+        batch_size,
+        truncate_words=RETRY_TRUNCATE_WORDS,
+        clean_content=True
+    )
     
     nonce = random.randint(100000, 999999)
     
-    prompt = f"""You are an insights professional. Extract spokesperson from TOON format.
+    prompt = f"""🚨 RETRY ATTEMPT - YOU MUST SUCCEED! 🚨
 
 [Request ID: {nonce}]
+[OUTPUT LANGUAGE: {language}]
+[MORE CONTEXT PROVIDED: {RETRY_TRUNCATE_WORDS} words]
 
-INPUT (TOON format with pipe delimiter |):
+INPUT (TOON format, content may be ANY language):
 {input_toon}
 
-TASK: Extract spokesperson (person who is quoted) from each content.
+⚡ THIS IS YOUR FINAL CHANCE - EXTRACT TOPIC NOW! ⚡
 
-FORMAT RULES:
-- Format: "Nama Lengkap (Jabatan/Posisi)"
-- Multiple: "Nama1 (Jabatan1), Nama2 (Jabatan2)"
-- If no one is quoted: leave empty (use "-" as placeholder)
-- DO NOT use "unknown", "tidak jelas" or "nan"
+PREVIOUS ATTEMPT FAILED - This time you MUST:
+1. Read FULL context carefully ({RETRY_TRUNCATE_WORDS} words provided)
+2. Understand content in ANY language (Thai, English, Chinese, Indonesian, mixed)
+3. Extract SPECIFIC details - WHO, WHAT, WHERE
+4. NEVER use generic terms
+5. Output detailed insights in {language}
 
-OUTPUT FORMAT (TOON with pipe delimiter |):
-result[{batch_size}]{{row|spokesperson}}:
-<row_index>|<spokesperson or ->
+MANDATORY EXTRACTION RULES:
 
-YOUR OUTPUT (TOON format only):"""
+**TOPIC** ({lang_config['topic_word_count']}):
+- DETAILED with specific entities
+- Include WHO + WHAT + WHERE
+- Examples: "Pertanyaan tentang isu IMIP di Morowali", "Perkelahian pekerja di kawasan IMIP"
+
+CRITICAL:
+- Content language can be ANYTHING → You MUST understand → Output in {language}
+- NEVER: "berita", "info", "viral", "trending", "unknown", "tidak jelas"
+- If truly impossible, use "-" but TRY EVERYTHING FIRST
+- Extract KEYWORDS if unclear
+- BE SPECIFIC not generic
+
+OUTPUT (TOON format):
+result[{batch_size}]{{row|topic}}:
+<row_index>|<topic in {language} or ->
+
+YOUR OUTPUT:"""
     
     try:
-        progress(0.5, desc=f"Spokesperson {batch_num}/{total_batches}")
+        progress(0.45, desc=f"[STEP 2/5] Retry Topics (high engagement)...")
         
         response = chat_create(
             MODEL_NAME,
             [
-                {"role": "system", "content": "You are an insights professional. Output TOON format only."},
+                {"role": "system", "content": f"CRITICAL RETRY. {lang_config['prompt_instruction']}. Multi-language expert. NEVER generic terms. BE SPECIFIC."},
                 {"role": "user", "content": prompt}
             ],
             token_tracker=token_tracker
@@ -811,7 +767,7 @@ YOUR OUTPUT (TOON format only):"""
             raise Exception("API call failed")
         
         raw = response.choices[0].message.content.strip()
-        data, format_type = parse_gpt_response(raw, ['row', 'spokesperson'], batch_size, token_tracker)
+        data, format_type = parse_gpt_response(raw, ['row', 'topic'], batch_size, token_tracker)
         
         if not data:
             return batch_df
@@ -827,126 +783,6 @@ YOUR OUTPUT (TOON format only):"""
         for idx in batch_df.index:
             if idx in result_dict:
                 item = result_dict[idx]
-                spokesperson_val = str(item.get('spokesperson', '')).strip()
-                
-                if spokesperson_val == '-' or is_invalid_value(spokesperson_val):
-                    spokesperson_val = ''
-                
-                if spokesperson_val:
-                    batch_df.at[idx, 'New Spokesperson'] = spokesperson_val
-        
-        return batch_df
-        
-    except Exception as e:
-        return batch_df
-
-def retry_topic_batch(
-    batch_df: pd.DataFrame,
-    retry_attempt: int,
-    title_col: str,
-    content_col: str,
-    language: str,
-    token_tracker: TokenTracker,
-    progress=gr.Progress()
-) -> pd.DataFrame:
-    """NEW v12: Enhanced retry with increasing aggression per attempt"""
-    
-    batch_size = len(batch_df)
-    lang_config = LANGUAGE_CONFIGS[language]
-    
-    # Increase truncate words per attempt
-    truncate_words = RETRY_TRUNCATE_WORDS + (retry_attempt * 50)
-    
-    input_toon = build_toon_input(
-        batch_df, 
-        title_col, 
-        content_col, 
-        batch_size,
-        truncate_words=truncate_words,
-        clean_content=True
-    )
-    
-    nonce = random.randint(100000, 999999)
-    
-    # More aggressive prompt per attempt
-    aggression_level = ["FINAL WARNING", "ABSOLUTE LAST CHANCE", "ULTIMATE DEADLINE"][min(retry_attempt-1, 2)]
-    
-    prompt = f"""🚨🚨🚨 {aggression_level} - RETRY ATTEMPT {retry_attempt}/3 🚨🚨🚨
-
-[Request ID: {nonce}]
-[OUTPUT LANGUAGE: {language}]
-[MORE CONTEXT PROVIDED: {truncate_words} words]
-
-INPUT (TOON format, content may be ANY language):
-{input_toon}
-
-⚡ THIS IS YOUR RETRY #{retry_attempt} - YOU MUST SUCCEED! ⚡
-
-PREVIOUS ATTEMPT FAILED - This time you MUST:
-1. Read FULL context carefully ({truncate_words} words provided)
-2. Understand content in ANY language (Thai, English, Chinese, Indonesian, mixed)
-3. Extract SPECIFIC details - WHO, WHAT, WHERE
-4. NEVER use generic terms
-5. Output detailed insights in {language}
-
-MANDATORY EXTRACTION RULES:
-
-**PILLAR** ({lang_config['pillar_word_count']}):
-- Strategic categorization
-- Capture MAIN issue/theme
-- Examples: "Resiko IMIP Tutup", "Perkelahian Pekerja", "Pelanggaran Hukum"
-
-**TOPIC** ({lang_config['topic_word_count']}):
-- DETAILED with specific entities
-- Include WHO + WHAT + WHERE
-- Examples: "Pertanyaan tentang isu IMIP di Morowali", "Perkelahian pekerja di kawasan IMIP"
-
-CRITICAL:
-- Content language can be ANYTHING → You MUST understand → Output in {language}
-- NEVER: "berita", "info", "viral", "trending", "unknown", "tidak jelas"
-- If truly impossible, use "-" but TRY EVERYTHING FIRST
-- Extract KEYWORDS if unclear
-- Be SPECIFIC not generic
-
-OUTPUT (TOON format):
-result[{batch_size}]{{row|pillar|topic}}:
-<row_index>|<pillar in {language} or ->|<topic in {language} or ->
-
-YOUR OUTPUT:"""
-    
-    try:
-        progress(0.95, desc=f"Retry #{retry_attempt}/3 - Extracting Topics...")
-        
-        response = chat_create(
-            MODEL_NAME,
-            [
-                {"role": "system", "content": f"CRITICAL RETRY ATTEMPT {retry_attempt}. {lang_config['prompt_instruction']}. Multi-language expert. NEVER generic terms. BE SPECIFIC."},
-                {"role": "user", "content": prompt}
-            ],
-            token_tracker=token_tracker
-        )
-        
-        if not response:
-            raise Exception("API call failed")
-        
-        raw = response.choices[0].message.content.strip()
-        data, format_type = parse_gpt_response(raw, ['row', 'pillar', 'topic'], batch_size, token_tracker)
-        
-        if not data:
-            data = []
-        
-        result_dict = {}
-        for item in data:
-            try:
-                row_idx = int(item.get('row', -1))
-                result_dict[row_idx] = item
-            except:
-                continue
-        
-        for idx in batch_df.index:
-            if idx in result_dict:
-                item = result_dict[idx]
-                
                 
                 # Update TOPIC if still empty
                 if pd.isna(batch_df.at[idx, 'Topic']) or str(batch_df.at[idx, 'Topic']).strip() == '':
@@ -956,25 +792,12 @@ YOUR OUTPUT:"""
                         topic = validate_and_normalize_topic(topic, language)
                         if topic:
                             batch_df.at[idx, 'Topic'] = topic
-
-                # Update PILLAR if still empty
-                if pd.isna(batch_df.at[idx, 'Pillar']) or str(batch_df.at[idx, 'Pillar']).strip() == '':
-                    pillar = str(item.get('pillar', '')).strip()
-
-                    if pillar != '-' and not is_invalid_value(pillar):
-                        pillar = validate_and_normalize_pillar(pillar, language)
-                        if pillar:
-                            batch_df.at[idx, 'Pillar'] = pillar
-
-    
-                
         
         return batch_df
         
     except Exception as e:
-        logging.error(f"Retry attempt {retry_attempt} failed: {e}")
+        logging.error(f"Retry attempt failed: {e}")
         return batch_df
-
 
 def prepare_engagement_data(df, campaign_col='Campaigns'):
     engagement_col = 'Engagement' if 'Engagement' in df.columns else None
@@ -995,7 +818,6 @@ def prepare_engagement_data(df, campaign_col='Campaigns'):
         
         engagement_map.columns = [campaign_col, 'Topic', 'Total_Engagement', 'Frequency']
         
-        # Use TOPIC_ENGAGEMENT_WEIGHT (0.6)
         engagement_map['Weight_Score'] = (
             engagement_map['Total_Engagement'] * TOPIC_ENGAGEMENT_WEIGHT +
             engagement_map['Frequency'] * (1 - TOPIC_ENGAGEMENT_WEIGHT)
@@ -1015,7 +837,7 @@ def pre_cluster_topics_with_engagement(topics: list,
                                        engagement_data: pd.DataFrame,
                                        language: str,
                                        threshold: float = SIMILARITY_THRESHOLD) -> dict:
-    """Cluster topics by similarity with engagement priority"""
+    """Step 3: Cluster topics by similarity with engagement priority"""
     engagement_lookup = dict(zip(
         engagement_data['Topic'], 
         engagement_data['Weight_Score']
@@ -1080,89 +902,253 @@ def pre_cluster_topics_with_engagement(topics: list,
     
     return sorted_groups
 
-def consolidate_topics_to_pillars(groups: dict, 
-                                  language: str,
-                                  token_tracker: TokenTracker,
-                                  target_pillars: int = TARGET_PILLARS_PER_CAMPAIGN) -> dict:
-    """NEW v12: Consolidate topic groups into Pillars"""
+def generate_pillars_from_topic_groups(
+    campaign: str,
+    groups: dict,
+    language: str,
+    token_tracker: TokenTracker,
+    progress=gr.Progress()
+) -> dict:
+    """Step 4a: Generate Pillar names from topic groups using LLM"""
     
-    group_summary = []
+    lang_config = LANGUAGE_CONFIGS[language]
+    
+    # Prepare groups for LLM
+    regular_groups = []
+    singleton_topics = []
     
     for group_id, group_data in groups.items():
         topics = group_data['topics']
-        engagement_scores = group_data['engagement_scores']
         
-        sorted_pairs = sorted(
-            zip(topics, engagement_scores),
-            key=lambda x: x[1],
-            reverse=True
-        )
+        if len(topics) == 1:
+            # Singleton - will batch process separately
+            singleton_topics.append({
+                'topic': topics[0],
+                'engagement': group_data['total_engagement']
+            })
+        else:
+            # Regular group - process individually
+            sorted_topics = sorted(
+                zip(topics, group_data['engagement_scores']),
+                key=lambda x: x[1],
+                reverse=True
+            )
+            
+            regular_groups.append({
+                'group_id': group_id,
+                'topics': [t for t, _ in sorted_topics[:10]],  # Top 10 topics
+                'total_engagement': group_data['total_engagement'],
+                'topic_count': len(topics)
+            })
+    
+    pillar_mapping = {}
+    
+    # Process regular groups (batch by campaign)
+    if regular_groups:
+        nonce = random.randint(100000, 999999)
         
-        top_samples = [t for t, _ in sorted_pairs[:5]]
-        top_engagement = sum([eng for _, eng in sorted_pairs[:5]])
+        groups_summary = []
+        for g in regular_groups:
+            groups_summary.append({
+                'group_id': g['group_id'],
+                'sample_topics': g['topics'][:5],
+                'topic_count': g['topic_count'],
+                'engagement': g['total_engagement']
+            })
         
-        group_summary.append({
-            "group_id": group_id,
-            "count": len(topics),
-            "total_engagement": group_data['total_engagement'],
-            "avg_engagement": group_data['avg_engagement'],
-            "top_samples": top_samples,
-            "sample_engagement": top_engagement
-        })
-    
-    group_summary.sort(key=lambda x: x['total_engagement'], reverse=True)
-    
-    nonce = random.randint(100000, 999999)
-    lang_config = LANGUAGE_CONFIGS[language]
-    
-    prompt = f"""You are a strategic categorization expert with ENGAGEMENT PRIORITY.
+        prompt = f"""You are a strategic categorization expert.
 
 [Request ID: {nonce}]
+[Campaign: {campaign}]
+[OUTPUT LANGUAGE: {language}]
 
-INPUT: {len(groups)} topic groups (SORTED BY ENGAGEMENT - highest first!)
+INPUT: {len(regular_groups)} topic groups (sorted by engagement - highest first!)
 
-Groups (in order of importance by engagement):
-{json.dumps(group_summary, indent=2, ensure_ascii=False)}
+Groups:
+{json.dumps(groups_summary, indent=2, ensure_ascii=False)}
 
 TASK:
-1. Analyze groups and CREATE strategic PILLARS
-2. Create approximately {target_pillars} PILLARS (12-18 range)
-3. Each PILLAR should be {lang_config['pillar_word_count']} in {language}
-4. Pillars are CATEGORIZATION level - broad but meaningful
+For EACH group, generate a Pillar name ({lang_config['pillar_word_count']}) in {language}.
 
-CRITICAL ENGAGEMENT RULES:
-⭐ HIGH-ENGAGEMENT groups at TOP are MOST IMPORTANT
-⭐ Pillar names should reflect HIGH-ENGAGEMENT content
-⭐ When merging groups, prioritize naming from high-engagement samples
-⭐ Ensure high-engagement topics get meaningful pillar categorization
+Pillar should be:
+- Strategic CATEGORIZATION level (broader than topics)
+- Capture main theme of the group
+- Based on high-engagement topics in the group
 
-GOOD PILLARS:
+EXAMPLES:
 ✅ "Resiko IMIP Tutup" (specific issue category)
 ✅ "Perkelahian Pekerja" (specific event category)
-✅ "Pelanggaran Hukum" (specific problem category)
-✅ "Pertanyaan IMIP" (specific intent category)
+✅ "Membuat Kue" (activity category)
 
-BAD PILLARS:
 ❌ "Berita" (too generic!)
 ❌ "Informasi" (noise word!)
-❌ "Update" (too vague!)
-❌ "Viral" (not meaningful!)
 
 OUTPUT FORMAT (JSON):
 {{
   "pillars": [
     {{
+      "group_id": "group_0",
       "pillar_name": "...",
-      "merged_groups": ["group_0", "group_3"],
-      "estimated_engagement": 75000,
-      "description": "Why this categorization (based on high-engagement content)"
+      "reason": "Why this categorization"
     }},
     ...
-  ],
-  "total_pillars": {target_pillars}
+  ]
 }}
 
 OUTPUT (JSON only):"""
+        
+        try:
+            response = chat_create(
+                MODEL_NAME,
+                [{"role": "user", "content": prompt}],
+                token_tracker=token_tracker
+            )
+            
+            if response:
+                raw = response.choices[0].message.content.strip()
+                result = extract_json_from_response(raw)
+                
+                if result and 'pillars' in result:
+                    for pillar_info in result['pillars']:
+                        group_id = pillar_info.get('group_id')
+                        pillar_name = pillar_info.get('pillar_name', '')
+                        
+                        if group_id and pillar_name:
+                            # Validate and normalize
+                            pillar_name = validate_and_normalize_pillar(pillar_name, language)
+                            
+                            if pillar_name:
+                                # Map all topics in this group to this pillar
+                                if group_id in groups:
+                                    for topic in groups[group_id]['topics']:
+                                        pillar_mapping[topic] = pillar_name
+        
+        except Exception as e:
+            logging.error(f"Error generating pillars for regular groups: {e}")
+    
+    # Process singletons (batch all together)
+    if singleton_topics:
+        nonce = random.randint(100000, 999999)
+        
+        singleton_list = [
+            f"{i+1}. \"{s['topic']}\" (engagement: {s['engagement']:.0f})"
+            for i, s in enumerate(singleton_topics[:20])  # Max 20 at a time
+        ]
+        
+        prompt = f"""You are a strategic categorization expert.
+
+[Request ID: {nonce}]
+[Campaign: {campaign}]
+[OUTPUT LANGUAGE: {language}]
+
+INPUT: {len(singleton_list)} standalone topics (no similar topics found)
+
+Topics:
+{chr(10).join(singleton_list)}
+
+TASK:
+For EACH topic, generate a Pillar name ({lang_config['pillar_word_count']}) in {language}.
+
+Pillar should:
+- Categorize the topic (broader, strategic level)
+- Be 2-6 words
+- Capture the essence
+
+EXAMPLES:
+Topic: "Resep nasi goreng kampung khas Semarang spesial pedas"
+→ Pillar: "Resep Nasi Goreng"
+
+Topic: "Cara membuat minuman soda sprite segar"
+→ Pillar: "Membuat Minuman Soda"
+
+OUTPUT FORMAT (JSON):
+{{
+  "pillars": [
+    {{"number": 1, "pillar": "..."}},
+    {{"number": 2, "pillar": "..."}},
+    ...
+  ]
+}}
+
+OUTPUT (JSON only):"""
+        
+        try:
+            response = chat_create(
+                MODEL_NAME,
+                [{"role": "user", "content": prompt}],
+                token_tracker=token_tracker
+            )
+            
+            if response:
+                raw = response.choices[0].message.content.strip()
+                result = extract_json_from_response(raw)
+                
+                if result and 'pillars' in result:
+                    for pillar_info in result['pillars']:
+                        number = pillar_info.get('number')
+                        pillar_name = pillar_info.get('pillar', '')
+                        
+                        if number and pillar_name and number <= len(singleton_topics):
+                            pillar_name = validate_and_normalize_pillar(pillar_name, language)
+                            
+                            if pillar_name:
+                                topic = singleton_topics[number - 1]['topic']
+                                pillar_mapping[topic] = pillar_name
+        
+        except Exception as e:
+            logging.error(f"Error generating pillars for singletons: {e}")
+    
+    return pillar_mapping
+
+def normalize_pillars_per_campaign(
+    pillars: list,
+    campaign: str,
+    language: str,
+    token_tracker: TokenTracker,
+    progress=gr.Progress()
+) -> dict:
+    """Step 4b: Normalize similar pillars within campaign (LLM-based)"""
+    
+    unique_pillars = sorted(list(set(pillars)))
+    
+    if len(unique_pillars) <= 1:
+        return {p: p for p in unique_pillars}
+    
+    nonce = random.randint(100000, 999999)
+    
+    pillar_list = "\n".join(f"- {p}" for p in unique_pillars)
+    
+    prompt = f"""You are a Pillar normalization expert.
+
+[Request ID: {nonce}]
+[Campaign: {campaign}]
+[OUTPUT LANGUAGE: {language}]
+
+INPUT: {len(unique_pillars)} unique Pillars from this campaign
+
+Pillars:
+{pillar_list}
+
+TASK:
+Identify and MERGE similar Pillars that refer to the SAME category.
+
+RULES:
+- Merge only if they are truly the same category
+- Keep the most descriptive/common name
+- Preserve distinct Pillars
+
+EXAMPLES:
+"Membuat Kue Lebaran" + "Resep Kue Lebaran" → "Membuat Kue Lebaran"
+"Minuman Segar" + "Resep Minuman" → Keep separate (different focus)
+
+OUTPUT FORMAT:
+For each merge, output:
+<Original Pillar> → <Normalized Pillar>
+
+For pillars that stay unchanged, output:
+<Pillar> → <Pillar>
+
+YOUR OUTPUT:"""
     
     try:
         response = chat_create(
@@ -1172,201 +1158,125 @@ OUTPUT (JSON only):"""
         )
         
         if not response:
-            logging.warning("Pillar consolidation API call failed")
-            return {"pillars": [], "total_pillars": 0}
+            return {p: p for p in unique_pillars}
         
-        raw = response.choices[0].message.content.strip()
-        result = extract_json_from_response(raw)
+        output = response.choices[0].message.content
+        mapping = {}
         
-        if not result or 'pillars' not in result:
-            logging.warning("Invalid pillar consolidation result")
-            return {"pillars": [], "total_pillars": 0}
+        for line in output.splitlines():
+            if "→" in line:
+                parts = line.split("→")
+                if len(parts) == 2:
+                    original = parts[0].strip().lstrip("- ")
+                    normalized = parts[1].strip().lstrip("- ")
+                    if original and normalized:
+                        mapping[original] = normalized
         
-        for pillar_info in result['pillars']:
-            if 'pillar_name' in pillar_info:
-                original = pillar_info['pillar_name']
-                normalized = validate_and_normalize_pillar(original, language)
-                if normalized:
-                    pillar_info['pillar_name'] = normalized
-                else:
-                    logging.warning(f"Pillar normalization failed for: {original}")
+        # Fill in any missing pillars
+        for p in unique_pillars:
+            if p not in mapping:
+                mapping[p] = p
         
-        return result
+        return mapping
         
     except Exception as e:
-        logging.error(f"Pillar consolidation error: {e}")
-        return {"pillars": [], "total_pillars": 0}
+        logging.error(f"Error normalizing pillars: {e}")
+        return {p: p for p in unique_pillars}
 
-def validate_engagement_coverage(df, mapping: dict, 
-                                campaign: str,
-                                engagement_col='Engagement'):
-    """Validate pillar engagement coverage"""
-    campaign_df = df[df['Campaigns'] == campaign].copy()
+def process_batch_spokesperson(
+    batch_df: pd.DataFrame,
+    batch_num: int,
+    total_batches: int,
+    title_col: str,
+    content_col: str,
+    token_tracker: TokenTracker,
+    progress=gr.Progress()
+) -> pd.DataFrame:
+    """Step 5: Extract spokesperson (mainstream only)"""
     
-    campaign_df['Pillar_Mapped'] = campaign_df['Topic'].map(mapping)
+    batch_size = len(batch_df)
     
-    if engagement_col not in campaign_df.columns:
-        logging.warning("Engagement column not found for validation")
-        return pd.DataFrame()
+    batch_df['New Spokesperson'] = ''
     
-    pillar_engagement = campaign_df.groupby('Pillar_Mapped').agg({
-        engagement_col: 'sum',
-        'Topic': 'count'
-    }).reset_index()
+    input_toon = build_toon_input(batch_df, title_col, content_col, batch_size, 
+                                  truncate_words=MAINSTREAM_TRUNCATE_WORDS)
     
-    pillar_engagement.columns = ['Pillar', 'Total_Engagement', 'Topic_Count']
-    pillar_engagement = pillar_engagement.sort_values('Total_Engagement', ascending=False)
+    nonce = random.randint(100000, 999999)
     
-    total_engagement = campaign_df[engagement_col].sum()
-    
-    if total_engagement > 0:
-        pillar_engagement['Engagement_Share'] = (
-            pillar_engagement['Total_Engagement'] / total_engagement * 100
-        )
-        pillar_engagement['Cumulative_Share'] = pillar_engagement['Engagement_Share'].cumsum()
-    else:
-        pillar_engagement['Engagement_Share'] = 0
-        pillar_engagement['Cumulative_Share'] = 0
-    
-    logging.info(f"\n{'='*80}")
-    logging.info(f"[ENGAGEMENT COVERAGE] Campaign: '{campaign}'")
-    logging.info(f"{'='*80}")
-    logging.info(f"Total Engagement: {total_engagement:,.0f}")
-    logging.info(f"\nTop 10 Pillars by Engagement:")
-    
-    for idx, (_, row) in enumerate(pillar_engagement.head(10).iterrows(), 1):
-        logging.info(
-            f"  {idx}. {str(row['Pillar']):<40} | "
-            f"Engagement: {row['Total_Engagement']:>10,.0f} ({row['Engagement_Share']:>5.1f}%) | "
-            f"Topics: {row['Topic_Count']:>3}"
-        )
-    
-    if total_engagement > 0:
-        top_80_pillars = pillar_engagement[pillar_engagement['Cumulative_Share'] <= 80]
-        logging.info(f"\n📊 Top {len(top_80_pillars)} pillars cover 80% of engagement")
-    
-    return pillar_engagement
+    prompt = f"""You are an insights professional. Extract spokesperson from TOON format.
 
-def normalize_topics_to_pillars_v12(df, 
-                                    campaign_col='Campaigns',
-                                    engagement_col='Engagement',
-                                    language='Indonesia',
-                                    target_pillars=TARGET_PILLARS_PER_CAMPAIGN,
-                                    similarity_threshold=SIMILARITY_THRESHOLD,
-                                    token_tracker=None,
-                                    progress=gr.Progress()):
-    """NEW v12: Normalize Topics → Pillars with engagement awareness"""
+[Request ID: {nonce}]
+
+INPUT (TOON format with pipe delimiter |):
+{input_toon}
+
+TASK: Extract spokesperson (person who is quoted) from each content.
+
+FORMAT RULES:
+- Format: "Nama Lengkap (Jabatan/Posisi)"
+- Multiple: "Nama1 (Jabatan1), Nama2 (Jabatan2)"
+- If no one is quoted: leave empty (use "-" as placeholder)
+- DO NOT use "unknown", "tidak jelas" or "nan"
+
+OUTPUT FORMAT (TOON with pipe delimiter |):
+result[{batch_size}]{{row|spokesperson}}:
+<row_index>|<spokesperson or ->
+
+YOUR OUTPUT (TOON format only):"""
     
-    logging.info("[PREP] Calculating engagement weights for Topics → Pillars...")
-    engagement_data = prepare_engagement_data(df, campaign_col)
-    
-    results = {}
-    total_campaigns = df[campaign_col].nunique()
-    
-    for idx, campaign in enumerate(df[campaign_col].unique(), 1):
-        logging.info(f"\n{'='*80}")
-        logging.info(f"[NORMALIZATION {idx}/{total_campaigns}] Campaign: '{campaign}'")
-        logging.info(f"{'='*80}")
+    try:
+        progress_val = 0.90 + (batch_num / total_batches) * 0.08
+        progress(progress_val, desc=f"[STEP 5/5] Spokesperson {batch_num}/{total_batches}")
         
-        campaign_df = df[df[campaign_col] == campaign]
-        campaign_engagement = engagement_data[engagement_data[campaign_col] == campaign]
-        
-        topics = campaign_engagement['Topic'].tolist()
-        
-        if engagement_col in campaign_df.columns:
-            total_engagement = campaign_df[engagement_col].sum()
-        else:
-            total_engagement = 0
-        
-        logging.info(f"  └─ Topics: {len(topics)}")
-        if total_engagement > 0:
-            logging.info(f"  └─ Total Engagement: {total_engagement:,.0f}")
-        
-        progress_val = 0.85 + (idx / total_campaigns) * 0.10
-        progress(progress_val, desc=f"[STEP 4/4] Normalizing campaign {idx}/{total_campaigns}")
-        
-        # Pre-cluster topics
-        groups = pre_cluster_topics_with_engagement(
-            topics,
-            campaign_engagement,
-            language,
-            threshold=similarity_threshold
+        response = chat_create(
+            MODEL_NAME,
+            [
+                {"role": "system", "content": "You are an insights professional. Output TOON format only."},
+                {"role": "user", "content": prompt}
+            ],
+            token_tracker=token_tracker
         )
         
-        logging.info(f"  └─ Pre-clustering: {len(topics)} topics → {len(groups)} groups")
-        logging.info(f"     └─ Groups sorted by engagement (highest first)")
+        if not response:
+            raise Exception("API call failed")
         
-        # Consolidate groups to pillars
-        pillar_result = consolidate_topics_to_pillars(
-            groups,
-            language,
-            token_tracker,
-            target_pillars=target_pillars
-        )
+        raw = response.choices[0].message.content.strip()
+        data, format_type = parse_gpt_response(raw, ['row', 'spokesperson'], batch_size, token_tracker)
         
-        if not pillar_result or 'pillars' not in pillar_result or len(pillar_result['pillars']) == 0:
-            logging.warning(f"  └─ Pillar consolidation failed for campaign '{campaign}', using fallback")
-            
-            mapping = {}
-            for group_id, group_data in groups.items():
-                first_topic = group_data['topics'][0]
-                pillar_name = validate_and_normalize_pillar(first_topic, language)
+        if not data:
+            return batch_df
+        
+        result_dict = {}
+        for item in data:
+            try:
+                row_idx = int(item.get('row', -1))
+                result_dict[row_idx] = item
+            except:
+                continue
+        
+        for idx in batch_df.index:
+            if idx in result_dict:
+                item = result_dict[idx]
+                spokesperson_val = str(item.get('spokesperson', '')).strip()
                 
-                if not pillar_name:
-                    pillar_name = ""
+                if spokesperson_val == '-' or is_invalid_value(spokesperson_val):
+                    spokesperson_val = ''
                 
-                for t in group_data['topics']:
-                    mapping[t] = pillar_name
-            
-            final_pillars = len([p for p in set(mapping.values()) if p])
-        else:
-            final_pillars = len(pillar_result['pillars'])
-            
-            logging.info(f"  └─ Consolidation: {len(groups)} groups → {final_pillars} pillars")
-            
-            mapping = {}
-            group_to_pillar = {}
-            
-            for pillar_info in pillar_result['pillars']:
-                pillar_name = pillar_info['pillar_name']
-                for group_id in pillar_info['merged_groups']:
-                    group_to_pillar[group_id] = pillar_name
-            
-            for group_id, group_data in groups.items():
-                pillar = group_to_pillar.get(group_id, "")
-                for t in group_data['topics']:
-                    mapping[t] = pillar
+                if spokesperson_val:
+                    batch_df.at[idx, 'New Spokesperson'] = spokesperson_val
         
-        if engagement_col in df.columns:
-            pillar_engagement = validate_engagement_coverage(
-                df, mapping, campaign, engagement_col
-            )
-        else:
-            pillar_engagement = pd.DataFrame()
+        return batch_df
         
-        reduction_rate = (1 - final_pillars/len(topics)) * 100 if len(topics) > 0 else 0
-        
-        results[campaign] = {
-            'mapping': mapping,
-            'pillars': pillar_result.get('pillars', []),
-            'pillar_engagement': pillar_engagement,
-            'stats': {
-                'original_topics': len(topics),
-                'final_pillars': final_pillars,
-                'total_engagement': total_engagement,
-                'reduction_rate': reduction_rate
-            }
-        }
-        
-        logging.info(f"  └─ Reduction: {reduction_rate:.1f}%")
-    
-    return results
+    except Exception as e:
+        logging.error(f"Error in spokesperson extraction: {e}")
+        return batch_df
 
 def normalize_spokesperson(
     unique_spokespersons: list,
     token_tracker: TokenTracker,
     progress=gr.Progress()
 ) -> dict:
+    """Normalize spokesperson names referring to the SAME person"""
     
     unique_spokespersons = [s for s in unique_spokespersons if s and s.strip()]
     
@@ -1391,7 +1301,8 @@ Return format:
 Output:"""
     
     try:
-        response = chat_create(MODEL_NAME, [{"role": "user", "content": prompt}], token_tracker=token_tracker)
+        response = chat_create(MODEL_NAME, [{"role": "user", "content": prompt}], 
+                             token_tracker=token_tracker)
         
         if not response:
             return {sp: sp for sp in unique_spokespersons}
@@ -1415,6 +1326,7 @@ Output:"""
         return mapping
         
     except Exception as e:
+        logging.error(f"Error normalizing spokesperson: {e}")
         return {sp: sp for sp in unique_spokespersons}
 
 def process_file(
@@ -1452,8 +1364,14 @@ def process_file(
             df['Noise Tag'] = df['Noise Tag'].astype(str)
             logging.info("✅ Converted Noise Tag to text")
         
-        if 'Engagement' not in df.columns:
-            logging.warning("⚠️ 'Engagement' column not found, normalization will use frequency only")
+        # Check for Engagement/Buzz columns
+        has_engagement = 'Engagement' in df.columns
+        has_buzz = 'Buzz' in df.columns
+        
+        if not has_engagement and not has_buzz:
+            logging.warning("⚠️ No 'Engagement' or 'Buzz' column found")
+        
+        if not has_engagement:
             df['Engagement'] = 0
         
         logging.info(f"✅ NO DELETION - All {original_row_count} rows will be processed")
@@ -1481,7 +1399,6 @@ def process_file(
         duplicate_rows = total_rows - master_rows
         
         logging.info(f"✅ Deduplication: {total_rows} rows → {master_rows} unique groups + {duplicate_rows} duplicates")
-        logging.info(f"💰 API savings from deduplication: {duplicate_rows} calls")
         
         mainstream_mask = df['_channel_lower'].apply(is_mainstream)
         social_mask = df['_channel_lower'].apply(is_social)
@@ -1506,7 +1423,6 @@ def process_file(
         total_skipped = (~df['_eligible_for_topic']).sum()
         
         logging.info(f"✅ Content filter: {total_eligible} eligible, {total_skipped} skipped (<{MIN_CONTENT_WORDS_FOR_TOPIC} words)")
-        logging.info(f"💰 API savings from pre-filter: {total_skipped} topic extractions skipped")
         
         if generate_topic:
             if 'Topic' not in df.columns:
@@ -1530,17 +1446,15 @@ def process_file(
         tracker = TokenTracker()
         start_time = time.time()
         
+        # ============================================================
+        # STEP 1: TOPIC + SENTIMENT EXTRACTION
+        # ============================================================
         if generate_topic or generate_sentiment:
             logging.info("\n" + "="*80)
-            logging.info("[STEP 1/4] PILLAR + TOPIC + SENTIMENT (MASTER ROWS, ELIGIBLE CONTENT)")
+            logging.info("[STEP 1/5] TOPIC + SENTIMENT (NO PILLAR YET)")
             logging.info("="*80)
             
             process_mask = df['_is_master'] & df['_eligible_for_topic']
-            
-            if generate_topic and 'Pillar' in df.columns and 'Topic' in df.columns:
-                has_both = (df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '')) & \
-                          (df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != ''))
-                process_mask = process_mask & ~has_both
             
             if 'Noise Tag' in df.columns:
                 noise_tag_2 = df['Noise Tag'] == "2"
@@ -1558,10 +1472,7 @@ def process_file(
                     end_idx = min(start_idx + BATCH_SIZE, len(df_to_process))
                     batch_df = df_to_process.iloc[start_idx:end_idx].copy()
                     
-                    progress_val = 0.1 + (batch_num / total_batches) * 0.30
-                    progress(progress_val, desc=f"[STEP 1/4] Processing {batch_num + 1}/{total_batches}")
-                    
-                    result_batch = process_batch_combined(
+                    result_batch = process_batch_topic_sentiment(
                         batch_df, batch_num + 1, total_batches,
                         title_col, content_col, language, conf_threshold, tracker, progress
                     )
@@ -1571,15 +1482,13 @@ def process_file(
                 df_processed = pd.concat(all_batches, ignore_index=False)
                 
                 for idx in df_processed.index:
-                    if generate_topic:
-                        if 'Pillar' in df_processed.columns:
-                            df.at[idx, 'Pillar'] = df_processed.at[idx, 'Pillar']
-                        if 'Topic' in df_processed.columns:
-                            df.at[idx, 'Topic'] = df_processed.at[idx, 'Topic']
+                    if generate_topic and 'Topic' in df_processed.columns:
+                        df.at[idx, 'Topic'] = df_processed.at[idx, 'Topic']
                     if generate_sentiment:
                         df.at[idx, 'New Sentiment'] = df_processed.at[idx, 'New Sentiment']
                         df.at[idx, 'New Sentiment Level'] = df_processed.at[idx, 'New Sentiment Level']
                 
+                # Copy to duplicates
                 logging.info("📋 Copying results to duplicate rows...")
                 for hash_val in df['_dedup_hash'].unique():
                     group = df[df['_dedup_hash'] == hash_val]
@@ -1589,43 +1498,244 @@ def process_file(
                         
                         for dup_idx in duplicate_indices:
                             if generate_topic:
-                                if df.at[master_idx, 'Pillar'] and str(df.at[master_idx, 'Pillar']).strip():
-                                    df.at[dup_idx, 'Pillar'] = df.at[master_idx, 'Pillar']
                                 if df.at[master_idx, 'Topic'] and str(df.at[master_idx, 'Topic']).strip():
                                     df.at[dup_idx, 'Topic'] = df.at[master_idx, 'Topic']
-
                             if generate_sentiment:
                                 df.at[dup_idx, 'New Sentiment'] = df.at[master_idx, 'New Sentiment']
                                 df.at[dup_idx, 'New Sentiment Level'] = df.at[master_idx, 'New Sentiment Level']
                 
                 if generate_topic:
-                    pillar_filled = df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '')
                     topic_filled = df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')
-                    
-                    pillar_success = pillar_filled.sum()
                     topic_success = topic_filled.sum()
                     
-                    tracker.add_step_stat("Pillar (initial)", pillar_success, len(df))
                     tracker.add_step_stat("Topic (initial)", topic_success, len(df))
-                    
-                    logging.info(f"[STEP 1/4] ✅ Pillar: {pillar_success}/{len(df)} ({pillar_success/len(df)*100:.1f}%)")
-                    logging.info(f"[STEP 1/4] ✅ Topic: {topic_success}/{len(df)} ({topic_success/len(df)*100:.1f}%)")
+                    logging.info(f"[STEP 1/5] ✅ Topic: {topic_success}/{len(df)} ({topic_success/len(df)*100:.1f}%)")
                 
                 if generate_sentiment:
                     sentiment_filled = df['New Sentiment'].notna()
                     success_count = sentiment_filled.sum()
                     tracker.add_step_stat("Sentiment", success_count, len(df))
-                    logging.info(f"[STEP 1/4] ✅ Sentiment: {success_count}/{len(df)} ({success_count/len(df)*100:.1f}%)")
+                    logging.info(f"[STEP 1/5] ✅ Sentiment: {success_count}/{len(df)} ({success_count/len(df)*100:.1f}%)")
         
+        # ============================================================
+        # STEP 2: SMART RETRY FOR EMPTY TOPICS
+        # ============================================================
+        if generate_topic:
+            logging.info("\n" + "="*80)
+            logging.info("[STEP 2/5] SMART RETRY FOR EMPTY TOPICS")
+            logging.info("="*80)
+            
+            # Identify rows with empty topics
+            empty_topic_mask = (
+                df['_is_master'] &
+                (df['Topic'].isna() | (df['Topic'].astype(str).str.strip() == ''))
+            )
+            
+            # SOCIAL channels: Check Engagement or Buzz >= threshold
+            social_retry_mask = empty_topic_mask & social_mask
+            
+            if has_engagement:
+                social_retry_mask = social_retry_mask & (df['Engagement'] >= RETRY_ENGAGEMENT_THRESHOLD)
+                logging.info(f"📊 Social retry based on Engagement >= {RETRY_ENGAGEMENT_THRESHOLD}")
+            elif has_buzz:
+                social_retry_mask = social_retry_mask & (df['Buzz'] >= RETRY_ENGAGEMENT_THRESHOLD)
+                logging.info(f"📊 Social retry based on Buzz >= {RETRY_ENGAGEMENT_THRESHOLD}")
+            else:
+                social_retry_mask = pd.Series([False] * len(df), index=df.index)
+                logging.info(f"📊 Social retry SKIPPED (no Engagement/Buzz column)")
+            
+            df_social_retry = df[social_retry_mask].copy()
+            social_retry_count = len(df_social_retry)
+            
+            # MAINSTREAM channels: Random sample max 100
+            mainstream_empty_mask = empty_topic_mask & mainstream_mask
+            df_mainstream_empty = df[mainstream_empty_mask].copy()
+            
+            if len(df_mainstream_empty) > RETRY_MAINSTREAM_MAX_ROWS:
+                df_mainstream_retry = df_mainstream_empty.sample(n=RETRY_MAINSTREAM_MAX_ROWS, random_state=42)
+                mainstream_retry_count = RETRY_MAINSTREAM_MAX_ROWS
+            else:
+                df_mainstream_retry = df_mainstream_empty.copy()
+                mainstream_retry_count = len(df_mainstream_retry)
+            
+            logging.info(f"📊 Retry candidates: Social={social_retry_count}, Mainstream={mainstream_retry_count}")
+            
+            # Combine and retry
+            df_retry = pd.concat([df_social_retry, df_mainstream_retry])
+            
+            if len(df_retry) > 0:
+                retry_batches = []
+                total_batches = math.ceil(len(df_retry) / RETRY_BATCH_SIZE)
+                
+                for batch_num in range(total_batches):
+                    start_idx = batch_num * RETRY_BATCH_SIZE
+                    end_idx = min(start_idx + RETRY_BATCH_SIZE, len(df_retry))
+                    batch_df = df_retry.iloc[start_idx:end_idx].copy()
+                    
+                    result_batch = retry_topic_batch_smart(
+                        batch_df,
+                        title_col,
+                        content_col,
+                        language,
+                        tracker,
+                        progress
+                    )
+                    
+                    retry_batches.append(result_batch)
+                
+                df_retried = pd.concat(retry_batches, ignore_index=False)
+                
+                # Copy back to main df
+                for idx in df_retried.index:
+                    if 'Topic' in df_retried.columns:
+                        topic = df_retried.at[idx, 'Topic']
+                        if topic and str(topic).strip():
+                            df.at[idx, 'Topic'] = topic
+                
+                # Copy to duplicates
+                logging.info("📋 Copying retried results to duplicate rows...")
+                for idx in df_retried.index:
+                    hash_val = df.at[idx, '_dedup_hash']
+                    duplicate_indices = df[
+                        (df['_dedup_hash'] == hash_val) & (~df['_is_master'])
+                    ].index
+                    
+                    for dup_idx in duplicate_indices:
+                        if df.at[idx, 'Topic'] and str(df.at[idx, 'Topic']).strip():
+                            df.at[dup_idx, 'Topic'] = df.at[idx, 'Topic']
+                
+                topic_filled = df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '')
+                topic_success = topic_filled.sum()
+                
+                tracker.add_step_stat("Topic (after retry)", topic_success, len(df))
+                logging.info(f"[STEP 2/5] ✅ Topic (after retry): {topic_success}/{len(df)} ({topic_success/len(df)*100:.1f}%)")
+            else:
+                logging.info("[STEP 2/5] No rows to retry")
+        
+        # ============================================================
+        # STEP 3: TOPIC NORMALIZATION/CLUSTERING PER CAMPAIGN
+        # ============================================================
+        if generate_topic:
+            logging.info("\n" + "="*80)
+            logging.info("[STEP 3/5] TOPIC NORMALIZATION/CLUSTERING PER CAMPAIGN")
+            logging.info("="*80)
+            
+            progress(0.50, desc="[STEP 3/5] Clustering topics...")
+            
+            # Prepare engagement data
+            engagement_data = prepare_engagement_data(df, campaign_col='Campaigns')
+            
+            campaign_groups = {}
+            
+            for idx, campaign in enumerate(df['Campaigns'].unique(), 1):
+                campaign_df = df[df['Campaigns'] == campaign]
+                campaign_engagement = engagement_data[engagement_data['Campaigns'] == campaign]
+                
+                topics = campaign_engagement['Topic'].tolist()
+                
+                if len(topics) == 0:
+                    continue
+                
+                logging.info(f"📊 Campaign '{campaign}': {len(topics)} topics")
+                
+                # Cluster topics
+                groups = pre_cluster_topics_with_engagement(
+                    topics,
+                    campaign_engagement,
+                    language,
+                    threshold=SIMILARITY_THRESHOLD
+                )
+                
+                campaign_groups[campaign] = groups
+                
+                logging.info(f"  └─ Clustered into {len(groups)} groups")
+            
+            tracker.add_step_stat("Topic Clustering", len(campaign_groups), len(df['Campaigns'].unique()))
+            logging.info(f"[STEP 3/5] ✅ Clustered {len(campaign_groups)} campaigns")
+        
+        # ============================================================
+        # STEP 4: PILLAR GENERATION + NORMALIZATION + MAPPING
+        # ============================================================
+        if generate_topic:
+            logging.info("\n" + "="*80)
+            logging.info("[STEP 4/5] PILLAR GENERATION + NORMALIZATION + MAPPING")
+            logging.info("="*80)
+            
+            total_campaigns = len(campaign_groups)
+            
+            for idx, (campaign, groups) in enumerate(campaign_groups.items(), 1):
+                logging.info(f"\n{'='*80}")
+                logging.info(f"[CAMPAIGN {idx}/{total_campaigns}] {campaign}")
+                logging.info(f"{'='*80}")
+                
+                progress_val = 0.60 + (idx / total_campaigns) * 0.15
+                progress(progress_val, desc=f"[STEP 4/5] Generating Pillars {idx}/{total_campaigns}")
+                
+                # Step 4a: Generate Pillars from topic groups
+                pillar_mapping = generate_pillars_from_topic_groups(
+                    campaign,
+                    groups,
+                    language,
+                    tracker,
+                    progress
+                )
+                
+                unique_pillars_before = len(set(pillar_mapping.values()))
+                logging.info(f"  └─ Generated {unique_pillars_before} unique Pillars")
+                
+                # Step 4b: Normalize Pillars
+                pillars_list = list(pillar_mapping.values())
+                pillar_norm_mapping = normalize_pillars_per_campaign(
+                    pillars_list,
+                    campaign,
+                    language,
+                    tracker,
+                    progress
+                )
+                
+                unique_pillars_after = len(set(pillar_norm_mapping.values()))
+                logging.info(f"  └─ After normalization: {unique_pillars_after} unique Pillars")
+                
+                if unique_pillars_before != unique_pillars_after:
+                    logging.info(f"  └─ Merged {unique_pillars_before - unique_pillars_after} Pillars")
+                
+                # Step 4c: Apply mapping to dataframe
+                campaign_mask = df['Campaigns'] == campaign
+                
+                for idx_row in df[campaign_mask].index:
+                    topic_val = df.at[idx_row, 'Topic']
+                    
+                    if topic_val and str(topic_val).strip() and not is_invalid_value(str(topic_val)):
+                        # Get Pillar from topic
+                        pillar_raw = pillar_mapping.get(topic_val, '')
+                        
+                        if pillar_raw:
+                            # Normalize Pillar
+                            pillar_final = pillar_norm_mapping.get(pillar_raw, pillar_raw)
+                            
+                            if pillar_final:
+                                df.at[idx_row, 'Pillar'] = pillar_final
+            
+            pillar_filled = df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '')
+            pillar_success = pillar_filled.sum()
+            unique_pillars_final = df['Pillar'].nunique()
+            
+            tracker.add_step_stat("Pillar (final)", pillar_success, len(df), unique=unique_pillars_final)
+            logging.info(f"[STEP 4/5] ✅ Pillar: {pillar_success}/{len(df)} ({pillar_success/len(df)*100:.1f}%)")
+            logging.info(f"[STEP 4/5] ✅ Unique Pillars across all campaigns: {unique_pillars_final}")
+        
+        # ============================================================
+        # STEP 5: SPOKESPERSON EXTRACTION + NORMALIZATION
+        # ============================================================
         if generate_spokesperson and mainstream_count > 0:
             logging.info("\n" + "="*80)
-            logging.info("[STEP 2/4] SPOKESPERSON (MAINSTREAM MASTER ROWS, ELIGIBLE CONTENT)")
+            logging.info("[STEP 5/5] SPOKESPERSON (MAINSTREAM ONLY)")
             logging.info("="*80)
             
             mainstream_process_mask = df['_is_master'] & mainstream_mask & df['_eligible_for_topic']
             df_mainstream = df[mainstream_process_mask].copy()
             
-            logging.info(f"📊 Processing {len(df_mainstream)} mainstream master rows (eligible content only)")
+            logging.info(f"📊 Processing {len(df_mainstream)} mainstream master rows")
             
             if len(df_mainstream) > 0:
                 mainstream_batches = []
@@ -1635,9 +1745,6 @@ def process_file(
                     start_idx = batch_num * MAINSTREAM_BATCH_SIZE
                     end_idx = min(start_idx + MAINSTREAM_BATCH_SIZE, len(df_mainstream))
                     batch_df = df_mainstream.iloc[start_idx:end_idx].copy()
-                    
-                    progress_val = 0.45 + (batch_num / total_batches) * 0.15
-                    progress(progress_val, desc=f"[STEP 2/4] Spokesperson {batch_num + 1}/{total_batches}")
                     
                     result_batch = process_batch_spokesperson(
                         batch_df, batch_num + 1, total_batches,
@@ -1652,6 +1759,7 @@ def process_file(
                     if 'New Spokesperson' in df_mainstream_processed.columns:
                         df.at[idx, 'New Spokesperson'] = df_mainstream_processed.at[idx, 'New Spokesperson']
                 
+                # Copy to duplicates
                 logging.info("📋 Copying spokesperson to duplicate rows...")
                 for hash_val in df[mainstream_mask]['_dedup_hash'].unique():
                     group = df[(df['_dedup_hash'] == hash_val) & mainstream_mask]
@@ -1662,265 +1770,32 @@ def process_file(
                         for dup_idx in duplicate_indices:
                             df.at[dup_idx, 'New Spokesperson'] = df.at[master_idx, 'New Spokesperson']
                 
+                # Normalize spokesperson
+                progress(0.97, desc="[STEP 5/5] Normalizing Spokesperson...")
+                
+                spokespersons = df['New Spokesperson'].dropna()
+                spokespersons = spokespersons[spokespersons.astype(str).str.strip() != '']
+                spokespersons = spokespersons[~spokespersons.apply(lambda x: is_invalid_value(str(x)))]
+                unique_spokespersons = sorted(spokespersons.unique().tolist())
+                
+                if unique_spokespersons:
+                    spokesperson_mapping = normalize_spokesperson(unique_spokespersons, tracker, progress)
+                    df['New Spokesperson'] = df['New Spokesperson'].apply(
+                        lambda x: spokesperson_mapping.get(x, x) if pd.notna(x) and str(x).strip() and not is_invalid_value(str(x)) else x
+                    )
+                
                 spokes_filled = df[mainstream_mask]['New Spokesperson'].notna() & \
                                (df[mainstream_mask]['New Spokesperson'].astype(str).str.strip() != '')
                 success_count = spokes_filled.sum()
                 tracker.add_step_stat("Spokesperson", success_count, mainstream_count)
                 
-                logging.info(f"[STEP 2/4] ✅ Spokesperson: {success_count}/{mainstream_count} ({success_count/mainstream_count*100:.1f}%)")
+                logging.info(f"[STEP 5/5] ✅ Spokesperson: {success_count}/{mainstream_count} ({success_count/mainstream_count*100:.1f}%)")
             
             df.loc[social_mask, 'New Spokesperson'] = ''
         
-        # ============================
-        # [STEP 3/4] EXHAUSTIVE RETRY FOR EMPTY TOPICS (ALWAYS 3x)
-        # ============================
-
-        if generate_topic:
-            logging.info("\n" + "="*80)
-            logging.info("[STEP 3/4] EXHAUSTIVE RETRY FOR EMPTY TOPIC/PILLAR (MAX 3x)")
-
-            logging.info("="*80)
-
-            for retry_attempt in range(1, MAX_RETRIES + 1):
-
-                # Ambil HANYA master rows yang Topic masih kosong
-                empty_mask = (
-                    df['_is_master'] &
-                    (
-                        # Topic kosong
-                        df['Topic'].isna() |
-                        (df['Topic'].astype(str).str.strip() == '') |
-                        (df['Topic'].apply(lambda x: is_invalid_value(str(x))))
-                        |
-                        # ATAU Pillar kosong
-                        df['Pillar'].isna() |
-                        (df['Pillar'].astype(str).str.strip() == '') |
-                        (df['Pillar'].apply(lambda x: is_invalid_value(str(x))))
-                    )
-                )
-
-
-                df_empty = df[empty_mask].copy()
-                empty_count = len(df_empty)
-
-                logging.info(f"[STEP 3/4] Retry #{retry_attempt}: {empty_count} empty topic/pillar rows")
-
-
-                if empty_count == 0:
-                    logging.info("[STEP 3/4] ✅ All topics filled, stopping retry early")
-                    break
-
-                retry_batches = []
-                total_batches = math.ceil(empty_count / RETRY_BATCH_SIZE)
-
-                for batch_num in range(total_batches):
-                    start_idx = batch_num * RETRY_BATCH_SIZE
-                    end_idx = min(start_idx + RETRY_BATCH_SIZE, empty_count)
-
-                    batch_df = df_empty.iloc[start_idx:end_idx].copy()
-
-                    result_batch = retry_topic_batch(
-                        batch_df,
-                        retry_attempt,
-                        title_col,
-                        content_col,
-                        language,
-                        tracker,
-                        progress
-                    )
-
-                    retry_batches.append(result_batch)
-
-                df_retried = pd.concat(retry_batches, ignore_index=False)
-
-                # Copy hasil retry ke df utama
-                for idx in df_retried.index:
-                    if 'Pillar' in df_retried.columns:
-                        retried_pillar = df_retried.at[idx, 'Pillar']
-                        if retried_pillar and str(retried_pillar).strip():
-                            df.at[idx, 'Pillar'] = retried_pillar
-                    if 'Topic' in df_retried.columns:
-                        df.at[idx, 'Topic'] = df_retried.at[idx, 'Topic']
-
-                # Copy ke duplicate rows
-                logging.info("📋 Copying retried results to duplicate rows...")
-                for idx in df_retried.index:
-                    hash_val = df.at[idx, '_dedup_hash']
-                    duplicate_indices = df[
-                        (df['_dedup_hash'] == hash_val) & (~df['_is_master'])
-                    ].index
-
-                    for dup_idx in duplicate_indices:
-                        if df.at[idx, 'Pillar'] and str(df.at[idx, 'Pillar']).strip():
-                            df.at[dup_idx, 'Pillar'] = df.at[idx, 'Pillar']
-                        if df.at[idx, 'Topic'] and str(df.at[idx, 'Topic']).strip():
-                            df.at[dup_idx, 'Topic'] = df.at[idx, 'Topic']
-
-
-        
-        logging.info("\n" + "="*80)
-        logging.info("[STEP 4/4] NORMALIZATION (TOPICS → PILLARS PER CAMPAIGN)")
-        logging.info("="*80)
-        
-        if generate_topic:
-            progress(0.85, desc="[STEP 4/4] Normalizing Topics → Pillars (per campaign)...")
-            
-            if 'Campaigns' not in df.columns:
-                logging.warning("⚠️ 'Campaigns' column not found, skipping normalization")
-            else:
-                results = normalize_topics_to_pillars_v12(
-                    df,
-                    campaign_col='Campaigns',
-                    engagement_col='Engagement',
-                    language=language,
-                    target_pillars=TARGET_PILLARS_PER_CAMPAIGN,
-                    similarity_threshold=SIMILARITY_THRESHOLD,
-                    token_tracker=tracker,
-                    progress=progress
-                )
-                
-                # Apply pillar mapping to original Pillar column
-                for campaign, result in results.items():
-                    mapping = result['mapping']
-                    campaign_mask = df['Campaigns'] == campaign
-                    
-                    for idx in df[campaign_mask].index:
-                        topic_val = df.at[idx, 'Topic']
-                        if topic_val and str(topic_val).strip() and not is_invalid_value(str(topic_val)):
-                            mapped_pillar = mapping.get(topic_val, '')
-                            if mapped_pillar:
-                                df.at[idx, 'Pillar'] = mapped_pillar
-                
-                pillar_filled = df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '')
-                pillar_success = pillar_filled.sum()
-                tracker.add_step_stat("Pillar (normalized)", pillar_success, len(df))
-                
-                topics_all = df['Topic'].dropna()
-                topics_all = topics_all[topics_all.astype(str).str.strip() != '']
-                topics_all = topics_all[~topics_all.apply(lambda x: is_invalid_value(str(x)))]
-                unique_topics_count = len(topics_all.unique())
-                unique_pillars_final = df['Pillar'].nunique()
-                grouping_rate = (1 - unique_pillars_final / unique_topics_count) * 100 if unique_topics_count > 0 else 0
-                
-                logging.info(f"[STEP 4/4] ✅ Pillar (normalized): {pillar_success}/{len(df)} ({pillar_success/len(df)*100:.1f}%)")
-                logging.info(f"[STEP 4/4] 📊 Grouping: {unique_topics_count} topics → {unique_pillars_final} pillars ({grouping_rate:.1f}% reduction)")
-        
-
-        logging.info("\n" + "="*80)
-        logging.info("[STEP 5/5] SYNCHRONIZE TOPIC & PILLAR (FINAL PASS)")
-        logging.info("="*80)
-
-        if generate_topic:
-            # Phase A1: Topic kosong, Pillar ada → Topic = Pillar
-            mask_topic_empty = (
-                (df['Topic'].isna() | (df['Topic'].astype(str).str.strip() == '') | df['Topic'].apply(lambda x: is_invalid_value(str(x)))) &
-                (df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '') & ~df['Pillar'].apply(lambda x: is_invalid_value(str(x))))
-            )
-
-            topic_filled_from_pillar = mask_topic_empty.sum()
-            df.loc[mask_topic_empty, 'Topic'] = df.loc[mask_topic_empty, 'Pillar'].apply(
-                lambda x: validate_and_normalize_topic(x, language)
-            )
-
-
-            # Phase A2: Pillar kosong, Topic ada → Pillar = Topic
-            mask_pillar_empty = (
-                (df['Pillar'].isna() | (df['Pillar'].astype(str).str.strip() == '') | df['Pillar'].apply(lambda x: is_invalid_value(str(x)))) &
-                (df['Topic'].notna() & (df['Topic'].astype(str).str.strip() != '') & ~df['Topic'].apply(lambda x: is_invalid_value(str(x))))
-            )
-
-            pillar_filled_from_topic = mask_pillar_empty.sum()
-            df.loc[mask_pillar_empty, 'Pillar'] = df.loc[mask_pillar_empty, 'Topic'].apply(
-                lambda x: validate_and_normalize_pillar(x, language)
-            )
-
-
-            logging.info(
-                f"[STEP 5/5] Synchronize filled Topic←Pillar: {topic_filled_from_pillar}, "
-                f"Pillar←Topic: {pillar_filled_from_topic}"
-            )
-
-        
-        # Phase B: Final retry 1x for rows where BOTH Topic & Pillar still empty
-        final_retry_mask = (
-            df['_is_master'] &
-            (
-                (df['Topic'].isna() | (df['Topic'].astype(str).str.strip() == '') | df['Topic'].apply(lambda x: is_invalid_value(str(x)))) &
-                (df['Pillar'].isna() | (df['Pillar'].astype(str).str.strip() == '') | df['Pillar'].apply(lambda x: is_invalid_value(str(x))))
-            )
-        )
-
-        final_retry_df = df[final_retry_mask].copy()
-        final_retry_count = len(final_retry_df)
-
-        logging.info(f"[STEP 5/5] Final retry candidates (both empty): {final_retry_count}")
-
-        if final_retry_count > 0:
-            retry_batches = []
-            total_batches = math.ceil(final_retry_count / RETRY_BATCH_SIZE)
-
-            for batch_num in range(total_batches):
-                start_idx = batch_num * RETRY_BATCH_SIZE
-                end_idx = min(start_idx + RETRY_BATCH_SIZE, final_retry_count)
-
-                batch_df = final_retry_df.iloc[start_idx:end_idx].copy()
-
-                # 🔁 FINAL RETRY → retry_attempt = 1
-                result_batch = retry_topic_batch(
-                    batch_df,
-                    retry_attempt=1,
-                    title_col=title_col,
-                    content_col=content_col,
-                    language=language,
-                    token_tracker=tracker,
-                    progress=progress
-                )
-
-                retry_batches.append(result_batch)
-
-            df_final_retry = pd.concat(retry_batches, ignore_index=False)
-
-            # Copy hasil retry ke df utama
-            for idx in df_final_retry.index:
-                if df_final_retry.at[idx, 'Topic'] and str(df_final_retry.at[idx, 'Topic']).strip():
-                    df.at[idx, 'Topic'] = df_final_retry.at[idx, 'Topic']
-                if df_final_retry.at[idx, 'Pillar'] and str(df_final_retry.at[idx, 'Pillar']).strip():
-                    df.at[idx, 'Pillar'] = df_final_retry.at[idx, 'Pillar']
-
-            # Copy ke duplicate rows
-            for idx in df_final_retry.index:
-                hash_val = df.at[idx, '_dedup_hash']
-                duplicate_indices = df[
-                    (df['_dedup_hash'] == hash_val) & (~df['_is_master'])
-                ].index
-
-                for dup_idx in duplicate_indices:
-                    if df.at[idx, 'Topic'] and str(df.at[idx, 'Topic']).strip():
-                        df.at[dup_idx, 'Topic'] = df.at[idx, 'Topic']
-                    if df.at[idx, 'Pillar'] and str(df.at[idx, 'Pillar']).strip():
-                        df.at[dup_idx, 'Pillar'] = df.at[idx, 'Pillar']
-
-
-            logging.info(f"[STEP 5/5] Final retry completed")
-
-
-
-
-
-        if generate_spokesperson:
-            progress(0.95, desc="[STEP 4/4] Normalizing Spokesperson...")
-            
-            spokespersons = df['New Spokesperson'].dropna()
-            spokespersons = spokespersons[spokespersons.astype(str).str.strip() != '']
-            spokespersons = spokespersons[~spokespersons.apply(lambda x: is_invalid_value(str(x)))]
-            unique_spokespersons = sorted(spokespersons.unique().tolist())
-            
-            if unique_spokespersons:
-                spokesperson_mapping = normalize_spokesperson(unique_spokespersons, tracker, progress)
-                df['New Spokesperson'] = df['New Spokesperson'].apply(
-                    lambda x: spokesperson_mapping.get(x, x) if pd.notna(x) and str(x).strip() and not is_invalid_value(str(x)) else x
-                )
-        
+        # ============================================================
+        # FINALIZATION
+        # ============================================================
         logging.info("\n" + "="*80)
         logging.info("[FINALIZATION] Preparing output")
         logging.info("="*80)
@@ -1960,7 +1835,7 @@ def process_file(
         progress(0.98, desc="Saving...")
         
         original_filename = Path(file_path).stem
-        output_filename = f"{original_filename}_phase2_v12.xlsx"
+        output_filename = f"{original_filename}_phase2_v13.xlsx"
         output_path = os.path.join(tempfile.gettempdir(), output_filename)
         
         with pd.ExcelWriter(output_path, engine='xlsxwriter') as writer:
@@ -2006,7 +1881,7 @@ def process_file(
             
             meta_data = [
                 {"key": "processed_at", "value": datetime.now().strftime("%Y-%m-%d %H:%M:%S")},
-                {"key": "version", "value": "v12.0 - Enhanced Pillar+Topic with Retry"},
+                {"key": "version", "value": "v13.0 - Smart Retry + Topic-to-Pillar Flow"},
                 {"key": "model", "value": MODEL_NAME},
                 {"key": "output_language", "value": f"{language} ({LANGUAGE_CONFIGS[language]['name']})"},
                 {"key": "duration_sec", "value": f"{duration:.2f}"},
@@ -2015,18 +1890,15 @@ def process_file(
                 {"key": "row_unchanged", "value": "YES" if original_row_count == final_row_count else "NO"},
                 {"key": "deduplication_groups", "value": int(master_rows)},
                 {"key": "duplicate_rows", "value": int(duplicate_rows)},
-                {"key": "dedup_api_savings", "value": int(duplicate_rows)},
                 {"key": "eligible_for_topic", "value": int(total_eligible)},
                 {"key": "skipped_short_content", "value": int(total_skipped)},
-                {"key": "prefilter_api_savings", "value": int(total_skipped)},
                 {"key": "mainstream_rows", "value": int(mainstream_count)},
                 {"key": "social_rows", "value": int(social_count)},
                 {"key": "batch_size", "value": int(BATCH_SIZE)},
-                {"key": "max_retries", "value": int(MAX_RETRIES)},
+                {"key": "retry_engagement_threshold", "value": int(RETRY_ENGAGEMENT_THRESHOLD)},
+                {"key": "retry_mainstream_max", "value": int(RETRY_MAINSTREAM_MAX_ROWS)},
                 {"key": "similarity_threshold", "value": f"{SIMILARITY_THRESHOLD*100}%"},
-                {"key": "target_pillars_per_campaign", "value": int(TARGET_PILLARS_PER_CAMPAIGN)},
-                #{"key": "skip_retry_threshold", "value": f"{SKIP_RETRY_THRESHOLD*100}%"},
-                {"key": "pillar_engagement_weight", "value": f"{PILLAR_ENGAGEMENT_WEIGHT*100}%"},
+                {"key": "target_pillars_per_campaign", "value": f"{TARGET_PILLARS_PER_CAMPAIGN} (flexible)"},
                 {"key": "topic_engagement_weight", "value": f"{TOPIC_ENGAGEMENT_WEIGHT*100}%"},
                 {"key": "input_tokens", "value": int(token_summary["input_tokens"])},
                 {"key": "output_tokens", "value": int(token_summary["output_tokens"])},
@@ -2041,10 +1913,14 @@ def process_file(
             ]
             
             for step_name, step_data in token_summary['step_stats'].items():
-                meta_data.append({
-                    "key": f"success_rate_{step_name.lower().replace(' ', '_').replace('(', '').replace(')', '')}",
-                    "value": f"{step_data['success']}/{step_data['total']} ({step_data['rate']:.1f}%)"
-                })
+                key = f"success_rate_{step_name.lower().replace(' ', '_').replace('(', '').replace(')', '')}"
+                
+                if 'unique' in step_data:
+                    value = f"{step_data['success']}/{step_data['total']} ({step_data['rate']:.1f}%) | Unique: {step_data['unique']}"
+                else:
+                    value = f"{step_data['success']}/{step_data['total']} ({step_data['rate']:.1f}%)"
+                
+                meta_data.append({"key": key, "value": value})
             
             meta_data.extend([
                 {"key": "avg_pillar_words", "value": f"{avg_pillar_words:.1f}"},
@@ -2065,8 +1941,7 @@ def process_file(
             },
             "pre_filter": {
                 "eligible": int(total_eligible),
-                "skipped_short": int(total_skipped),
-                "api_savings": f"{total_skipped} topic extractions"
+                "skipped_short": int(total_skipped)
             },
             "channels": {
                 "mainstream": int(mainstream_count),
@@ -2079,8 +1954,7 @@ def process_file(
                 "unique_topics": int(unique_topics_count),
                 "unique_pillars": int(unique_pillars_final),
                 "grouping_efficiency": f"{grouping_rate:.1f}%",
-                "similarity_threshold": f"{SIMILARITY_THRESHOLD*100}%",
-                "target_pillars": int(TARGET_PILLARS_PER_CAMPAIGN)
+                "similarity_threshold": f"{SIMILARITY_THRESHOLD*100}%"
             },
             "duration": f"{duration:.2f}s",
             "cost": f"${token_summary['estimated_cost_usd']:.6f}",
@@ -2088,19 +1962,19 @@ def process_file(
         }
         
         logging.info("\n" + "="*80)
-        logging.info("✅ PROCESSING COMPLETE - v12.0")
+        logging.info("✅ PROCESSING COMPLETE - v13.0")
         logging.info("="*80)
         logging.info(f"Rows: {original_row_count} → {final_row_count} (unchanged: {original_row_count == final_row_count})")
-        logging.info(f"Deduplication: {master_rows} groups, {duplicate_rows} duplicates (saved {duplicate_rows} calls)")
-        logging.info(f"Pre-filter: {total_eligible} eligible, {total_skipped} skipped (saved {total_skipped} topic calls)")
         logging.info(f"Duration: {duration:.2f}s | Cost: ${token_summary['estimated_cost_usd']:.6f}")
-        logging.info(f"Language: {language}")
         
         if generate_topic:
-            logging.info(f"Normalization: {unique_topics_count} topics → {unique_pillars_final} pillars ({grouping_rate:.1f}% reduction)")
+            logging.info(f"Topics: {unique_topics_count} → Pillars: {unique_pillars_final} ({grouping_rate:.1f}% reduction)")
         
         for step_name, step_data in token_summary['step_stats'].items():
-            logging.info(f"{step_name}: {step_data['success']}/{step_data['total']} ({step_data['rate']:.1f}%)")
+            if 'unique' in step_data:
+                logging.info(f"{step_name}: {step_data['success']}/{step_data['total']} ({step_data['rate']:.1f}%) | Unique: {step_data['unique']}")
+            else:
+                logging.info(f"{step_name}: {step_data['success']}/{step_data['total']} ({step_data['rate']:.1f}%)")
         
         progress(1.0, desc="Complete!")
         return output_path, stats, None
@@ -2110,9 +1984,9 @@ def process_file(
         return None, {}, f"❌ Error: {str(e)}"
 
 def create_gradio_interface():
-    with gr.Blocks(title="Insights Generator v12.0", theme=gr.themes.Soft()) as app:
-        gr.Markdown("# 📊 Insights Generator v12.0 - Enhanced Pillar+Topic Extraction")
-        gr.Markdown("**NEW:** Pillar (2-6 words categorization) + Topic (5-15 words detailed) with 3x retry + engagement-aware normalization")
+    with gr.Blocks(title="Insights Generator v13.0", theme=gr.themes.Soft()) as app:
+        gr.Markdown("# 📊 Insights Generator v13.0 - Smart Retry + Topic-to-Pillar Flow")
+        gr.Markdown("**NEW:** Smart retry logic (Engagement/Buzz threshold) + Pillar generated from Topic groups")
         
         with gr.Row():
             with gr.Column(scale=2):
@@ -2133,7 +2007,7 @@ def create_gradio_interface():
             with gr.Column(scale=1):
                 gr.Markdown("### 🌍 Language")
                 language_selector = gr.Dropdown(
-                    label="Output Language (Optimized for Indonesia)",
+                    label="Output Language",
                     choices=list(LANGUAGE_CONFIGS.keys()),
                     value="Indonesia",
                     info="Content can be ANY language, output uses your selection"
@@ -2143,8 +2017,8 @@ def create_gradio_interface():
                 conf_threshold = gr.Slider(label="Sentiment Confidence Threshold", minimum=0, maximum=100, value=85, step=5)
                 
                 gr.Markdown("### ✅ Features (Select at least 1)")
-                gen_topic = gr.Checkbox(label="📌 Pillar & Topic (all channels) - Enhanced with 3x retry", value=False)
-                gen_sentiment = gr.Checkbox(label="😊 Sentiment (all channels)", value=False)
+                gen_topic = gr.Checkbox(label="📌 Topic & Pillar (smart extraction)", value=False)
+                gen_sentiment = gr.Checkbox(label="😊 Sentiment", value=False)
                 gen_spokesperson = gr.Checkbox(label="🎤 Spokesperson (mainstream only)", value=False)
         
         validation_error = gr.Markdown("", visible=True)
