@@ -1,0 +1,54 @@
+2026-02-02 00:49:25,490 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2026-02-02 00:49:25,513 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2026-02-02 00:49:25,515 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-02-02 00:49:25,636 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-02-02 00:49:26,258 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-02-02 00:49:31,113 - [INFO] - generated new fontManager
+2026-02-02 00:49:33,835 - [INFO] - 📊 Original rows: 566
+2026-02-02 00:49:33,838 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Buzz': 'Buzz', 'Engagement': 'Engagement'}
+2026-02-02 00:49:33,839 - [INFO] - ✅ All 566 rows will be processed
+2026-02-02 00:49:33,841 - [INFO] - 
+================================================================================
+2026-02-02 00:49:33,841 - [INFO] - [DEDUPLICATION] Creating groups
+2026-02-02 00:49:33,842 - [INFO] - ================================================================================
+2026-02-02 00:49:33,852 - [INFO] - ✅ 566 rows → 556 unique + 10 duplicates
+2026-02-02 00:49:33,853 - [INFO] - 
+================================================================================
+2026-02-02 00:49:33,853 - [INFO] - [CONTENT FILTER] Checking word count
+2026-02-02 00:49:33,853 - [INFO] - ================================================================================
+2026-02-02 00:49:33,885 - [INFO] - ✅ 563 eligible, 3 skipped (< 4 words)
+2026-02-02 00:49:33,885 - [INFO] - 
+================================================================================
+2026-02-02 00:49:33,885 - [INFO] - [STEP 1] ASYNC PER-ROW PROCESSING
+2026-02-02 00:49:33,885 - [INFO] - ================================================================================
+2026-02-02 00:49:33,908 - [INFO] - 📊 Processing 553 master rows with 10 parallel workers
+2026-02-02 00:49:34,894 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:35,059 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:35,175 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:35,214 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:35,361 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:35,375 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:35,538 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:36,023 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:36,373 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:36,797 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-02 00:49:36,805 - [ERROR] - [ERROR] list index out of range
+Traceback (most recent call last):
+  File "/app/app.py", line 974, in process_file
+    df = asyncio.run(process_all_rows_async(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/app.py", line 547, in process_all_rows_async
+    if progress_callback:
+  File "/usr/local/lib/python3.11/site-packages/gradio/helpers.py", line 668, in __len__
+    return self.iterables[-1].length
+           ~~~~~~~~~~~~~~^^^^
+IndexError: list index out of range

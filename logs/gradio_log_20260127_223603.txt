@@ -3072,3 +3072,1937 @@
 2026-01-28 03:26:47,659 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-01-28 03:26:58,387 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-01-28 03:27:24,819 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:27:47,827 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:28:11,418 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:28:28,621 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:28:43,849 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:29:14,359 - [INFO] - Retrying request to /chat/completions in 0.477591 seconds
+2026-01-28 03:29:44,511 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:30:06,134 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:30:25,841 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:30:52,114 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:31:04,151 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:31:15,013 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:31:25,810 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:31:39,750 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:31:55,993 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:32:18,303 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:32:35,357 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:32:47,885 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:33:01,937 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:33:12,683 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:33:36,100 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:33:46,899 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:34:00,201 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:34:17,780 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:34:30,711 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:34:44,337 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:35:10,458 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:35:29,629 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:35:43,449 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:35:53,906 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:36:08,116 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:36:22,265 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:36:32,298 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:36:44,765 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:37:06,110 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:37:15,383 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:37:28,190 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:37:40,664 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:37:49,677 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:37:58,603 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:38:26,851 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:38:49,360 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:39:01,045 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:39:12,693 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:39:35,220 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:40:03,538 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:40:28,009 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:40:41,879 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:40:56,672 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:41:11,196 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:41:24,438 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:41:37,138 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:41:47,919 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:42:20,587 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:42:53,224 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:43:07,897 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:43:16,728 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:43:27,130 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:43:38,134 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:43:43,498 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:43:46,560 - [INFO] - 📋 Copying results to duplicate rows...
+2026-01-28 03:44:37,872 - [INFO] - [STEP 1/5] ✅ Topic: 15155/42714 (35.5%)
+2026-01-28 03:44:37,886 - [INFO] - [STEP 1/5] ✅ Sentiment: 42714/42714 (100.0%)
+2026-01-28 03:44:37,887 - [INFO] - 
+================================================================================
+2026-01-28 03:44:37,887 - [INFO] - [STEP 2/5] SMART RETRY FOR EMPTY TOPICS
+2026-01-28 03:44:37,887 - [INFO] - ================================================================================
+2026-01-28 03:44:37,895 - [INFO] - 📊 Social retry based on Engagement >= 5000
+2026-01-28 03:44:37,968 - [INFO] - 📊 Retry candidates: Social=19, Mainstream=100
+2026-01-28 03:44:44,434 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:44:59,469 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:45:15,515 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:45:37,386 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:45:57,841 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:46:15,762 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:46:34,604 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:46:48,225 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:46:48,275 - [INFO] - 📋 Copying retried results to duplicate rows...
+2026-01-28 03:46:48,471 - [INFO] - [STEP 2/5] ✅ Topic (after retry): 15176/42714 (35.5%)
+2026-01-28 03:46:48,472 - [INFO] - 
+================================================================================
+2026-01-28 03:46:48,472 - [INFO] - [STEP 3/5] TOPIC NORMALIZATION/CLUSTERING PER CAMPAIGN
+2026-01-28 03:46:48,472 - [INFO] - ================================================================================
+2026-01-28 03:46:48,577 - [INFO] - 📊 Campaign 'Jasamarga': 7569 topics
+2026-01-28 03:46:50,664 - [INFO] -   └─ Clustered into 1762 groups
+2026-01-28 03:46:50,672 - [INFO] - 📊 Campaign 'INKIS': 53 topics
+2026-01-28 03:46:50,673 - [INFO] -   └─ Clustered into 31 groups
+2026-01-28 03:46:50,675 - [INFO] - 📊 Campaign 'BINSA': 41 topics
+2026-01-28 03:46:50,676 - [INFO] -   └─ Clustered into 24 groups
+2026-01-28 03:46:50,681 - [INFO] - 📊 Campaign 'Hutama Karya': 635 topics
+2026-01-28 03:46:50,741 - [INFO] -   └─ Clustered into 355 groups
+2026-01-28 03:46:50,744 - [INFO] - 📊 Campaign 'PERMAI': 140 topics
+2026-01-28 03:46:50,748 - [INFO] -   └─ Clustered into 75 groups
+2026-01-28 03:46:50,750 - [INFO] - 📊 Campaign 'BETEJAM': 142 topics
+2026-01-28 03:46:50,754 - [INFO] -   └─ Clustered into 80 groups
+2026-01-28 03:46:50,757 - [INFO] - 📊 Campaign 'TERPEKA': 148 topics
+2026-01-28 03:46:50,761 - [INFO] -   └─ Clustered into 83 groups
+2026-01-28 03:46:50,763 - [INFO] - 📊 Campaign 'PALINDRA': 125 topics
+2026-01-28 03:46:50,767 - [INFO] -   └─ Clustered into 86 groups
+2026-01-28 03:46:50,770 - [INFO] - 📊 Campaign 'BENGTABA': 38 topics
+2026-01-28 03:46:50,770 - [INFO] -   └─ Clustered into 26 groups
+2026-01-28 03:46:50,773 - [INFO] - 📊 Campaign 'SIBANCEH': 24 topics
+2026-01-28 03:46:50,773 - [INFO] -   └─ Clustered into 19 groups
+2026-01-28 03:46:50,776 - [INFO] - 📊 Campaign 'CMNP': 758 topics
+2026-01-28 03:46:50,802 - [INFO] -   └─ Clustered into 180 groups
+2026-01-28 03:46:50,805 - [INFO] - 📊 Campaign 'PACIN': 60 topics
+2026-01-28 03:46:50,806 - [INFO] -   └─ Clustered into 33 groups
+2026-01-28 03:46:50,809 - [INFO] - 📊 Campaign 'Astra Infra': 177 topics
+2026-01-28 03:46:50,813 - [INFO] -   └─ Clustered into 70 groups
+2026-01-28 03:46:50,815 - [INFO] - 📊 Campaign 'JORRS': 103 topics
+2026-01-28 03:46:50,817 - [INFO] -   └─ Clustered into 44 groups
+2026-01-28 03:46:50,819 - [INFO] - 📊 Campaign 'INPRABU': 40 topics
+2026-01-28 03:46:50,820 - [INFO] -   └─ Clustered into 28 groups
+2026-01-28 03:46:50,822 - [INFO] - 📊 Campaign 'ATP': 90 topics
+2026-01-28 03:46:50,824 - [INFO] -   └─ Clustered into 47 groups
+2026-01-28 03:46:50,826 - [INFO] - 📊 Campaign 'PEKBANGPAR': 8 topics
+2026-01-28 03:46:50,826 - [INFO] -   └─ Clustered into 7 groups
+2026-01-28 03:46:50,827 - [INFO] - [STEP 3/5] ✅ Clustered 17 campaigns
+2026-01-28 03:46:50,827 - [INFO] - 
+================================================================================
+2026-01-28 03:46:50,827 - [INFO] - [STEP 4/5] PILLAR GENERATION + NORMALIZATION + MAPPING
+2026-01-28 03:46:50,828 - [INFO] - ================================================================================
+2026-01-28 03:46:50,828 - [INFO] - 
+================================================================================
+2026-01-28 03:46:50,828 - [INFO] - [CAMPAIGN 1/17] Jasamarga
+2026-01-28 03:46:50,828 - [INFO] - ================================================================================
+2026-01-28 03:50:19,517 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:50:29,545 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:50:29,578 - [INFO] -   └─ Generated 129 unique Pillars
+2026-01-28 03:51:27,313 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:51:27,328 - [INFO] -   └─ After normalization: 129 unique Pillars
+2026-01-28 03:51:27,661 - [INFO] - 
+================================================================================
+2026-01-28 03:51:27,661 - [INFO] - [CAMPAIGN 2/17] INKIS
+2026-01-28 03:51:27,661 - [INFO] - ================================================================================
+2026-01-28 03:51:42,551 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:51:51,281 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:51:51,297 - [INFO] -   └─ Generated 29 unique Pillars
+2026-01-28 03:52:00,304 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:52:00,312 - [INFO] -   └─ After normalization: 21 unique Pillars
+2026-01-28 03:52:00,312 - [INFO] -   └─ Merged 8 Pillars
+2026-01-28 03:52:00,361 - [INFO] - 
+================================================================================
+2026-01-28 03:52:00,361 - [INFO] - [CAMPAIGN 3/17] BINSA
+2026-01-28 03:52:00,362 - [INFO] - ================================================================================
+2026-01-28 03:52:12,338 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:52:18,184 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:52:18,202 - [INFO] -   └─ Generated 23 unique Pillars
+2026-01-28 03:52:25,691 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:52:25,708 - [INFO] -   └─ After normalization: 23 unique Pillars
+2026-01-28 03:52:25,752 - [INFO] - 
+================================================================================
+2026-01-28 03:52:25,752 - [INFO] - [CAMPAIGN 4/17] Hutama Karya
+2026-01-28 03:52:25,752 - [INFO] - ================================================================================
+2026-01-28 03:54:45,338 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:54:53,578 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:54:53,597 - [INFO] -   └─ Generated 120 unique Pillars
+2026-01-28 03:55:34,292 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:55:34,313 - [INFO] -   └─ After normalization: 120 unique Pillars
+2026-01-28 03:55:34,457 - [INFO] - 
+================================================================================
+2026-01-28 03:55:34,458 - [INFO] - [CAMPAIGN 5/17] PERMAI
+2026-01-28 03:55:34,458 - [INFO] - ================================================================================
+2026-01-28 03:56:02,557 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:56:11,192 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:56:11,213 - [INFO] -   └─ Generated 44 unique Pillars
+2026-01-28 03:56:27,543 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:56:27,558 - [INFO] -   └─ After normalization: 44 unique Pillars
+2026-01-28 03:56:27,620 - [INFO] - 
+================================================================================
+2026-01-28 03:56:27,621 - [INFO] - [CAMPAIGN 6/17] BETEJAM
+2026-01-28 03:56:27,621 - [INFO] - ================================================================================
+2026-01-28 03:56:59,579 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:57:09,009 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:57:09,013 - [INFO] -   └─ Generated 46 unique Pillars
+2026-01-28 03:57:28,297 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:57:28,311 - [INFO] -   └─ After normalization: 46 unique Pillars
+2026-01-28 03:57:28,424 - [INFO] - 
+================================================================================
+2026-01-28 03:57:28,424 - [INFO] - [CAMPAIGN 7/17] TERPEKA
+2026-01-28 03:57:28,425 - [INFO] - ================================================================================
+2026-01-28 03:57:59,512 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:58:11,812 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:58:11,832 - [INFO] -   └─ Generated 46 unique Pillars
+2026-01-28 03:58:25,308 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:58:25,322 - [INFO] -   └─ After normalization: 50 unique Pillars
+2026-01-28 03:58:25,323 - [INFO] -   └─ Merged -4 Pillars
+2026-01-28 03:58:25,426 - [INFO] - 
+================================================================================
+2026-01-28 03:58:25,427 - [INFO] - [CAMPAIGN 8/17] PALINDRA
+2026-01-28 03:58:25,427 - [INFO] - ================================================================================
+2026-01-28 03:58:49,923 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:58:56,258 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:58:56,283 - [INFO] -   └─ Generated 38 unique Pillars
+2026-01-28 03:59:08,952 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:59:08,965 - [INFO] -   └─ After normalization: 56 unique Pillars
+2026-01-28 03:59:08,965 - [INFO] -   └─ Merged -18 Pillars
+2026-01-28 03:59:09,070 - [INFO] - 
+================================================================================
+2026-01-28 03:59:09,070 - [INFO] - [CAMPAIGN 9/17] BENGTABA
+2026-01-28 03:59:09,070 - [INFO] - ================================================================================
+2026-01-28 03:59:22,699 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:59:34,143 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:59:34,167 - [INFO] -   └─ Generated 26 unique Pillars
+2026-01-28 03:59:39,568 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:59:39,575 - [INFO] -   └─ After normalization: 26 unique Pillars
+2026-01-28 03:59:39,639 - [INFO] - 
+================================================================================
+2026-01-28 03:59:39,639 - [INFO] - [CAMPAIGN 10/17] SIBANCEH
+2026-01-28 03:59:39,639 - [INFO] - ================================================================================
+2026-01-28 03:59:45,295 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:59:50,745 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:59:50,787 - [INFO] -   └─ Generated 19 unique Pillars
+2026-01-28 03:59:57,844 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 03:59:57,854 - [INFO] -   └─ After normalization: 19 unique Pillars
+2026-01-28 03:59:57,918 - [INFO] - 
+================================================================================
+2026-01-28 03:59:57,918 - [INFO] - [CAMPAIGN 11/17] CMNP
+2026-01-28 03:59:57,918 - [INFO] - ================================================================================
+2026-01-28 04:02:08,574 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:02:17,650 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:02:17,676 - [INFO] -   └─ Generated 97 unique Pillars
+2026-01-28 04:02:50,778 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:02:50,790 - [INFO] -   └─ After normalization: 97 unique Pillars
+2026-01-28 04:02:51,034 - [INFO] - 
+================================================================================
+2026-01-28 04:02:51,034 - [INFO] - [CAMPAIGN 12/17] PACIN
+2026-01-28 04:02:51,034 - [INFO] - ================================================================================
+2026-01-28 04:03:03,247 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:03:12,055 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:03:12,081 - [INFO] -   └─ Generated 31 unique Pillars
+2026-01-28 04:03:22,913 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:03:22,936 - [INFO] -   └─ After normalization: 31 unique Pillars
+2026-01-28 04:03:23,040 - [INFO] - 
+================================================================================
+2026-01-28 04:03:23,040 - [INFO] - [CAMPAIGN 13/17] Astra Infra
+2026-01-28 04:03:23,040 - [INFO] - ================================================================================
+2026-01-28 04:03:44,157 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:03:51,852 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:03:51,864 - [INFO] -   └─ Generated 20 unique Pillars
+2026-01-28 04:04:00,179 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:04:00,196 - [INFO] -   └─ After normalization: 20 unique Pillars
+2026-01-28 04:04:00,352 - [INFO] - 
+================================================================================
+2026-01-28 04:04:00,353 - [INFO] - [CAMPAIGN 14/17] JORRS
+2026-01-28 04:04:00,353 - [INFO] - ================================================================================
+2026-01-28 04:04:16,877 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:04:26,571 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:04:26,584 - [INFO] -   └─ Generated 34 unique Pillars
+2026-01-28 04:04:42,422 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:04:42,436 - [INFO] -   └─ After normalization: 35 unique Pillars
+2026-01-28 04:04:42,437 - [INFO] -   └─ Merged -1 Pillars
+2026-01-28 04:04:42,551 - [INFO] - 
+================================================================================
+2026-01-28 04:04:42,551 - [INFO] - [CAMPAIGN 15/17] INPRABU
+2026-01-28 04:04:42,552 - [INFO] - ================================================================================
+2026-01-28 04:04:50,373 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:04:58,721 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:04:58,743 - [INFO] -   └─ Generated 25 unique Pillars
+2026-01-28 04:05:09,880 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:05:09,897 - [INFO] -   └─ After normalization: 23 unique Pillars
+2026-01-28 04:05:09,897 - [INFO] -   └─ Merged 2 Pillars
+2026-01-28 04:05:09,954 - [INFO] - 
+================================================================================
+2026-01-28 04:05:09,954 - [INFO] - [CAMPAIGN 16/17] ATP
+2026-01-28 04:05:09,954 - [INFO] - ================================================================================
+2026-01-28 04:05:25,051 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:05:33,444 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:05:33,458 - [INFO] -   └─ Generated 33 unique Pillars
+2026-01-28 04:05:41,146 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:05:41,169 - [INFO] -   └─ After normalization: 33 unique Pillars
+2026-01-28 04:05:41,233 - [INFO] - 
+================================================================================
+2026-01-28 04:05:41,234 - [INFO] - [CAMPAIGN 17/17] PEKBANGPAR
+2026-01-28 04:05:41,234 - [INFO] - ================================================================================
+2026-01-28 04:05:44,002 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:05:46,829 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:05:46,834 - [INFO] -   └─ Generated 7 unique Pillars
+2026-01-28 04:05:49,205 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 04:05:49,217 - [INFO] -   └─ After normalization: 7 unique Pillars
+2026-01-28 04:05:49,295 - [INFO] - [STEP 4/5] ✅ Pillar: 8840/42714 (20.7%)
+2026-01-28 04:05:49,295 - [INFO] - [STEP 4/5] ✅ Unique Pillars across all campaigns: 693
+2026-01-28 04:05:49,295 - [INFO] - 
+================================================================================
+2026-01-28 04:05:49,295 - [INFO] - [FINALIZATION] Preparing output
+2026-01-28 04:05:49,296 - [INFO] - ================================================================================
+2026-01-28 04:05:49,695 - [INFO] - ✅ Row count verified: 42714 → 42714 (unchanged)
+2026-01-28 04:06:10,784 - [INFO] - 
+================================================================================
+2026-01-28 04:06:10,786 - [INFO] - ✅ PROCESSING COMPLETE - v13.0
+2026-01-28 04:06:10,786 - [INFO] - ================================================================================
+2026-01-28 04:06:10,786 - [INFO] - Rows: 42714 → 42714 (unchanged: True)
+2026-01-28 04:06:10,786 - [INFO] - Duration: 19647.73s | Cost: $1.532699
+2026-01-28 04:06:10,787 - [INFO] - Topics: 9687 → Pillars: 693 (92.8% reduction)
+2026-01-28 04:06:10,787 - [INFO] - Topic (initial): 15155/42714 (35.5%)
+2026-01-28 04:06:10,787 - [INFO] - Sentiment: 42714/42714 (100.0%)
+2026-01-28 04:06:10,787 - [INFO] - Topic (after retry): 15176/42714 (35.5%)
+2026-01-28 04:06:10,787 - [INFO] - Topic Clustering: 17/17 (100.0%)
+2026-01-28 04:06:10,787 - [INFO] - Pillar (final): 8840/42714 (20.7%) | Unique: 693
+2026-01-28 08:11:57,922 - [INFO] - 📊 Original rows: 36
+2026-01-28 08:11:57,935 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Buzz': 'Buzz', 'Engagement': 'Engagement'}
+2026-01-28 08:11:57,936 - [INFO] - ✅ NO DELETION - All 36 rows will be processed
+2026-01-28 08:11:57,946 - [INFO] - 
+================================================================================
+2026-01-28 08:11:57,946 - [INFO] - [DEDUPLICATION] Creating groups for identical content
+2026-01-28 08:11:57,946 - [INFO] - ================================================================================
+2026-01-28 08:11:57,975 - [INFO] - ✅ Deduplication: 36 rows → 35 unique groups + 1 duplicates
+2026-01-28 08:11:57,978 - [INFO] - 📊 Channel split: Mainstream=0, Social=36
+2026-01-28 08:11:57,978 - [INFO] - 
+================================================================================
+2026-01-28 08:11:57,979 - [INFO] - [PRE-FILTER] Checking content eligibility
+2026-01-28 08:11:57,979 - [INFO] - ================================================================================
+2026-01-28 08:11:57,988 - [INFO] - ✅ Content filter: 36 eligible, 0 skipped (<3 words)
+2026-01-28 08:11:57,990 - [INFO] - 
+================================================================================
+2026-01-28 08:11:57,990 - [INFO] - [STEP 1/5] TOPIC + SENTIMENT (NO PILLAR YET)
+2026-01-28 08:11:57,990 - [INFO] - ================================================================================
+2026-01-28 08:11:57,991 - [INFO] - 📊 Processing 35 master rows (eligible content only)
+2026-01-28 08:12:03,645 - [INFO] - 📊 Original rows: 88
+2026-01-28 08:12:03,647 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Buzz': 'Buzz', 'Engagement': 'Engagement'}
+2026-01-28 08:12:03,648 - [INFO] - ✅ NO DELETION - All 88 rows will be processed
+2026-01-28 08:12:03,650 - [INFO] - 
+================================================================================
+2026-01-28 08:12:03,650 - [INFO] - [DEDUPLICATION] Creating groups for identical content
+2026-01-28 08:12:03,650 - [INFO] - ================================================================================
+2026-01-28 08:12:03,655 - [INFO] - ✅ Deduplication: 88 rows → 88 unique groups + 0 duplicates
+2026-01-28 08:12:03,656 - [INFO] - 📊 Channel split: Mainstream=88, Social=0
+2026-01-28 08:12:03,656 - [INFO] - 
+================================================================================
+2026-01-28 08:12:03,656 - [INFO] - [PRE-FILTER] Checking content eligibility
+2026-01-28 08:12:03,656 - [INFO] - ================================================================================
+2026-01-28 08:12:03,680 - [INFO] - ✅ Content filter: 88 eligible, 0 skipped (<3 words)
+2026-01-28 08:12:03,682 - [INFO] - 
+================================================================================
+2026-01-28 08:12:03,682 - [INFO] - [STEP 1/5] TOPIC + SENTIMENT (NO PILLAR YET)
+2026-01-28 08:12:03,682 - [INFO] - ================================================================================
+2026-01-28 08:12:03,683 - [INFO] - 📊 Processing 88 master rows (eligible content only)
+2026-01-28 08:12:13,426 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:22,556 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:22,585 - [INFO] - 📋 Copying results to duplicate rows...
+2026-01-28 08:12:22,600 - [INFO] - [STEP 1/5] ✅ Topic: 26/36 (72.2%)
+2026-01-28 08:12:22,601 - [INFO] - [STEP 1/5] ✅ Sentiment: 36/36 (100.0%)
+2026-01-28 08:12:22,601 - [INFO] - 
+================================================================================
+2026-01-28 08:12:22,601 - [INFO] - [STEP 2/5] SMART RETRY FOR EMPTY TOPICS
+2026-01-28 08:12:22,601 - [INFO] - ================================================================================
+2026-01-28 08:12:22,602 - [INFO] - 📊 Social retry based on Engagement >= 5000
+2026-01-28 08:12:22,603 - [INFO] - 📊 Retry candidates: Social=0, Mainstream=0
+2026-01-28 08:12:22,605 - [INFO] - [STEP 2/5] No rows to retry
+2026-01-28 08:12:22,605 - [INFO] - 
+================================================================================
+2026-01-28 08:12:22,605 - [INFO] - [STEP 3/5] TOPIC NORMALIZATION/CLUSTERING PER CAMPAIGN
+2026-01-28 08:12:22,605 - [INFO] - ================================================================================
+2026-01-28 08:12:22,626 - [INFO] - 📊 Campaign 'Mind ID': 16 topics
+2026-01-28 08:12:22,628 - [INFO] -   └─ Clustered into 14 groups
+2026-01-28 08:12:22,629 - [INFO] - 📊 Campaign 'Industri Nikel & Narasi Geopolitik': 2 topics
+2026-01-28 08:12:22,630 - [INFO] -   └─ Clustered into 2 groups
+2026-01-28 08:12:22,631 - [INFO] - 📊 Campaign 'Sentimen Finansial, Investor, pasar': 6 topics
+2026-01-28 08:12:22,631 - [INFO] -   └─ Clustered into 6 groups
+2026-01-28 08:12:22,632 - [INFO] - 📊 Campaign 'Morowali Issue 2 (X)': 1 topics
+2026-01-28 08:12:22,632 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:12:22,633 - [INFO] - 📊 Campaign 'Morowali Issue': 2 topics
+2026-01-28 08:12:22,633 - [INFO] -   └─ Clustered into 2 groups
+2026-01-28 08:12:22,634 - [INFO] - 📊 Campaign 'Tenant': 1 topics
+2026-01-28 08:12:22,635 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:12:22,635 - [INFO] - [STEP 3/5] ✅ Clustered 6 campaigns
+2026-01-28 08:12:22,636 - [INFO] - 
+================================================================================
+2026-01-28 08:12:22,636 - [INFO] - [STEP 4/5] PILLAR GENERATION + NORMALIZATION + MAPPING
+2026-01-28 08:12:22,636 - [INFO] - ================================================================================
+2026-01-28 08:12:22,637 - [INFO] - 
+================================================================================
+2026-01-28 08:12:22,637 - [INFO] - [CAMPAIGN 1/6] Mind ID
+2026-01-28 08:12:22,638 - [INFO] - ================================================================================
+2026-01-28 08:12:24,773 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:28,585 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:31,811 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:31,819 - [INFO] -   └─ Generated 14 unique Pillars
+2026-01-28 08:12:41,339 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:41,348 - [INFO] -   └─ After normalization: 14 unique Pillars
+2026-01-28 08:12:41,358 - [INFO] - 
+================================================================================
+2026-01-28 08:12:41,359 - [INFO] - [CAMPAIGN 2/6] Industri Nikel & Narasi Geopolitik
+2026-01-28 08:12:41,359 - [INFO] - ================================================================================
+2026-01-28 08:12:42,727 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:42,731 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:12:42,731 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:12:42,733 - [INFO] - 
+================================================================================
+2026-01-28 08:12:42,734 - [INFO] - [CAMPAIGN 3/6] Sentimen Finansial, Investor, pasar
+2026-01-28 08:12:42,734 - [INFO] - ================================================================================
+2026-01-28 08:12:46,646 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:46,657 - [INFO] -   └─ Generated 6 unique Pillars
+2026-01-28 08:12:49,309 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:49,313 - [INFO] -   └─ After normalization: 7 unique Pillars
+2026-01-28 08:12:49,313 - [INFO] -   └─ Merged -1 Pillars
+2026-01-28 08:12:49,329 - [INFO] - 
+================================================================================
+2026-01-28 08:12:49,330 - [INFO] - [CAMPAIGN 4/6] Morowali Issue 2 (X)
+2026-01-28 08:12:49,330 - [INFO] - ================================================================================
+2026-01-28 08:12:50,483 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:50,554 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:12:50,555 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:12:50,557 - [INFO] - 
+================================================================================
+2026-01-28 08:12:50,558 - [INFO] - [CAMPAIGN 5/6] Morowali Issue
+2026-01-28 08:12:50,558 - [INFO] - ================================================================================
+2026-01-28 08:12:52,093 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:52,592 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:52,595 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-28 08:12:53,711 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:53,714 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-28 08:12:53,716 - [INFO] - 
+================================================================================
+2026-01-28 08:12:53,717 - [INFO] - [CAMPAIGN 6/6] Tenant
+2026-01-28 08:12:53,717 - [INFO] - ================================================================================
+2026-01-28 08:12:55,890 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:12:55,895 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:12:55,895 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:12:55,909 - [INFO] - [STEP 4/5] ✅ Pillar: 26/36 (72.2%)
+2026-01-28 08:12:55,909 - [INFO] - [STEP 4/5] ✅ Unique Pillars across all campaigns: 24
+2026-01-28 08:12:55,910 - [INFO] - 
+================================================================================
+2026-01-28 08:12:55,910 - [INFO] - [FINALIZATION] Preparing output
+2026-01-28 08:12:55,910 - [INFO] - ================================================================================
+2026-01-28 08:12:55,916 - [INFO] - ✅ Row count verified: 36 → 36 (unchanged)
+2026-01-28 08:12:55,998 - [INFO] - 
+================================================================================
+2026-01-28 08:12:55,999 - [INFO] - ✅ PROCESSING COMPLETE - v13.0
+2026-01-28 08:12:55,999 - [INFO] - ================================================================================
+2026-01-28 08:12:55,999 - [INFO] - Rows: 36 → 36 (unchanged: True)
+2026-01-28 08:12:55,999 - [INFO] - Duration: 57.97s | Cost: $0.002063
+2026-01-28 08:12:55,999 - [INFO] - Topics: 26 → Pillars: 24 (7.7% reduction)
+2026-01-28 08:12:55,999 - [INFO] - Topic (initial): 26/36 (72.2%)
+2026-01-28 08:12:55,999 - [INFO] - Sentiment: 36/36 (100.0%)
+2026-01-28 08:12:56,000 - [INFO] - Topic Clustering: 6/6 (100.0%)
+2026-01-28 08:12:56,000 - [INFO] - Pillar (final): 26/36 (72.2%) | Unique: 24
+2026-01-28 08:13:32,376 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:14:01,435 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:14:08,520 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:14:08,566 - [INFO] - 📋 Copying results to duplicate rows...
+2026-01-28 08:14:08,591 - [INFO] - [STEP 1/5] ✅ Topic: 58/88 (65.9%)
+2026-01-28 08:14:08,591 - [INFO] - [STEP 1/5] ✅ Sentiment: 88/88 (100.0%)
+2026-01-28 08:14:08,591 - [INFO] - 
+================================================================================
+2026-01-28 08:14:08,591 - [INFO] - [STEP 2/5] SMART RETRY FOR EMPTY TOPICS
+2026-01-28 08:14:08,591 - [INFO] - ================================================================================
+2026-01-28 08:14:08,592 - [INFO] - 📊 Social retry based on Engagement >= 5000
+2026-01-28 08:14:08,596 - [INFO] - 📊 Retry candidates: Social=0, Mainstream=30
+2026-01-28 08:14:23,204 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:14:44,858 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:14:44,884 - [INFO] - 📋 Copying retried results to duplicate rows...
+2026-01-28 08:14:44,899 - [INFO] - [STEP 2/5] ✅ Topic (after retry): 66/88 (75.0%)
+2026-01-28 08:14:44,899 - [INFO] - 
+================================================================================
+2026-01-28 08:14:44,900 - [INFO] - [STEP 3/5] TOPIC NORMALIZATION/CLUSTERING PER CAMPAIGN
+2026-01-28 08:14:44,900 - [INFO] - ================================================================================
+2026-01-28 08:14:44,927 - [INFO] - 📊 Campaign 'Industri Nikel & Narasi Geopolitik': 23 topics
+2026-01-28 08:14:44,928 - [INFO] -   └─ Clustered into 23 groups
+2026-01-28 08:14:44,929 - [INFO] - 📊 Campaign 'PT Vale Indonesia': 6 topics
+2026-01-28 08:14:44,929 - [INFO] -   └─ Clustered into 6 groups
+2026-01-28 08:14:44,930 - [INFO] - 📊 Campaign 'Industri Nikel & Narasi Geopolitik, PT Vale Indonesia': 3 topics
+2026-01-28 08:14:44,930 - [INFO] -   └─ Clustered into 2 groups
+2026-01-28 08:14:44,931 - [INFO] - 📊 Campaign 'Mind ID': 15 topics
+2026-01-28 08:14:44,931 - [INFO] -   └─ Clustered into 11 groups
+2026-01-28 08:14:44,932 - [INFO] - 📊 Campaign 'Regulator & Pemerintah, Industri Nikel & Narasi Geopolitik': 8 topics
+2026-01-28 08:14:44,932 - [INFO] -   └─ Clustered into 7 groups
+2026-01-28 08:14:44,933 - [INFO] - 📊 Campaign 'Regulator & Pemerintah, Industri Nikel & Narasi Geopolitik, Mind ID': 3 topics
+2026-01-28 08:14:44,933 - [INFO] -   └─ Clustered into 3 groups
+2026-01-28 08:14:44,934 - [INFO] - 📊 Campaign 'Morowali Issue': 1 topics
+2026-01-28 08:14:44,934 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:14:44,935 - [INFO] - 📊 Campaign 'Regulator & Pemerintah, Industri Nikel & Narasi Geopolitik, PT Vale Indonesia': 3 topics
+2026-01-28 08:14:44,935 - [INFO] -   └─ Clustered into 3 groups
+2026-01-28 08:14:44,936 - [INFO] - 📊 Campaign 'Industri Nikel & Narasi Geopolitik, Mind ID, ESG Eksternal, Sentimen Finansial, Investor, pasar, Regulator & Pemerintah, Morowali Issue, PT Vale Indonesia': 2 topics
+2026-01-28 08:14:44,936 - [INFO] -   └─ Clustered into 2 groups
+2026-01-28 08:14:44,936 - [INFO] - 📊 Campaign 'Sentimen Finansial, Investor, pasar': 2 topics
+2026-01-28 08:14:44,936 - [INFO] -   └─ Clustered into 2 groups
+2026-01-28 08:14:44,937 - [INFO] - 📊 Campaign 'Regulator & Pemerintah, Mind ID': 1 topics
+2026-01-28 08:14:44,937 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:14:44,937 - [INFO] - 📊 Campaign 'Harita Nikel, PT Vale Indonesia': 3 topics
+2026-01-28 08:14:44,938 - [INFO] -   └─ Clustered into 3 groups
+2026-01-28 08:14:44,938 - [INFO] - 📊 Campaign 'ESG Eksternal, Industri Nikel & Narasi Geopolitik, Sentimen Finansial, Investor, pasar': 1 topics
+2026-01-28 08:14:44,938 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:14:44,939 - [INFO] - 📊 Campaign 'ESG Eksternal, Morowali Issue': 1 topics
+2026-01-28 08:14:44,939 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:14:44,939 - [INFO] - 📊 Campaign 'Industri Nikel & Narasi Geopolitik, ESG Internal, Indonesia Morowali Industrial Park': 1 topics
+2026-01-28 08:14:44,939 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:14:44,940 - [INFO] - 📊 Campaign 'Harita Nikel': 1 topics
+2026-01-28 08:14:44,940 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:14:44,940 - [INFO] - 📊 Campaign 'Industri Nikel & Narasi Geopolitik, Harita Nikel': 1 topics
+2026-01-28 08:14:44,940 - [INFO] -   └─ Clustered into 1 groups
+2026-01-28 08:14:44,941 - [INFO] - [STEP 3/5] ✅ Clustered 17 campaigns
+2026-01-28 08:14:44,941 - [INFO] - 
+================================================================================
+2026-01-28 08:14:44,941 - [INFO] - [STEP 4/5] PILLAR GENERATION + NORMALIZATION + MAPPING
+2026-01-28 08:14:44,941 - [INFO] - ================================================================================
+2026-01-28 08:14:44,941 - [INFO] - 
+================================================================================
+2026-01-28 08:14:44,941 - [INFO] - [CAMPAIGN 1/17] Industri Nikel & Narasi Geopolitik
+2026-01-28 08:14:44,941 - [INFO] - ================================================================================
+2026-01-28 08:14:52,140 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:14:52,150 - [INFO] -   └─ Generated 20 unique Pillars
+2026-01-28 08:14:59,322 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:14:59,329 - [INFO] -   └─ After normalization: 20 unique Pillars
+2026-01-28 08:14:59,343 - [INFO] - 
+================================================================================
+2026-01-28 08:14:59,343 - [INFO] - [CAMPAIGN 2/17] PT Vale Indonesia
+2026-01-28 08:14:59,344 - [INFO] - ================================================================================
+2026-01-28 08:15:02,408 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:02,419 - [INFO] -   └─ Generated 6 unique Pillars
+2026-01-28 08:15:04,482 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:04,488 - [INFO] -   └─ After normalization: 6 unique Pillars
+2026-01-28 08:15:04,495 - [INFO] - 
+================================================================================
+2026-01-28 08:15:04,495 - [INFO] - [CAMPAIGN 3/17] Industri Nikel & Narasi Geopolitik, PT Vale Indonesia
+2026-01-28 08:15:04,495 - [INFO] - ================================================================================
+2026-01-28 08:15:07,420 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:09,616 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:09,621 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-28 08:15:11,032 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:11,035 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-28 08:15:11,038 - [INFO] - 
+================================================================================
+2026-01-28 08:15:11,039 - [INFO] - [CAMPAIGN 4/17] Mind ID
+2026-01-28 08:15:11,039 - [INFO] - ================================================================================
+2026-01-28 08:15:15,828 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:19,204 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:19,208 - [INFO] -   └─ Generated 11 unique Pillars
+2026-01-28 08:15:23,683 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:23,693 - [INFO] -   └─ After normalization: 12 unique Pillars
+2026-01-28 08:15:23,693 - [INFO] -   └─ Merged -1 Pillars
+2026-01-28 08:15:23,713 - [INFO] - 
+================================================================================
+2026-01-28 08:15:23,713 - [INFO] - [CAMPAIGN 5/17] Regulator & Pemerintah, Industri Nikel & Narasi Geopolitik
+2026-01-28 08:15:23,713 - [INFO] - ================================================================================
+2026-01-28 08:15:25,740 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:28,719 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:28,736 - [INFO] -   └─ Generated 7 unique Pillars
+2026-01-28 08:15:33,411 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:33,430 - [INFO] -   └─ After normalization: 7 unique Pillars
+2026-01-28 08:15:33,445 - [INFO] - 
+================================================================================
+2026-01-28 08:15:33,446 - [INFO] - [CAMPAIGN 6/17] Regulator & Pemerintah, Industri Nikel & Narasi Geopolitik, Mind ID
+2026-01-28 08:15:33,446 - [INFO] - ================================================================================
+2026-01-28 08:15:35,300 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:35,322 - [INFO] -   └─ Generated 3 unique Pillars
+2026-01-28 08:15:37,151 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:37,164 - [INFO] -   └─ After normalization: 3 unique Pillars
+2026-01-28 08:15:37,170 - [INFO] - 
+================================================================================
+2026-01-28 08:15:37,170 - [INFO] - [CAMPAIGN 7/17] Morowali Issue
+2026-01-28 08:15:37,170 - [INFO] - ================================================================================
+2026-01-28 08:15:38,166 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:38,169 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:15:38,169 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:15:38,172 - [INFO] - 
+================================================================================
+2026-01-28 08:15:38,172 - [INFO] - [CAMPAIGN 8/17] Regulator & Pemerintah, Industri Nikel & Narasi Geopolitik, PT Vale Indonesia
+2026-01-28 08:15:38,172 - [INFO] - ================================================================================
+2026-01-28 08:15:39,966 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:39,975 - [INFO] -   └─ Generated 3 unique Pillars
+2026-01-28 08:15:41,569 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:41,578 - [INFO] -   └─ After normalization: 4 unique Pillars
+2026-01-28 08:15:41,581 - [INFO] -   └─ Merged -1 Pillars
+2026-01-28 08:15:41,584 - [INFO] - 
+================================================================================
+2026-01-28 08:15:41,584 - [INFO] - [CAMPAIGN 9/17] Industri Nikel & Narasi Geopolitik, Mind ID, ESG Eksternal, Sentimen Finansial, Investor, pasar, Regulator & Pemerintah, Morowali Issue, PT Vale Indonesia
+2026-01-28 08:15:41,584 - [INFO] - ================================================================================
+2026-01-28 08:15:42,931 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:42,954 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-28 08:15:43,902 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:43,907 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:15:43,908 - [INFO] -   └─ Merged 1 Pillars
+2026-01-28 08:15:43,926 - [INFO] - 
+================================================================================
+2026-01-28 08:15:43,926 - [INFO] - [CAMPAIGN 10/17] Sentimen Finansial, Investor, pasar
+2026-01-28 08:15:43,926 - [INFO] - ================================================================================
+2026-01-28 08:15:45,370 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:45,377 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-28 08:15:46,646 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:46,657 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-28 08:15:46,660 - [INFO] - 
+================================================================================
+2026-01-28 08:15:46,660 - [INFO] - [CAMPAIGN 11/17] Regulator & Pemerintah, Mind ID
+2026-01-28 08:15:46,660 - [INFO] - ================================================================================
+2026-01-28 08:15:48,086 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:48,090 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:15:48,091 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:15:48,093 - [INFO] - 
+================================================================================
+2026-01-28 08:15:48,093 - [INFO] - [CAMPAIGN 12/17] Harita Nikel, PT Vale Indonesia
+2026-01-28 08:15:48,093 - [INFO] - ================================================================================
+2026-01-28 08:15:50,211 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:50,214 - [INFO] -   └─ Generated 3 unique Pillars
+2026-01-28 08:15:51,608 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:51,613 - [INFO] -   └─ After normalization: 3 unique Pillars
+2026-01-28 08:15:51,626 - [INFO] - 
+================================================================================
+2026-01-28 08:15:51,626 - [INFO] - [CAMPAIGN 13/17] ESG Eksternal, Industri Nikel & Narasi Geopolitik, Sentimen Finansial, Investor, pasar
+2026-01-28 08:15:51,626 - [INFO] - ================================================================================
+2026-01-28 08:15:52,894 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:52,897 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:15:52,897 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:15:52,900 - [INFO] - 
+================================================================================
+2026-01-28 08:15:52,900 - [INFO] - [CAMPAIGN 14/17] ESG Eksternal, Morowali Issue
+2026-01-28 08:15:52,901 - [INFO] - ================================================================================
+2026-01-28 08:15:53,691 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:53,699 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:15:53,700 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:15:53,701 - [INFO] - 
+================================================================================
+2026-01-28 08:15:53,702 - [INFO] - [CAMPAIGN 15/17] Industri Nikel & Narasi Geopolitik, ESG Internal, Indonesia Morowali Industrial Park
+2026-01-28 08:15:53,702 - [INFO] - ================================================================================
+2026-01-28 08:15:55,489 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:55,493 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:15:55,494 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:15:55,499 - [INFO] - 
+================================================================================
+2026-01-28 08:15:55,499 - [INFO] - [CAMPAIGN 16/17] Harita Nikel
+2026-01-28 08:15:55,499 - [INFO] - ================================================================================
+2026-01-28 08:15:56,620 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:56,623 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:15:56,624 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:15:56,637 - [INFO] - 
+================================================================================
+2026-01-28 08:15:56,637 - [INFO] - [CAMPAIGN 17/17] Industri Nikel & Narasi Geopolitik, Harita Nikel
+2026-01-28 08:15:56,638 - [INFO] - ================================================================================
+2026-01-28 08:15:57,943 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:15:57,952 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-28 08:15:57,952 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-28 08:15:57,963 - [INFO] - [STEP 4/5] ✅ Pillar: 63/88 (71.6%)
+2026-01-28 08:15:57,964 - [INFO] - [STEP 4/5] ✅ Unique Pillars across all campaigns: 56
+2026-01-28 08:15:57,964 - [INFO] - 
+================================================================================
+2026-01-28 08:15:57,965 - [INFO] - [STEP 5/5] SPOKESPERSON (MAINSTREAM ONLY)
+2026-01-28 08:15:57,965 - [INFO] - ================================================================================
+2026-01-28 08:15:57,971 - [INFO] - 📊 Processing 88 mainstream master rows
+2026-01-28 08:16:11,111 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:16:28,401 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:16:37,246 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:16:45,260 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:16:49,708 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:16:49,727 - [INFO] - 📋 Copying spokesperson to duplicate rows...
+2026-01-28 08:17:03,533 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 08:17:03,558 - [INFO] - [STEP 5/5] ✅ Spokesperson: 37/88 (42.0%)
+2026-01-28 08:17:03,560 - [INFO] - 
+================================================================================
+2026-01-28 08:17:03,560 - [INFO] - [FINALIZATION] Preparing output
+2026-01-28 08:17:03,560 - [INFO] - ================================================================================
+2026-01-28 08:17:03,568 - [INFO] - ✅ Row count verified: 88 → 88 (unchanged)
+2026-01-28 08:17:03,686 - [INFO] - 
+================================================================================
+2026-01-28 08:17:03,686 - [INFO] - ✅ PROCESSING COMPLETE - v13.0
+2026-01-28 08:17:03,686 - [INFO] - ================================================================================
+2026-01-28 08:17:03,686 - [INFO] - Rows: 88 → 88 (unchanged: True)
+2026-01-28 08:17:03,687 - [INFO] - Duration: 299.94s | Cost: $0.025605
+2026-01-28 08:17:03,687 - [INFO] - Topics: 67 → Pillars: 56 (16.4% reduction)
+2026-01-28 08:17:03,687 - [INFO] - Topic (initial): 58/88 (65.9%)
+2026-01-28 08:17:03,687 - [INFO] - Sentiment: 88/88 (100.0%)
+2026-01-28 08:17:03,687 - [INFO] - Topic (after retry): 66/88 (75.0%)
+2026-01-28 08:17:03,688 - [INFO] - Topic Clustering: 17/17 (100.0%)
+2026-01-28 08:17:03,688 - [INFO] - Pillar (final): 63/88 (71.6%) | Unique: 56
+2026-01-28 08:17:03,688 - [INFO] - Spokesperson: 37/88 (42.0%)
+2026-01-30 00:46:43,748 - [INFO] - 📊 Original rows: 8653
+2026-01-30 00:46:43,767 - [INFO] - ✅ Normalized columns: {'Campaigns': 'Campaigns', 'Channel': 'Channel', 'Title': 'Title', 'Content': 'Content', 'Buzz': 'Buzz', 'Engagement': 'Engagement'}
+2026-01-30 00:46:43,769 - [INFO] - ✅ NO DELETION - All 8653 rows will be processed
+2026-01-30 00:46:43,782 - [INFO] - 
+================================================================================
+2026-01-30 00:46:43,782 - [INFO] - [DEDUPLICATION] Creating groups for identical content
+2026-01-30 00:46:43,782 - [INFO] - ================================================================================
+2026-01-30 00:46:44,004 - [INFO] - ✅ Deduplication: 8653 rows → 8424 unique groups + 229 duplicates
+2026-01-30 00:46:44,010 - [INFO] - 📊 Channel split: Mainstream=6821, Social=1832
+2026-01-30 00:46:44,011 - [INFO] - 
+================================================================================
+2026-01-30 00:46:44,011 - [INFO] - [PRE-FILTER] Checking content eligibility
+2026-01-30 00:46:44,011 - [INFO] - ================================================================================
+2026-01-30 00:46:45,506 - [INFO] - ✅ Content filter: 8646 eligible, 7 skipped (<3 words)
+2026-01-30 00:46:45,512 - [INFO] - 
+================================================================================
+2026-01-30 00:46:45,512 - [INFO] - [STEP 1/5] TOPIC + SENTIMENT (NO PILLAR YET)
+2026-01-30 00:46:45,513 - [INFO] - ================================================================================
+2026-01-30 00:46:45,551 - [INFO] - 📊 Processing 8417 master rows (eligible content only)
+2026-01-30 00:47:13,548 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:47:36,849 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:48:07,459 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:48:37,123 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:49:03,430 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:49:22,891 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:49:49,902 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:50:00,456 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:50:24,280 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:50:42,178 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:50:52,965 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:51:16,492 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:51:31,488 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:52:04,060 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:52:23,306 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:52:55,837 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:53:09,741 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:53:21,943 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:53:45,408 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:54:10,186 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:54:22,755 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:54:49,950 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:55:02,725 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:55:20,200 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:55:41,255 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:56:03,163 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:56:19,649 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:56:43,609 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:57:10,452 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:57:28,456 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:57:57,852 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:58:10,438 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:58:42,845 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:58:57,064 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:59:21,055 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:59:39,115 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 00:59:57,859 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:00:18,501 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:00:48,953 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:01:08,034 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:01:28,092 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:02:10,008 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:02:36,376 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:03:10,344 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:03:24,090 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:03:35,116 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:03:54,661 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:04:06,447 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:04:25,461 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:04:57,607 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:05:24,985 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:05:52,821 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:06:16,782 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:06:35,374 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:06:58,688 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:07:18,283 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:08:04,385 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:08:32,134 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:08:47,301 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:08:59,675 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:09:22,410 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:09:47,105 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:10:13,401 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:10:41,851 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:10:53,950 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:11:03,083 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:11:33,421 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:11:45,189 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:11:54,448 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:12:02,344 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:12:30,929 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:12:58,468 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:13:20,219 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:13:28,989 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:13:47,704 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:13:53,970 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:14:08,925 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:14:18,546 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:14:28,887 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:14:44,655 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:15:08,819 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:15:28,367 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:15:48,086 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:16:13,392 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:16:28,297 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:16:39,979 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:17:00,944 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:17:25,207 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:17:32,574 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:18:05,995 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:18:20,222 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:18:27,997 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:18:39,994 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:18:56,695 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:19:22,921 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:19:35,873 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:19:45,646 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:19:55,815 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:20:11,800 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:20:31,998 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:20:50,435 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:21:10,977 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:21:41,438 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:22:14,090 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:22:26,688 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:22:47,858 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:23:08,377 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:23:29,795 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:23:59,573 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:24:13,280 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:24:41,346 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:25:12,631 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:25:34,196 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:25:59,979 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:26:21,611 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:26:37,380 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:26:48,508 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:26:58,471 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:27:10,845 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:27:23,658 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:27:36,002 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:27:48,109 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:28:17,420 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:28:30,289 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:28:47,971 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:29:11,016 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:29:19,988 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:29:36,320 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:29:46,554 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:30:13,955 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:30:29,723 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:30:51,375 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:31:04,457 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:31:16,006 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:31:41,378 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:31:59,235 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:32:10,850 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:32:20,761 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:32:50,506 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:33:17,772 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:33:40,139 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:33:58,598 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:34:16,953 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:34:42,890 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:35:10,917 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:35:40,100 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:36:00,982 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:36:33,561 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:37:01,614 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:37:30,813 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:37:51,997 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:38:10,299 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:38:34,892 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:39:06,541 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:39:26,712 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:39:54,358 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:40:06,783 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:40:16,473 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:40:26,206 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:40:43,102 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:40:57,813 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:41:10,012 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:41:32,789 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:41:44,537 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:41:56,212 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:42:21,607 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:42:46,948 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:42:59,188 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:22,999 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:48,228 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:43:58,057 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:44:23,583 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:44:45,939 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:44:55,635 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:45:02,473 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:45:27,136 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:45:38,740 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:45:56,042 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:46:25,619 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:46:55,723 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:47:06,686 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:47:17,826 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:47:38,681 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:48:00,652 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:48:32,877 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:49:04,752 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:49:33,884 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:49:58,630 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:50:25,531 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:50:53,534 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:51:22,075 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:51:45,110 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:52:00,252 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:52:11,325 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:52:21,538 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:52:47,198 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:53:00,063 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:53:34,035 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:53:46,968 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:54:11,234 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:54:36,619 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:55:06,942 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:55:32,817 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:55:47,072 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:56:15,543 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:56:26,999 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:56:44,362 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:57:00,308 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:57:07,645 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:57:17,947 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:57:32,755 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:57:43,861 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:57:56,789 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:58:13,539 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:58:32,499 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:59:03,488 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:59:31,962 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 01:59:45,170 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:00:14,186 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:00:39,448 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:01:04,863 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:01:33,455 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:01:56,248 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:02:26,642 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:02:50,087 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:03:15,833 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:03:45,290 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:04:06,723 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:04:26,450 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:04:50,885 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:05:13,406 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:05:43,541 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:05:55,133 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:06:18,222 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:06:53,115 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:07:14,709 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:07:48,092 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:08:09,184 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:08:40,724 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:08:53,939 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:09:03,878 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:09:20,853 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:09:44,716 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:09:57,468 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:10:10,509 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:10:40,997 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:11:02,345 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:11:24,974 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:11:35,421 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:11:48,949 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:12:20,562 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:12:44,201 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:12:54,514 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:13:14,529 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:13:46,161 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:14:12,243 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:14:30,215 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:14:54,097 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:15:05,568 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:15:22,139 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:15:52,028 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:16:17,719 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:16:33,460 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:16:46,610 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:16:52,514 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:17:05,959 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:17:16,890 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:17:29,250 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:17:37,678 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:17:48,762 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:18:04,703 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:18:25,781 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:18:55,532 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:19:06,619 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:19:18,671 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:19:44,482 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:20:05,583 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:20:26,794 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:20:37,578 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:20:53,128 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:21:04,714 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:21:15,686 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:21:29,998 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:21:41,415 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:21:52,674 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:22:17,403 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:22:38,393 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:23:00,199 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:23:27,373 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:23:57,415 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:24:10,609 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:24:33,544 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:24:51,274 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:25:11,615 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:25:27,043 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:25:41,182 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:25:55,198 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:26:09,795 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:26:36,044 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:26:46,254 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:26:56,871 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:27:20,371 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:27:47,756 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:28:12,377 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:28:24,416 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:28:35,978 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:28:59,579 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:29:22,428 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:29:49,626 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:30:16,538 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:30:38,884 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:30:51,941 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:31:16,629 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:31:44,665 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:32:17,537 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:32:35,261 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:33:01,204 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:33:22,463 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:33:45,085 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:34:01,150 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:34:11,596 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:34:23,199 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:34:33,301 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:34:43,807 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:35:01,569 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:35:29,656 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:36:03,327 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:36:24,966 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:36:55,680 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:37:27,565 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:37:47,704 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:37:56,363 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:38:12,457 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:38:35,709 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:39:05,066 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:39:31,497 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:39:51,060 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:40:11,710 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:40:26,787 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:40:59,195 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:41:17,892 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:41:44,983 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:42:11,551 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:42:34,290 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:42:51,250 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:43:10,422 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:43:29,236 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:43:52,239 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:44:03,356 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:44:15,374 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:44:25,286 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:44:35,384 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:44:52,813 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:45:04,605 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:45:18,023 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:45:49,060 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:46:18,489 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:46:32,451 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:46:42,188 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:46:49,368 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:47:01,438 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:47:09,574 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:47:25,059 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:47:33,593 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:47:54,789 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:48:20,288 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:48:42,302 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:49:02,879 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:49:15,682 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:49:34,347 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:49:57,785 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:50:15,121 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:50:28,609 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:50:44,460 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:51:01,159 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:51:22,576 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:51:37,101 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:51:45,830 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:51:56,493 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:52:09,648 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:52:22,994 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:52:34,399 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:52:48,896 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:53:14,583 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:53:24,027 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:53:34,953 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:54:03,842 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:54:18,821 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:54:30,361 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:54:44,623 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:54:57,056 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:55:10,168 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:55:22,239 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:55:43,633 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:56:05,968 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:56:22,129 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:56:47,763 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:57:22,780 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:57:37,137 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:58:05,708 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:58:47,095 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:59:15,445 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:59:26,254 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:59:45,391 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 02:59:58,656 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:00:09,880 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:00:40,071 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:01:02,280 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:01:29,412 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:01:59,095 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:02:29,349 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:02:45,180 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:03:15,639 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:03:28,320 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:03:46,509 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:04:02,560 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:04:18,683 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:04:34,368 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:05:05,088 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:05:28,999 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:05:49,344 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:05:51,233 - [INFO] - 📋 Copying results to duplicate rows...
+2026-01-30 03:05:55,076 - [INFO] - [STEP 1/5] ✅ Topic: 4538/8653 (52.4%)
+2026-01-30 03:05:55,078 - [INFO] - [STEP 1/5] ✅ Sentiment: 8653/8653 (100.0%)
+2026-01-30 03:05:55,078 - [INFO] - 
+================================================================================
+2026-01-30 03:05:55,078 - [INFO] - [STEP 2/5] SMART RETRY FOR EMPTY TOPICS
+2026-01-30 03:05:55,079 - [INFO] - ================================================================================
+2026-01-30 03:05:55,081 - [INFO] - 📊 Social retry based on Engagement >= 5000
+2026-01-30 03:05:55,114 - [INFO] - 📊 Retry candidates: Social=12, Mainstream=100
+2026-01-30 03:06:05,122 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:06:20,744 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:06:29,517 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:06:45,487 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:06:59,622 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:07:09,148 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:07:27,110 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:07:36,633 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:07:36,685 - [INFO] - 📋 Copying retried results to duplicate rows...
+2026-01-30 03:07:36,761 - [INFO] - [STEP 2/5] ✅ Topic (after retry): 4557/8653 (52.7%)
+2026-01-30 03:07:36,761 - [INFO] - 
+================================================================================
+2026-01-30 03:07:36,762 - [INFO] - [STEP 3/5] TOPIC NORMALIZATION/CLUSTERING PER CAMPAIGN
+2026-01-30 03:07:36,762 - [INFO] - ================================================================================
+2026-01-30 03:07:36,838 - [INFO] - 📊 Campaign 'Menteri Pertanian': 405 topics
+2026-01-30 03:07:36,880 - [INFO] -   └─ Clustered into 266 groups
+2026-01-30 03:07:36,882 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Hilirisasi Pertanian, Menteri Pertanian, Issue | Kementan Tempo': 3 topics
+2026-01-30 03:07:36,883 - [INFO] -   └─ Clustered into 3 groups
+2026-01-30 03:07:36,886 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru': 10 topics
+2026-01-30 03:07:36,886 - [INFO] -   └─ Clustered into 6 groups
+2026-01-30 03:07:36,893 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Program | Lahan dan Irigasi Pertanian': 29 topics
+2026-01-30 03:07:36,893 - [INFO] -   └─ Clustered into 24 groups
+2026-01-30 03:07:36,906 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan': 671 topics
+2026-01-30 03:07:36,989 - [INFO] -   └─ Clustered into 396 groups
+2026-01-30 03:07:36,996 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian': 166 topics
+2026-01-30 03:07:37,003 - [INFO] -   └─ Clustered into 82 groups
+2026-01-30 03:07:37,013 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian': 166 topics
+2026-01-30 03:07:37,023 - [INFO] -   └─ Clustered into 117 groups
+2026-01-30 03:07:37,028 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Hilirisasi Pertanian, Menteri Pertanian': 179 topics
+2026-01-30 03:07:37,033 - [INFO] -   └─ Clustered into 90 groups
+2026-01-30 03:07:37,041 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Hilirisasi Pertanian': 432 topics
+2026-01-30 03:07:37,093 - [INFO] -   └─ Clustered into 326 groups
+2026-01-30 03:07:37,096 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Cetak Sawah Baru': 18 topics
+2026-01-30 03:07:37,096 - [INFO] -   └─ Clustered into 15 groups
+2026-01-30 03:07:37,099 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Hilirisasi Pertanian': 56 topics
+2026-01-30 03:07:37,100 - [INFO] -   └─ Clustered into 33 groups
+2026-01-30 03:07:37,107 - [INFO] - 📊 Campaign 'Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian': 180 topics
+2026-01-30 03:07:37,116 - [INFO] -   └─ Clustered into 134 groups
+2026-01-30 03:07:37,119 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Menteri Pertanian': 229 topics
+2026-01-30 03:07:37,132 - [INFO] -   └─ Clustered into 146 groups
+2026-01-30 03:07:37,137 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian': 19 topics
+2026-01-30 03:07:37,139 - [INFO] -   └─ Clustered into 12 groups
+2026-01-30 03:07:37,149 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian': 968 topics
+2026-01-30 03:07:37,380 - [INFO] -   └─ Clustered into 705 groups
+2026-01-30 03:07:37,383 - [INFO] - 📊 Campaign 'Program | Lahan dan Irigasi Pertanian': 360 topics
+2026-01-30 03:07:37,413 - [INFO] -   └─ Clustered into 269 groups
+2026-01-30 03:07:37,415 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Menteri Pertanian, Program | Hilirisasi Pertanian, Issue | Impor Ilegal Beras Sabang & Batam': 1 topics
+2026-01-30 03:07:37,415 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,418 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Menteri Pertanian': 23 topics
+2026-01-30 03:07:37,419 - [INFO] -   └─ Clustered into 22 groups
+2026-01-30 03:07:37,420 - [INFO] - 📊 Campaign 'Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian': 6 topics
+2026-01-30 03:07:37,420 - [INFO] -   └─ Clustered into 5 groups
+2026-01-30 03:07:37,422 - [INFO] - 📊 Campaign 'Program | Hilirisasi Pertanian': 69 topics
+2026-01-30 03:07:37,423 - [INFO] -   └─ Clustered into 57 groups
+2026-01-30 03:07:37,425 - [INFO] - 📊 Campaign 'Program | Cetak Sawah Baru': 92 topics
+2026-01-30 03:07:37,427 - [INFO] -   └─ Clustered into 60 groups
+2026-01-30 03:07:37,428 - [INFO] - 📊 Campaign 'Issue | Impor Ilegal Beras Sabang & Batam': 3 topics
+2026-01-30 03:07:37,428 - [INFO] -   └─ Clustered into 3 groups
+2026-01-30 03:07:37,431 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian': 13 topics
+2026-01-30 03:07:37,432 - [INFO] -   └─ Clustered into 11 groups
+2026-01-30 03:07:37,434 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian, Program | Hilirisasi Pertanian': 3 topics
+2026-01-30 03:07:37,434 - [INFO] -   └─ Clustered into 2 groups
+2026-01-30 03:07:37,436 - [INFO] - 📊 Campaign 'Menteri Pertanian, Issue | Kementan Tempo': 13 topics
+2026-01-30 03:07:37,436 - [INFO] -   └─ Clustered into 11 groups
+2026-01-30 03:07:37,444 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Program | Hilirisasi Pertanian': 1 topics
+2026-01-30 03:07:37,444 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,446 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Hilirisasi Pertanian, Program | Cetak Sawah Baru': 11 topics
+2026-01-30 03:07:37,446 - [INFO] -   └─ Clustered into 11 groups
+2026-01-30 03:07:37,449 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Menteri Pertanian': 55 topics
+2026-01-30 03:07:37,450 - [INFO] -   └─ Clustered into 35 groups
+2026-01-30 03:07:37,452 - [INFO] - 📊 Campaign 'Wakil Menteri Pertanian': 12 topics
+2026-01-30 03:07:37,452 - [INFO] -   └─ Clustered into 9 groups
+2026-01-30 03:07:37,453 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian': 2 topics
+2026-01-30 03:07:37,453 - [INFO] -   └─ Clustered into 2 groups
+2026-01-30 03:07:37,454 - [INFO] - 📊 Campaign 'Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru': 8 topics
+2026-01-30 03:07:37,454 - [INFO] -   └─ Clustered into 8 groups
+2026-01-30 03:07:37,455 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian': 12 topics
+2026-01-30 03:07:37,455 - [INFO] -   └─ Clustered into 7 groups
+2026-01-30 03:07:37,456 - [INFO] - 📊 Campaign 'Program | Hilirisasi Pertanian, Menteri Pertanian': 6 topics
+2026-01-30 03:07:37,456 - [INFO] -   └─ Clustered into 5 groups
+2026-01-30 03:07:37,457 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Hilirisasi Pertanian, Menteri Pertanian': 18 topics
+2026-01-30 03:07:37,457 - [INFO] -   └─ Clustered into 15 groups
+2026-01-30 03:07:37,460 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Menteri Pertanian, Issue | Kementan Tempo': 1 topics
+2026-01-30 03:07:37,460 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,463 - [INFO] - 📊 Campaign 'Issue | Food Estate Papua': 49 topics
+2026-01-30 03:07:37,463 - [INFO] -   └─ Clustered into 24 groups
+2026-01-30 03:07:37,465 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Menteri Pertanian, Issue | Kementan Tempo': 1 topics
+2026-01-30 03:07:37,465 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,466 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru': 15 topics
+2026-01-30 03:07:37,466 - [INFO] -   └─ Clustered into 13 groups
+2026-01-30 03:07:37,468 - [INFO] - 📊 Campaign 'Program | Lahan dan Irigasi Pertanian, Menteri Pertanian': 7 topics
+2026-01-30 03:07:37,468 - [INFO] -   └─ Clustered into 7 groups
+2026-01-30 03:07:37,470 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Hilirisasi Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian': 2 topics
+2026-01-30 03:07:37,470 - [INFO] -   └─ Clustered into 2 groups
+2026-01-30 03:07:37,471 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Issue | Impor Ilegal Beras Sabang & Batam, Menteri Pertanian': 1 topics
+2026-01-30 03:07:37,471 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,473 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Program | Cetak Sawah Baru': 8 topics
+2026-01-30 03:07:37,473 - [INFO] -   └─ Clustered into 7 groups
+2026-01-30 03:07:37,474 - [INFO] - 📊 Campaign 'Issue | Food Estate Papua, General | Industri Pertanian, Program | Hilirisasi Pertanian': 1 topics
+2026-01-30 03:07:37,475 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,476 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Menteri Pertanian, Program | Hilirisasi Pertanian, Issue | Kementan Tempo': 2 topics
+2026-01-30 03:07:37,476 - [INFO] -   └─ Clustered into 2 groups
+2026-01-30 03:07:37,477 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru, Program | Hilirisasi Pertanian': 6 topics
+2026-01-30 03:07:37,477 - [INFO] -   └─ Clustered into 5 groups
+2026-01-30 03:07:37,478 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Cetak Sawah Baru': 7 topics
+2026-01-30 03:07:37,479 - [INFO] -   └─ Clustered into 7 groups
+2026-01-30 03:07:37,480 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian': 2 topics
+2026-01-30 03:07:37,480 - [INFO] -   └─ Clustered into 2 groups
+2026-01-30 03:07:37,482 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian': 2 topics
+2026-01-30 03:07:37,482 - [INFO] -   └─ Clustered into 2 groups
+2026-01-30 03:07:37,483 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Issue | Kementan Tempo': 1 topics
+2026-01-30 03:07:37,484 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,485 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Issue | Food Estate Papua, Program | Lahan dan Irigasi Pertanian': 1 topics
+2026-01-30 03:07:37,485 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,486 - [INFO] - 📊 Campaign 'Wakil Menteri Pertanian, General | Industri Pertanian': 3 topics
+2026-01-30 03:07:37,486 - [INFO] -   └─ Clustered into 3 groups
+2026-01-30 03:07:37,487 - [INFO] - 📊 Campaign 'Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru': 5 topics
+2026-01-30 03:07:37,487 - [INFO] -   └─ Clustered into 4 groups
+2026-01-30 03:07:37,488 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Issue | Food Estate Papua, Issue | Kementan Tempo, Menteri Pertanian': 1 topics
+2026-01-30 03:07:37,489 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,490 - [INFO] - 📊 Campaign 'Issue | Food Estate Papua, Program | Cetak Sawah Baru': 2 topics
+2026-01-30 03:07:37,490 - [INFO] -   └─ Clustered into 2 groups
+2026-01-30 03:07:37,491 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Issue | Food Estate Papua, Menteri Pertanian': 1 topics
+2026-01-30 03:07:37,491 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,492 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Issue | Food Estate Papua': 5 topics
+2026-01-30 03:07:37,492 - [INFO] -   └─ Clustered into 5 groups
+2026-01-30 03:07:37,493 - [INFO] - 📊 Campaign 'Program | Hilirisasi Pertanian, Program | Lahan dan Irigasi Pertanian': 7 topics
+2026-01-30 03:07:37,493 - [INFO] -   └─ Clustered into 7 groups
+2026-01-30 03:07:37,494 - [INFO] - 📊 Campaign 'Wakil Menteri Pertanian, Menteri Pertanian': 21 topics
+2026-01-30 03:07:37,495 - [INFO] -   └─ Clustered into 10 groups
+2026-01-30 03:07:37,497 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian, Program | Hilirisasi Pertanian': 1 topics
+2026-01-30 03:07:37,497 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,499 - [INFO] - 📊 Campaign 'Issue | Food Estate Papua, Program | Swasembada Pangan, Menteri Pertanian, Issue | Kementan Tempo': 1 topics
+2026-01-30 03:07:37,499 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,500 - [INFO] - 📊 Campaign 'Wakil Menteri Pertanian, General | Industri Pertanian, Menteri Pertanian': 12 topics
+2026-01-30 03:07:37,500 - [INFO] -   └─ Clustered into 3 groups
+2026-01-30 03:07:37,501 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru': 1 topics
+2026-01-30 03:07:37,501 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,502 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian': 1 topics
+2026-01-30 03:07:37,503 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,504 - [INFO] - 📊 Campaign 'Program | Cetak Sawah Baru, Menteri Pertanian': 1 topics
+2026-01-30 03:07:37,504 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,505 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Issue | Food Estate Papua, Program | Cetak Sawah Baru': 1 topics
+2026-01-30 03:07:37,505 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,506 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, General | Industri Pertanian, Program | Hilirisasi Pertanian, Program | Cetak Sawah Baru': 4 topics
+2026-01-30 03:07:37,507 - [INFO] -   └─ Clustered into 4 groups
+2026-01-30 03:07:37,508 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Program | Hilirisasi Pertanian, Program | Cetak Sawah Baru': 1 topics
+2026-01-30 03:07:37,508 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,509 - [INFO] - 📊 Campaign 'Issue | Kementan Tempo': 1 topics
+2026-01-30 03:07:37,509 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,510 - [INFO] - 📊 Campaign 'Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Issue | Kementan Tempo': 1 topics
+2026-01-30 03:07:37,510 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,511 - [INFO] - 📊 Campaign 'Issue | Food Estate Papua, Menteri Pertanian, Issue | Kementan Tempo': 1 topics
+2026-01-30 03:07:37,511 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,512 - [INFO] - 📊 Campaign 'Wakil Menteri Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian': 3 topics
+2026-01-30 03:07:37,512 - [INFO] -   └─ Clustered into 3 groups
+2026-01-30 03:07:37,513 - [INFO] - 📊 Campaign 'Program | Hilirisasi Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru': 1 topics
+2026-01-30 03:07:37,513 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,514 - [INFO] - 📊 Campaign 'Issue | Food Estate Papua, Program | Swasembada Pangan': 1 topics
+2026-01-30 03:07:37,514 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,515 - [INFO] - 📊 Campaign 'Program | Swasembada Pangan, Program | Hilirisasi Pertanian, Menteri Pertanian': 1 topics
+2026-01-30 03:07:37,515 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,516 - [INFO] - 📊 Campaign 'Issue | Food Estate Papua, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian': 4 topics
+2026-01-30 03:07:37,516 - [INFO] -   └─ Clustered into 3 groups
+2026-01-30 03:07:37,517 - [INFO] - 📊 Campaign 'General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian, Issue | Kementan Tempo': 1 topics
+2026-01-30 03:07:37,517 - [INFO] -   └─ Clustered into 1 groups
+2026-01-30 03:07:37,518 - [INFO] - [STEP 3/5] ✅ Clustered 76 campaigns
+2026-01-30 03:07:37,518 - [INFO] - 
+================================================================================
+2026-01-30 03:07:37,518 - [INFO] - [STEP 4/5] PILLAR GENERATION + NORMALIZATION + MAPPING
+2026-01-30 03:07:37,518 - [INFO] - ================================================================================
+2026-01-30 03:07:37,518 - [INFO] - 
+================================================================================
+2026-01-30 03:07:37,518 - [INFO] - [CAMPAIGN 1/76] Menteri Pertanian
+2026-01-30 03:07:37,519 - [INFO] - ================================================================================
+2026-01-30 03:08:51,141 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:08:58,838 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:08:58,850 - [INFO] -   └─ Generated 78 unique Pillars
+2026-01-30 03:09:17,917 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:17,934 - [INFO] -   └─ After normalization: 93 unique Pillars
+2026-01-30 03:09:17,934 - [INFO] -   └─ Merged -15 Pillars
+2026-01-30 03:09:18,095 - [INFO] - 
+================================================================================
+2026-01-30 03:09:18,096 - [INFO] - [CAMPAIGN 2/76] General | Industri Pertanian, Program | Hilirisasi Pertanian, Menteri Pertanian, Issue | Kementan Tempo
+2026-01-30 03:09:18,096 - [INFO] - ================================================================================
+2026-01-30 03:09:19,845 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:19,861 - [INFO] -   └─ Generated 3 unique Pillars
+2026-01-30 03:09:21,392 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:21,401 - [INFO] -   └─ After normalization: 3 unique Pillars
+2026-01-30 03:09:21,413 - [INFO] - 
+================================================================================
+2026-01-30 03:09:21,413 - [INFO] - [CAMPAIGN 3/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:09:21,413 - [INFO] - ================================================================================
+2026-01-30 03:09:26,071 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:27,847 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:27,869 - [INFO] -   └─ Generated 6 unique Pillars
+2026-01-30 03:09:29,841 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:29,845 - [INFO] -   └─ After normalization: 5 unique Pillars
+2026-01-30 03:09:29,846 - [INFO] -   └─ Merged 1 Pillars
+2026-01-30 03:09:29,867 - [INFO] - 
+================================================================================
+2026-01-30 03:09:29,867 - [INFO] - [CAMPAIGN 4/76] Program | Swasembada Pangan, Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:09:29,868 - [INFO] - ================================================================================
+2026-01-30 03:09:34,992 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:42,054 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:42,061 - [INFO] -   └─ Generated 22 unique Pillars
+2026-01-30 03:09:49,953 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:09:49,966 - [INFO] -   └─ After normalization: 22 unique Pillars
+2026-01-30 03:09:49,987 - [INFO] - 
+================================================================================
+2026-01-30 03:09:49,987 - [INFO] - [CAMPAIGN 5/76] Program | Swasembada Pangan
+2026-01-30 03:09:49,988 - [INFO] - ================================================================================
+2026-01-30 03:11:59,245 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:12:11,410 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:12:11,428 - [INFO] -   └─ Generated 136 unique Pillars
+2026-01-30 03:12:52,509 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:12:52,527 - [INFO] -   └─ After normalization: 136 unique Pillars
+2026-01-30 03:12:52,751 - [INFO] - 
+================================================================================
+2026-01-30 03:12:52,753 - [INFO] - [CAMPAIGN 6/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:12:52,753 - [INFO] - ================================================================================
+2026-01-30 03:13:20,205 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:13:27,760 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:13:27,779 - [INFO] -   └─ Generated 46 unique Pillars
+2026-01-30 03:13:46,900 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:13:46,918 - [INFO] -   └─ After normalization: 47 unique Pillars
+2026-01-30 03:13:46,919 - [INFO] -   └─ Merged -1 Pillars
+2026-01-30 03:13:46,987 - [INFO] - 
+================================================================================
+2026-01-30 03:13:46,988 - [INFO] - [CAMPAIGN 7/76] Program | Swasembada Pangan, General | Industri Pertanian
+2026-01-30 03:13:46,988 - [INFO] - ================================================================================
+2026-01-30 03:14:19,596 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:14:26,518 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:14:26,540 - [INFO] -   └─ Generated 52 unique Pillars
+2026-01-30 03:14:41,495 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:14:41,509 - [INFO] -   └─ After normalization: 52 unique Pillars
+2026-01-30 03:14:41,616 - [INFO] - 
+================================================================================
+2026-01-30 03:14:41,617 - [INFO] - [CAMPAIGN 8/76] General | Industri Pertanian, Program | Hilirisasi Pertanian, Menteri Pertanian
+2026-01-30 03:14:41,617 - [INFO] - ================================================================================
+2026-01-30 03:15:17,682 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:15:25,771 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:15:25,783 - [INFO] -   └─ Generated 56 unique Pillars
+2026-01-30 03:15:41,220 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:15:41,236 - [INFO] -   └─ After normalization: 56 unique Pillars
+2026-01-30 03:15:41,338 - [INFO] - 
+================================================================================
+2026-01-30 03:15:41,338 - [INFO] - [CAMPAIGN 9/76] General | Industri Pertanian, Program | Hilirisasi Pertanian
+2026-01-30 03:15:41,338 - [INFO] - ================================================================================
+2026-01-30 03:16:38,838 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:16:48,729 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:16:48,765 - [INFO] -   └─ Generated 78 unique Pillars
+2026-01-30 03:17:10,912 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:17:10,929 - [INFO] -   └─ After normalization: 78 unique Pillars
+2026-01-30 03:17:11,055 - [INFO] - 
+================================================================================
+2026-01-30 03:17:11,055 - [INFO] - [CAMPAIGN 10/76] General | Industri Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:17:11,056 - [INFO] - ================================================================================
+2026-01-30 03:17:13,717 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:17:17,746 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:17:17,757 - [INFO] -   └─ Generated 15 unique Pillars
+2026-01-30 03:17:22,561 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:17:22,578 - [INFO] -   └─ After normalization: 15 unique Pillars
+2026-01-30 03:17:22,606 - [INFO] - 
+================================================================================
+2026-01-30 03:17:22,606 - [INFO] - [CAMPAIGN 11/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Hilirisasi Pertanian
+2026-01-30 03:17:22,606 - [INFO] - ================================================================================
+2026-01-30 03:17:35,836 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:17:42,935 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:17:42,976 - [INFO] -   └─ Generated 31 unique Pillars
+2026-01-30 03:17:53,316 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:17:53,327 - [INFO] -   └─ After normalization: 31 unique Pillars
+2026-01-30 03:17:53,382 - [INFO] - 
+================================================================================
+2026-01-30 03:17:53,382 - [INFO] - [CAMPAIGN 12/76] Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:17:53,382 - [INFO] - ================================================================================
+2026-01-30 03:18:15,036 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:18:21,364 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:18:21,388 - [INFO] -   └─ Generated 45 unique Pillars
+2026-01-30 03:18:32,315 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:18:32,325 - [INFO] -   └─ After normalization: 46 unique Pillars
+2026-01-30 03:18:32,326 - [INFO] -   └─ Merged -1 Pillars
+2026-01-30 03:18:32,411 - [INFO] - 
+================================================================================
+2026-01-30 03:18:32,411 - [INFO] - [CAMPAIGN 13/76] General | Industri Pertanian, Menteri Pertanian
+2026-01-30 03:18:32,411 - [INFO] - ================================================================================
+2026-01-30 03:19:06,460 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:19:13,651 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:19:13,713 - [INFO] -   └─ Generated 58 unique Pillars
+2026-01-30 03:19:30,202 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:19:30,215 - [INFO] -   └─ After normalization: 61 unique Pillars
+2026-01-30 03:19:30,215 - [INFO] -   └─ Merged -3 Pillars
+2026-01-30 03:19:30,335 - [INFO] - 
+================================================================================
+2026-01-30 03:19:30,335 - [INFO] - [CAMPAIGN 14/76] General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian
+2026-01-30 03:19:30,336 - [INFO] - ================================================================================
+2026-01-30 03:19:34,679 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:19:37,698 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:19:37,707 - [INFO] -   └─ Generated 12 unique Pillars
+2026-01-30 03:19:42,301 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:19:42,311 - [INFO] -   └─ After normalization: 12 unique Pillars
+2026-01-30 03:19:42,339 - [INFO] - 
+================================================================================
+2026-01-30 03:19:42,339 - [INFO] - [CAMPAIGN 15/76] General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:19:42,339 - [INFO] - ================================================================================
+2026-01-30 03:22:30,284 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:22:37,919 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:22:37,934 - [INFO] -   └─ Generated 154 unique Pillars
+2026-01-30 03:23:36,280 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:23:36,294 - [INFO] -   └─ After normalization: 154 unique Pillars
+2026-01-30 03:23:36,876 - [INFO] - 
+================================================================================
+2026-01-30 03:23:36,878 - [INFO] - [CAMPAIGN 16/76] Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:23:36,878 - [INFO] - ================================================================================
+2026-01-30 03:24:07,270 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:24:16,415 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:24:16,429 - [INFO] -   └─ Generated 62 unique Pillars
+2026-01-30 03:24:39,872 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:24:39,891 - [INFO] -   └─ After normalization: 63 unique Pillars
+2026-01-30 03:24:39,891 - [INFO] -   └─ Merged -1 Pillars
+2026-01-30 03:24:40,002 - [INFO] - 
+================================================================================
+2026-01-30 03:24:40,003 - [INFO] - [CAMPAIGN 17/76] Program | Swasembada Pangan, General | Industri Pertanian, Menteri Pertanian, Program | Hilirisasi Pertanian, Issue | Impor Ilegal Beras Sabang & Batam
+2026-01-30 03:24:40,004 - [INFO] - ================================================================================
+2026-01-30 03:24:41,315 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:24:41,321 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:24:41,321 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:24:41,326 - [INFO] - 
+================================================================================
+2026-01-30 03:24:41,327 - [INFO] - [CAMPAIGN 18/76] Program | Swasembada Pangan, Menteri Pertanian
+2026-01-30 03:24:41,327 - [INFO] - ================================================================================
+2026-01-30 03:24:43,289 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:24:51,136 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:24:51,148 - [INFO] -   └─ Generated 20 unique Pillars
+2026-01-30 03:24:58,652 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:24:58,660 - [INFO] -   └─ After normalization: 21 unique Pillars
+2026-01-30 03:24:58,660 - [INFO] -   └─ Merged -1 Pillars
+2026-01-30 03:24:58,694 - [INFO] - 
+================================================================================
+2026-01-30 03:24:58,694 - [INFO] - [CAMPAIGN 19/76] Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian
+2026-01-30 03:24:58,695 - [INFO] - ================================================================================
+2026-01-30 03:25:00,658 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:02,540 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:02,548 - [INFO] -   └─ Generated 5 unique Pillars
+2026-01-30 03:25:04,940 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:04,950 - [INFO] -   └─ After normalization: 5 unique Pillars
+2026-01-30 03:25:04,975 - [INFO] - 
+================================================================================
+2026-01-30 03:25:04,975 - [INFO] - [CAMPAIGN 20/76] Program | Hilirisasi Pertanian
+2026-01-30 03:25:04,975 - [INFO] - ================================================================================
+2026-01-30 03:25:14,433 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:21,170 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:21,210 - [INFO] -   └─ Generated 29 unique Pillars
+2026-01-30 03:25:30,997 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:31,003 - [INFO] -   └─ After normalization: 29 unique Pillars
+2026-01-30 03:25:31,083 - [INFO] - 
+================================================================================
+2026-01-30 03:25:31,084 - [INFO] - [CAMPAIGN 21/76] Program | Cetak Sawah Baru
+2026-01-30 03:25:31,084 - [INFO] - ================================================================================
+2026-01-30 03:25:37,726 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:44,279 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:44,293 - [INFO] -   └─ Generated 27 unique Pillars
+2026-01-30 03:25:50,933 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:50,947 - [INFO] -   └─ After normalization: 33 unique Pillars
+2026-01-30 03:25:50,947 - [INFO] -   └─ Merged -6 Pillars
+2026-01-30 03:25:51,014 - [INFO] - 
+================================================================================
+2026-01-30 03:25:51,015 - [INFO] - [CAMPAIGN 22/76] Issue | Impor Ilegal Beras Sabang & Batam
+2026-01-30 03:25:51,015 - [INFO] - ================================================================================
+2026-01-30 03:25:52,747 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:52,763 - [INFO] -   └─ Generated 3 unique Pillars
+2026-01-30 03:25:54,087 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:25:54,091 - [INFO] -   └─ After normalization: 3 unique Pillars
+2026-01-30 03:25:54,101 - [INFO] - 
+================================================================================
+2026-01-30 03:25:54,101 - [INFO] - [CAMPAIGN 23/76] Program | Swasembada Pangan, Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:25:54,101 - [INFO] - ================================================================================
+2026-01-30 03:25:56,887 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:00,406 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:00,411 - [INFO] -   └─ Generated 11 unique Pillars
+2026-01-30 03:26:03,911 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:03,923 - [INFO] -   └─ After normalization: 11 unique Pillars
+2026-01-30 03:26:03,948 - [INFO] - 
+================================================================================
+2026-01-30 03:26:03,948 - [INFO] - [CAMPAIGN 24/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian, Program | Hilirisasi Pertanian
+2026-01-30 03:26:03,948 - [INFO] - ================================================================================
+2026-01-30 03:26:05,766 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:06,835 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:06,839 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-30 03:26:07,877 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:07,886 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-30 03:26:07,892 - [INFO] - 
+================================================================================
+2026-01-30 03:26:07,892 - [INFO] - [CAMPAIGN 25/76] Menteri Pertanian, Issue | Kementan Tempo
+2026-01-30 03:26:07,893 - [INFO] - ================================================================================
+2026-01-30 03:26:10,283 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:14,079 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:14,087 - [INFO] -   └─ Generated 11 unique Pillars
+2026-01-30 03:26:19,762 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:19,778 - [INFO] -   └─ After normalization: 11 unique Pillars
+2026-01-30 03:26:19,794 - [INFO] - 
+================================================================================
+2026-01-30 03:26:19,794 - [INFO] - [CAMPAIGN 26/76] Program | Swasembada Pangan, Program | Hilirisasi Pertanian
+2026-01-30 03:26:19,795 - [INFO] - ================================================================================
+2026-01-30 03:26:21,095 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:21,103 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:26:21,103 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:26:21,108 - [INFO] - 
+================================================================================
+2026-01-30 03:26:21,108 - [INFO] - [CAMPAIGN 27/76] General | Industri Pertanian, Program | Hilirisasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:26:21,108 - [INFO] - ================================================================================
+2026-01-30 03:26:25,575 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:25,592 - [INFO] -   └─ Generated 11 unique Pillars
+2026-01-30 03:26:31,592 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:31,601 - [INFO] -   └─ After normalization: 11 unique Pillars
+2026-01-30 03:26:31,616 - [INFO] - 
+================================================================================
+2026-01-30 03:26:31,616 - [INFO] - [CAMPAIGN 28/76] Program | Swasembada Pangan, General | Industri Pertanian, Menteri Pertanian
+2026-01-30 03:26:31,616 - [INFO] - ================================================================================
+2026-01-30 03:26:39,504 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:45,092 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:45,113 - [INFO] -   └─ Generated 29 unique Pillars
+2026-01-30 03:26:52,537 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:52,547 - [INFO] -   └─ After normalization: 30 unique Pillars
+2026-01-30 03:26:52,547 - [INFO] -   └─ Merged -1 Pillars
+2026-01-30 03:26:52,594 - [INFO] - 
+================================================================================
+2026-01-30 03:26:52,594 - [INFO] - [CAMPAIGN 29/76] Wakil Menteri Pertanian
+2026-01-30 03:26:52,594 - [INFO] - ================================================================================
+2026-01-30 03:26:56,705 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:59,347 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:26:59,357 - [INFO] -   └─ Generated 9 unique Pillars
+2026-01-30 03:27:05,065 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:05,075 - [INFO] -   └─ After normalization: 18 unique Pillars
+2026-01-30 03:27:05,076 - [INFO] -   └─ Merged -9 Pillars
+2026-01-30 03:27:05,104 - [INFO] - 
+================================================================================
+2026-01-30 03:27:05,104 - [INFO] - [CAMPAIGN 30/76] General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian
+2026-01-30 03:27:05,104 - [INFO] - ================================================================================
+2026-01-30 03:27:06,434 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:06,441 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-30 03:27:07,323 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:07,328 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-30 03:27:07,334 - [INFO] - 
+================================================================================
+2026-01-30 03:27:07,334 - [INFO] - [CAMPAIGN 31/76] Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:27:07,334 - [INFO] - ================================================================================
+2026-01-30 03:27:11,701 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:11,711 - [INFO] -   └─ Generated 8 unique Pillars
+2026-01-30 03:27:14,420 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:14,425 - [INFO] -   └─ After normalization: 9 unique Pillars
+2026-01-30 03:27:14,425 - [INFO] -   └─ Merged -1 Pillars
+2026-01-30 03:27:14,444 - [INFO] - 
+================================================================================
+2026-01-30 03:27:14,444 - [INFO] - [CAMPAIGN 32/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian
+2026-01-30 03:27:14,444 - [INFO] - ================================================================================
+2026-01-30 03:27:19,248 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:21,046 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:21,047 - [INFO] -   └─ Generated 7 unique Pillars
+2026-01-30 03:27:23,704 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:23,710 - [INFO] -   └─ After normalization: 7 unique Pillars
+2026-01-30 03:27:23,731 - [INFO] - 
+================================================================================
+2026-01-30 03:27:23,731 - [INFO] - [CAMPAIGN 33/76] Program | Hilirisasi Pertanian, Menteri Pertanian
+2026-01-30 03:27:23,732 - [INFO] - ================================================================================
+2026-01-30 03:27:25,556 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:28,823 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:28,833 - [INFO] -   └─ Generated 5 unique Pillars
+2026-01-30 03:27:31,165 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:31,170 - [INFO] -   └─ After normalization: 5 unique Pillars
+2026-01-30 03:27:31,190 - [INFO] - 
+================================================================================
+2026-01-30 03:27:31,191 - [INFO] - [CAMPAIGN 34/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Hilirisasi Pertanian, Menteri Pertanian
+2026-01-30 03:27:31,191 - [INFO] - ================================================================================
+2026-01-30 03:27:35,138 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:39,636 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:39,652 - [INFO] -   └─ Generated 15 unique Pillars
+2026-01-30 03:27:44,079 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:44,089 - [INFO] -   └─ After normalization: 15 unique Pillars
+2026-01-30 03:27:44,110 - [INFO] - 
+================================================================================
+2026-01-30 03:27:44,111 - [INFO] - [CAMPAIGN 35/76] Program | Swasembada Pangan, General | Industri Pertanian, Menteri Pertanian, Issue | Kementan Tempo
+2026-01-30 03:27:44,111 - [INFO] - ================================================================================
+2026-01-30 03:27:45,086 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:45,089 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:27:45,090 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:27:45,105 - [INFO] - 
+================================================================================
+2026-01-30 03:27:45,106 - [INFO] - [CAMPAIGN 36/76] Issue | Food Estate Papua
+2026-01-30 03:27:45,106 - [INFO] - ================================================================================
+2026-01-30 03:27:50,222 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:56,934 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:27:56,943 - [INFO] -   └─ Generated 23 unique Pillars
+2026-01-30 03:28:03,423 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:03,448 - [INFO] -   └─ After normalization: 23 unique Pillars
+2026-01-30 03:28:03,502 - [INFO] - 
+================================================================================
+2026-01-30 03:28:03,502 - [INFO] - [CAMPAIGN 37/76] General | Industri Pertanian, Menteri Pertanian, Issue | Kementan Tempo
+2026-01-30 03:28:03,502 - [INFO] - ================================================================================
+2026-01-30 03:28:04,710 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:04,722 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:28:04,723 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:28:04,732 - [INFO] - 
+================================================================================
+2026-01-30 03:28:04,732 - [INFO] - [CAMPAIGN 38/76] General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:28:04,732 - [INFO] - ================================================================================
+2026-01-30 03:28:08,117 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:12,550 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:12,576 - [INFO] -   └─ Generated 13 unique Pillars
+2026-01-30 03:28:17,319 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:17,325 - [INFO] -   └─ After normalization: 13 unique Pillars
+2026-01-30 03:28:17,383 - [INFO] - 
+================================================================================
+2026-01-30 03:28:17,383 - [INFO] - [CAMPAIGN 39/76] Program | Lahan dan Irigasi Pertanian, Menteri Pertanian
+2026-01-30 03:28:17,383 - [INFO] - ================================================================================
+2026-01-30 03:28:20,565 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:20,578 - [INFO] -   └─ Generated 7 unique Pillars
+2026-01-30 03:28:22,295 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:22,427 - [INFO] -   └─ After normalization: 7 unique Pillars
+2026-01-30 03:28:22,455 - [INFO] - 
+================================================================================
+2026-01-30 03:28:22,456 - [INFO] - [CAMPAIGN 40/76] General | Industri Pertanian, Program | Hilirisasi Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian
+2026-01-30 03:28:22,456 - [INFO] - ================================================================================
+2026-01-30 03:28:23,646 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:23,656 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-30 03:28:25,033 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:25,037 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-30 03:28:25,046 - [INFO] - 
+================================================================================
+2026-01-30 03:28:25,046 - [INFO] - [CAMPAIGN 41/76] Program | Swasembada Pangan, General | Industri Pertanian, Issue | Impor Ilegal Beras Sabang & Batam, Menteri Pertanian
+2026-01-30 03:28:25,047 - [INFO] - ================================================================================
+2026-01-30 03:28:25,987 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:26,002 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:28:26,003 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:28:26,007 - [INFO] - 
+================================================================================
+2026-01-30 03:28:26,007 - [INFO] - [CAMPAIGN 42/76] Program | Swasembada Pangan, Program | Cetak Sawah Baru
+2026-01-30 03:28:26,008 - [INFO] - ================================================================================
+2026-01-30 03:28:27,820 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:30,237 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:30,247 - [INFO] -   └─ Generated 7 unique Pillars
+2026-01-30 03:28:32,522 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:32,528 - [INFO] -   └─ After normalization: 7 unique Pillars
+2026-01-30 03:28:32,553 - [INFO] - 
+================================================================================
+2026-01-30 03:28:32,553 - [INFO] - [CAMPAIGN 43/76] Issue | Food Estate Papua, General | Industri Pertanian, Program | Hilirisasi Pertanian
+2026-01-30 03:28:32,553 - [INFO] - ================================================================================
+2026-01-30 03:28:33,803 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:33,853 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:28:33,860 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:28:33,893 - [INFO] - 
+================================================================================
+2026-01-30 03:28:33,894 - [INFO] - [CAMPAIGN 44/76] Program | Swasembada Pangan, General | Industri Pertanian, Menteri Pertanian, Program | Hilirisasi Pertanian, Issue | Kementan Tempo
+2026-01-30 03:28:33,895 - [INFO] - ================================================================================
+2026-01-30 03:28:35,170 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:35,183 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-30 03:28:35,985 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:35,998 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-30 03:28:36,008 - [INFO] - 
+================================================================================
+2026-01-30 03:28:36,009 - [INFO] - [CAMPAIGN 45/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru, Program | Hilirisasi Pertanian
+2026-01-30 03:28:36,009 - [INFO] - ================================================================================
+2026-01-30 03:28:38,369 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:40,367 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:40,375 - [INFO] -   └─ Generated 5 unique Pillars
+2026-01-30 03:28:42,889 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:42,895 - [INFO] -   └─ After normalization: 5 unique Pillars
+2026-01-30 03:28:42,917 - [INFO] - 
+================================================================================
+2026-01-30 03:28:42,917 - [INFO] - [CAMPAIGN 46/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:28:42,918 - [INFO] - ================================================================================
+2026-01-30 03:28:46,111 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:46,130 - [INFO] -   └─ Generated 7 unique Pillars
+2026-01-30 03:28:48,273 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:48,287 - [INFO] -   └─ After normalization: 7 unique Pillars
+2026-01-30 03:28:48,309 - [INFO] - 
+================================================================================
+2026-01-30 03:28:48,309 - [INFO] - [CAMPAIGN 47/76] General | Industri Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian
+2026-01-30 03:28:48,309 - [INFO] - ================================================================================
+2026-01-30 03:28:49,345 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:49,350 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-30 03:28:50,328 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:50,332 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-30 03:28:50,338 - [INFO] - 
+================================================================================
+2026-01-30 03:28:50,338 - [INFO] - [CAMPAIGN 48/76] Program | Swasembada Pangan, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian
+2026-01-30 03:28:50,338 - [INFO] - ================================================================================
+2026-01-30 03:28:52,244 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:52,252 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-30 03:28:53,774 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:53,783 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-30 03:28:53,798 - [INFO] - 
+================================================================================
+2026-01-30 03:28:53,799 - [INFO] - [CAMPAIGN 49/76] General | Industri Pertanian, Issue | Kementan Tempo
+2026-01-30 03:28:53,799 - [INFO] - ================================================================================
+2026-01-30 03:28:54,736 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:54,744 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:28:54,744 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:28:54,747 - [INFO] - 
+================================================================================
+2026-01-30 03:28:54,747 - [INFO] - [CAMPAIGN 50/76] Program | Swasembada Pangan, Issue | Food Estate Papua, Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:28:54,747 - [INFO] - ================================================================================
+2026-01-30 03:28:55,645 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:55,651 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:28:55,651 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:28:55,657 - [INFO] - 
+================================================================================
+2026-01-30 03:28:55,657 - [INFO] - [CAMPAIGN 51/76] Wakil Menteri Pertanian, General | Industri Pertanian
+2026-01-30 03:28:55,657 - [INFO] - ================================================================================
+2026-01-30 03:28:57,078 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:57,092 - [INFO] -   └─ Generated 3 unique Pillars
+2026-01-30 03:28:58,072 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:28:58,078 - [INFO] -   └─ After normalization: 3 unique Pillars
+2026-01-30 03:28:58,084 - [INFO] - 
+================================================================================
+2026-01-30 03:28:58,084 - [INFO] - [CAMPAIGN 52/76] Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:28:58,084 - [INFO] - ================================================================================
+2026-01-30 03:28:59,713 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:01,410 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:01,415 - [INFO] -   └─ Generated 4 unique Pillars
+2026-01-30 03:29:03,364 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:03,372 - [INFO] -   └─ After normalization: 4 unique Pillars
+2026-01-30 03:29:03,391 - [INFO] - 
+================================================================================
+2026-01-30 03:29:03,391 - [INFO] - [CAMPAIGN 53/76] Program | Swasembada Pangan, Issue | Food Estate Papua, Issue | Kementan Tempo, Menteri Pertanian
+2026-01-30 03:29:03,392 - [INFO] - ================================================================================
+2026-01-30 03:29:04,624 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:04,630 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:04,630 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:04,633 - [INFO] - 
+================================================================================
+2026-01-30 03:29:04,633 - [INFO] - [CAMPAIGN 54/76] Issue | Food Estate Papua, Program | Cetak Sawah Baru
+2026-01-30 03:29:04,633 - [INFO] - ================================================================================
+2026-01-30 03:29:05,927 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:05,934 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-30 03:29:06,942 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:06,946 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-30 03:29:06,961 - [INFO] - 
+================================================================================
+2026-01-30 03:29:06,962 - [INFO] - [CAMPAIGN 55/76] Program | Swasembada Pangan, Issue | Food Estate Papua, Menteri Pertanian
+2026-01-30 03:29:06,962 - [INFO] - ================================================================================
+2026-01-30 03:29:07,944 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:07,957 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:07,958 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:07,960 - [INFO] - 
+================================================================================
+2026-01-30 03:29:07,960 - [INFO] - [CAMPAIGN 56/76] Program | Swasembada Pangan, Issue | Food Estate Papua
+2026-01-30 03:29:07,960 - [INFO] - ================================================================================
+2026-01-30 03:29:10,236 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:10,252 - [INFO] -   └─ Generated 5 unique Pillars
+2026-01-30 03:29:11,713 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:11,717 - [INFO] -   └─ After normalization: 5 unique Pillars
+2026-01-30 03:29:11,726 - [INFO] - 
+================================================================================
+2026-01-30 03:29:11,727 - [INFO] - [CAMPAIGN 57/76] Program | Hilirisasi Pertanian, Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:29:11,727 - [INFO] - ================================================================================
+2026-01-30 03:29:14,492 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:14,500 - [INFO] -   └─ Generated 7 unique Pillars
+2026-01-30 03:29:17,101 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:17,110 - [INFO] -   └─ After normalization: 7 unique Pillars
+2026-01-30 03:29:17,141 - [INFO] - 
+================================================================================
+2026-01-30 03:29:17,142 - [INFO] - [CAMPAIGN 58/76] Wakil Menteri Pertanian, Menteri Pertanian
+2026-01-30 03:29:17,142 - [INFO] - ================================================================================
+2026-01-30 03:29:22,834 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:25,174 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:25,188 - [INFO] -   └─ Generated 10 unique Pillars
+2026-01-30 03:29:29,369 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:29,385 - [INFO] -   └─ After normalization: 10 unique Pillars
+2026-01-30 03:29:29,406 - [INFO] - 
+================================================================================
+2026-01-30 03:29:29,406 - [INFO] - [CAMPAIGN 59/76] General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian, Program | Hilirisasi Pertanian
+2026-01-30 03:29:29,407 - [INFO] - ================================================================================
+2026-01-30 03:29:30,359 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:30,368 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:30,369 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:30,372 - [INFO] - 
+================================================================================
+2026-01-30 03:29:30,372 - [INFO] - [CAMPAIGN 60/76] Issue | Food Estate Papua, Program | Swasembada Pangan, Menteri Pertanian, Issue | Kementan Tempo
+2026-01-30 03:29:30,372 - [INFO] - ================================================================================
+2026-01-30 03:29:31,428 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:31,441 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:31,442 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:31,446 - [INFO] - 
+================================================================================
+2026-01-30 03:29:31,446 - [INFO] - [CAMPAIGN 61/76] Wakil Menteri Pertanian, General | Industri Pertanian, Menteri Pertanian
+2026-01-30 03:29:31,446 - [INFO] - ================================================================================
+2026-01-30 03:29:34,195 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:35,446 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:35,473 - [INFO] -   └─ Generated 3 unique Pillars
+2026-01-30 03:29:36,922 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:36,934 - [INFO] -   └─ After normalization: 3 unique Pillars
+2026-01-30 03:29:36,959 - [INFO] - 
+================================================================================
+2026-01-30 03:29:36,959 - [INFO] - [CAMPAIGN 62/76] Program | Swasembada Pangan, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:29:36,959 - [INFO] - ================================================================================
+2026-01-30 03:29:38,020 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:38,031 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:38,032 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:38,042 - [INFO] - 
+================================================================================
+2026-01-30 03:29:38,042 - [INFO] - [CAMPAIGN 63/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru, Menteri Pertanian
+2026-01-30 03:29:38,043 - [INFO] - ================================================================================
+2026-01-30 03:29:39,107 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:39,114 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:39,114 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:39,120 - [INFO] - 
+================================================================================
+2026-01-30 03:29:39,120 - [INFO] - [CAMPAIGN 64/76] Program | Cetak Sawah Baru, Menteri Pertanian
+2026-01-30 03:29:39,120 - [INFO] - ================================================================================
+2026-01-30 03:29:40,136 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:40,138 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:40,139 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:40,142 - [INFO] - 
+================================================================================
+2026-01-30 03:29:40,142 - [INFO] - [CAMPAIGN 65/76] Program | Swasembada Pangan, Issue | Food Estate Papua, Program | Cetak Sawah Baru
+2026-01-30 03:29:40,143 - [INFO] - ================================================================================
+2026-01-30 03:29:41,190 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:41,195 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:41,195 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:41,207 - [INFO] - 
+================================================================================
+2026-01-30 03:29:41,207 - [INFO] - [CAMPAIGN 66/76] Program | Swasembada Pangan, General | Industri Pertanian, Program | Hilirisasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:29:41,207 - [INFO] - ================================================================================
+2026-01-30 03:29:42,687 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:42,694 - [INFO] -   └─ Generated 4 unique Pillars
+2026-01-30 03:29:43,969 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:43,979 - [INFO] -   └─ After normalization: 4 unique Pillars
+2026-01-30 03:29:43,992 - [INFO] - 
+================================================================================
+2026-01-30 03:29:43,992 - [INFO] - [CAMPAIGN 67/76] Program | Swasembada Pangan, Program | Hilirisasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:29:43,993 - [INFO] - ================================================================================
+2026-01-30 03:29:44,949 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:44,957 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:44,957 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:44,966 - [INFO] - 
+================================================================================
+2026-01-30 03:29:44,967 - [INFO] - [CAMPAIGN 68/76] Issue | Kementan Tempo
+2026-01-30 03:29:44,967 - [INFO] - ================================================================================
+2026-01-30 03:29:46,117 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:46,133 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:46,134 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:46,148 - [INFO] - 
+================================================================================
+2026-01-30 03:29:46,148 - [INFO] - [CAMPAIGN 69/76] Program | Hilirisasi Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Issue | Kementan Tempo
+2026-01-30 03:29:46,148 - [INFO] - ================================================================================
+2026-01-30 03:29:48,029 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:48,034 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:48,034 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:48,040 - [INFO] - 
+================================================================================
+2026-01-30 03:29:48,041 - [INFO] - [CAMPAIGN 70/76] Issue | Food Estate Papua, Menteri Pertanian, Issue | Kementan Tempo
+2026-01-30 03:29:48,041 - [INFO] - ================================================================================
+2026-01-30 03:29:49,134 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:49,138 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:49,138 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:49,148 - [INFO] - 
+================================================================================
+2026-01-30 03:29:49,148 - [INFO] - [CAMPAIGN 71/76] Wakil Menteri Pertanian, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian
+2026-01-30 03:29:49,148 - [INFO] - ================================================================================
+2026-01-30 03:29:51,152 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:51,155 - [INFO] -   └─ Generated 3 unique Pillars
+2026-01-30 03:29:52,416 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:52,421 - [INFO] -   └─ After normalization: 2 unique Pillars
+2026-01-30 03:29:52,421 - [INFO] -   └─ Merged 1 Pillars
+2026-01-30 03:29:52,428 - [INFO] - 
+================================================================================
+2026-01-30 03:29:52,428 - [INFO] - [CAMPAIGN 72/76] Program | Hilirisasi Pertanian, Program | Lahan dan Irigasi Pertanian, Program | Cetak Sawah Baru
+2026-01-30 03:29:52,428 - [INFO] - ================================================================================
+2026-01-30 03:29:53,669 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:53,678 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:53,679 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:53,692 - [INFO] - 
+================================================================================
+2026-01-30 03:29:53,692 - [INFO] - [CAMPAIGN 73/76] Issue | Food Estate Papua, Program | Swasembada Pangan
+2026-01-30 03:29:53,692 - [INFO] - ================================================================================
+2026-01-30 03:29:54,828 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:54,845 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:54,845 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:54,855 - [INFO] - 
+================================================================================
+2026-01-30 03:29:54,855 - [INFO] - [CAMPAIGN 74/76] Program | Swasembada Pangan, Program | Hilirisasi Pertanian, Menteri Pertanian
+2026-01-30 03:29:54,855 - [INFO] - ================================================================================
+2026-01-30 03:29:55,863 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:55,865 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:29:55,866 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:29:55,870 - [INFO] - 
+================================================================================
+2026-01-30 03:29:55,870 - [INFO] - [CAMPAIGN 75/76] Issue | Food Estate Papua, General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian
+2026-01-30 03:29:55,870 - [INFO] - ================================================================================
+2026-01-30 03:29:57,856 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:59,623 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:29:59,631 - [INFO] -   └─ Generated 2 unique Pillars
+2026-01-30 03:30:00,509 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:30:00,513 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:30:00,518 - [INFO] -   └─ Merged 1 Pillars
+2026-01-30 03:30:00,535 - [INFO] - 
+================================================================================
+2026-01-30 03:30:00,535 - [INFO] - [CAMPAIGN 76/76] General | Industri Pertanian, Program | Lahan dan Irigasi Pertanian, Menteri Pertanian, Issue | Kementan Tempo
+2026-01-30 03:30:00,535 - [INFO] - ================================================================================
+2026-01-30 03:30:01,464 - [INFO] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-30 03:30:01,470 - [INFO] -   └─ Generated 1 unique Pillars
+2026-01-30 03:30:01,470 - [INFO] -   └─ After normalization: 1 unique Pillars
+2026-01-30 03:30:01,507 - [INFO] - [STEP 4/5] ✅ Pillar: 2722/8653 (31.5%)
+2026-01-30 03:30:01,507 - [INFO] - [STEP 4/5] ✅ Unique Pillars across all campaigns: 1048
+2026-01-30 03:30:01,507 - [INFO] - 
+================================================================================
+2026-01-30 03:30:01,508 - [INFO] - [FINALIZATION] Preparing output
+2026-01-30 03:30:01,508 - [INFO] - ================================================================================
+2026-01-30 03:30:01,816 - [INFO] - ✅ Row count verified: 8653 → 8653 (unchanged)
+2026-01-30 03:30:09,404 - [INFO] - 
+================================================================================
+2026-01-30 03:30:09,405 - [INFO] - ✅ PROCESSING COMPLETE - v13.0
+2026-01-30 03:30:09,406 - [INFO] - ================================================================================
+2026-01-30 03:30:09,406 - [INFO] - Rows: 8653 → 8653 (unchanged: True)
+2026-01-30 03:30:09,406 - [INFO] - Duration: 9799.83s | Cost: $0.868584
+2026-01-30 03:30:09,407 - [INFO] - Topics: 4348 → Pillars: 1048 (75.9% reduction)
+2026-01-30 03:30:09,407 - [INFO] - Topic (initial): 4538/8653 (52.4%)
+2026-01-30 03:30:09,407 - [INFO] - Sentiment: 8653/8653 (100.0%)
+2026-01-30 03:30:09,408 - [INFO] - Topic (after retry): 4557/8653 (52.7%)
+2026-01-30 03:30:09,408 - [INFO] - Topic Clustering: 76/76 (100.0%)
+2026-01-30 03:30:09,408 - [INFO] - Pillar (final): 2722/8653 (31.5%) | Unique: 1048
