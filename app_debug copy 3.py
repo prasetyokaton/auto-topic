@@ -16,13 +16,6 @@ import random
 from collections import Counter
 import hashlib
 
-# Google Sheets integration
-try:
-    import requests
-    REQUESTS_AVAILABLE = True
-except ImportError:
-    REQUESTS_AVAILABLE = False
-
 try:
     import gradio_client.utils as gradio_utils
     
@@ -127,12 +120,6 @@ PRICING = {
     "gpt-3.5-turbo": {"input": 0.500, "output": 1.500},
 }
 
-# ── GSHEET CACHE CONFIG ─────────────────────────────────────────────────────
-GSHEET_URL = "https://docs.google.com/spreadsheets/d/1oWq0j03boWJySrQCD14xqLBjO0E6-T_7q1EYb2FcdsU"
-CACHE_DIR = "download"
-CACHE_FILE = os.path.join(CACHE_DIR, "pillar_cache.json")
-
-os.makedirs(CACHE_DIR, exist_ok=True)
 os.makedirs("logs", exist_ok=True)
 log_filename = datetime.now().strftime("logs/gradio_log_%Y%m%d_%H%M%S.txt")
 logging.basicConfig(
@@ -144,236 +131,6 @@ logging.basicConfig(
 console = logging.StreamHandler()
 console.setLevel(logging.INFO)
 logging.getLogger('').addHandler(console)
-
-# ── GSHEET CACHE FUNCTIONS ──────────────────────────────────────────────────
-
-def download_gsheet_cache():
-    """Download Project List & Pillar Setup from GSheet via HTTP export, save to local cache."""
-    try:
-        import io as _io
-        url = f"{GSHEET_URL}/export?format=xlsx"
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-        response = requests.get(url, headers=headers, timeout=30)
-        
-        if response.status_code == 403:
-            return False, "❌ Google Sheet tidak public. Share dulu dengan 'Anyone with the link can view'"
-        elif response.status_code != 200:
-            return False, f"❌ HTTP {response.status_code}: {response.reason}"
-        
-        # Parse xlsx from memory
-        xl = pd.ExcelFile(_io.BytesIO(response.content))
-        
-        # Read Project List
-        if 'Project List' not in xl.sheet_names:
-            return False, "❌ Sheet 'Project List' tidak ditemukan"
-        
-        df_projects = xl.parse('Project List')
-        projects = []
-        if 'Project Name' in df_projects.columns:
-            for val in df_projects['Project Name'].dropna():
-                name = str(val).strip()
-                if name and name != 'nan':
-                    projects.append(name)
-        
-        # Read Pillar Setup
-        if 'Pillar Setup' not in xl.sheet_names:
-            return False, "❌ Sheet 'Pillar Setup' tidak ditemukan"
-        
-        df_pillars = xl.parse('Pillar Setup')
-        pillar_setup = {}
-        for _, row in df_pillars.iterrows():
-            project = str(row.get("Project", "")).strip()
-            pillar = str(row.get("Pillar", "")).strip()
-            description = str(row.get("Description", "")).strip()
-            if project and pillar and project != 'nan' and pillar != 'nan':
-                if project not in pillar_setup:
-                    pillar_setup[project] = []
-                pillar_setup[project].append({
-                    "pillar": pillar,
-                    "description": description if description != 'nan' else ""
-                })
-        
-        # Save to cache
-        cache_data = {
-            "projects": projects,
-            "pillar_setup": pillar_setup,
-            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        }
-        
-        with open(CACHE_FILE, "w", encoding="utf-8") as f:
-            json.dump(cache_data, f, ensure_ascii=False, indent=2)
-        
-        total_pillars = sum(len(v) for v in pillar_setup.values())
-        logging.info(f"✅ Cache updated: {len(projects)} projects, {total_pillars} pillar entries")
-        return True, f"✅ Cache updated: {len(projects)} projects, {total_pillars} pillar entries\n📅 {cache_data['last_updated']}"
-    
-    except requests.exceptions.Timeout:
-        return False, "❌ Timeout. Cek koneksi internet."
-    except requests.exceptions.ConnectionError:
-        return False, "❌ Koneksi gagal. Cek network/firewall."
-    except Exception as e:
-        logging.error(f"GSheet download error: {e}")
-        return False, f"❌ Error: {str(e)}"
-
-
-def load_cache() -> dict:
-    """Load cache from local file. Returns empty structure if not found."""
-    if not os.path.exists(CACHE_FILE):
-        return {"projects": [], "pillar_setup": {}, "last_updated": None}
-    try:
-        with open(CACHE_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return {"projects": [], "pillar_setup": {}, "last_updated": None}
-
-
-def get_project_choices():
-    """Return dropdown choices: Default + project names from cache."""
-    cache = load_cache()
-    projects = cache.get("projects", [])
-    return ["Default (Auto)"] + projects
-
-
-def get_pillar_setup(project_name):
-    """Return list of {pillar, description} for a given project from cache."""
-    if not project_name or project_name == "Default (Auto)":
-        return []
-    cache = load_cache()
-    return cache.get("pillar_setup", {}).get(project_name, [])
-
-
-# ── MANUAL PILLAR CLASSIFICATION (ASYNC) ────────────────────────────────────
-
-async def classify_pillar_single_row_async(
-    row_idx: int,
-    content: str,
-    pillars: list[dict],
-    token_tracker,
-    semaphore: asyncio.Semaphore
-) -> dict:
-    """Classify a single row to one of the predefined pillars. No retry."""
-    async with semaphore:
-        try:
-            # Build pillar list for prompt
-            pillar_lines = "\n".join(
-                f"- **{p['pillar']}**: {p['description']}" for p in pillars
-            )
-            pillar_names = [p['pillar'] for p in pillars]
-            
-            prompt = f"""Anda adalah analis insights profesional.
-
-Tugas: Tentukan PILLAR yang paling sesuai untuk konten berikut berdasarkan daftar pillar yang tersedia.
-
-DAFTAR PILLAR:
-{pillar_lines}
-
-KONTEN:
-{content}
-
-ATURAN:
-- Pilih SATU pillar yang paling sesuai dari daftar di atas
-- Jika konten tidak cocok dengan pillar manapun atau kamu ragu, isi dengan "Other"
-- Output HANYA nama pillar saja, tanpa penjelasan tambahan
-
-OUTPUT:"""
-
-            response = await async_client.chat.completions.create(
-                model=MODEL_NAME,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.3,
-                max_tokens=30
-            )
-            
-            if hasattr(response, 'usage'):
-                token_tracker.add(response.usage.prompt_tokens, response.usage.completion_tokens)
-            
-            raw = response.choices[0].message.content.strip()
-            
-            # Validate: must be one of the pillar names or "Other"
-            matched = None
-            for name in pillar_names:
-                if name.lower() == raw.lower() or name.lower() in raw.lower():
-                    matched = name
-                    break
-            
-            if not matched:
-                matched = "Other"
-            
-            return {"row_idx": row_idx, "success": True, "pillar": matched}
-        
-        except Exception as e:
-            logging.error(f"❌ Pillar classify row {row_idx} failed: {e}")
-            token_tracker.add_failed()
-            return {"row_idx": row_idx, "success": False, "pillar": "Other"}
-
-
-async def classify_pillars_manual_async(
-    df: pd.DataFrame,
-    title_col: str,
-    content_col: str,
-    pillars: list[dict],
-    token_tracker,
-    progress_callback=None
-) -> pd.DataFrame:
-    """Classify all rows to predefined pillars using async parallel workers."""
-    
-    logging.info("\n" + "="*80)
-    logging.info("[STEP 4] MANUAL PILLAR CLASSIFICATION (from Google Sheet)")
-    logging.info(f"  Pillars: {[p['pillar'] for p in pillars]}")
-    logging.info("="*80)
-    
-    if progress_callback is not None:
-        progress_callback(0.90, desc="[STEP 4] Classifying pillars (manual mode)...")
-    
-    df['Pillar'] = ''
-    semaphore = asyncio.Semaphore(PARALLEL_WORKERS)
-    
-    tasks = []
-    for idx in df.index:
-        # Only process master rows with topic
-        if not df.at[idx, '_is_master']:
-            continue
-        topic = str(df.at[idx, 'Topic']).strip()
-        if not topic:
-            continue
-        
-        content = combine_title_content_row(df.loc[idx], title_col, content_col)
-        task = classify_pillar_single_row_async(idx, content, pillars, token_tracker, semaphore)
-        tasks.append(task)
-    
-    total_tasks = len(tasks)
-    logging.info(f"📊 Classifying {total_tasks} rows into {len(pillars)} pillars")
-    
-    results = []
-    for i in range(0, total_tasks, PARALLEL_WORKERS):
-        batch = tasks[i:i + PARALLEL_WORKERS]
-        batch_results = await asyncio.gather(*batch)
-        results.extend(batch_results)
-        
-        if progress_callback is not None:
-            pct = min(1.0, (i + len(batch)) / max(total_tasks, 1))
-            progress_callback(0.90 + pct * 0.08, desc=f"[STEP 4] Classifying {i + len(batch)}/{total_tasks} rows")
-    
-    # Apply results
-    for result in results:
-        idx = result['row_idx']
-        df.at[idx, 'Pillar'] = result['pillar']
-    
-    # Copy to duplicate rows
-    for hash_val in df['_dedup_hash'].unique():
-        group = df[df['_dedup_hash'] == hash_val]
-        if len(group) > 1:
-            master_idx = group[group['_is_master']].index[0]
-            for dup_idx in group[~group['_is_master']].index:
-                df.at[dup_idx, 'Pillar'] = df.at[master_idx, 'Pillar']
-    
-    filled = df['Pillar'].notna() & (df['Pillar'].astype(str).str.strip() != '')
-    unique_pillars = df['Pillar'].nunique()
-    token_tracker.add_step_stat("Pillar (Manual)", filled.sum(), len(df), unique=unique_pillars)
-    logging.info(f"✅ Pillar classification done: {filled.sum()}/{len(df)} rows, {unique_pillars} unique pillars")
-    
-    return df
-
 
 class TokenTracker:
     def __init__(self):
@@ -576,7 +333,7 @@ async def process_single_row_async(
     conf_threshold: int,
     is_mainstream_row: bool,
     generate_spokesperson: bool,
-    token_tracker,
+    token_tracker: TokenTracker,
     semaphore: asyncio.Semaphore
 ) -> dict:
     """Process single row with async API call"""
@@ -729,7 +486,7 @@ async def process_all_rows_async(
     language: str,
     conf_threshold: int,
     generate_spokesperson: bool,
-    token_tracker,
+    token_tracker: TokenTracker,
     progress_callback=None
 ) -> pd.DataFrame:
     """Process all eligible rows with async parallel execution"""
@@ -840,7 +597,7 @@ async def process_all_rows_async(
 def normalize_topics_per_campaign(
     df: pd.DataFrame,
     language: str,
-    token_tracker,
+    token_tracker: TokenTracker,
     progress_callback=None
 ) -> pd.DataFrame:
     """Normalize similar topics within each campaign"""
@@ -945,7 +702,7 @@ YOUR OUTPUT:"""
 
 def normalize_spokesperson(
     df: pd.DataFrame,
-    token_tracker,
+    token_tracker: TokenTracker,
     progress_callback=None
 ) -> pd.DataFrame:
     """Normalize spokesperson names"""
@@ -1030,7 +787,7 @@ YOUR OUTPUT:"""
 def generate_pillars_per_campaign(
     df: pd.DataFrame,
     language: str,
-    token_tracker,
+    token_tracker: TokenTracker,
     progress_callback=None
 ) -> pd.DataFrame:
     """Generate pillars from topics per campaign"""
@@ -1141,7 +898,6 @@ def process_file(
     generate_sentiment: bool,
     generate_spokesperson: bool,
     conf_threshold: int,
-    selected_project: str = "Default (Auto)",
     progress=gr.Progress()
 ) -> tuple:
     
@@ -1231,22 +987,7 @@ def process_file(
         
         # STEP 4: Generate pillars
         if generate_topic:
-            is_manual_mode = selected_project and selected_project != "Default (Auto)"
-            
-            if is_manual_mode:
-                # Manual mode: classify per row to predefined pillars from GSheet
-                pillars = get_pillar_setup(selected_project)
-                if pillars:
-                    logging.info(f"🎯 Manual Pillar Mode: project='{selected_project}', pillars={[p['pillar'] for p in pillars]}")
-                    df = asyncio.run(classify_pillars_manual_async(
-                        df, title_col, content_col, pillars, tracker, progress_callback=progress
-                    ))
-                else:
-                    logging.warning(f"⚠️ No pillar setup found for '{selected_project}', fallback to Auto mode")
-                    df = generate_pillars_per_campaign(df, language, tracker, progress_callback=progress)
-            else:
-                # Auto mode: existing AI clustering
-                df = generate_pillars_per_campaign(df, language, tracker, progress_callback=progress)
+            df = generate_pillars_per_campaign(df, language, tracker, progress_callback=progress)
         
         # Finalization
         logging.info("\n" + "="*80)
@@ -1380,31 +1121,13 @@ def process_file(
         return None, {}, f"❌ Error: {str(e)}"
 
 def create_gradio_interface():
-    with gr.Blocks(title="Insights Generator v15.0 Async", theme=gr.themes.Soft()) as app:
-        gr.Markdown("# 📊 Insights Generator v15.0 - Async Per-Row Processing ⚡")
-        gr.Markdown(f"**NEW:** Per-row processing with {PARALLEL_WORKERS} parallel workers | Pillar Mode: Auto / Manual (Google Sheet)")
+    with gr.Blocks(title="Insights Generator v14.0 Async", theme=gr.themes.Soft()) as app:
+        gr.Markdown("# 📊 Insights Generator v14.0 - Async Per-Row Processing ⚡")
+        gr.Markdown(f"**NEW:** Per-row processing with {PARALLEL_WORKERS} parallel workers | No noise filtering | Skip < {MIN_CONTENT_WORDS} words")
         
         with gr.Row():
             with gr.Column(scale=2):
                 file_input = gr.File(label="📁 Upload Excel", file_types=[".xlsx"], type="filepath")
-                
-                # Project selector (above sheet selector)
-                with gr.Row():
-                    project_selector = gr.Dropdown(
-                        label="🎯 Pillar Mode / Project",
-                        choices=get_project_choices(),
-                        value="Default (Auto)",
-                        interactive=True,
-                        scale=4
-                    )
-                    refresh_btn = gr.Button("🔄 Refresh", variant="secondary", size="sm", scale=1)
-                
-                refresh_status = gr.Markdown("", visible=True)
-                
-                cache = load_cache()
-                if cache.get("last_updated"):
-                    refresh_status = gr.Markdown(f"📦 Cache: {cache['last_updated']}", visible=True)
-                
                 sheet_selector = gr.Dropdown(label="📊 Sheet", choices=[], interactive=True)
                 
                 def load_sheets(file_path):
@@ -1416,13 +1139,7 @@ def create_gradio_interface():
                             return gr.Dropdown(choices=[])
                     return gr.Dropdown(choices=[])
                 
-                def do_refresh():
-                    success, msg = download_gsheet_cache()
-                    new_choices = get_project_choices()
-                    return gr.Dropdown(choices=new_choices, value="Default (Auto)"), gr.Markdown(msg, visible=True)
-                
                 file_input.change(load_sheets, inputs=file_input, outputs=sheet_selector)
-                refresh_btn.click(do_refresh, outputs=[project_selector, refresh_status])
             
             with gr.Column(scale=1):
                 gr.Markdown("### 🌍 Language")
@@ -1464,7 +1181,7 @@ def create_gradio_interface():
                 outputs=[process_btn, validation_error]
             )
         
-        def process_wrapper(file_path, sheet_name, language, topic, sentiment, spokesperson, conf, project, progress=gr.Progress()):
+        def process_wrapper(file_path, sheet_name, language, topic, sentiment, spokesperson, conf, progress=gr.Progress()):
             try:
                 if not file_path or not sheet_name:
                     return None, "", "❌ Please upload file and select sheet"
@@ -1473,9 +1190,7 @@ def create_gradio_interface():
                     return None, "", "❌ Select at least one feature"
                 
                 result_path, stats, error = process_file(
-                    file_path, sheet_name, language, topic, sentiment, spokesperson, conf,
-                    selected_project=project,
-                    progress=progress
+                    file_path, sheet_name, language, topic, sentiment, spokesperson, conf, progress
                 )
                 
                 if error:
@@ -1494,7 +1209,7 @@ def create_gradio_interface():
         
         process_btn.click(
             process_wrapper,
-            inputs=[file_input, sheet_selector, language_selector, gen_topic, gen_sentiment, gen_spokesperson, conf_threshold, project_selector],
+            inputs=[file_input, sheet_selector, language_selector, gen_topic, gen_sentiment, gen_spokesperson, conf_threshold],
             outputs=[output_file, stats_output, error_output]
         )
     

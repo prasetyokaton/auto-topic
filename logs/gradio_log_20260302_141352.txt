@@ -1,0 +1,9 @@
+2026-03-02 14:13:52,234 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2026-03-02 14:13:52,234 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-03-02 14:13:52,258 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2026-03-02 14:13:52,946 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-03-02 14:26:07,039 - [INFO] - generated new fontManager
+2026-03-02 14:26:07,508 - [ERROR] - GSheet download error: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-03-02 14:26:13,562 - [ERROR] - GSheet download error: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-03-02 14:26:28,286 - [ERROR] - GSheet download error: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-03-02 22:09:24,581 - [ERROR] - GSheet download error: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
