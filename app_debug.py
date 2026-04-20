@@ -1,3 +1,35 @@
+# ── JINJA2 LRU CACHE PATCH (unhashable dict key fix) ────────────────────────
+try:
+    from jinja2.utils import LRUCache as _LRUCache
+    
+    def _make_hashable(key):
+        if isinstance(key, dict):
+            return tuple(sorted(key.items()))
+        if isinstance(key, (list, tuple)):
+            return tuple(_make_hashable(k) for k in key)
+        return key
+    
+    _orig_getitem = _LRUCache.__getitem__
+    _orig_setitem = _LRUCache.__setitem__
+    _orig_get     = _LRUCache.get
+    
+    def _patched_getitem(self, key):
+        return _orig_getitem(self, _make_hashable(key))
+    
+    def _patched_setitem(self, key, value):
+        return _orig_setitem(self, _make_hashable(key), value)
+    
+    def _patched_get(self, key):
+        return _orig_get(self, _make_hashable(key))
+    
+    _LRUCache.__getitem__ = _patched_getitem
+    _LRUCache.__setitem__ = _patched_setitem
+    _LRUCache.get         = _patched_get
+    
+    print("✅ Jinja2 LRUCache patch applied")
+except Exception as e:
+    print(f"⚠️ Jinja2 patch failed: {e}")
+
 import gradio as gr
 import pandas as pd
 import os

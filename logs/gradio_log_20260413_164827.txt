@@ -1,0 +1,8 @@
+2026-04-13 16:48:27,369 - [INFO] - HTTP Request: GET http://localhost:7860/startup-events "HTTP/1.1 200 OK"
+2026-04-13 16:48:27,378 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 500 Internal Server Error"
+2026-04-13 16:48:27,385 - [INFO] - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2026-04-13 16:48:27,893 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 500 Internal Server Error"
+2026-04-13 16:48:28,169 - [INFO] - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2026-04-13 16:48:28,415 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 500 Internal Server Error"
+2026-04-13 16:48:28,928 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 500 Internal Server Error"
+2026-04-13 16:48:29,437 - [INFO] - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 500 Internal Server Error"
